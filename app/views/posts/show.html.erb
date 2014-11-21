@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<article>
+  <header>
+    <h2><%= @post.title %></h2>
+    <small>By <strong><%= @post.user_id %></strong> in <strong><%= @post.group_id %></strong></small>
+    <% if @post.sticky %>
+      <small>STICKY</small>
+    <% end %>
+  </header>
+  <div class="article-content">
+    <%= markdown @post.body %>
+  </div>
+  <footer>
+    Published at <%= @post.updated_at.to_s(:short) %>
+  </footer>
+</article>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>

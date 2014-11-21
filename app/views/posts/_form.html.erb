@@ -1,0 +1,57 @@
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :title do %>
+        <%= t :title %>
+        <%= f.text_field :title, placeholder: 'Title for the post' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.label :user_id do %>
+        <%= t :user_id %>
+        <%= f.text_field :user_id, placeholder: 'Your username!' %>
+      <% end %>
+    </div>
+    <div class="large-6 columns">
+      <%= f.label :group_id do %>
+        <%= t :group_id %>
+        <%= f.text_field :group_id, placeholder: 'FKIT?' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :body do %>
+        <%= t :body %>
+        <%= f.text_area :body, rows: 20, placeholder: 'Your news content, markdown pls!' %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :sticky do %>
+        <%= t :sticky %>
+        <%= f.check_box :sticky %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit class: 'button large-12' %>
+    </div>
+  </div>
+<% end %>
