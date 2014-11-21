@@ -1,3 +1,6 @@
+<% content_for(:title) do %>
+<%= Post.model_name.human(count: 2) %>
+<% end %>
 <h1>Listing posts</h1>
 
 <table>
