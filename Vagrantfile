@@ -12,6 +12,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.customize ["modifyvm", :id, "--memory", "2048"]
   end
 
+  config.vm.provision "shell" do |s|
+	s.inline "echo 'gem: --no-ri --no-rdoc' >> /home/vagrant/.gemrc"
+  end
+
   # Forward the Rails server default port to the host
   config.vm.network :forwarded_port, guest: 3000, host: 3000
 
