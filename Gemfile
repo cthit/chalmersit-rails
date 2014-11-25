@@ -94,3 +94,6 @@ gem 'multi_fetch_fragments'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Used for SCP and SSH by print script to connect to chalmers servers
+gem 'net-scp', '~> 1.2.1'
