@@ -3,6 +3,9 @@
 Currently using Ruby `2.1.2p95`
 
 ```
+# Install vagrant plugins
+vagrant plugin install vagrant-vbguest vagrant-librarian-chef
+
 # Start the VM and ssh into it
 vagrant up
 vagrant ssh
