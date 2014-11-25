@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
+  resources :courses
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

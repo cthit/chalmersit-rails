@@ -36,6 +36,19 @@ ActiveRecord::Schema.define(version: 20141208011443) do
 
   add_index "committees", ["slug"], name: "index_committees_on_slug", using: :btree
 
+  create_table "courses", id: false, force: true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.integer  "year"
+    t.boolean  "required"
+    t.string   "homepage"
+    t.integer  "period"
+    t.string   "programme"
+    t.text     "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "posts", force: true do |t|
     t.string   "user_id",        limit: 20,                 null: false
     t.string   "group_id",       limit: 20
