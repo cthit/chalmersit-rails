@@ -16,6 +16,7 @@ bundle install
 
 # Prepare the db
 rake db:create db:migrate
+rake rails:update:bin
 
 # Then serve:
 rails server
