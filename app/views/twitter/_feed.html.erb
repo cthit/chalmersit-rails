@@ -1,8 +1,10 @@
-<ul>
-<% twitter_feed(twitter_handle).each do |tweet| %>
-  <li>
-    <p><%= tweet[:html] %></p>
-    <time><%= tweet[:tweet].created_at %></time>
-   </li>
+<% cache do %>
+  <ul>
+  <% twitter_feed(twitter_handle).each do |tweet| %>
+    <li>
+      <p><%= tweet[:html] %></p>
+      <time><%= tweet[:tweet].created_at %></time>
+     </li>
+  <% end %>
+  </ul>
 <% end %>
-</ul>
