@@ -8,6 +8,7 @@ gem 'rails', '4.1.8'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
+gem 'compass-rails'
 # Foundation styles
 gem 'foundation-rails'
 # Use Uglifier as compressor for JavaScript assets
