@@ -1,22 +1,14 @@
-<!DOCTYPE html>
-<%= render 'layouts/digit_comment' %>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <title><%= yield(:title) + ' | ' if content_for?(:title) %>Informationsteknik på Chalmers</title>
-
-    <link href="//fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet" type="text/css">
-    <%= stylesheet_link_tag    "application" %>
-    <%= javascript_include_tag "vendor/modernizr" %>
-    <%= csrf_meta_tags %>
-  </head>
-
-  <body>
-    <%= render 'layouts/messages' %>
-
-    <%= yield %>
-    <%= javascript_include_tag "application" %>
-  </body>
-</html>
+<%= render 'layouts/header' %>
+<% content_for(:body_class) do %>
+home
+<% end %>
+<%= render 'layouts/messages' %>
+<section class="large-6 columns large-offset-3 main-col">
+  <article class="box" role="article">
+    <h1 class="huge"><%= yield(:title) %></h1>
+    <div class="article-content">
+      <%= yield %>
+    </div>
+  </article>
+</section>
+<%= render 'layouts/footer' %>
