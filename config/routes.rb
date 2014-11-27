@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :menu_links
-
   resources :menus
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
@@ -12,6 +11,9 @@ Rails.application.routes.draw do
 
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
+
+    get 'print/new' => 'print#new', as: :new_print
+    post 'print' => 'print#print', as: :print
 
     resources :courses do
         member do
@@ -31,6 +33,8 @@ Rails.application.routes.draw do
 
   root 'home#index'
 
+  # The priority is based upon order of creation: first created -> highest priority.
+  # See how all your routes lay out with "rake routes".
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

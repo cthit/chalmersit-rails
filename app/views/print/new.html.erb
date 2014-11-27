@@ -1,0 +1,15 @@
+<%= form_tag(print_path, multipart: true) do %>
+  <%= label_tag(:username, "Username:") %>
+  <%= text_field_tag(:username) %>
+  <%= label_tag(:password, "Password:") %>
+  <%= password_field_tag(:password) %>
+  <%= select_tag(:printer, options_for_select([['HUBBEN', 'ed-2338-laser1']])) %>
+  <%= file_field_tag :file %>
+  <%= submit_tag %>
+  
+
+
+  
+
+
+<% end %>
