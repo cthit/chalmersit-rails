@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
 
-  get 'feed' => 'posts#index', defaults: { format: :rss }
+  get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
   root 'home#index'
 
   # Example of regular route:
