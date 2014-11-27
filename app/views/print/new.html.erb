@@ -1,10 +1,22 @@
 <%= form_tag(print_path, multipart: true) do %>
+  <%= file_field_tag :file %>
+  <%= select_tag(:printer, options_for_select([['HUBBEN', 'ed-2338-laser1']])) %>
+  <%= label_tag(:copies, "Number of copies") %>
+  <%= number_field_tag(:copies) %>
+  <%= label_tag(:duplex, "Doublepaged: ") %>
+  <%= check_box_tag(:duplex) %>
+  <%= label_tag(:ranges, "Range: ") %>
+  <%= text_field_tag(:ranges) %>
+  <%= label_tag(:media, "Papersize:") %>
+  <%= select_tag(:media, options_for_select([['A4', 'A4'],['A3', 'A3']])) %>
+  <%= label_tag(:ppi, "Solution:") %>
+  <%= select_tag(:ppi, options_for_select([['Auto', 'auto'],['600dpi', '600'],['1200dpi', '1200']])) %>
   <%= label_tag(:username, "Username:") %>
   <%= text_field_tag(:username) %>
   <%= label_tag(:password, "Password:") %>
   <%= password_field_tag(:password) %>
-  <%= select_tag(:printer, options_for_select([['HUBBEN', 'ed-2338-laser1']])) %>
-  <%= file_field_tag :file %>
+  
+
   <%= submit_tag %>
   
 
