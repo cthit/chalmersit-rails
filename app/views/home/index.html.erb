@@ -1,6 +1,3 @@
 <% @posts.each do |post| %>
-	<article>	
-		<h1><%= post.title %></h1>
-		<p><%= markdown post.body %></p>
-	</article>
+	<%= render partial: 'posts/rendered_post', locals: { post: post } %>
 <% end %>

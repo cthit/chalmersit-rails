@@ -3,4 +3,12 @@ class Post < ActiveRecord::Base
 	validates_length_of :title, in: 5..50
 	validates_length_of :body, in: 10..500
 	validates_inclusion_of :sticky, in: [true, false]
+
+	def previous
+		Post.where('id < ?', id).order(id: :desc).first
+	end
+
+	def next
+		Post.where('id > ?', id).first
+	end
 end
