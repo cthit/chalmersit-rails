@@ -1,37 +1,35 @@
 <%= render 'layouts/header' %>
-  <%= render 'layouts/messages' %>
-  <header class="row">
-    <div class="front-title large-4 columns">
-      <div class="box">
-        <h1>
-          <span class="detail">Teknologsektionen</span><br>
-          Informationsteknik<br>
-          <span class="detail">Chalmers Studentkår</span>
-        </h1>
-      </div>
+<header class="row">
+  <div class="front-title large-4 columns">
+    <div class="box">
+      <h1>
+        <span class="detail">Teknologsektionen</span><br>
+        Informationsteknik<br>
+        <span class="detail">Chalmers Studentkår</span>
+      </h1>
     </div>
-    <div class="quick-buttons large-5 columns">
-      <ul class="box list">
-        <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top schedule-icon">Schema</a></li>
-        <li><a data-tooltip title="Boka Hubben eller grupprummet" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top booking-icon">Bokning</a></li>
-        <li><a data-tooltip title="Boka grupprum på Chalmers" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top group-icon">Grupprum</a></li>
-        <li><a data-tooltip title="Skriv ut på Chalmers skrivare" href="printpath" class="has-tip tip-top print-icon">Skriv ut</a></li>
-      </ul>
-    </div>
-    <div class="user-area large-3 columns">
-      USER LOGIN
-    </div>
-  </header>
+  </div>
+  <div class="quick-buttons large-5 columns">
+    <ul class="box list">
+      <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top schedule-icon">Schema</a></li>
+      <li><a data-tooltip title="Boka Hubben eller grupprummet" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top booking-icon">Bokning</a></li>
+      <li><a data-tooltip title="Boka grupprum på Chalmers" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top group-icon">Grupprum</a></li>
+      <li><a data-tooltip title="Skriv ut på Chalmers skrivare" href="printpath" class="has-tip tip-top print-icon">Skriv ut</a></li>
+    </ul>
+  </div>
+  <div class="user-area large-3 columns">
+    USER LOGIN
+  </div>
+</header>
 
-  <section class="dashboard row">
-    <div class="large-6 columns">
-      <section class="news box">
-        <header class="panel-header">
-          <h1>Nyheter</h1>
-          <%= yield %>
-        </header>
-      </section>
-    </div>
-  </section>
+<section class="dashboard row">
+  <div class="large-6 columns">
+    <section class="news box">
+      <header class="panel-header">
+        <h1>Nyheter</h1>
+        <%= yield %>
+      </header>
+    </section>
+  </div>
 </section>
 <%= render 'layouts/footer' %>

@@ -14,7 +14,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="home">
+  <body class="<%= controller.controller_name %>">
     <header role="banner">
       <div class="top-bar">
         <div class="inner-bar">
@@ -34,3 +34,4 @@
       </div>
     </header>
     <section role="main" class="wrapper">
+      <%= render 'layouts/messages' %>

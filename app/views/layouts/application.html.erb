@@ -1,8 +1,4 @@
 <%= render 'layouts/header' %>
-<% content_for(:body_class) do %>
-home
-<% end %>
-<%= render 'layouts/messages' %>
 <section class="large-6 columns large-offset-3 main-col">
   <article class="box" role="article">
     <h1 class="huge"><%= yield(:title) %></h1>
