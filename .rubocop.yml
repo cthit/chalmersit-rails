@@ -1,0 +1,13 @@
+AllCops:
+  RunRailsCops: true
+  Exclude:
+    - 'Vagrantfile'
+    - 'Cheffile'
+    - 'tmp/**/*'
+    - 'config/**/*'
+    - 'cookbooks/**/*'
+    - 'db/**/*'
+    - 'bin/**/*'
+
+Documentation:
+  Enabled: false

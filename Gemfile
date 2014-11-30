@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
 # Use sqlite3 as the database for Active Record
@@ -58,4 +57,3 @@ gem 'multi_fetch_fragments'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-

@@ -18,7 +18,7 @@ module TwitterHelper
 
       replaces = tweet.hashtags + tweet.uris + tweet.user_mentions
       replaces.sort_by{ |r| -r.indices[0] }.each do |r|
-	text[(r.indices[0])...(r.indices[1])] = URLS[r.class.to_s].call(r)
+        text[(r.indices[0])...(r.indices[1])] = URLS[r.class.to_s].call(r)
       end
       text.html_safe
     end
