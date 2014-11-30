@@ -1,3 +1,1 @@
-<% @posts.each do |post| %>
-	<%= render partial: 'posts/rendered_post', locals: { post: post } %>
-<% end %>
+<%= render partial: 'posts/post', collection: @posts, cache: true %>

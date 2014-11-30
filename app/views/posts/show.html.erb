@@ -1,4 +1,4 @@
-<%= render partial: 'posts/rendered_post', locals: { post: @post } %>
+<%= render @post %>
 
 <%= link_to 'Previous post', post_path(@post.previous), rel: 'prev', class: 'button' unless @post.previous.nil? %>
 <%= link_to 'All posts', posts_path, class: 'button secondary' %>

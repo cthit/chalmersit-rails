@@ -37,9 +37,15 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 group :development do
-	# Nice error messages
-	gem 'better_errors'
+  # Nice error messages
+  gem 'better_errors'
+
+  # Measure the request time, for profiling
+  gem 'rack-mini-profiler'
 end
+
+# Multi-fragment caching
+gem 'multi_fetch_fragments'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
