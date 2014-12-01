@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   validates :title, length: { in: 5..50 }
   validates :body, length: { in: 10..500 }
   validates :sticky, inclusion: { in: [true, false] }
+  validates :slug, uniqueness: true, presence: true
+
+  before_validation :generate_slug
 
   def previous
     Post.where('id < ?', id).order(id: :desc).first
@@ -10,5 +13,13 @@ class Post < ActiveRecord::Base
 
   def next
     Post.where('id > ?', id).first
+  end
+
+  def to_param
+    slug
+  end
+
+  def generate_slug
+    self.slug ||= title.parameterize
   end
 end
