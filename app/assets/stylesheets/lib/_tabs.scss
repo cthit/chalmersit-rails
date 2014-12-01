@@ -1,0 +1,35 @@
+/* =TABS
+------------------------------------ */
+
+.tabs,
+.bookingtabs {
+	list-style: none;
+
+	li {
+		display: inline-block;
+	}
+
+	a {
+		display: block;
+		padding: .4em 1em;
+		text-align: center;
+		font-weight: 500;
+		text-transform: uppercase;
+		font-size: to_em(13);
+		color: #777;
+		@include border-top-left-radius(3px);
+		@include border-top-right-radius(3px);
+		border: 1px solid #ddd;
+		border-width: 1px 1px 0;
+
+		&:hover {
+			text-decoration: none;
+			color: #555;
+		}
+
+		&.tab-current {
+			cursor: default;
+			color: $link-hover-color;
+		}
+	}
+}

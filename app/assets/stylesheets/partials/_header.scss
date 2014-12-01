@@ -1,0 +1,132 @@
+/*	=HEADER
+----------------------------------------------------------------------*/
+
+@import "navigation";
+
+[role="banner"] {
+	@include box-shadow(rgba(#000, .3) 0 1px 10px);
+	border-bottom: 1px solid rgba(#000, .4);
+	margin-bottom: $lineheight / 2;
+	background-image: asset-url("header.jpg");
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	height: 15em;
+
+	h1 {
+		margin: 0;
+		position: absolute;
+		top: .2em;
+	}
+	
+	nav {
+		float: right;
+	}
+	
+	
+	[role="search"] {
+		font-size: .9em;
+	}
+}
+
+.header-controls {
+	float: right;
+	color: #fff;
+
+	& > li {
+		margin: 0 0 0 1em;
+	}
+
+	& > li > a:not(.btn-round) {
+		color: #fff;
+		font-size: .8em;
+		font-weight: bolder;
+	}
+}
+
+.header-toolbar {
+	padding: $lineheight / 2 1%;
+}
+
+body.logged-in [role="banner"] {
+	.header-toolbar {
+		padding: 0;
+	}
+
+	.header-controls {
+		margin: 0;
+		padding: $lineheight / 2 1%;
+		background-color: rgba(#000, .5);
+		border: 1px solid rgba(#000, .2);
+		border-width: 0 1px;
+	
+		.avatar {
+			display: inline;
+			position: absolute;
+			left: -45px;
+			top: -8px;
+			box-shadow: black 0 0 5px;	
+		}
+
+		.user-details {
+			text-shadow: #000 0 1px 1px;
+			position: relative;
+		}
+	}
+}
+
+.top-bar {
+	background-color: #000;
+	background-color: rgba(#000, .4);
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+}
+
+.inner-bar {
+	background-color: #000;
+	background-color: rgba(#000, .7);
+	margin-top: $lineheight;
+}
+
+/* The tools dropdown */
+
+.dropdown:hover {
+	background-color: rgba(#000, .3);
+}
+
+.dropdown-sub {
+	background-color: rgba(#000, .8);
+	min-width: 7em;
+	padding: $lineheight 0 4px;
+
+	li, a {
+		display: block;
+	}
+
+	a {
+		padding: 5px 1em;
+		color: #fff;
+		font-weight: bold;
+		text-decoration: none;
+		border-bottom: 1px solid #000;
+		text-shadow: rgba(#000, .3) 0 -1px 1px;
+		white-space: nowrap;
+
+		&:last-child {
+			border-bottom: 0;
+		}
+
+		&:hover {
+			background-color: $comp;
+			@include box-shadow(inset rgba(#fff, .2) 0 1px 0);
+			@include background(linear-gradient(lighten($comp, 5%), darken($comp, 15%)));
+		}
+
+		&:active {
+			background-image: none;
+			background-color: darken($comp, 10%);
+		}
+	}
+}

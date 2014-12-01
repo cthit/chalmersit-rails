@@ -1,0 +1,43 @@
+/* =LOGIN
+------------------------------------ */
+
+.page-loggain .main-col h1 {
+	text-align: center;
+}
+
+.login {
+	text-align: center;
+
+	p {
+		margin-bottom: $lineheight;
+	}
+
+	label {
+		display: block;
+		margin-bottom: .5em;
+
+		&[for="rememberme"] {
+			display: inline;
+		}
+	}
+
+	input[type="submit"] {
+		font-size: 1.3em;
+	}
+}
+
+.tml-action-links {
+	list-style: none;
+	border-top: 1px solid #e2e2e2;
+	padding-top: $lineheight;
+	width: 50%;
+	margin: $lineheight auto;
+
+	a {
+		color: $grey;
+	}
+}
+
+.message {
+	@extend .message-notice;
+}

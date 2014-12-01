@@ -1,0 +1,165 @@
+[role="article"] {
+	@include hyphenation;
+	header {
+		.meta {
+			font-size: .9em;
+			margin: $lineheight 0;
+		}
+	}
+
+	.article-content {
+		p {
+			margin-bottom: $lineheight;
+		}
+
+	 	img {
+			display: block;
+			margin-top: $lineheight / 2;
+			margin-bottom: $lineheight / 2;
+		}
+
+		/* Adjust non-wrapping links in post content */
+		p a {
+			@include limit-text;
+		}
+	}
+
+	footer {
+		nav {
+			margin: $lineheight 0;
+			font-size: to_em(13);
+		}
+
+		.author-info {
+			margin: $lineheight 0;
+			
+			.detail {
+				display: block;
+			}
+		}
+
+		.tags {
+			font-size: .8em;
+			background-color: lighten($teal, 65%);
+			padding: .5em;
+
+			a {
+				@include plain-links;
+				@include transition(color .15s ease-out);
+			}
+
+			&:hover a {
+				color: $link-color;
+			}	
+		}
+		
+	}
+}
+
+/* Special post styling */
+
+[role="article"] {
+	&.sticky {
+		position: relative;
+		overflow: hidden;
+		background: transparent image-url("sticky-ribbon.png") repeat-x top left;
+		padding-top: $lineheight*2;
+
+		&::after {
+			content: "Viktigt!";
+			display: block;
+			position: absolute;
+			right: -1px;
+			top: 0;
+			letter-spacing: 1px;
+			@include label;
+			@include border-bottom-left-radius(3px);
+		}
+	}
+
+	&.category-arrangemang, 
+	&.category-lunchforelasningar {
+		header h1 {
+			@include icon("", $margin: 0 10px 0 0, $size: .6em);
+		}
+
+		header h1::before {
+			background-color: $comp;
+			color: #fff;
+			@include border-radius(3em);
+			padding: 0.35em .5em;
+		}
+	}
+
+	&.category-arrangemang {
+		header h1::before {
+			content: "\e004";
+		}
+	}
+
+	&.category-lunchforelasningar {
+		header h1::before {
+			content: "\f0f5";
+		}
+	}
+}
+
+/* Style metadata for event posts */
+
+.event-meta {
+	$border-color: #e2e2e2;
+
+	border-bottom: 1px solid $border-color;
+	display: table;
+	width: 100%;
+	text-align: center;
+	font-size: to_em(16) !important;
+
+	li {
+		display: table-cell;
+		border-right: 1px solid $border-color;
+		padding: .5em 0;
+
+		/* Don't grow too large .. */
+		max-width: 145px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+
+		&:last-child {
+			border: 0;
+		}
+	}
+
+
+}
+
+
+/* SINGLE POST */
+
+.single {
+	.article-inner {
+		@include box;
+		padding: 5%;
+	}
+
+	[role="complementary"] {
+		.author-info {
+			@include box;
+
+			p {
+				margin-top: $lineheight;
+			}
+		}
+
+		.post-nav {
+			font-size: to_em(12);
+			margin-bottom: $lineheight;
+			@include button-segment;
+
+			.view-news-link {
+				display: none;
+			}
+		}
+	}
+}

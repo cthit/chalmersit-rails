@@ -1,0 +1,83 @@
+/*	=FOOTER
+----------------------------------------------------------------------*/
+
+.footer-widgets {
+	ul {
+		text-align: center;
+	}
+
+	li {
+		display: inline-block;
+	}
+}
+
+[role="contentinfo"] {
+	margin-top: $lineheight;
+	padding: $lineheight 0 $lineheight*2;
+	clear: both;
+	
+	background-color: $dark;
+	color: #fff;
+	font-size: .9em;
+
+	small {
+		color: $teal;
+	}
+	
+	a {
+		color: #fff;
+	}
+
+	hgroup {
+		color: $teal;
+		text-align: center;
+		text-shadow: rgba(#000, .8) 0 2px 0;
+		@include transition(color .15s ease-out);
+
+		&:hover {
+			color: lighten($teal, 10%);
+			text-shadow: rgba(#000, .8) 0 2px 0, rgba($teal, .5) 0 0 20px;
+		}
+	}
+	
+	dl {
+		@include clearfix;
+	}
+	
+	dt, dd {
+		float: left;
+		margin: 0 0 $lineheight;
+	}
+	
+	dt {
+		clear: left;
+		min-width: 30%;
+		margin-right: 5%;
+		color: $teal;
+		text-transform: uppercase;
+		font-size: 1.1em;
+		text-align: right;
+	}
+	
+	section:last-child {
+		dt {
+			min-width: 50%;
+		}
+		dd, dt {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.footer-foot {
+	& > p,
+	& > div {
+		display: inline-block;
+		margin-right: 10px;
+	}
+}
+
+.footer-nav {
+	@include column-count(2);
+}
+

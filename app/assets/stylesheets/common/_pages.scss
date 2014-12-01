@@ -1,0 +1,30 @@
+/*	=PAGES
+----------------------------------------------------------------------*/
+
+.page {
+	[role="article"] {
+		.page-title,
+		h1 {
+			//margin-bottom: $lineheight / 3;
+		}
+	}
+}
+
+
+.main-col {
+	margin-top: -$lineheight*3;
+
+	& > .box,
+	&.box {
+		padding: 2% 5% 5%;
+	}
+}
+
+.article-content {
+	font-family: $bodyfont;
+	color: #444;
+
+	p {
+		margin-bottom: $lineheight;		
+	}
+}

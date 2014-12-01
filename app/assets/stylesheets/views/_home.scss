@@ -1,0 +1,325 @@
+/*	=FRONT PAGE
+----------------------------------------------------------------------*/
+
+.home {
+
+	.panel-header {
+		margin-bottom: 0;
+	}
+
+	[role="banner"] {
+		position: relative;
+		height: 28em;
+
+		.social-sharing {
+			position: absolute;
+			padding: 0.5em 0.5em 0.5em 34%;
+			width: 100%;
+			bottom: 0;
+
+			@include background(linear-gradient(transparent, rgba(#000, .7)));
+		}
+
+		.logo {
+			-webkit-animation: dropDown .6s ease-out;
+		}
+	}
+
+	@include media-query($screenSmall+1) {
+		.dashboard {
+			display: flex;
+			flex-direction: column;
+		}
+		.dashboard .columns:first-child {
+			order: 1;
+		}
+	}
+
+	.front-title {
+		text-align: center;
+		margin-bottom: 0;
+
+		h1 {
+			font-size: 2.8em;
+			font-weight: normal;
+			margin: 0;
+
+			@include media-query(1250px) {
+				font-size: 2.1em;
+				position: relative;
+				top: .4em;
+			}
+
+			@include media-query(930px) {
+				font-size: 1.8em;
+				top: 0;
+			}
+		}
+
+		& > .box {
+			margin-top: -5em;
+			height: 11em;
+
+			@include media-query(930px) {
+				height: 7em;
+				margin-top: -1em;
+			}
+		}
+
+		.detail {
+			font-size: .6em;
+			color: $comp;
+			line-height: 1.6;
+
+			&:last-child {
+				font-style: normal;
+				font-size: .5em;
+				color: #888;
+			}
+		}
+	}
+
+	.quick-buttons .box,
+	.user-area .box{
+		height: $lineheight * 4;
+		overflow: hidden;
+	}
+	
+	.quick-buttons {
+
+		ul {
+			padding: $lineheight / 2 $gutter-width;
+		}
+
+		li {
+			display: inline-block;
+			width: 24%;
+			padding-top: 5px;
+			font-size: .9em;
+		}
+		
+		a {
+			display: block;
+			position: relative;
+			text-align: center;
+			color: $teal;
+			font-weight: 500;
+			text-decoration: none;
+			padding-top: $lineheight*2;
+			background-position: center top;
+			opacity: .8;
+			width: 100%;
+			height: auto;
+			@include transition(all .2s ease-out);
+
+			&:hover {
+				opacity: 1.0;
+				top: -5px;
+			}
+		}
+	}
+
+	.current-event {
+		h2 {
+			font-size: .9em;
+			margin: 0;
+			color: $grey;
+		}
+
+		.event-title {
+			font-size: 1.1em;
+			font-weight: bolder;
+			margin-bottom: 5px;
+		}
+
+		.meta, .event-title {
+			display: inline;
+		}
+
+		.meta li {
+			display: inline;
+			font-size: .9em;
+			white-space: nowrap;
+
+			&::after {
+				display: inline-block;
+				margin: 0 2px;
+				content: "∙";
+			}
+
+			/* Hide location info - no vertical space! */
+			&:nth-child(2) {
+				display: none;
+			}
+
+			&:last-child {
+				&::after {
+					content: "";
+				}
+			}
+		}
+	}
+	
+	.user-area {
+		form {
+			@include box;
+
+			&.pop {
+				@include box-shadow($link-color 0 2px 20px);
+			}
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 49%;
+		}
+
+		input[type="submit"] {
+			float: right;
+		}
+
+		label {
+			font-size: to_em(12);
+			margin-left: 1%;
+		}
+		
+		p {
+			margin-bottom: .5em;
+		}
+
+		.extra-info {
+			font-size: .8em;
+		}
+	}
+	
+
+	/* Lunch */
+	.lunch {
+		ul {
+			strong {
+				margin-right: 5px;
+			}
+
+			margin-bottom: $lineheight;
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+
+	/* Today and Upcoming */
+
+
+	.upcoming {
+
+		ul h3 {
+			font-weight: normal;
+			font-size: to_em(14);
+			margin: 0;
+		}
+		
+		& > ul {
+			margin-bottom: $lineheight;
+		}
+		
+		& > ul > li,
+		.gce-page-list > ul > li {
+			border-bottom: 1px solid #e2e2e2;
+			padding: .3em 0 0;
+			margin-bottom: .5em;
+		}
+
+		.meta {
+			margin-top: .3em;
+			font-size: .9em;
+
+			li {
+				display: inline-block;
+				border-right: 1px solid #e2e2e2;
+				padding-right: 6px;
+
+				&:last-child {
+					border: 0;
+				}
+			}
+		}
+	}
+	
+	/* News stream */
+	
+	[role="article"] {
+		padding: 0 $gutter-width;
+		margin: $lineheight 0 $lineheight*4;
+		
+		header {
+			margin-bottom: $lineheight;
+		}
+
+		&.sticky {
+			padding-top: $lineheight;
+		}
+	}
+
+	/* Latest comments */
+	.latest-comments {
+		$gutter: 10px;
+
+		ul {
+			color: $grey;
+		}
+
+		a, time {
+			@include transition(color .15s ease-out);
+		}
+
+		.comment-author {
+			display: inline;
+		}
+
+		.avatar {
+			display: inline;
+			float: left;
+			position: relative;
+			margin-right: $gutter;
+		}
+
+		a {
+			color: $bodycolor;
+		}
+
+		li:hover {
+			a {
+				color: $link-color;
+			}
+			time {
+				color: $grey;
+			}
+		} 
+
+		time {
+			display: block;
+			padding-left: $gutter + 27px;
+			color: #aaa;
+			font-size: .9em;
+		}
+	}
+
+	.tweet-list {
+		margin-top: 10px;
+		
+		li {
+			margin-bottom: 10px;
+			border-bottom: 1px solid #e2e2e2;
+
+			&:last-child {
+				border-bottom: 0;
+				margin-bottom: 0;
+			}
+		}
+
+		time {
+			color: $grey;
+			font-size: .8em;
+		}
+	}
+}

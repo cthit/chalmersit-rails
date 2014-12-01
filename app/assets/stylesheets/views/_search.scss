@@ -1,0 +1,37 @@
+/* =SEARCH
+------------------------------------------ */
+
+.search {
+
+	.main-col h2 {
+		margin-top: $lineheight;
+	}
+
+	[role="main"] {
+		[role="search"] {
+			font-size: 1.3em;
+
+			[type="search"] {
+				width: 98%;
+			}
+		}
+	}
+}
+
+.user-search-results {
+
+	li {
+		overflow: hidden;
+		margin-bottom: $lineheight;
+	}
+
+	dl {
+		float: left;
+		margin: 0;
+	}
+
+	.avatar {
+		float: left;
+		margin-right: 5%;
+	}
+}

@@ -1,0 +1,31 @@
+/* =GALLERY STYLES
+-------------------------------------- */
+
+.gallery {
+	dd, dt {
+		margin: 0;
+	}
+}
+
+.gallery-item {
+	float: left;
+	width: 33%;
+}
+
+.gallery-icon {
+	a, img {
+		display: block;
+	}
+
+	img {
+		margin: 0;
+	}
+}
+
+.gallery-caption {
+	color: $grey;
+	font-size: to_em(11);
+	line-height: 1.3;
+	padding: $lineheight / 2 0;
+	font-family: $mono;
+}

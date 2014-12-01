@@ -1,0 +1,51 @@
+/* =ATTACHMENTS
+------------------------------------ */
+
+.attachment {
+	background: #333 inline-image("transparent.png") repeat left top;
+
+	[role="main"] {
+		display: table;
+	}
+
+	.attachment-info,
+	.attachment-area {
+		display: table-cell;
+	}
+
+	.attachment-info {
+		vertical-align: top;
+		color: #eee;
+		padding: $lineheight 1%;
+
+		p {
+			margin-bottom: $lineheight;
+		}
+
+		dd {
+			margin-bottom: $lineheight / 2;
+		}
+
+		.attachment-meta a {
+			color: #fff;
+
+			&::after {
+				content: " ›";
+			}
+		}
+	}
+
+	.attachment-area {
+		margin: $lineheight 0 $lineheight*2;
+
+		img {
+			display: block;
+			@include box-shadow(rgba(#000, .3) 0 2px 10px);
+		}
+
+		iframe {
+			width: 100%;
+			height: $lineheight*30;
+		}
+	}
+}

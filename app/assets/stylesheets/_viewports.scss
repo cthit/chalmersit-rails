@@ -1,0 +1,20 @@
+/*
+	RESPONSIVE VIEWPORT STYLING
+	-----------------------------------
+ */
+
+
+/* Pre-defined viewports (see variables in settings.scss) */
+
+@import "viewports/medium";
+@import "viewports/small";
+@import "viewports/xsmall";
+
+
+/* Adjustments */
+
+@media only screen and (min-width: $screenSmall+1) {
+	.inner-bar [role="search"] {
+		display: none;
+	}
+}

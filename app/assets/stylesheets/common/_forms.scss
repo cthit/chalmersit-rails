@@ -1,0 +1,78 @@
+/*	=FORMS
+----------------------------------------------------------------------*/
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="url"],
+input[type="number"],
+input[type="date"],
+textarea {
+	-webkit-appearance: none;
+	font: normal 90%/1 $sans;
+	color: $bodycolor;
+	border: 1px solid #bebebe;
+	padding: 5px;
+
+	&.large {
+		padding: 7px 5px;
+	}
+	
+	//@include box-shadow(rgba(#000, .2) 0 1px 2px);
+	
+	&:focus {
+		outline: 0;
+		border-color: #888;
+		//@include box-shadow(rgba(darken($smurf, 10%), .7) 0 0 6px);
+	}
+
+	&[disabled] {
+		color: $grey;
+		background-color: #f9f9f9;
+		border-style: dotted;
+	}
+}
+
+fieldset {
+	border: 0;
+	margin: 0;
+	padding: 0;
+}
+
+label {
+	font-weight: 500;
+	color: $grey;
+
+	&[for] {
+		cursor: pointer;
+		display: block;
+	}
+
+	& > input[type="radio"],
+	& > input[type="checkbox"] {
+		margin-right: .5em;
+	}
+}
+
+input[type="search"] {
+	@include border-radius(2em);
+	padding: 5px;
+}
+
+textarea {
+	resize: vertical;
+	width: 100%;
+	line-height: 1.5;
+	padding: 1em;
+}
+
+[role="banner"] input[type="search"] {
+	@include transition(all .2s ease-out);
+	width: 120px;
+
+	&:focus {
+		width: 200px;
+		font-size: 1.2em;
+	}
+}

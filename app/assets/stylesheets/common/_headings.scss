@@ -1,0 +1,98 @@
+/*	=HEADINGS
+----------------------------------------------------------------------*/
+
+.huge {
+	font-size: 3em;
+	font-weight: 500;
+	letter-spacing: -1px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin: 0;
+	font-weight: 500;
+	font-family: $sans;
+
+	a, a:hover {
+		color: inherit;
+	}
+	
+	.detail {
+		color: $grey;
+		font-size: .618em;
+		font-weight: 300;
+		white-space: nowrap;
+		font-style: italic;
+	}
+}
+
+.sub {
+	color: $light;
+	font-weight: normal;
+	font-size: to_em(20);
+}
+
+.subtle {
+	font-size: to_em(22);
+	color: $grey;
+}
+
+.section-heading {
+	font-weight: bold;
+	font-size: to_em(12);
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	color: #999;
+}
+
+
+hgroup {
+	margin-bottom: $lineheight;
+	
+	h1, h2, h3 {
+		margin-bottom: 0;
+	}
+}
+
+.page-title {
+	margin-bottom: $lineheight;
+	
+	h1 {
+		@extend .huge;
+		margin-bottom: 0;
+	}
+	
+	h2 {
+		@extend .sub;
+	}
+}
+
+header .page-title {
+	margin-bottom: 0;
+}
+
+
+h1 {
+	font-size: to_em(30);
+	line-height: 1;
+	margin-bottom: .618em;
+}
+
+h2 {
+	font-size: to_em(24);
+	margin-bottom: $lineheight / 2;
+	font-weight: 300;
+}
+
+h3 {
+	font-weight: 300;
+	font-size: to_em(20);
+	margin-bottom: $lineheight / 2;
+}
+
+h4 {
+	
+}
+
+h5 {
+	
+}

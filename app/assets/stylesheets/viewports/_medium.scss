@@ -1,0 +1,116 @@
+/*	=MEDIUM SIZED SCREENS
+----------------------------------------------------------------------*/
+
+@media only screen and (max-width: $screenMedium) and (min-width: $screenSmall + 1) {
+	/* Global layout changes */
+	
+	.three.columns.pull-six {
+		right: 75%;
+	}
+
+	.six.columns.push-three.main-col {
+		width: 75%;
+	}
+
+	.three.columns.sidebar {
+		float: none;
+		width: 75%;
+		position: relative;
+		left: 25%;
+		clear: both;
+	}
+}
+
+@media only screen and (max-width: $screenMedium) {
+	
+	/* Make columned lists single columns in sidebars */
+	.sidebar, 
+	.side-nav {
+		.columned-list {
+			@include column-count(1);
+		}
+	}
+
+	[role="navigation"].main-nav {
+		float: none;
+		width: 100%;
+		margin: $lineheight / 2 0;
+
+		li {
+			display: inline-block;
+			float: none;
+		}
+
+		a {
+			padding-top: .5em;
+			padding-bottom: .5em;
+		}
+	}
+
+	.header-toolbar.wrapper {
+		width: 100%;
+	}
+
+	.header-controls {
+		float: none;
+		text-align: center;	
+	}
+	
+	.single .sidebar-nav a {
+		display: block;
+		width: 100%;
+		margin-bottom: $lineheight / 2;
+	}
+	.single [role="complementary"] {
+		.post-nav {
+			display: none;
+		}
+		.author-links {
+			float: right;
+
+			li {
+				display: inline-block;
+				margin: 0 .5em;
+			}
+		}
+	}
+
+	[role="banner"] {
+		h1 {
+			position: static;
+		}
+
+		.logo {
+			width: 80px;
+			height: 80px;
+			background-size: cover;
+			background-position: left top;
+			position: absolute;
+		}
+
+		.inner-bar {
+			margin-top: 0;
+		}
+
+		body.home & .logo {
+			position: static;
+			background-position: center;
+			height: 70px;
+			background-size: contain;
+			width: 300px;
+			margin: .3em auto 0;
+		}
+	}
+	
+
+	[role="contentinfo"] {
+		.footer-contact {
+			dt,
+			dd {
+				float: none;
+				text-align: center;
+				margin-right: 0;
+			}
+		}
+	}
+}

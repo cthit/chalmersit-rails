@@ -10,19 +10,48 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
  *= require_self
- *= require foundation_and_overrides
-
  */
 
-.article-content {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+// Settings vars
 
-  h1 { font-size: rem-calc(37); }
-  h2 { font-size: rem-calc(27); }
-  h3 { font-size: rem-calc(23); }
-  h4 { font-size: rem-calc(18); }
-  h5 { font-size: 1rem; }
-  h6 { font-size: 0.9rem; }
-}
+@import "settings";
+
+// Setup
+
+@import "compass/css3";
+
+// Typography
+
+// @import "modular-scale";
+
+// Tools
+
+@import "foundation_and_overrides";
+// @import "foundation/mixins/clearfix";
+// @import "foundation/mixins/font-size";
+
+// Grid
+
+// @import "foundation/components/grid";
+// @import "viewports/queries";
+// @import "foundation/mixins/respond-to";
+// @import "foundation/mixins/semantic-grid";
+
+// Reveal
+
+// @import "foundation/components/modules/reveal";
+
+// Lib files
+
+@import "lib/reset";
+@import "lib/mixins";
+@import "lib/animations";
+@import "lib/icons";
+@import "lib/tipsy";
+@import "lib/tabs";
+@import "lib/helpers";
+
+// Main site styles
+
+@import "main";
