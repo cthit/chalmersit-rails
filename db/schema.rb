@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 20141208011443) do
 
   add_index "committees", ["slug"], name: "index_committees_on_slug", using: :btree
 
-  create_table "courses", id: false, force: true do |t|
+  create_table "courses", force: true do |t|
     t.string   "code"
     t.string   "name"
     t.integer  "year"
