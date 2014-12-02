@@ -6,7 +6,6 @@ class CreateCourses < ActiveRecord::Migration
       t.integer :year
       t.boolean :required
       t.string :homepage
-      t.integer :period
       t.string :programme
       t.text :description
 
