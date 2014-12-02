@@ -32,8 +32,8 @@
     <%= f.text_field :homepage %>
   </div>
   <div class="field">
-    <%= f.label :period %><br>
-    <%= f.number_field :period %>
+    <%= f.label "Periods" %><br>
+    <%= f.collection_check_boxes(:period , Period.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :programme %><br>
