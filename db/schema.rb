@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20141125193213) do
 
-  create_table "courses", id: false, force: true do |t|
+  create_table "courses", force: true do |t|
     t.string   "code"
     t.string   "name"
     t.integer  "year"

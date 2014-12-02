@@ -1,8 +1,8 @@
 class Course < ActiveRecord::Base
     validates :code, presence: true, uniqueness: true
     validates :name, presence: true
-    validates :year, numericality: { only_integer: true , greater_than: 0 , less_than: 6}
-    validates :period, numericality: { only_integer: true}
+    validates :year, numericality: { only_integer: true , greater_than: 0 , less_than: 6}, allow_blank: true
+    validates :period, numericality: { only_integer: true}, allow_blank: true
 
   def period_array=(hash)
     string = hash.values.join
