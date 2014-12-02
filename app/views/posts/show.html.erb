@@ -3,3 +3,20 @@
 <%= link_to 'Previous post', post_path(@post.previous), rel: 'prev', class: 'button' unless @post.previous.nil? %>
 <%= link_to 'All posts', posts_path, class: 'button secondary' %>
 <%= link_to 'Next post', post_path(@post.next), rel: 'next', class: 'button' unless @post.next.nil? %>
+
+<%= form_for [@post, @comment] do |f| %>
+  <%= f.label :user_id %>
+  <%= f.text_field :user_id %>
+
+  <%= f.label :body %>
+  <%= f.text_area :body %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= @comments.each do |c| %>
+  <div>
+    <%= c.body %>
+  </div>
+  by <%= c.user_id %>
+<% end %>

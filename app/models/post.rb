@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  has_many :comments, dependent: :destroy
+
   validates :title, :body, :user_id, presence: true
   validates :title, length: { in: 5..50 }
   validates :body, length: { in: 10..500 }

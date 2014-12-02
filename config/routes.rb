@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   get 'home/index'
 
-  resources :posts
+  resources :posts do
+    resources :comments, only: [:create, :update, :destroy]
+  end
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
