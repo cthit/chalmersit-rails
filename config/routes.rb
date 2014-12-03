@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :committees
+
   get 'home/index'
 
   resources :posts
