@@ -43,6 +43,14 @@ group :development do
   gem 'rack-mini-profiler'
 end
 
+gem 'rspec-rails', group: [:test, :development]
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'shoulda-matchers', require: false
+end
+
 # Multi-fragment caching
 gem 'multi_fetch_fragments'
 
