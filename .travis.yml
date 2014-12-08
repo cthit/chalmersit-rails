@@ -3,3 +3,9 @@ rvm:
   - 2.1.0
 before_script:
   - mysql -e 'create database chalmersit_test;'
+notifications:
+  email: false
+  irc:
+    channels:
+      - "irc.chalmers.it#digIT-CI"
+    skip_join: true
