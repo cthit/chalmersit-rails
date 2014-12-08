@@ -11,3 +11,5 @@ AllCops:
 
 Documentation:
   Enabled: false
+LineLength:
+  Max: 90
