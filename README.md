@@ -1,4 +1,4 @@
-# Chalmers.it - Rails
+# Chalmers.it - Rails [![Build Status](https://travis-ci.org/cthit/chalmersit-rails.svg?branch=develop)](https://travis-ci.org/cthit/chalmersit-rails)
 
 Currently using Ruby `2.1.2p95`
 
