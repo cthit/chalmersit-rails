@@ -28,6 +28,9 @@ a {
 a:hover {
 	color: $link-hover-color;
 	text-decoration: underline;
+	&.button {
+		text-decoration: none;
+	}
 }
 
 

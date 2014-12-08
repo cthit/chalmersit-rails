@@ -2,6 +2,6 @@ class HomeController < ApplicationController
   layout 'home'
 
   def index
-    @posts = Post.all.order(created_at: :desc).limit(10)
+    @posts = Post.all.ordered.limit(10)
   end
 end

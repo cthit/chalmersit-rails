@@ -1,4 +1,8 @@
 class Post < ActiveRecord::Base
+  scope :ordered, -> { order(created_at: :desc) }
+
+  has_many :comments, dependent: :destroy
+
   validates :title, :body, :user_id, presence: true
   validates :title, length: { in: 5..50 }
   validates :body, length: { in: 10..500 }
