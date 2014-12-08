@@ -1,5 +1,4 @@
 class PostsController < ApplicationController
-  layout 'layouts/post', except: :index
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
