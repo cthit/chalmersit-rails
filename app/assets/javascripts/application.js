@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require foundation
 //= require turbolinks
+//= require moment
+//= require moment/sv.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });
