@@ -27,7 +27,9 @@
 
 <p>
   <strong>Period:</strong>
-  <%= @course.period %>
+  <% @course.periods.each do | period | %>
+    <%= period.name %>
+  <%end%>
 </p>
 
 <p>
