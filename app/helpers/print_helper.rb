@@ -2,23 +2,16 @@ module PrintHelper
   DOMAIN = "remote1.student.chalmers.se"
   SSH_FILENAME = ".print/chalmersit.dat"
   #Called to upload and print a file on a chalmers printer
-  def print_script(username, password, filename, printer, copies, options = {})
+  def print_script(print)
     output = nil
-    Net::SSH.start(DOMAIN, username, password: password) do |ssh|
-      ssh.scp.upload!(filename, SSH_FILENAME)
-      puts "export CUPS_GSSSERVICENAME=HTTP; /usr/bin/lpr -P #{printer} -\# #{copies} #{stringify_options(options)} #{SSH_FILENAME}"
-      output = ssh.exec! "export CUPS_GSSSERVICENAME=HTTP; /usr/bin/lpr -P #{printer} -\# #{copies} #{stringify_options(options)} #{SSH_FILENAME}"
+    ssh.scp.upload!(print::filename, SSH_FILENAME)
+    Net::SSH.start(DOMAIN, print.username, password: print.password) do |ssh|
+      output = ssh.exec! print_string(print)
     end
     raise output unless output.nil?
   end
 
-  def stringify_options(options)
-    str_options = []
-    options.each do |k, v|
-      str_options << "-o #{k}=#{v}"
-    end
-    str_options.join ' '
+  def print_string(print)
+    return "export CUPS_GSSSERVICENAME=HTTP; #{print} #{SSH_FILENAME}"
   end
-
-
 end
