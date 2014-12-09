@@ -4,8 +4,8 @@ module PrintHelper
   #Called to upload and print a file on a chalmers printer
   def print_script(print)
     output = nil
-    ssh.scp.upload!(print::filename, SSH_FILENAME)
     Net::SSH.start(DOMAIN, print.username, password: print.password) do |ssh|
+      ssh.scp.upload!(print.file.tempfile.path, SSH_FILENAME)
       output = ssh.exec! print_string(print)
     end
     raise output unless output.nil?
