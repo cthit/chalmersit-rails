@@ -1,0 +1,49 @@
+/*
+  CHALMERS.IT
+
+  Information Technology at Chalmers University of Technology
+  Gothenburg, Sweden
+
+  Contact digit@chalmers.it for info or questions
+*/
+
+/* TEAM */
+
+Initial design and development (front/backend)
+
+  Johan Brook
+  Contact: johan@johanbrook.com
+  Twitter: @johanbrook
+  digIT 12/13
+
+Deployment, enhancements and maintenance
+  
+  digIT 13/14
+  Tech lead: Pontus Malm
+  Contact: digit@chalmers.it
+
+Rebuilt in Rails by digIT 14/15
+
+  Tech lead: Johan Lindskogen
+  Contact: digit@chalmers.it
+
+/* SITE */
+
+Doctype: HTML5
+Tech: Ruby, Rails, SCSS, Compass, JavaScript, jQuery, MySQL, Rake
+Tools: Sublime Text 3, Terminal, Vagrant, Chrome, Spotify, git flow
+
+[✓] Responsive
+
+Tested on
+
+[✓] Google Chrome 39
+[✓] Mozilla Firefox
+[✓] Safari 6
+[✓] Safari for iOS (6)
+[ ] Android
+[ ] Internet Explorer
+[ ] Opera
+
+
+Made on a Mac <3

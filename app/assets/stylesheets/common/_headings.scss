@@ -25,6 +25,12 @@ h1, h2, h3, h4, h5, h6 {
 	}
 }
 
+[role="contentinfo"] hgroup {
+	h1, h2, h3, h4, h5, h6 {
+		color: inherit;
+	}
+}
+
 .sub {
 	color: $light;
 	font-weight: normal;

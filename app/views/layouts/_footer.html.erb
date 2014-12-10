@@ -1,4 +1,74 @@
     </section>
+    <footer role="contentinfo" itemscope itemtype="http://schema.org/EducationalOrganization">
+      <div class="wrapper group">
+        <section class="large-4 columns">
+          <a class="block footer-home-link" href="/">
+            <hgroup itemprop="description">
+              <h1>
+                Informationsteknik
+              </h1>
+              <h2>
+                Chalmers Tekniska Högskola
+              </h2>
+            </hgroup>
+          </a>
+          
+          <nav>
+            <% 'footer_navigation' %>
+          </nav>
+        </section>
+        
+        <section class="large-4 columns">
+          <dl class="footer-contact">
+            <dt>Kontakt</dt>
+            <dd><% 'mailto:main_contact_email' %></dd>
+            
+            <dt>Postadress</dt>
+            <dd itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
+              <span itemprop="name"><% 'contact_official_name' %></span><br />
+              <span itemprop="streetAddress"><% 'contact_address' %></span><br />
+              <span itemprop="postalCode"><% 'postal_code' %></span>
+              <span itemprop="addressLocality"><% 'locality' %></span>
+            </dd>
+
+            <dt>Besöksadress</dt>
+            <dd><a href="https://maps.google.se/maps?f=q&source=s_q&hl=sv&geocode=&q=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg,+V%C3%A4stra+G%C3%B6talands+l%C3%A4n&aq=&sll=57.688606,11.979255&sspn=0.001761,0.005059&vpsrc=0&ie=UTF8&hq=&hnear=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg&ll=57.688288,11.979454&spn=0.007042,0.020235&t=m&z=16&iwloc=A">
+              Hubben 2.1<br />
+              Hörsalsvägen 9<br />
+              412 58 Göteborg
+            </a></dd>
+          </dl>
+        </section>
+        
+        <section class="large-4 columns">
+          <dl>
+            <% @committees.each do |com| %>
+              <dt><%= com.title %></dt>
+              <dd><%= link_to com.name, com %></dd>
+            <% end %>
+          </dl>
+        </section>
+      </div>
+
+      <div class="footer-foot wrapper">
+        <p><small>Design och kodbas av <a href="http://johanbrook.com" title="digIT 12/13, sexIT '13">Johan Brook</a> och digIT.
+          <a href="/humans.txt">Colophon/team →</a></small>
+        </p>
+
+        <div class="social-sharing">
+        <div class="fb-like" 
+          data-href="http://www.facebook.com/chalmers.it" 
+          data-send="false" 
+          data-layout="button_count"
+          data-width="200" 
+          data-colorscheme="dark"
+          data-show-faces="true"></div>
+
+
+          <a href="https://twitter.com/chalmersit" class="twitter-follow-button" data-show-count="false" data-lang="sv" data-size="small" data-dnt="true">Följ @chalmersit</a>
+        </div>
+      </div>
+    </footer>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
