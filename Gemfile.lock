@@ -58,6 +58,8 @@ GEM
       sass (~> 3.2.19)
     compass-rails (2.0.0)
       compass (>= 0.12.2)
+    configurable_engine (0.4.7)
+      rails (> 3.1.0)
     diff-lcs (1.2.5)
     equalizer (0.0.9)
     erubis (2.7.0)
@@ -227,6 +229,7 @@ DEPENDENCIES
   capybara
   coffee-rails (~> 4.0.0)
   compass-rails
+  configurable_engine
   factory_girl_rails
   foundation-rails
   github-markdown

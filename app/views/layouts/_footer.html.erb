@@ -21,14 +21,14 @@
         <section class="large-4 columns">
           <dl class="footer-contact">
             <dt>Kontakt</dt>
-            <dd><% 'mailto:main_contact_email' %></dd>
+            <dd><%= link_to Configurable.main_contact, "mailto:#{Configurable.main_contact}" %></dd>
             
             <dt>Postadress</dt>
             <dd itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
-              <span itemprop="name"><% 'contact_official_name' %></span><br />
-              <span itemprop="streetAddress"><% 'contact_address' %></span><br />
-              <span itemprop="postalCode"><% 'postal_code' %></span>
-              <span itemprop="addressLocality"><% 'locality' %></span>
+              <span itemprop="name"><%= Configurable.contact_official_name %></span><br />
+              <span itemprop="streetAddress"><%= Configurable.contact_address %></span><br />
+              <span itemprop="postalCode"><%= Configurable.postal_code %></span>
+              <span itemprop="addressLocality"><%= Configurable.locality %></span>
             </dd>
 
             <dt>Besöksadress</dt>

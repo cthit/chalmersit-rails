@@ -22,6 +22,8 @@ gem 'github-markdown'
 
 # Twitter feeds
 gem 'twitter'
+# Application settings
+gem 'configurable_engine'
 
 # Relative timestamps
 gem 'momentjs-rails'
