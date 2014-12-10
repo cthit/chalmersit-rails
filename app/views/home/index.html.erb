@@ -1,1 +1,6 @@
 <%= render partial: 'posts/post', collection: @posts, cache: true %>
+<% if @posts.size < Post.all.size %>
+  <footer>
+    <%= link_to 'Fler nyheter', posts_path, class: 'button expand read-more' %>
+  </footer>
+<% end %>
