@@ -6,4 +6,4 @@ $ ->
   $('time').each (index, elem) ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
-    $elem.text moment(datetime).fromNow()
+    $elem.text moment(new Date(datetime)).fromNow()
