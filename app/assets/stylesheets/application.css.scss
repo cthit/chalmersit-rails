@@ -28,19 +28,21 @@
 // Tools
 
 @import "foundation_and_overrides";
-// @import "foundation/mixins/clearfix";
-// @import "foundation/mixins/font-size";
 
 // Grid
 
-// @import "foundation/components/grid";
+@import "foundation/components/block-grid";
+@import "foundation/components/buttons";
+@import "foundation/components/forms";
+@import "foundation/components/grid";
 // @import "viewports/queries";
-// @import "foundation/mixins/respond-to";
-// @import "foundation/mixins/semantic-grid";
 
 // Reveal
 
-// @import "foundation/components/modules/reveal";
+@import "foundation/components/reveal";
+@import "foundation/components/side-nav";
+@import "foundation/components/tables";
+@import "foundation/components/tooltips";
 
 // Lib files
 

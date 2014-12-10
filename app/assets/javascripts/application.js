@@ -12,7 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require foundation/foundation
+//= require foundation/foundation.tooltip
+//= require foundation/foundation.reveal
 //= require turbolinks
 //= require moment
 //= require moment/sv.js
