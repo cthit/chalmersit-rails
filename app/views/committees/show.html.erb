@@ -1,28 +1,11 @@
-<p id="notice"><%= notice %></p>
+<% content_for :sidebar_right do %>
+  <%= render partial: 'committees/sidebar' %>
+<% end %>
+<% content_for :title, @committee.name %>
+<% content_for :subtitle, @committee.title %>
 
 <p>
-  <strong>Name:</strong>
-  <%= @committee.name %>
-</p>
-
-<p>
-  <strong>Title:</strong>
-  <%= @committee.title %>
-</p>
-
-<p>
-  <strong>Description:</strong>
-  <%= @committee.description %>
-</p>
-
-<p>
-  <strong>Url:</strong>
-  <%= link_to @committee.url, @committee.url %>
-</p>
-
-<p>
-  <strong>Email:</strong>
-  <%= link_to @committee.email, "mailto:#{@committee.email}" %>
+  <%= markdown @committee.description unless @committee.description.nil? %>
 </p>
 
 <%= link_to 'Edit', edit_committee_path(@committee) %> |

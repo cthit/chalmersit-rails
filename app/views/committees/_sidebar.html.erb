@@ -1,0 +1,14 @@
+<div class="sidebar-committee box">
+  <section>
+    <% if @committee.url %>
+      <%= link_to strip_http(@committee.url), @committee.url, class: 'button alternative expand read-more' %>
+    <% end %>
+  </section>
+
+  <section>
+    <% if (@committee.email) %>
+      <h2 class="section-heading">Kontakt</h2>
+      <%= link_to @committee.email, "mailto:#{@committee.email}" %>
+    <% end %>
+  </section>
+</div>
