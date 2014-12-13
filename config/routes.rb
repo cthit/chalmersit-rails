@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
+  get 'lunch/feed/:restaurant' => 'lunch#feed'
   resources :courses
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,0 +1,14 @@
+<% cache do %>
+  <h2 class="section-heading"><%= @lunch.restaurant %></h2>
+  <ul>
+    <% if @lunch.feed_entries %>
+      <li><em>Ingen lunch idag</em></li>
+    <% end %>
+    <% @lunch.feed_entries.each do |entry| %>
+      <li class="simple-list">
+        <strong><%= entry[:title] %></strong>
+        <%= entry[:summary] %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

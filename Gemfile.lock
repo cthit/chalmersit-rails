@@ -60,6 +60,7 @@ GEM
       compass (>= 0.12.2)
     configurable_engine (0.4.7)
       rails (> 3.1.0)
+    curb (0.8.6)
     diff-lcs (1.2.5)
     equalizer (0.0.9)
     erubis (2.7.0)
@@ -71,6 +72,10 @@ GEM
       railties (>= 3.0.0)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
+    feedjira (1.5.0)
+      curb (~> 0.8)
+      loofah (~> 2.0)
+      sax-machine (~> 1.0)
     ffi (1.9.6)
     formatador (0.2.5)
     foundation-rails (5.4.5.0)
@@ -104,6 +109,8 @@ GEM
       celluloid (>= 0.15.2)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
+    loofah (2.0.1)
+      nokogiri (>= 1.5.9)
     lumberjack (1.0.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
@@ -178,6 +185,7 @@ GEM
       sass (~> 3.2.2)
       sprockets (~> 2.8, < 2.12)
       sprockets-rails (~> 2.0)
+    sax-machine (1.1.1)
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
@@ -231,6 +239,7 @@ DEPENDENCIES
   compass-rails
   configurable_engine
   factory_girl_rails
+  feedjira
   foundation-rails
   github-markdown
   guard-rspec
