@@ -3,10 +3,20 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :set_committees
+  before_action :set_committees, :set_locale
 
   private
     def set_committees
       @committees = Committee.all
     end
+
+  def set_locale
+    I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def default_url_options(options = {})
+    # We only want to use locale as part of the url if
+    # it isn't the default locale.
+    {locale: I18n.locale}# unless I18n.default_locale == I18n.locale
+  end
 end

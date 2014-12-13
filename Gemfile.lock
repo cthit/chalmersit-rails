@@ -78,6 +78,9 @@ GEM
       sass (>= 3.2.0)
     fssm (0.2.10)
     github-markdown (0.6.7)
+    globalize (4.0.3)
+      activemodel (>= 4.0.0, < 5)
+      activerecord (>= 4.0.0, < 5)
     guard (2.10.1)
       formatador (>= 0.2.4)
       listen (~> 2.7)
@@ -233,6 +236,7 @@ DEPENDENCIES
   factory_girl_rails
   foundation-rails
   github-markdown
+  globalize (~> 4.0.2)
   guard-rspec
   jbuilder (~> 2.0)
   jquery-rails

@@ -5,10 +5,10 @@
           <a class="block footer-home-link" href="/">
             <hgroup itemprop="description">
               <h1>
-                Informationsteknik
+                  <%= t 'it' %>
               </h1>
               <h2>
-                Chalmers Tekniska Högskola
+                  <%= t 'cth' %>
               </h2>
             </hgroup>
           </a>
@@ -20,10 +20,10 @@
         
         <section class="large-4 columns">
           <dl class="footer-contact">
-            <dt>Kontakt</dt>
+              <dt><%= t 'contact' %></dt>
             <dd><%= link_to Configurable.main_contact, "mailto:#{Configurable.main_contact}" %></dd>
             
-            <dt>Postadress</dt>
+            <dt><%= t 'mailing_address' %></dt>
             <dd itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
               <span itemprop="name"><%= Configurable.contact_official_name %></span><br />
               <span itemprop="streetAddress"><%= Configurable.contact_address %></span><br />
@@ -31,7 +31,7 @@
               <span itemprop="addressLocality"><%= Configurable.locality %></span>
             </dd>
 
-            <dt>Besöksadress</dt>
+            <dt><%= t 'visiting_address' %></dt>
             <dd><a href="https://maps.google.se/maps?f=q&source=s_q&hl=sv&geocode=&q=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg,+V%C3%A4stra+G%C3%B6talands+l%C3%A4n&aq=&sll=57.688606,11.979255&sspn=0.001761,0.005059&vpsrc=0&ie=UTF8&hq=&hnear=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg&ll=57.688288,11.979454&spn=0.007042,0.020235&t=m&z=16&iwloc=A">
               Hubben 2.1<br />
               Hörsalsvägen 9<br />
@@ -51,7 +51,7 @@
       </div>
 
       <div class="footer-foot wrapper">
-          <p><small>Utvecklad av <a href="https://digIT.chalmers.it" title="digIT"> digIT</a>  |  <a href="/humans.txt">mer info</a></small>
+          <p><small><%= t 'developed_by' %> <a href="https://digIT.chalmers.it" title="digIT"> digIT</a>  |  <a href="/humans.txt"><%= t 'more_info' %></a></small>
         </p>
 
         <div class="social-sharing">
@@ -64,7 +64,7 @@
           data-show-faces="true"></div>
 
 
-          <a href="https://twitter.com/chalmersit" class="twitter-follow-button" data-show-count="false" data-lang="sv" data-size="small" data-dnt="true">Följ @chalmersit</a>
+        <a href="https://twitter.com/chalmersit" class="twitter-follow-button" data-show-count="false" data-lang="sv" data-size="small" data-dnt="true"><%= t 'follow' %> @chalmersit</a>
         </div>
       </div>
     </footer>

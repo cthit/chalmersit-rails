@@ -40,6 +40,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Internationalisation support (i.e. Swedish and English)
+gem 'globalize', '~> 4.0.2'
+
 group :development do
   # Nice error messages
   gem 'better_errors'

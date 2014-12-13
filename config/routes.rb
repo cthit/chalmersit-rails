@@ -1,22 +1,24 @@
 Rails.application.routes.draw do
-  resources :committees
+  scope ":locale", locale: /#{I18n.available_locales.join("|")}/ do
+    resources :committees
 
-  get 'home/index'
+    resources :posts do
+      resources :comments, only: [:create, :update, :destroy]
+    end
 
-  resources :posts do
-    resources :comments, only: [:create, :update, :destroy]
+    resources :courses
+
+    # The priority is based upon order of creation: first created -> highest priority.
+    # See how all your routes lay out with "rake routes".
+
+    # You can have the root of your site routed with "root"
+
+    get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
+    get '' => 'home#index'
   end
-
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
-  resources :courses
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
-
-  # You can have the root of your site routed with "root"
-
-  get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
   root 'home#index'
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
