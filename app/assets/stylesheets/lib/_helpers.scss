@@ -72,11 +72,22 @@ a.subtle-border {
 }
 
 .logo {
+    a {
+	    font-size: to_em(10);
+
+    }
+    h1 a:hover {
+        text-decoration: none;
+        color: white;
+    }
 	display: block;
 	background: transparent asset-url("logo.png") no-repeat;
-	width: image-width("logo.png");
-	height: image-height("logo.png");
-	text-indent: -999em;
+    background-size: 88px;
+    color: white;
+	height: 88px;
+	width: 345px;
+    padding-left: 95px;
+    padding-top: 20px;
 
 	&:active {
 		opacity: .9;

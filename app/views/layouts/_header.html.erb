@@ -19,7 +19,12 @@
       <div class="top-bar">
         <div class="inner-bar">
           <div class="wrapper group">
-            <h1><a href="/" class="logo">Chalmers IT</a></h1>
+              <h1>
+                <a href="/" class="logo">
+                    <%= t 'it' %><br>
+                    <small><%= t 'chs' %></small>
+                </a>
+              </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
                 <li class="menu-item"><%= link_to t('section'), committees_path %></li>
