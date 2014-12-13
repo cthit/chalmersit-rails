@@ -22,29 +22,28 @@
             <h1><a href="/" class="logo">Chalmers IT</a></h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
-                <li class="menu-item"><%= link_to 'Sektionen', committees_path %></li>
-                <li class="menu-item"><%= link_to 'Nyheter', posts_path %></li>
-                <li class="menu-item"><%= link_to 'Kurser', courses_path %></li>
-                <li class="menu-item"><a href="https://chalmers.it/foretag/">Företag</a></li>
-                <li class="menu-item"><a href="https://chalmers.it/kontakt/">Kontakt</a></li>
+                <li class="menu-item"><%= link_to t('section'), committees_path %></li>
+                <li class="menu-item"><%= link_to Post.model_name.human(count: 2), posts_path %></li>
+                <li class="menu-item"><%= link_to Course.model_name.human(count: 2), courses_path %></li>
+                <li class="menu-item"><a href="https://chalmers.it/foretag/"><%= t 'business' %></a></li>
+                <li class="menu-item"><a href="https://chalmers.it/kontakt/"><%= t 'contact' %></a></li>
               </ul>
             </nav>
-            <form role="search" action="/" method="get">
-              <input type="search" placeholder="Sök på Chalmers.it" results="0" name="s"/>
-            </form>
           </div>
         </div>
 
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle" class="show-for-small">≡</a>
           <ul class="header-controls horizontal-list">
-            <li><%= link_to "Logga in", "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'btn-round small', id: 'login-btn' %></li>
-            <li><a href="https://account.chalmers.it/?page=reset">Glömt lösenord</a></li>
+              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'btn-round small', id: 'login-btn' %></li>
+              <li><a href="https://account.chalmers.it/?page=reset"><%= t 'pw_reset' %></a></li>
             <li>
               <form role="search" action="/" method="get">
-                <input type="search" placeholder="Sök på Chalmers.it" results="0" name="s"/>
+                  <input type="search" placeholder="<%= t 'search' %>" results="0" name="s"/>
               </form>
             </li>
+            <li><%= link_to_unless_current "English", locale: "en" %></li>
+            <li><%= link_to_unless_current "Svenska", locale: "sv" %></li>
           </ul>
         </div>
       </div>
