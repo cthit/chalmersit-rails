@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213142453) do
+ActiveRecord::Schema.define(version: 20141213143700) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -63,6 +63,17 @@ ActiveRecord::Schema.define(version: 20141213142453) do
     t.integer "period_id"
     t.integer "course_id"
   end
+
+  create_table "pages", force: true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
+  add_index "pages", ["title"], name: "index_pages_on_title", using: :btree
 
   create_table "periods", force: true do |t|
     t.string   "name"
