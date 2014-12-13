@@ -14,6 +14,9 @@ vagrant ssh
 cd /vagrant
 bundle install
 
+# Create the secrets.yml file (fetch from wiki)
+touch config/secrets.yml
+
 # Prepare the db
 rake db:create db:migrate
 rake rails:update:bin
