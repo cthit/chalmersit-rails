@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141210015256) do
+ActiveRecord::Schema.define(version: 20141213142453) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -56,6 +56,8 @@ ActiveRecord::Schema.define(version: 20141210015256) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "courses", ["code"], name: "index_courses_on_code", using: :btree
 
   create_table "courses_periods", id: false, force: true do |t|
     t.integer "period_id"

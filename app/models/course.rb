@@ -4,4 +4,8 @@ class Course < ActiveRecord::Base
     validates :name, presence: true
     validates :year, numericality: { only_integer: true , greater_than: 0 , less_than: 6}, allow_blank: true
 
+    def to_param
+      code
+    end
+
 end
