@@ -20,6 +20,7 @@ touch config/secrets.yml
 # Prepare the db
 rake db:create db:migrate
 rake rails:update:bin
+rbenv rehash
 
 # Then serve:
 rails server
