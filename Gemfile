@@ -24,6 +24,9 @@ gem 'github-markdown'
 gem 'twitter'
 # Application settings
 gem 'configurable_engine'
+# File uploads
+gem 'carrierwave'
+gem 'mini_magick'
 
 # Relative timestamps
 gem 'momentjs-rails'

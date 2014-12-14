@@ -33,6 +33,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_recipe "mysql::client"
     chef.add_recipe "curl"
     chef.add_recipe "curl::devel"
+    chef.add_recipe "imagemagick"
+    chef.add_recipe "imagemagick::devel"
 
     # Install Ruby 2.1.2 and Bundler
     # Set an empty root password for MySQL to make things simple
