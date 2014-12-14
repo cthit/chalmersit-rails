@@ -1,9 +1,9 @@
 <%= render @post %>
 
 <div class="row">
-  <%= link_to 'Previous post', post_path(@post.previous), rel: 'prev', class: 'button large-4 columns' unless @post.previous.nil? %>
-  <%= link_to 'All posts', posts_path, class: 'button secondary large-4 columns' %>
-  <%= link_to 'Next post', post_path(@post.next), rel: 'next', class: 'button large-4 columns' unless @post.next.nil? %>
+  <%= link_to t('.prev_posts'), post_path(@post.previous), rel: 'prev', class: 'button large-4 columns' unless @post.previous.nil? %>
+  <%= link_to t('.all_posts'), posts_path, class: 'button secondary large-4 columns' %>
+  <%= link_to t('.next_post'), post_path(@post.next), rel: 'next', class: 'button large-4 columns' unless @post.next.nil? %>
 </div>
 
 <section id="respond">

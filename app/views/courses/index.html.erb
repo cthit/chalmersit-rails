@@ -1,10 +1,9 @@
-<h1>Listing courses</h1>
-
+<% content_for :title, Course.model_name.human(count:2) %>
 <table>
   <thead>
     <tr>
-      <th>Code</th>
-      <th>Name</th>
+        <th><%= Course.human_attribute_name('code') %></th>
+        <th><%= t 'name' %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,8 +13,8 @@
       <tr>
         <td><%= link_to course.code, course %></td>
         <td><%= course.name %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('edit'), edit_course_path(course) %></td>
+        <td><%= link_to t('delete'), course, method: :delete, data: { confirm: t('confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +22,4 @@
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
+<%= link_to t('new', name:Course.model_name.human), new_course_path %>

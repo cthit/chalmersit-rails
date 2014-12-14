@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: 'Comment was successfully created.' }
+        format.html { redirect_to @post, notice: I18n.translate('model_created', name:I18n.translate('comment_definite')) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render 'posts/show', location: @post }
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @post = @comment.post
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: 'Comment was successfully destroyed.' }
+      format.html { redirect_to @post, notice: I18n.translate('model_destroyed', name:I18n.translate('comment_definite')) }
       format.json { head :no_content }
     end
   end
