@@ -47,8 +47,8 @@
                   <input type="search" placeholder="<%= t 'search' %>" results="0" name="s"/>
               </form>
             </li>
-            <li><%= link_to_unless_current "English", locale: "en" %></li>
-            <li><%= link_to_unless_current "Svenska", locale: "sv" %></li>
+            <li><%= link_to image_tag('flags/en.svg', alt:"English"), locale: "en" unless I18n.locale == :en %></li>
+            <li><%= link_to image_tag('flags/sv.svg', alt:"Svenska"), locale: "sv" unless I18n.locale == :sv %></li>
           </ul>
         </div>
       </div>
