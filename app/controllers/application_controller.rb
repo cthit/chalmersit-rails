@@ -15,8 +15,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options(options = {})
-    # We only want to use locale as part of the url if
-    # it isn't the default locale.
-    {locale: I18n.locale}# unless I18n.default_locale == I18n.locale
+    { :locale => ((I18n.locale == I18n.default_locale) ? nil : I18n.locale) }
   end
 end

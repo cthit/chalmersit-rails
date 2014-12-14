@@ -101,7 +101,8 @@ sv:
       groupid_placeholder: Förening eller kommitté
       body_placeholder: Nyhetsinnehållet skrivs här
     post:
-      posted_by: Skriven av
+      posted_for: Skriven för
+      by: av
       posts_by: Nyheter skriva av
     show:
       prev_posts: Tidigare nyheter
