@@ -1,7 +1,7 @@
 <%= form_for [@post, @comment] do |f| %>
   <% if @comment.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@comment.errors.count, "error") %> prohibited this post from being saved:</h2>
+        <h2><%= t 'errors.template.header', count:@comment.errors.count, model:Comment.model_name.human.downcase %>:</h2>
 
       <ul>
       <% @comment.errors.full_messages.each do |message| %>
@@ -13,7 +13,7 @@
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :user_id  do %>
-        <%= t :user_id %>
+        <%= Comment.human_attribute_name(:user_id) %>
       <%= f.text_field :user_id %>
       <% end %>
     </div>
@@ -21,7 +21,7 @@
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :body  do %>
-        <%= t :body %>
+        <%= Comment.human_attribute_name(:body) %>
       <%= f.text_area :body %>
       <% end %>
     </div>

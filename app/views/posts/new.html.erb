@@ -1,11 +1,11 @@
 <div class="row">
-	<h1 class="columns large-12">New post</h1>
+<h1 class="columns large-12"><%= t('helpers.submit.create', model:Post.model_name.human) %></h1>
 </div>
 
 <%= render 'form' %>
 
 <div class="row">
 	<div class="columns large-12">
-		<%= link_to 'Back', posts_path, class: 'button secondary large-12' %>
+		<%= link_to t(:back), posts_path, class: 'button secondary large-12' %>
 	</div>
 </div>

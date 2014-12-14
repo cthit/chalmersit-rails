@@ -1,46 +1,46 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Code:</strong>
+<strong><%= Course.human_attribute_name('code') %>:</strong>
   <%= @course.code %>
 </p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= Course.human_attribute_name('name') %>:</strong>
   <%= @course.name %>
 </p>
 
 <p>
-  <strong>Year:</strong>
+  <strong><%= Course.human_attribute_name('year') %>:</strong>
   <%= @course.year %>
 </p>
 
 <p>
-  <strong>Required:</strong>
-  <%= @course.required %>
+  <strong><%= Course.human_attribute_name('required') %>:</strong>
+  <%= t @course.required.to_s %>
 </p>
 
 <p>
-  <strong>Homepage:</strong>
+  <strong><%= Course.human_attribute_name('homepage') %>:</strong>
   <%= @course.homepage %>
 </p>
 
 <p>
-  <strong>Period:</strong>
+  <strong><%= Course.human_attribute_name('periods') %>:</strong>
   <% @course.periods.each do | period | %>
     <%= period.name %>
   <%end%>
 </p>
 
 <p>
-  <strong>Programme:</strong>
+  <strong><%= Course.human_attribute_name('programme') %>:</strong>
   <%= @course.programme %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong><%= Course.human_attribute_name('description') %>:</strong>
   <%= @course.description %>
 </p>
 
-<%= link_to 'Edit', edit_course_path(@course) %> |
-<%= link_to 'Back', courses_path %>
+<%= link_to t('edit'), edit_course_path(@course) %> |
+<%= link_to t('back'), courses_path %>

@@ -35,6 +35,22 @@ en:
   developed_by: Utvecklad av
   more_info: mer info
   follow: Följ
+  name: Namn
+  new: "Ny %{name}"
+  edit: Ändra
+  editing: Ändrar
+  delete: Ta bort
+  back: Tillbaka
+  show: Visa
+  confirm: Är du säker?
+  "true": ja
+  "false": nej
+  model_destroyed: "%{name} har tagits bort"
+  model_updated: "%{name} har uppdaterats"
+  model_created: "%{name} har skapats"
+  comment_definite: Kommentaren
+  published: Publicerad
+  permalink: Permalänk
   activerecord:
     models:
       post:
@@ -43,6 +59,31 @@ en:
       course:
         one: Kurs
         other: Kurser
+      comment:
+        one: Kommentar
+        other: Kommentarer
+    attributes:
+      course:
+        year: År
+        code: Kurskod
+        required: Obligatorisk
+        homepage: Kurshemsida
+        period:
+          one: Läsperiod
+          other: Läsperioder
+        programme: Program
+        description: Beskrivning
+        name: Namn
+      post:
+        title: Titel
+        user_id: Användare
+        group_id: Förening/kommitté
+        sticky: Fäst inlägget överst
+        body: Innehåll
+      comment:
+        user_id: Användare
+        body: Kommentar
+
   layouts:
     home:
       booking: Bookning
@@ -52,3 +93,19 @@ en:
       book_hubben_desc: Boka Hubben eller grupprummet
       book_chalmers_desc: Boka grupprumm på Chalmers
       print_desc: Skriv ut på Chalmers skrivare
+
+  posts:
+    form:
+      title_placeholder: Titel för nyheten
+      userid_placeholder: Ditt användarnamn!
+      groupid_placeholder: Förening eller kommitté
+      body_placeholder: Nyhetsinnehållet skrivs här
+    post:
+      posted_by: Skriven av
+      posts_by: Nyheter skriva av
+    show:
+      prev_posts: Tidigare nyheter
+      all_posts: Alla nyheter
+      next_posts: Nästa nyhet
+
+
