@@ -20,8 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
-  techsec: Teknologsektionen
-  section: Sektionen
+  techsec: Student Division
+  section: The division
   it: Information Technology
   chs: Chalmers Student Union
   cth: Chalmers University of Technology
