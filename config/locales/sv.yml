@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 sv:
+  page_title: Informationsteknik på Chalmers
   techsec: Teknologsektionen
   section: Sektionen
   it: Informationsteknik
@@ -108,6 +109,9 @@ sv:
       prev_posts: Tidigare nyheter
       all_posts: Alla nyheter
       next_posts: Nästa nyhet
+  lunch:
+    feed:
+      no_lunch_today: Ingen lunch idag
 
 
   date:

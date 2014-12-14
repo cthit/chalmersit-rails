@@ -20,6 +20,7 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  page_title: Information Technology on Chalmers
   techsec: Student Division
   section: The division
   it: Information Technology
@@ -108,7 +109,9 @@ en:
       prev_posts: Previous news
       all_posts: All news
       next_posts: Next news post
-
+  lunch:
+    feed:
+      no_lunch_today: No lunch today
 
   date:
     abbr_day_names:
