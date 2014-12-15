@@ -8,7 +8,7 @@
   <section>
     <% if (@committee.email) %>
       <h2 class="section-heading">Kontakt</h2>
-      <%= link_to @committee.email, "mailto:#{@committee.email}" %>
+      <%= mail_to @committee.email %>
     <% end %>
   </section>
 </div>
