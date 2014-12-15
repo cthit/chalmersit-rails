@@ -63,6 +63,9 @@ sv:
       comment:
         one: Kommentar
         other: Kommentarer
+      committee:
+        one: Kommitté
+        other: Kommitteér
     attributes:
       course:
         year: År
@@ -84,6 +87,12 @@ sv:
       comment:
         user_id: Användare
         body: Kommentar
+      committee:
+        name: Namn
+        title: Titel
+        description: Beskrivning
+        url: URL
+        email: Epost
 
   layouts:
     home:

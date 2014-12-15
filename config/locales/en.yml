@@ -63,6 +63,9 @@ en:
       comment:
         one: Comment
         other: Comments
+      committee:
+        one: Committee
+        other: Committees
     attributes:
       course:
         year: Year

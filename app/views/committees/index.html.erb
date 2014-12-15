@@ -1,10 +1,10 @@
-<h1>Listing committees</h1>
+<h1><%= Committee.model_name.human(count:2) %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Name</th>
+        <th><%= Committee.human_attribute_name('title') %></th>
+        <th><%= Committee.human_attribute_name('name') %></th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -14,8 +14,8 @@
       <tr>
         <td><%= committee.title %></td>
         <td><%= link_to committee.name, committee %></td>
-        <td><%= link_to 'Edit', edit_committee_path(committee) %></td>
-        <td><%= link_to 'Destroy', committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('edit'), edit_committee_path(committee) %></td>
+        <td><%= link_to t('delete'), committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -23,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Committee', new_committee_path %>
+<%= link_to t('new', name:Committee.model_name.human.downcase), new_committee_path %>
