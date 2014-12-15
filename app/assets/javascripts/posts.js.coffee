@@ -12,23 +12,23 @@ $ ->
     url: '/images.json',
     paramName: 'image[source]',
     add: (e, data) ->
-      data.orig_name = data.files[0].name
-      data.progress_bar = $('<progress max="100" value="0">').insertAfter(this)
+      data.orig_name = remove_ext data.files[0].name
+      data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter(this)
       data.label = $('<label>').insertAfter(data.progress_bar)
       data.submit()
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99
         data.progress_bar.val(percent)
-        data.label.text(percent + '%')
+        data.label.text("Uploading #{data.orig_name}:  #{percent}%")
       else
         data.progress_bar.removeAttr('value')
-        data.label.text('Resizing...')
+        data.label.text("Resizing #{data.orig_name}…")
     done: (e, data) ->
       data.progress_bar.remove()
       data.label.remove()
       src = data.result.source
-      insertTextAtCaret(this, link_to_image_markdown(data.orig_name, src.url, src.thumb.url))
+      insertTextAtCaret(this, image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
 
 insertTextAtCaret = (elem, text) ->
   $elem = $(elem)
@@ -36,9 +36,17 @@ insertTextAtCaret = (elem, text) ->
   oldText = $elem.val()
   $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
 
-link_to_image_markdown = (title, url, url_thumb) ->
-  if url_thumb
-    "[![#{title}](#{url_thumb})](#{url})"
-  else
-    "![#{title}](#{url})"
+image_markdown = (title, url) ->
+  "![#{title}](#{url})"
 
+link_markdown = (text, url) ->
+    "[#{text}](#{url})"
+
+image_thumbnail_markdown = (title, url, url_thumb) ->
+  if url_thumb
+    link_markdown(image_markdown(title, url_thumb), url)
+  else
+    image_markdown(title, url)
+
+remove_ext = (filename) ->
+  filename.substr(0, filename.lastIndexOf('.'))
