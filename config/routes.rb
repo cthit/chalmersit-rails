@@ -8,12 +8,16 @@ Rails.application.routes.draw do
 
     get 'lunch/feed/' => 'lunch#feed'
 
-  resources :courses
+    resources :courses
 
     get '' => 'home#index'
   end
+
+  resources :images, only: [:create, :destroy]
+
   get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
+
   root 'home#index'
 
 

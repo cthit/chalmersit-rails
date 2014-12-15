@@ -16,6 +16,7 @@
 //= require foundation/foundation.tooltip
 //= require foundation/foundation.reveal
 //= require foundation/foundation.tab
+//= require jquery-fileupload/basic
 //= require turbolinks
 //= require moment
 //= require moment/sv.js

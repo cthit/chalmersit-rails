@@ -25,6 +25,7 @@ gem 'twitter'
 # Application settings
 gem 'configurable_engine'
 # File uploads
+gem 'jquery-fileupload-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 

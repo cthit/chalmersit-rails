@@ -88,6 +88,13 @@ ActiveRecord::Schema.define(version: 20141216220336) do
     t.integer "course_id"
   end
 
+  create_table "images", force: true do |t|
+    t.string   "source"
+    t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "body"
