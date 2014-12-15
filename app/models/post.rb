@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   validates :title, length: { in: 5..50 }
   validates :body, length: { in: 10..500 }
   validates :sticky, inclusion: { in: [true, false] }
-  validates :slug, uniqueness: { case_sensitive: true }, presence: true
+  validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
 
   before_validation :generate_slug
 
