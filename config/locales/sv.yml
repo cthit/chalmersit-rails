@@ -91,9 +91,11 @@ sv:
       group_room: Grupprum
       print: Skriv ut
       schema: Schema
+      charge_card: Ladda kårkort
       book_hubben_desc: Boka Hubben eller grupprummet
       book_chalmers_desc: Boka grupprumm på Chalmers
       print_desc: Skriv ut på Chalmers skrivare
+      charge_card_desc: Genväg för att ladda ditt kårkort
 
   posts:
     form:
