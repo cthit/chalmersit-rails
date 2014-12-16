@@ -3,14 +3,14 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
-  validates :title, :body, :user_id, presence: true
-  validates :title, length: { in: 5..50 }
-  validates :body, length: { in: 10..5000 }
-  validates :sticky, inclusion: { in: [true, false] }
-  validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
-
   translates :title, :body, :slug
   globalize_accessors
+
+  validates *globalize_attribute_names, :user_id, :group_id, presence: true
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..50 }
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
+  validates :sticky, inclusion: { in: [true, false] }
+  validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
 
   before_validation :generate_slug
 
