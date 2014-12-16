@@ -3,9 +3,12 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
 
-  validates :title, :body, :user_id, presence: true
-  validates :title, length: { in: 5..50 }
-  validates :body, length: { in: 10..5000 }
+  translates :title, :body, :slug
+  globalize_accessors
+
+  validates *globalize_attribute_names, :user_id, :group_id, presence: true
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..50 }
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
   validates :sticky, inclusion: { in: [true, false] }
   validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
 
@@ -20,10 +23,15 @@ class Post < ActiveRecord::Base
   end
 
   def to_param
-    slug
+    "#{id}-#{slug}"
   end
 
   def generate_slug
-    self.slug ||= title.try(&:parameterize)
+    I18n.available_locales.each do |locale|
+      # Set slug to each locale if not already set.
+      Globalize.with_locale locale do
+        self.slug ||= title.try(&:parameterize)
+      end
+    end
   end
 end

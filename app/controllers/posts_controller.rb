@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: I18n.translate('model_created', @post.title) }
+        format.html { redirect_to @post, notice: I18n.translate('model_created', name:@post.title) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -44,7 +44,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to @post, notice: I18n.translate('model_updated', @post.title) }
+        format.html { redirect_to @post, notice: I18n.translate('model_updated', name:@post.title) }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -58,7 +58,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: I18n.translate('model_destroyed', @post.title) }
+      format.html { redirect_to posts_url, notice: I18n.translate('model_destroyed', name:@post.title) }
       format.json { head :no_content }
     end
   end
@@ -66,11 +66,12 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find_by!(slug: params[:id])
+      @post = Post.find params[:id].split('-')[0]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:user_id, :group_id, :title, :body, :sticky)
+      permitted = [:user_id, :group_id, :title, :body, :sticky] + Post.globalize_attribute_names
+      params.require(:post).permit(permitted)
     end
 end

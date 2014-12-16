@@ -20,10 +20,10 @@
         <div class="inner-bar">
           <div class="wrapper group">
               <h1>
-                  <a href="<%= root_url %>" class="logo">
-                    <%= t 'it' %><br>
-                    <small><%= t 'chs' %></small>
-                  </a>
+                    <%= link_to("/#{I18n.locale == I18n.default_locale ? nil : I18n.locale}", class:"logo") do %>
+                        <%= t 'it' %><br />
+                        <small><%= t 'chs' %></small>
+                    <% end %>
               </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
@@ -49,7 +49,7 @@
             </li>
             <% I18n.available_locales.each do |item| %>
                 <% unless I18n.locale == item %>
-                <li><%= link_to image_tag("flags/#{item}.svg", size: "48"), locale: item %></li>
+                <li><%= link_to image_tag("flags/#{item}.svg", size: "49"), locale: item == I18n.default_locale ? nil : item %></li>
                 <% end %>
             <% end %>
           </ul>

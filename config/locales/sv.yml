@@ -38,6 +38,7 @@ sv:
   follow: Följ
   name: Namn
   new: "Ny %{name}"
+  more: "Fler %{model}"
   edit: Ändra
   editing: Ändrar
   delete: Ta bort
@@ -52,6 +53,7 @@ sv:
   comment_definite: Kommentaren
   published: Publicerad
   permalink: Permalänk
+  translation_missing: "Denna %{model} saknar en översättning till ditt språk"
   activerecord:
     models:
       post:

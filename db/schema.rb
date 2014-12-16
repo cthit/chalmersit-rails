@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141213143700) do
+ActiveRecord::Schema.define(version: 20141216220336) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -22,6 +22,18 @@ ActiveRecord::Schema.define(version: 20141213143700) do
   end
 
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
+
+  create_table "committee_translations", force: true do |t|
+    t.integer  "committee_id", null: false
+    t.string   "locale",       null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "description"
+  end
+
+  add_index "committee_translations", ["committee_id"], name: "index_committee_translations_on_committee_id", using: :btree
+  add_index "committee_translations", ["locale"], name: "index_committee_translations_on_locale", using: :btree
 
   create_table "committees", force: true do |t|
     t.string   "name"
@@ -44,6 +56,18 @@ ActiveRecord::Schema.define(version: 20141213143700) do
   end
 
   add_index "configurables", ["name"], name: "index_configurables_on_name", using: :btree
+
+  create_table "course_translations", force: true do |t|
+    t.integer  "course_id",   null: false
+    t.string   "locale",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.text     "description"
+  end
+
+  add_index "course_translations", ["course_id"], name: "index_course_translations_on_course_id", using: :btree
+  add_index "course_translations", ["locale"], name: "index_course_translations_on_locale", using: :btree
 
   create_table "courses", force: true do |t|
     t.string   "code"
@@ -80,6 +104,19 @@ ActiveRecord::Schema.define(version: 20141213143700) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "post_translations", force: true do |t|
+    t.integer  "post_id",    null: false
+    t.string   "locale",     null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "title"
+    t.text     "body"
+    t.string   "slug"
+  end
+
+  add_index "post_translations", ["locale"], name: "index_post_translations_on_locale", using: :btree
+  add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: true do |t|
     t.string   "user_id",        limit: 20,                 null: false

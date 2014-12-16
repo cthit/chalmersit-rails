@@ -45,6 +45,7 @@ gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
 gem 'globalize', '~> 4.0.2'
+gem 'globalize-accessors', '~> 0.1.5'
 
 group :development do
   # Nice error messages
