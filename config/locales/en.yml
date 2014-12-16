@@ -53,6 +53,7 @@ en:
   comment_definite: The comment
   published: Published
   permalink: Permalink
+  translation_missing: "This %{model} is missing a translation for your language."
   activerecord:
     models:
       post:

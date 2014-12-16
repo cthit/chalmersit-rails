@@ -2,6 +2,11 @@
   <div class="article-inner">
     <header>
       <h1><%= link_to post.title, post %></h1>
+      <% unless has_translation? post %>
+      <div data-alert class="alert-box warning">
+          <h4><%= t 'translation_missing', model: Post.model_name.human.downcase %></h4>
+      </div>
+      <% end %>
       <p class="meta">
       <%= link_to post.comments.size, post, title: "#{post.comments.size} #{Comment.model_name.human(count:post.comments.size).downcase}", class: 'comments-bubble smooth', data: { tooltip: '' } %>
       <span class="sep">|</span> <time data-tooltip title="<%= t 'published' %> <%= post.created_at.to_s(:iso_date_time) %>" datetime="<%= post.created_at.to_s(:rfc822) %>" pubdate><%= post.created_at.to_s(:day_month) %></time>
