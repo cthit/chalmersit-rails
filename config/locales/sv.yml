@@ -38,6 +38,7 @@ sv:
   follow: Följ
   name: Namn
   new: "Ny %{name}"
+  more: "Fler %{model}"
   edit: Ändra
   editing: Ändrar
   delete: Ta bort
