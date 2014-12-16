@@ -28,7 +28,7 @@ class CommitteesController < ApplicationController
 
     respond_to do |format|
       if @committee.save
-        format.html { redirect_to @committee, notice: I18n.translate('model_created', name:@commitee.name) }
+        format.html { redirect_to @committee, notice: I18n.translate('model_created', name:@committee.name) }
         format.json { render :show, status: :created, location: @committee }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class CommitteesController < ApplicationController
   def update
     respond_to do |format|
       if @committee.update(committee_params)
-        format.html { redirect_to @committee, notice: I18n.translate('model_updated', name:@commitee.name) }
+        format.html { redirect_to @committee, notice: I18n.translate('model_updated', name:@committee.name) }
         format.json { render :show, status: :ok, location: @committee }
       else
         format.html { render :edit }
@@ -56,7 +56,7 @@ class CommitteesController < ApplicationController
   def destroy
     @committee.destroy
     respond_to do |format|
-      format.html { redirect_to committees_url, notice: I18n.translate('model_destroyed', name:@commitee.name)}
+      format.html { redirect_to committees_url, notice: I18n.translate('model_destroyed', name:@committee.name)}
       format.json { head :no_content }
     end
   end
@@ -69,6 +69,7 @@ class CommitteesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def committee_params
-      params.require(:committee).permit(:slug, :name, :title, :description, :url, :email)
+      permitted = [:slug, :name, :url, :email] + Committee.globalize_attribute_names
+      params.require(:committee).permit(permitted)
     end
 end

@@ -19,14 +19,7 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_area :description %>
-  </div>
+  <%= render partial: "localized_fields", locals:{f:f} %>
   <div class="field">
     <%= f.label :url %><br>
     <%= f.text_field :url %>
