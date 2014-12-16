@@ -1,4 +1,4 @@
-<%= render partial: 'posts/post', collection: @posts, cache: true %>
+<%= render partial: 'posts/post', collection: @posts.with_translations(I18n.locale), cache: true %>
 <% if @posts.size < Post.all.size %>
   <footer>
     <%= link_to t('more', model:Post.model_name.human(count:2).downcase), posts_path, class: 'button expand read-more' %>

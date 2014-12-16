@@ -9,6 +9,8 @@ class Post < ActiveRecord::Base
   validates :sticky, inclusion: { in: [true, false] }
   validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
 
+  translates :title, :body, :slug
+
   before_validation :generate_slug
 
   def previous
