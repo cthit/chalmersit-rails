@@ -19,9 +19,9 @@
   <%= f.label(:ranges, "Range: ") %>
   <%= f.text_field(:ranges) %>
   <%= f.label(:media, "Papersize:") %>
-  <%= f.select(:media, options_for_select([['A4', 'A4'],['A3', 'A3']])) %>
+  <%= f.select(:media, options_for_select(Print.available_media)) %>
   <%= f.label(:ppi, "Resolution:") %>
-  <%= f.select(:ppi, options_for_select([['Auto', 'auto'],['600dpi', '600'],['1200dpi', '1200']])) %>
+  <%= f.select(:ppi, options_for_select(Print.available_ppi)) %>
   <%= f.label(:username, "Username:") %>
   <%= f.text_field(:username) %>
   <%= f.label(:password, "Password:") %>
