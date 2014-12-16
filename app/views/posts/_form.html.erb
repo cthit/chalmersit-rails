@@ -12,14 +12,6 @@
   <% end %>
 
   <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :title do %>
-        <%= Post.human_attribute_name(:title) %>
-        <%= f.text_field :title, placeholder: t('.title_placeholder') %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
     <div class="large-6 columns">
       <%= f.label :user_id do %>
         <%= Post.human_attribute_name(:user_id) %>
@@ -33,14 +25,7 @@
       <% end %>
     </div>
   </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :body do %>
-        <%= Post.human_attribute_name(:body) %>
-        <%= f.text_area :body, rows: 20, placeholder: t('.body_placeholder') %>
-      <% end %>
-    </div>
-  </div>
+  <%= render partial: "localized_fields", locals:{f:f} %>
   <div class="row">
     <div class="large-12 columns">
       <%= f.label :sticky do %>

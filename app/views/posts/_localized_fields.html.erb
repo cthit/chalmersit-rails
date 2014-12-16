@@ -1,0 +1,29 @@
+<dl class="tabs" data-tab>
+    <% I18n.available_locales.each do |item| %>
+        <dd class="<%= "active" if I18n.locale == item %>"><%= link_to image_tag("flags/#{item}.svg", size: "32"), "#lan-#{item}" %></dd>
+    <% end %>
+</dl>
+<div class="tabs-content">
+<% I18n.available_locales.each do |item| %>
+<% I18n.with_locale(item) do %>
+    <div class="content <%= "active" if I18n.locale == item %>" id="lan-<%= item %>">
+    <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :title do %>
+            <%= Post.human_attribute_name(:title) %>
+            <%= f.text_field "title_#{item}", placeholder: t('posts.form.title_placeholder') %>
+          <% end %>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+          <%= f.label :body do %>
+              <%= Post.human_attribute_name(:body) %>
+            <%= f.text_area "body_#{item}", rows: 20, placeholder: t('posts.form.body_placeholder') %>
+          <% end %>
+        </div>
+    </div>
+</div>
+<% end %>
+<% end %>
+</div>

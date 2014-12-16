@@ -10,6 +10,7 @@ class Post < ActiveRecord::Base
   validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
 
   translates :title, :body, :slug
+  globalize_accessors
 
   before_validation :generate_slug
 
@@ -22,10 +23,15 @@ class Post < ActiveRecord::Base
   end
 
   def to_param
-    slug
+    "#{id}-#{slug}"
   end
 
   def generate_slug
-    self.slug ||= title.try(&:parameterize)
+    I18n.available_locales.each do |locale|
+      # Set slug to each locale if not already set.
+      Globalize.with_locale locale do
+        self.slug ||= title.try(&:parameterize)
+      end
+    end
   end
 end
