@@ -6,7 +6,7 @@ class LunchModel
     "Kårrestaurangen" => "http://cm.lskitchen.se/johanneberg/karrestaurangen/sv/#{date}.rss",
     "L's kitchen" => "http://cm.lskitchen.se/lindholmen/foodcourt/sv/#{date}.rss"}
 
-  def feed_entries
+  def restaurants
     @@restaurants.map do |key, url|
       meals = Feed.fetch_and_parse(url).entries.map do |entry|
         summary, price = entry.summary.split('@')
