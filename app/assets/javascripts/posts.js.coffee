@@ -12,7 +12,10 @@ $ ->
     url: '/images.json',
     paramName: 'image[source]',
     add: (e, data) ->
-      data.orig_name = remove_ext data.files[0].name
+      if data.files[0].name
+        data.orig_name = remove_ext data.files[0].name
+      else
+        data.orig_name = 'image'
       data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter(this)
       data.label = $('<label>').insertAfter(data.progress_bar)
       data.submit()
