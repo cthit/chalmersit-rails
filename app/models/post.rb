@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   globalize_accessors
 
   validates *globalize_attribute_names, :title, :body, :user_id, :group_id, presence: true
-  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..50 }
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..70 }
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
   validates :sticky, inclusion: { in: [true, false] }
   validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
