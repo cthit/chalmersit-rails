@@ -118,6 +118,7 @@ en:
       next_posts: Next news post
   lunch:
     feed:
+      lunch: Lunch
       no_lunch_today: No lunch today
 
   date:
@@ -323,4 +324,3 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
-

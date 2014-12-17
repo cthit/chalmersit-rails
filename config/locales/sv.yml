@@ -124,6 +124,7 @@ sv:
       next_posts: Nästa nyhet
   lunch:
     feed:
+      lunch: Lunch
       no_lunch_today: Ingen lunch idag
 
 
