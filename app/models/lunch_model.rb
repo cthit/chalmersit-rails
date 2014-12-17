@@ -5,24 +5,15 @@ class LunchModel
   @@restaurants = {"Linsen" => "http://cm.lskitchen.se/johanneberg/linsen/sv/#{date}.rss",
     "Kårrestaurangen" => "http://cm.lskitchen.se/johanneberg/karrestaurangen/sv/#{date}.rss",
     "L's kitchen" => "http://cm.lskitchen.se/lindholmen/foodcourt/sv/#{date}.rss"}
-  attr_reader :url, :restaurant
-
-  def initialize(restaurant)
-    @restaurant = restaurant
-    @url = @@restaurants[@restaurant]
-  end
 
   def feed_entries
-    @entries ||= Feed.fetch_and_parse(@url).entries.map do |entry|
-      {title: entry.title, summary: entry.summary.split("@")[0]}
-    end
-  end
+    @@restaurants.map do |key, url|
+      meals = Feed.fetch_and_parse(url).entries.map do |entry|
+        summary, price = entry.summary.split('@')
+        { title: entry.title, summary: summary, price: price.try(&:to_i) }
+      end
 
-  def available_restaurants
-    available = []
-    @@restaurants.each do |key, _|
-      available.push key
+      { name: key, meals: meals }
     end
-    available
   end
 end

@@ -6,13 +6,13 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :update, :destroy]
     end
 
-  get 'lunch/feed/:restaurant' => 'lunch#feed'
   resources :courses
 
     get '' => 'home#index'
   end
   get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
+  get 'lunch/feed/' => 'lunch#feed'
   root 'home#index'
 
 

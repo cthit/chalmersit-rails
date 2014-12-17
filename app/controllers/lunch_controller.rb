@@ -1,5 +1,5 @@
 class LunchController < ApplicationController
   def feed
-    @lunch = LunchModel.new params[:restaurant]
+    @lunch = LunchModel.new
   end
 end
