@@ -12,6 +12,9 @@ class PostsController < ApplicationController
   def show
     @comments = @post.comments.order(created_at: :desc)
     @comment = Comment.new
+    if request.path != post_path(@post)
+      redirect_to @post, status: :moved_permanently
+    end
   end
 
   # GET /posts/new
