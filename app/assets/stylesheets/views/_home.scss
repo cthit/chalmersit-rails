@@ -40,7 +40,7 @@
 		margin-bottom: 0;
 
 		h1 {
-			font-size: 2.8em;
+			font-size: 2.7em;
 			font-weight: normal;
 			margin: 0;
 
@@ -84,7 +84,7 @@
 		height: $lineheight * 4;
 		overflow: hidden;
 	}
-	
+
 	.quick-buttons {
 
 		ul {
@@ -97,7 +97,7 @@
 			padding-top: 5px;
 			font-size: .9em;
 		}
-		
+
 		a {
 			display: block;
 			position: relative;
@@ -159,7 +159,7 @@
 			}
 		}
 	}
-	
+
 	.user-area {
 		form {
 			@include box;
@@ -182,7 +182,7 @@
 			font-size: to_em(12);
 			margin-left: 1%;
 		}
-		
+
 		p {
 			margin-bottom: .5em;
 		}
@@ -191,7 +191,7 @@
 			font-size: .8em;
 		}
 	}
-	
+
 
 	/* Lunch */
 	.lunch {
@@ -217,11 +217,11 @@
 			font-size: to_em(14);
 			margin: 0;
 		}
-		
+
 		& > ul {
 			margin-bottom: $lineheight;
 		}
-		
+
 		& > ul > li,
 		.gce-page-list > ul > li {
 			border-bottom: 1px solid #e2e2e2;
@@ -244,13 +244,13 @@
 			}
 		}
 	}
-	
+
 	/* News stream */
-	
+
 	[role="article"] {
 		padding: 0 $gutter-width;
 		margin: $lineheight 0 $lineheight*4;
-		
+
 		header {
 			margin-bottom: $lineheight;
 		}
@@ -294,7 +294,7 @@
 			time {
 				color: $grey;
 			}
-		} 
+		}
 
 		time {
 			display: block;
@@ -306,7 +306,7 @@
 
 	.tweet-list {
 		margin-top: 10px;
-		
+
 		li {
 			margin-bottom: 10px;
 			border-bottom: 1px solid #e2e2e2;

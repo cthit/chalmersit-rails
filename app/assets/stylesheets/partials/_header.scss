@@ -13,17 +13,21 @@
 	background-size: cover;
 	height: 15em;
 
+	form {
+		margin: 0;
+	}
+
 	h1 {
 		margin: 0;
 		position: absolute;
 		top: .2em;
 	}
-	
+
 	nav {
 		float: right;
 	}
-	
-	
+
+
 	[role="search"] {
 		font-size: .9em;
 	}
@@ -37,10 +41,19 @@
 		margin: 0 0 0 1em;
 	}
 
-	& > li > a:not(.btn-round) {
+	& > li > a:not(.button.round) {
 		color: #fff;
 		font-size: .8em;
 		font-weight: bolder;
+	}
+
+	.button {
+		margin: 0;
+	}
+
+	&.horizontal-list img {
+		height: 32px;
+		// vertical-align: top;
 	}
 }
 
@@ -59,13 +72,13 @@ body.logged-in [role="banner"] {
 		background-color: rgba(#000, .5);
 		border: 1px solid rgba(#000, .2);
 		border-width: 0 1px;
-	
+
 		.avatar {
 			display: inline;
 			position: absolute;
 			left: -45px;
 			top: -8px;
-			box-shadow: black 0 0 5px;	
+			box-shadow: black 0 0 5px;
 		}
 
 		.user-details {

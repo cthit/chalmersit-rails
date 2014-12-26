@@ -72,22 +72,24 @@ a.subtle-border {
 }
 
 .logo {
-    a {
-	    font-size: to_em(10);
-
-    }
-    h1 a:hover {
-        text-decoration: none;
-        color: white;
-    }
-	display: block;
-	background: transparent asset-url("logo.png") no-repeat;
-    background-size: 88px;
+	small {
+		color: white;
+		font-size: to_em(7);
+	}
+	&:hover {
+    text-decoration: none;
     color: white;
+  }
+  line-height: .7;
+	display: table-cell;
+	vertical-align: middle;
+	background: asset-url('logo.png') no-repeat;
+  background-size: 88px;
+  color: white;
 	height: 88px;
 	width: 100%;
-    padding-left: 95px;
-    padding-top: 20px;
+  padding-left: 95px;
+  font-weight: normal;
 
 	&:active {
 		opacity: .9;

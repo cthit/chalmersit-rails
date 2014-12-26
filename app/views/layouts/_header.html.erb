@@ -40,7 +40,7 @@
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle" class="show-for-small">≡</a>
           <ul class="header-controls horizontal-list">
-              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'btn-round small', id: 'login-btn' %></li>
+              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'button round tiny secondary', id: 'login-btn' %></li>
               <li><a href="https://account.chalmers.it/?page=reset"><%= t 'pw_reset' %></a></li>
             <li>
               <form role="search" action="/" method="get">
@@ -49,7 +49,7 @@
             </li>
             <% I18n.available_locales.each do |item| %>
                 <% unless I18n.locale == item %>
-                <li><%= link_to image_tag("flags/#{item}.svg", size: "49"), locale: item == I18n.default_locale ? nil : item %></li>
+                <li><%= link_to image_tag("flags/#{item}.svg"), locale: item == I18n.default_locale ? nil : item %></li>
                 <% end %>
             <% end %>
           </ul>
