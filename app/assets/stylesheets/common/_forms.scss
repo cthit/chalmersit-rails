@@ -55,11 +55,6 @@ label {
 	}
 }
 
-input[type="search"] {
-	@include border-radius(2em);
-	padding: 5px;
-}
-
 textarea {
 	resize: vertical;
 	width: 100%;
@@ -70,7 +65,7 @@ textarea {
 [role="banner"] input[type="search"] {
 	@include transition(all .2s ease-out);
 	width: 120px;
-	height: inherit;
+	height: 38px;
 	margin: 0;
 
 	&:focus {

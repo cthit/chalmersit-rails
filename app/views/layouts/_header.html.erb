@@ -40,8 +40,8 @@
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle" class="show-for-small">≡</a>
           <ul class="header-controls horizontal-list">
-              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'button round tiny secondary', id: 'login-btn' %></li>
-              <li><a href="https://account.chalmers.it/?page=reset"><%= t 'pw_reset' %></a></li>
+              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'button tiny', id: 'login-btn' %></li>
+              <li><a href="https://account.chalmers.it/?page=reset" class="button tiny secondary"><%= t 'pw_reset' %></a></li>
             <li>
               <form role="search" action="/" method="get">
                   <input type="search" placeholder="<%= t 'search' %>" results="0" name="s"/>
