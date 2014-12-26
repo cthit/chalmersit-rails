@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-    @post = Post.find_by(slug: params[:post_id])
+    @post = Post.find(params[:post_id])
     @comment = @post.comments.build(comment_params)
     @comments = @post.comments.where('created_at IS NOT NULL')
 
