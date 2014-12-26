@@ -34,6 +34,9 @@
       <% end %>
     </div>
   </div>
+  <%= f.fields_for :event do |builder| %>
+    <%= render partial: 'event_fields' , locals: {f: builder} %>
+  <% end %>
   <div class="row">
     <div class="large-12 columns">
       <%= f.submit class: 'button large-12' %>

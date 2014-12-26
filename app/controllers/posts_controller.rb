@@ -20,10 +20,12 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
+    @event = find_or_create_event
   end
 
   # GET /posts/1/edit
   def edit
+    @event = find_or_create_event
   end
 
   # POST /posts
@@ -74,7 +76,12 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:user_id, :group_id, :title, :body, :sticky] + Post.globalize_attribute_names
+      permitted = [:user_id, :group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
+    end
+
+    def find_or_create_event
+      return @post.event unless @post.event.nil?
+      Event.new(post: @post, event_date: Date.today, start_time: Time.now, end_time: Time.now + 1.hour)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216220336) do
+ActiveRecord::Schema.define(version: 20141226224512) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -87,6 +87,19 @@ ActiveRecord::Schema.define(version: 20141216220336) do
     t.integer "period_id"
     t.integer "course_id"
   end
+
+  create_table "events", force: true do |t|
+    t.date    "event_date"
+    t.boolean "full_day"
+    t.time    "start_time"
+    t.time    "end_time"
+    t.string  "location"
+    t.string  "organizer"
+    t.integer "post_id"
+    t.string  "facebook_link"
+  end
+
+  add_index "events", ["post_id"], name: "index_events_on_post_id", using: :btree
 
   create_table "images", force: true do |t|
     t.string   "source"

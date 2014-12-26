@@ -14,6 +14,24 @@
     <span class="sep">|</span>  <%= t '.posted_for' %> <%= link_to post.group_id, '#' %> <%= t '.by' %> <%= link_to post.user_id, '#', title: "#{t '.posts_by'} #{post.user_id}", rel: 'author' %>
         <span class="sep">|</span> <%= link_to t('helpers.submit.update', model:Post.model_name.human.downcase), edit_post_path(post) %>
       </p>
+    <% if post.event? %>
+    <ul class="meta event-meta">
+      <li class="icon-clock"><%= post.event.event_date.strftime('%e %b') %>, <%= post.event.start_time.strftime('%R') %>-<%= post.event.end_time.strftime('%R') %></li>
+      <% unless post.event.location.blank? %>
+        <li class="icon-map-pin-fill"><%= post.event.location %></li>
+      <% end %>
+      <% unless post.event.facebook_link.blank? %>
+        <li class="icon-facebook-sign" rel="tooltip" title="Arrangemangets sida på Facebook">
+          <%= link_to 'Facebook', post.event.facebook_link, target: :blank %>
+        </li>
+      <% end %>
+      <% unless post.event.organizer.blank? %>
+        <li rel="tooltip" title="Arrangör av detta arrangemang" class="icon-user">
+          <a href="https://chalmers.it/sektionen/kommitteer/armit/"><%= post.event.organizer %></a>
+        </li>
+      <% end %>
+    </ul>
+    <% end %>
     </header>
     <div class="article-content"><%= markdown post.body %></div>
   </div>
