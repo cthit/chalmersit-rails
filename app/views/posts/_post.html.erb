@@ -25,11 +25,13 @@
           <%= link_to 'Facebook', post.event.facebook_link, target: :blank %>
         </li>
       <% end %>
-      <% unless post.event.organizer.blank? %>
-        <li rel="tooltip" title="Arrangör av detta arrangemang" class="icon-user">
-          <a href="https://chalmers.it/sektionen/kommitteer/armit/"><%= post.event.organizer %></a>
-        </li>
+      <li rel="tooltip" title="Arrangör av detta arrangemang" class="icon-user">
+      <% if post.event.organizer.blank? %>
+        <%= link_to post.group_id, committee_path(post.group_id) %>
+      <% else %>
+        <%= post.event.organizer %>
       <% end %>
+      </li>
     </ul>
     <% end %>
     </header>
