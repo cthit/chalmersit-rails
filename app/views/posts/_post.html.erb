@@ -21,11 +21,11 @@
         <li class="icon-map-pin-fill"><%= post.event.location %></li>
       <% end %>
       <% unless post.event.facebook_link.blank? %>
-        <li class="icon-facebook-sign" rel="tooltip" title="Arrangemangets sida på Facebook">
+        <li class="icon-facebook-sign" data-tooltip title="<%= t '.facebook_link_to_event' %>">
           <%= link_to 'Facebook', post.event.facebook_link, target: :blank %>
         </li>
       <% end %>
-      <li rel="tooltip" title="Arrangör av detta arrangemang" class="icon-user">
+      <li data-tooltip title="<%= t '.organizer_event' %>" class="icon-user">
       <% if post.event.organizer.blank? %>
         <%= link_to post.group_id, committee_path(post.group_id) %>
       <% else %>
