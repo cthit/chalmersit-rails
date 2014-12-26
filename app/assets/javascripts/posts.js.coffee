@@ -8,7 +8,18 @@ $ ->
     datetime = $elem.attr 'datetime'
     $elem.text moment(new Date(datetime)).fromNow()
 
-  $('.posts #post_body').fileupload
+  $('.posts .preview').on 'click', ->
+    locale = $(this).data('locale')
+    title = $('#post_title_' + locale).val()
+    text = $('#post_body_' + locale).val()
+    $.post '/preview', { text: text }, (body) ->
+      $preview = $('#preview')
+      $preview.find('.post-title').text(title)
+      $preview.find('.article-content').html(body)
+      $preview.foundation('reveal', 'open')
+    false
+
+  $('.posts textarea').fileupload
     url: '/images.json',
     paramName: 'image[source]',
     add: (e, data) ->

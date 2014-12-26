@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
+  post 'preview' => 'preview#preview'
+
   root 'home#index'
 
 
