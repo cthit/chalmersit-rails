@@ -5,6 +5,5 @@
 $ ->
   $('.it_twitter').each ->
     $this = $(this)
-    console.log this
     handle = $this.data('handle')
-    $this.load("/twitter/feed/#{handle}?count=6")
+    $this.find('.tweet-list').load("/twitter/feed/#{handle}?count=6")
