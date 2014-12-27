@@ -27,13 +27,21 @@
   </div>
   <%= render partial: "localized_fields", locals:{f:f} %>
   <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :sticky do %>
-        <%= Post.human_attribute_name(:sticky) %>
-        <%= f.check_box :sticky %>
-      <% end %>
-    </div>
+    <%= f.label :sticky do %>
+      <%= f.check_box :sticky %>
+      <%= Post.human_attribute_name(:sticky) %>
+    <% end %>
   </div>
+  <div class="row">
+    <%= check_box_tag 'post_is_event', 1, show_event_fields? %>
+    <%= label_tag 'post_is_event', Event.model_name.human %>
+  </div>
+  <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
+    <legend><%= Event.model_name.human %></legend>
+    <%= f.fields_for :event do |builder| %>
+      <%= render partial: 'event_fields' , locals: {f: builder} %>
+    <% end %>
+  </fieldset>
   <div class="row">
     <div class="large-12 columns">
       <%= f.submit class: 'button large-12' %>

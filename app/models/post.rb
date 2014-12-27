@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   scope :ordered, -> { order(created_at: :desc) }
 
   has_many :comments, dependent: :destroy
+  has_one :event, dependent: :destroy
+
+  accepts_nested_attributes_for :event, allow_destroy: true
 
   translates :title, :body, :slug
   globalize_accessors
@@ -20,6 +23,10 @@ class Post < ActiveRecord::Base
 
   def next
     Post.where('id > ?', id).first
+  end
+
+  def event?
+    not self.event.nil?
   end
 
   def to_param

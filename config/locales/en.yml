@@ -56,6 +56,9 @@ en:
   translation_missing: "This %{model} is missing a translation for your language."
   activerecord:
     models:
+      event:
+        one: Event
+        other: Events
       post:
         one: News post
         other: News posts
@@ -109,9 +112,13 @@ en:
       groupid_placeholder: Association or committee
       body_placeholder: The news content goes here
     post:
+      organizer_event: Organizer of this event
+      facebook_link_to_event: Link to Facebook event
       posted_for: Written for
       by: by
       posts_by: News posts written by
+    event_fields:
+      empty_if_group: Leave blank if same as post creator
     show:
       prev_posts: Previous news
       all_posts: All news

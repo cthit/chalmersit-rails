@@ -56,6 +56,7 @@ sv:
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
   activerecord:
     models:
+      event: Arrangemang
       post:
         one: Nyhet
         other: Nyheter
@@ -69,6 +70,14 @@ sv:
         one: Kommitté
         other: Kommitteér
     attributes:
+      event:
+        event_date: Arrangemangsdatum
+        full_day: Heldag
+        start_time: Starttid
+        end_time: Sluttid
+        facebook_link: Facebooklänk
+        location: Plats
+        organizer: Arrangör
       course:
         year: År
         code: Kurskod
@@ -115,9 +124,13 @@ sv:
       groupid_placeholder: Förening eller kommitté
       body_placeholder: Nyhetsinnehållet skrivs här
     post:
+      organizer_event: Arrangör av detta evenemang
+      facebook_link_to_event: Arrangemangets sida på Facebook
       posted_for: Skriven för
       by: av
       posts_by: Nyheter skriva av
+    event_fields:
+      empty_if_group: Lämna tom om samma som skaparen av nyheten
     show:
       prev_posts: Tidigare nyheter
       all_posts: Alla nyheter
