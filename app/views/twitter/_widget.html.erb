@@ -1,0 +1,7 @@
+<% cache do %>
+  <header class="panel-header">
+    <h1>Twitter</h1>
+    <%= link_to "@#{handle}", "http://twitter.com/#{handle}", class: 'header-more' %>
+  </header>
+  <div class="tweet-list it_twitter" data-handle="<%= handle %>"></div>
+<% end %>

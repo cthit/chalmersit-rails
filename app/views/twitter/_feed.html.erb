@@ -1,16 +1,8 @@
-<% cache do %>
-  <header class="panel-header">
-    <h1>Twitter</h1>
-    <a href="http://twitter.com/chalmersit" class="header-more">@chalmersit</a>
-  </header>
-  <div class="tweet-list">
-    <ul class="list">
-      <% twitter_feed(twitter_handle, options).each do |tweet| %>
-        <li>
-          <p><%= tweet[:html] %></p>
-          <time><%= tweet[:tweet].created_at %></time>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<ul class="list">
+  <% twitter_feed(twitter_handle, options).each do |tweet| %>
+    <li>
+      <p><%= tweet[:html] %></p>
+      <time><%= tweet[:tweet].created_at %></time>
+    </li>
+  <% end %>
+</ul>
