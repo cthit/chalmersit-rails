@@ -31,7 +31,8 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = Post.new(post_params)
+    pp = set_destroy
+    @post = Post.new(pp)
 
     respond_to do |format|
       if @post.save
@@ -47,8 +48,10 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    pp = set_destroy
+
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(pp)
         format.html { redirect_to @post, notice: I18n.translate('model_updated', name:@post.title) }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -76,12 +79,18 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:user_id, :group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer] }] + Post.globalize_attribute_names
+      permitted = [:user_id, :group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 
     def find_or_create_event
       return @post.event unless @post.event.nil?
       Event.new(post: @post, event_date: Date.today, start_time: Time.now, end_time: Time.now + 1.hour)
+    end
+
+    def set_destroy
+      pp = post_params
+      pp[:event_attributes][:_destroy] = 1 unless params[:post_is_event]
+      pp
     end
 end

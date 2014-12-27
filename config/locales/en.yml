@@ -117,6 +117,8 @@ en:
       posted_for: Written for
       by: by
       posts_by: News posts written by
+    event_fields:
+      empty_if_group: Leave blank if same as post creator
     show:
       prev_posts: Previous news
       all_posts: All news

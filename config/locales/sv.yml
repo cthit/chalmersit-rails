@@ -129,6 +129,8 @@ sv:
       posted_for: Skriven för
       by: av
       posts_by: Nyheter skriva av
+    event_fields:
+      empty_if_group: Lämna tom om samma som skaparen av nyheten
     show:
       prev_posts: Tidigare nyheter
       all_posts: Alla nyheter

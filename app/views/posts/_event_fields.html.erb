@@ -7,8 +7,8 @@
   </div>
   <div class="large-6 columns">
     <%= f.label :full_day do %>
-      <%= Event.human_attribute_name(:full_day) %>
       <%= f.check_box :full_day %>
+      <%= Event.human_attribute_name(:full_day) %>
     <% end %>
   </div>
 </div>
@@ -26,12 +26,13 @@
     <% end %>
   </div>
 </div>
-<div class="row">
-  <div class="large-12 columns">
-    <%= f.label :facebook_link do %>
-      <%= Event.human_attribute_name(:facebook_link) %>
-      <%= f.text_field :facebook_link %>
-    <% end %>
+<div class="row collapse">
+  <%= f.label :facebook_link %>
+  <div class="small-3 large-2 columns">
+    <span class="prefix">http://</span>
+  </div>
+  <div class="small-9 large-10 columns">
+    <%= f.text_field :facebook_link %>
   </div>
 </div>
 <div class="row">
@@ -44,7 +45,7 @@
   <div class="large-6 columns">
     <%= f.label :organizer do %>
       <%= Event.human_attribute_name(:organizer) %>
-      <%= f.text_field :organizer %>
+      <%= f.text_field :organizer, placeholder: t('.empty_if_group') %>
     <% end %>
   </div>
 </div>

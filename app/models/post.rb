@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
 
-  accepts_nested_attributes_for :event
+  accepts_nested_attributes_for :event, allow_destroy: true
 
   translates :title, :body, :slug
   globalize_accessors
