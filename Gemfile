@@ -6,14 +6,14 @@ gem 'rails', '4.1.8'
 # gem 'sqlite3'
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.3'
-gem 'compass-rails'
+gem 'sass-rails', '~> 4.0.5'
+gem 'compass-rails', '~> 2.0.0'
 # Foundation styles
-gem 'foundation-rails'
+gem 'foundation-rails', '~> 5.4.0'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.0.0'
+gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -22,6 +22,18 @@ gem 'github-markdown'
 
 # Twitter feeds
 gem 'twitter'
+# Application settings
+gem 'configurable_engine'
+# File uploads
+gem 'jquery-fileupload-rails'
+gem 'carrierwave'
+gem 'mini_magick'
+
+# Relative timestamps
+gem 'momentjs-rails'
+
+# RSS feeds
+gem 'feedjira'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,12 +47,24 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
+# Internationalisation support (i.e. Swedish and English)
+gem 'globalize', '~> 4.0.2'
+gem 'globalize-accessors', '~> 0.1.5'
+
 group :development do
   # Nice error messages
   gem 'better_errors'
 
   # Measure the request time, for profiling
   gem 'rack-mini-profiler'
+end
+
+gem 'rspec-rails', group: [:test, :development]
+group :test do
+  gem 'factory_girl_rails'
+  gem 'capybara'
+  gem 'guard-rspec'
+  gem 'shoulda-matchers', require: false
 end
 
 # Multi-fragment caching

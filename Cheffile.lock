@@ -3,6 +3,7 @@ SITE
   specs:
     apt (2.6.0)
     build-essential (2.1.3)
+    imagemagick (0.2.3)
     mysql (5.6.1)
       yum-mysql-community (>= 0.0.0)
     ruby_build (0.8.0)
@@ -30,9 +31,18 @@ GIT
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
 
+GIT
+  remote: https://github.com/phlipper/chef-curl
+  ref: master
+  sha: d1f6690319eb4e5278af0060eb053937541d8d90
+  specs:
+    curl (1.0.0)
+
 DEPENDENCIES
   apt (>= 0)
   build-essential (>= 0)
+  curl (>= 0)
+  imagemagick (~> 0.2.3)
   mysql (>= 0)
   nodejs (>= 0)
   rbenv (>= 0)

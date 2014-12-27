@@ -15,13 +15,19 @@ h1, h2, h3, h4, h5, h6 {
 	a, a:hover {
 		color: inherit;
 	}
-	
+
 	.detail {
 		color: $grey;
 		font-size: .618em;
 		font-weight: 300;
 		white-space: nowrap;
 		font-style: italic;
+	}
+}
+
+[role="contentinfo"] hgroup {
+	h1, h2, h3, h4, h5, h6 {
+		color: inherit;
 	}
 }
 
@@ -47,7 +53,7 @@ h1, h2, h3, h4, h5, h6 {
 
 hgroup {
 	margin-bottom: $lineheight;
-	
+
 	h1, h2, h3 {
 		margin-bottom: 0;
 	}
@@ -55,12 +61,12 @@ hgroup {
 
 .page-title {
 	margin-bottom: $lineheight;
-	
+
 	h1 {
 		@extend .huge;
 		margin-bottom: 0;
 	}
-	
+
 	h2 {
 		@extend .sub;
 	}
@@ -90,9 +96,9 @@ h3 {
 }
 
 h4 {
-	
+
 }
 
 h5 {
-	
+
 }

@@ -1,0 +1,6 @@
+<h1><%= t 'editing' %> <%= @course.code %> - <%= @course.name %></h1>
+
+<%= render 'form' %>
+
+<%= link_to t('show'), @course %> |
+<%= link_to t('back'), courses_path %>

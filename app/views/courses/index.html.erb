@@ -1,0 +1,25 @@
+<% content_for :title, Course.model_name.human(count:2) %>
+<table>
+  <thead>
+    <tr>
+        <th><%= Course.human_attribute_name('code') %></th>
+        <th><%= t 'name' %></th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @courses.each do |course| %>
+      <tr>
+        <td><%= link_to course.code, course %></td>
+        <td><%= course.name %></td>
+        <td><%= link_to t('edit'), edit_course_path(course) %></td>
+        <td><%= link_to t('delete'), course, method: :delete, data: { confirm: t('confirm') } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to t('new', name:Course.model_name.human), new_course_path %>

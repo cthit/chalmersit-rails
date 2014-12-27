@@ -1,0 +1,34 @@
+<%= form_for [@post, @comment] do |f| %>
+  <% if @comment.errors.any? %>
+    <div id="error_explanation">
+        <h2><%= t 'errors.template.header', count:@comment.errors.count, model:Comment.model_name.human.downcase %>:</h2>
+
+      <ul>
+      <% @comment.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :user_id  do %>
+        <%= Comment.human_attribute_name(:user_id) %>
+      <%= f.text_field :user_id %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.label :body  do %>
+        <%= Comment.human_attribute_name(:body) %>
+      <%= f.text_area :body %>
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="large-12 columns">
+      <%= f.submit class: 'button large-12 columns' %>
+    </div>
+  </div>
+<% end %>

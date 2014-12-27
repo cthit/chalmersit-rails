@@ -20,8 +20,314 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  page_title: Information Technology on Chalmers
+  techsec: Student Division
+  section: The division
+  it: Information Technology
+  chs: Chalmers Student Union
+  cth: Chalmers University of Technology
+  login: Log in
+  pw_reset: Reset password
+  search: Search chalmers.it
+  contact: Contact
+  business: Business
+  mailing_address: Mailing address
+  visiting_address: Visiting address
+  developed_by: Developed by
+  more_info: more info
+  follow: Follow
+  name: Name
+  new: "New %{name}"
+  more: "More %{model}"
+  edit: Edit
+  editing: Editing
+  delete: Delete
+  back: Back
+  show: Show
+  confirm: Are you sure?
+  "true": yes
+  "false": no
+  model_destroyed: "%{name} has been deleted"
+  model_updated: "%{name} has been updated"
+  model_created: "%{name} has been created"
+  comment_definite: The comment
+  published: Published
+  permalink: Permalink
+  translation_missing: "This %{model} is missing a translation for your language."
   activerecord:
     models:
+      event:
+        one: Event
+        other: Events
       post:
-        one: Post
-        other: Posts
+        one: News post
+        other: News posts
+      course:
+        one: Course
+        other: Courses
+      comment:
+        one: Comment
+        other: Comments
+      committee:
+        one: Committee
+        other: Committees
+    attributes:
+      course:
+        year: Year
+        code: Course code
+        required: Required
+        homepage: Course homepage
+        period:
+          one: Period
+          other: Periods
+        programme: Programme
+        description: Description
+        name: Name
+      post:
+        title: Title
+        user_id: User
+        group_id: Association / Committee
+        sticky: Sticky
+        body: Body
+      comment:
+        user_id: User
+        body: Comment
+
+  layouts:
+    home:
+      booking: Booking
+      group_room: Group room
+      print: Print
+      schema: Schema
+      charge_card: Charge S.U. card
+      book_hubben_desc: Book Hubben or the group room
+      book_chalmers_desc: Book group room at Chalmers
+      print_desc: Print on one of Chalmers printers
+      charge_card_desc: Shortcut for charging your student union card
+
+  posts:
+    form:
+      title_placeholder: Title for the news post
+      userid_placeholder: Your username!
+      groupid_placeholder: Association or committee
+      body_placeholder: The news content goes here
+    post:
+      organizer_event: Organizer of this event
+      facebook_link_to_event: Link to Facebook event
+      posted_for: Written for
+      by: by
+      posts_by: News posts written by
+    event_fields:
+      empty_if_group: Leave blank if same as post creator
+    show:
+      prev_posts: Previous news
+      all_posts: All news
+      next_posts: Next news post
+  lunch:
+    feed:
+      lunch: Lunch
+      no_lunch_today: No lunch today
+
+  date:
+    abbr_day_names:
+    - Sun
+    - Mon
+    - Tue
+    - Wed
+    - Thu
+    - Fri
+    - Sat
+    abbr_month_names:
+    -
+    - Jan
+    - Feb
+    - Mar
+    - Apr
+    - May
+    - Jun
+    - Jul
+    - Aug
+    - Sep
+    - Oct
+    - Nov
+    - Dec
+    day_names:
+    - Sunday
+    - Monday
+    - Tuesday
+    - Wednesday
+    - Thursday
+    - Friday
+    - Saturday
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+    month_names:
+    -
+    - January
+    - February
+    - March
+    - April
+    - May
+    - June
+    - July
+    - August
+    - September
+    - October
+    - November
+    - December
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: about 1 hour
+        other: about %{count} hours
+      about_x_months:
+        one: about 1 month
+        other: about %{count} months
+      about_x_years:
+        one: about 1 year
+        other: about %{count} years
+      almost_x_years:
+        one: almost 1 year
+        other: almost %{count} years
+      half_a_minute: half a minute
+      less_than_x_minutes:
+        one: less than a minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        one: less than 1 second
+        other: less than %{count} seconds
+      over_x_years:
+        one: over 1 year
+        other: over %{count} years
+      x_days:
+        one: 1 day
+        other: ! '%{count} days'
+      x_minutes:
+        one: 1 minute
+        other: ! '%{count} minutes'
+      x_months:
+        one: 1 month
+        other: ! '%{count} months'
+      x_seconds:
+        one: 1 second
+        other: ! '%{count} seconds'
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Seconds
+      year: Year
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: must be accepted
+      blank: can't be blank
+      present: must be blank
+      confirmation: ! "doesn't match %{attribute}"
+      empty: can't be empty
+      equal_to: must be equal to %{count}
+      even: must be even
+      exclusion: is reserved
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater than or equal to %{count}
+      inclusion: is not included in the list
+      invalid: is invalid
+      less_than: must be less than %{count}
+      less_than_or_equal_to: must be less than or equal to %{count}
+      not_a_number: is not a number
+      not_an_integer: must be an integer
+      odd: must be odd
+      record_invalid: ! 'Validation failed: %{errors}'
+      restrict_dependent_destroy:
+        one: "Cannot delete record because a dependent %{record} exists"
+        many: "Cannot delete record because dependent %{record} exist"
+      taken: has already been taken
+      too_long:
+        one: is too long (maximum is 1 character)
+        other: is too long (maximum is %{count} characters)
+      too_short:
+        one: is too short (minimum is 1 character)
+        other: is too short (minimum is %{count} characters)
+      wrong_length:
+        one: is the wrong length (should be 1 character)
+        other: is the wrong length (should be %{count} characters)
+      other_than: "must be other than %{count}"
+    template:
+      body: ! 'There were problems with the following fields:'
+      header:
+        one: 1 error prohibited this %{model} from being saved
+        other: ! '%{count} errors prohibited this %{model} from being saved'
+  helpers:
+    select:
+      prompt: Please select
+    submit:
+      create: Create %{model}
+      submit: Save %{model}
+      update: Update %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: Billion
+          million: Million
+          quadrillion: Quadrillion
+          thousand: Thousand
+          trillion: Trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm

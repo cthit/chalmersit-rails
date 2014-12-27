@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      <h2><%= t 'errors.template.header', count: @post.errors.count, model:Post.model_name.human.downcase %>:</h2>
 
       <ul>
       <% @post.errors.full_messages.each do |message| %>
@@ -10,45 +10,38 @@
       </ul>
     </div>
   <% end %>
-  
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :title do %>
-        <%= t :title %>
-        <%= f.text_field :title, placeholder: 'Title for the post' %>
-      <% end %>
-    </div>
-  </div>
+
   <div class="row">
     <div class="large-6 columns">
       <%= f.label :user_id do %>
-        <%= t :user_id %>
-        <%= f.text_field :user_id, placeholder: 'Your username!' %>
+        <%= Post.human_attribute_name(:user_id) %>
+        <%= f.text_field :user_id, placeholder: t('.userid_placeholder') %>
       <% end %>
     </div>
     <div class="large-6 columns">
       <%= f.label :group_id do %>
-        <%= t :group_id %>
-        <%= f.text_field :group_id, placeholder: 'FKIT?' %>
+        <%= Post.human_attribute_name(:group_id) %>
+        <%= f.text_field :group_id, placeholder: t('.groupid_placeholder') %>
       <% end %>
     </div>
+  </div>
+  <%= render partial: "localized_fields", locals:{f:f} %>
+  <div class="row">
+    <%= f.label :sticky do %>
+      <%= f.check_box :sticky %>
+      <%= Post.human_attribute_name(:sticky) %>
+    <% end %>
   </div>
   <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :body do %>
-        <%= t :body %>
-        <%= f.text_area :body, rows: 20, placeholder: 'Your news content, markdown pls!' %>
-      <% end %>
-    </div>
+    <%= check_box_tag 'post_is_event', 1, show_event_fields? %>
+    <%= label_tag 'post_is_event', Event.model_name.human %>
   </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.label :sticky do %>
-        <%= t :sticky %>
-        <%= f.check_box :sticky %>
-      <% end %>
-    </div>
-  </div>
+  <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
+    <legend><%= Event.model_name.human %></legend>
+    <%= f.fields_for :event do |builder| %>
+      <%= render partial: 'event_fields' , locals: {f: builder} %>
+    <% end %>
+  </fieldset>
   <div class="row">
     <div class="large-12 columns">
       <%= f.submit class: 'button large-12' %>

@@ -15,6 +15,7 @@ body {
 	color: $bodycolor;
 	margin: 0;
 	padding: 0;
+	background-color: $bg;
 }
 
 .wrapper {
@@ -30,11 +31,15 @@ body {
 /* Always vertically align social buttons */
 
 .social-sharing {
-	& > div, 
+	& > div,
 	& > iframe {
 		vertical-align: middle;
 		margin: 0 10px;
 	}
+}
+
+ul, ol, dl {
+	font-size: inherit;
 }
 
 

@@ -1,4 +1,4 @@
-# Chalmers.it - Rails
+# Chalmers.it - Rails [![Build Status](https://travis-ci.org/cthit/chalmersit-rails.svg?branch=develop)](https://travis-ci.org/cthit/chalmersit-rails)
 
 Currently using Ruby `2.1.2p95`
 
@@ -14,9 +14,13 @@ vagrant ssh
 cd /vagrant
 bundle install
 
+# Create the secrets.yml file (fetch from wiki)
+touch config/secrets.yml
+
 # Prepare the db
 rake db:create db:migrate
 rake rails:update:bin
+rbenv rehash
 
 # Then serve:
 rails server

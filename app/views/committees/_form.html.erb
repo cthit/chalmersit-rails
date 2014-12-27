@@ -1,0 +1,34 @@
+<%= form_for(@committee) do |f| %>
+  <% if @committee.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t 'errors.template.header', count:@committee.errors.count, model: Committee.model_name.human.downcase %>:</h2>
+
+      <ul>
+      <% @committee.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :slug %><br>
+    <%= f.text_field :slug %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <%= render partial: "localized_fields", locals:{f:f} %>
+  <div class="field">
+    <%= f.label :url %><br>
+    <%= f.text_field :url %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br>
+    <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

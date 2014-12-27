@@ -6,9 +6,9 @@
 }
 
 .clear {
-	clear: both; 
-	display: block; 
-	height: 1px; 
+	clear: both;
+	display: block;
+	height: 1px;
 	margin: -1px 0 0 0;
 }
 
@@ -48,6 +48,10 @@ a.subtle-border {
 	content: " →";
 }
 
+.read-more {
+	margin: 0;
+}
+
 %info {
 	color: $grey;
 }
@@ -68,11 +72,24 @@ a.subtle-border {
 }
 
 .logo {
-	display: block;
-	background: transparent asset-url("logo.png") no-repeat;
-	width: image-width("logo.png");
-	height: image-height("logo.png");
-	text-indent: -999em;
+	small {
+		color: white;
+		font-size: to_em(7);
+	}
+	&:hover {
+    text-decoration: none;
+    color: white;
+  }
+  line-height: .7;
+	display: table-cell;
+	vertical-align: middle;
+	background: asset-url('logo.png') no-repeat;
+  background-size: 88px;
+  color: white;
+	height: 88px;
+	width: 100%;
+  padding-left: 95px;
+  font-weight: normal;
 
 	&:active {
 		opacity: .9;
@@ -134,7 +151,7 @@ a.subtle-border {
 	padding: .5em;
 	color: #fff;
 	margin-bottom: $lineheight;
-	
+
 	h1 {
 		color: #fff;
 		font-size: to_em(14);
@@ -170,7 +187,7 @@ a.subtle-border {
 		font-size: to_em(22);
 		font-weight: normal;
 	}
-		
+
 	p {
 		font-size: to_em(12);
 		margin: $lineheight / 2 0;
@@ -202,6 +219,12 @@ a.subtle-border {
 .booking-icon {
 	@extend %icon;
 	@include icon-image("icon-booking.svg", 32px, 32px);
+}
+
+.card-icon {
+	@extend %icon;
+	@include icon-image("icon-card.svg", 32px, 32px);
+	background-position-y: 5px !important;
 }
 
 .hidden {

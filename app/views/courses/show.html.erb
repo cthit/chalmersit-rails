@@ -1,0 +1,46 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+<strong><%= Course.human_attribute_name('code') %>:</strong>
+  <%= @course.code %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('name') %>:</strong>
+  <%= @course.name %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('year') %>:</strong>
+  <%= @course.year %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('required') %>:</strong>
+  <%= t @course.required.to_s %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('homepage') %>:</strong>
+  <%= @course.homepage %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('periods') %>:</strong>
+  <% @course.periods.each do | period | %>
+    <%= period.name %>
+  <%end%>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('programme') %>:</strong>
+  <%= @course.programme %>
+</p>
+
+<p>
+  <strong><%= Course.human_attribute_name('description') %>:</strong>
+  <%= @course.description %>
+</p>
+
+<%= link_to t('edit'), edit_course_path(@course) %> |
+<%= link_to t('back'), courses_path %>

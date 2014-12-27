@@ -3,18 +3,19 @@
   <div class="front-title large-4 columns">
     <div class="box">
       <h1>
-        <span class="detail">Teknologsektionen</span><br>
-        Informationsteknik<br>
-        <span class="detail">Chalmers Studentkår</span>
+          <span class="detail"><%= t 'techsec' %></span><br>
+        <%= t 'it' %><br>
+        <span class="detail"><%= t 'chs' %></span>
       </h1>
     </div>
   </div>
   <div class="quick-buttons large-5 columns">
     <ul class="box list">
-      <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top schedule-icon">Schema</a></li>
-      <li><a data-tooltip title="Boka Hubben eller grupprummet" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top booking-icon">Bokning</a></li>
-      <li><a data-tooltip title="Boka grupprum på Chalmers" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top group-icon">Grupprum</a></li>
-      <li><a data-tooltip title="Skriv ut på Chalmers skrivare" href="printpath" class="has-tip tip-top print-icon">Skriv ut</a></li>
+        <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top schedule-icon"><%= t '.schema' %></a></li>
+        <li><a data-tooltip title="<%= t '.book_hubben_desc' %>" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top booking-icon"><%= t '.booking' %></a></li>
+        <li><a data-tooltip title="<%= t '.book_chalmers_desc' %>" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top group-icon"><%= t '.group_room' %></a></li>
+        <li><a data-tooltip title="<%= t '.print_desc' %>" href="printpath" class="has-tip tip-top print-icon"><%= t '.print' %></a></li>
+        <li><a data-tooltip title="<%= t '.charge_card_desc' %>" href="http://kårkort.se" class="has-tip tip-top card-icon"><%= t '.charge_card' %></a></li>
     </ul>
   </div>
   <div class="user-area large-3 columns">
@@ -26,7 +27,7 @@
   <div class="large-6 columns">
     <section class="news box">
       <header class="panel-header">
-        <h1>Nyheter</h1>
+          <h1><%= Post.model_name.human(count: 2) %></h1>
       </header>
       <%= yield %>
     </section>

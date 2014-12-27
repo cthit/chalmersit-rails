@@ -12,8 +12,14 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require foundation
+//= require foundation/foundation
+//= require foundation/foundation.tooltip
+//= require foundation/foundation.reveal
+//= require foundation/foundation.tab
+//= require jquery-fileupload/basic
 //= require turbolinks
+//= require moment
+//= require moment/sv.js
 //= require_tree .
 
 $(function(){ $(document).foundation(); });

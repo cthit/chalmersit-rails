@@ -1,0 +1,42 @@
+<%= form_for(@course) do |f| %>
+  <% if @course.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= t 'errors.template.header', count:@course.errors.count, model: Course.model_name.human.downcase%>:</h2>
+
+      <ul>
+      <% @course.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <%= render partial: "localized_fields", locals:{f:f} %>
+  <div class="field">
+    <%= f.label :year %><br>
+    <%= f.number_field :year %>
+  </div>
+  <div class="field">
+    <%= f.label :required %><br>
+    <%= f.check_box :required %>
+  </div>
+  <div class="field">
+    <%= f.label :homepage %><br>
+    <%= f.text_field :homepage %>
+  </div>
+  <div class="field">
+    <%= f.label :periods, Course.human_attribute_name('period', count:2) %><br>
+    <%= f.collection_check_boxes(:periods , Period.all, :id, :name) %>
+  </div>
+  <div class="field">
+    <%= f.label :programme %><br>
+    <%= f.text_field :programme %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

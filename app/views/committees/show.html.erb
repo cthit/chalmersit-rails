@@ -1,0 +1,12 @@
+<% content_for :sidebar_right do %>
+  <%= render partial: 'committees/sidebar' %>
+<% end %>
+<% content_for :title, @committee.name %>
+<% content_for :subtitle, @committee.title %>
+
+<p>
+  <%= markdown @committee.description unless @committee.description.nil? %>
+</p>
+
+<%= link_to t('edit'), edit_committee_path(@committee) %> |
+<%= link_to t('back'), committees_path %>
