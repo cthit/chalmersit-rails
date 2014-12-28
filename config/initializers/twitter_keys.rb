@@ -1,6 +1,6 @@
 require 'twitter'
 
-unless Rails.env.test?
+unless Rails.application.secrets.twitter.nil?
   $twitter = Twitter::REST::Client.new do |config|
     twitter_settings = Rails.application.secrets.twitter
     config.consumer_key = twitter_settings['consumer_key']
