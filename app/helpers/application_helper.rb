@@ -7,4 +7,14 @@ module ApplicationHelper
   def has_translation?(entity, locale=I18n.locale)
     not entity.translations.index { |p| p.locale == locale}.nil?
   end
+
+  def header_link_to_current(title, path)
+    classes = 'menu-item'
+    classes += ' current_page_item' if current_page? path
+    content_tag :li, (link_to title, path), class: classes
+  end
+
+  def locale_or_nil(locale = I18n.default_locale)
+    I18n.locale == locale ? nil : I18n.locale
+  end
 end
