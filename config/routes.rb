@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
-    resources :courses
+    resources :courses do
+        member do
+          get 'site'
+        end
+    end
 
     get '' => 'home#index'
   end

@@ -1,5 +1,5 @@
 class CoursesController < ApplicationController
-  before_action :set_course, only: [:show, :edit, :update, :destroy]
+  before_action :set_course, only: [:show, :edit, :update, :destroy, :site]
 
   # GET /courses
   # GET /courses.json
@@ -62,6 +62,10 @@ class CoursesController < ApplicationController
       format.html { redirect_to courses_url, notice: I18n.translate('model_destroyed', name:@course.name) }
       format.json { head :no_content }
     end
+  end
+
+  def site
+    redirect_to @course.homepage
   end
 
   private
