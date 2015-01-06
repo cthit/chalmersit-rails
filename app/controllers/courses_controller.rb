@@ -69,7 +69,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      permitted = [:code, :year, :required, :homepage, :period, :programme] + Course.globalize_attribute_names
+      permitted = [:code, :name, :year, :required,{period_ids: []}, :homepage, :programme, :description] + Course.globalize_attribute_names
       params.require(:course).permit(permitted)
     end
 end

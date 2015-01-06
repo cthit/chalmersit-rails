@@ -29,8 +29,8 @@
     <%= f.text_field :homepage %>
   </div>
   <div class="field">
-    <%= f.label :periods, Course.human_attribute_name('period', count:2) %><br>
-    <%= f.collection_check_boxes(:periods , Period.all, :id, :name) %>
+    <%= f.label :period_ids, Course.human_attribute_name('period', count:2) %><br>
+    <%= f.collection_check_boxes(:period_ids , Period.all, :id, :name) %>
   </div>
   <div class="field">
     <%= f.label :programme %><br>
