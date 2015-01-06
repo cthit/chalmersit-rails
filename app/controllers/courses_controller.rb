@@ -10,6 +10,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    if request.path != course_path(@course)
+      redirect_to @course, status: :moved_permanently
+    end
   end
 
   # GET /courses/new
