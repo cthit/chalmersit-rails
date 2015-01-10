@@ -27,6 +27,8 @@ en:
   chs: Chalmers Student Union
   cth: Chalmers University of Technology
   login: Log in
+  sv: Swedish
+  en: English
   pw_reset: Reset password
   search: Search chalmers.it
   contact: Contact
@@ -39,6 +41,7 @@ en:
   name: Name
   new: "New %{name}"
   more: "More %{model}"
+  in_locale: "%{name} in %{lang}"
   edit: Edit
   editing: Editing
   delete: Delete
