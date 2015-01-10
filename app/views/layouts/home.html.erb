@@ -36,6 +36,14 @@
   <div class="large-3 columns">
     <%#= render partial: 'twitter/widget', locals: { handle: 'chalmersit' } %>
     <%#= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
+    <section class="box widget it-calendar">
+      <header>
+        <h3>Evenemang</h3>
+      </header>
+      <div class="gce-widget-grid">
+        <%= calendar 'https://www.google.com/calendar/ical/a55ipd3o49n05cd2eebqo854qs%40group.calendar.google.com/public/basic.ics' %>
+      </div>
+    </section>
   </div>
 </section>
 <%= render 'layouts/footer' %>

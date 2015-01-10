@@ -20,6 +20,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # Markdown for post body
 gem 'github-markdown'
 
+# iCalendar parsing (for example: Google calendar)
+gem 'icalendar'
 # Twitter feeds
 gem 'twitter'
 # Application settings
