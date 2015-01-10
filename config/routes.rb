@@ -18,6 +18,8 @@ Rails.application.routes.draw do
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
+  resources :users
+
   root 'home#index'
 
 
