@@ -8,7 +8,9 @@
     <title><%= yield(:title) + ' | ' if content_for?(:title) %><%= Configurable.site_title %></title>
 
     <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,400italic" rel="stylesheet" type="text/css">
-    <%= auto_discovery_link_tag(:rss, feed_url) %>
+    <% I18n.available_locales.each do |locale| %>
+      <%= auto_discovery_link_tag(:rss, feed_url(locale: locale), title: t('in_locale', {name: Post.model_name.human(count: 2), lang: t(locale)})) %>
+    <% end %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>

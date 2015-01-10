@@ -27,6 +27,8 @@ sv:
   chs: Chalmers Studentkår
   cth: Chalmers Tekniska Högskola
   login: Logga in
+  sv: svenska
+  en: engelska
   pw_reset: Glömt lösenord
   search: Sök på chalmers.it
   contact: Kontakt
@@ -39,6 +41,7 @@ sv:
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"
+  in_locale: "%{name} på %{lang}"
   edit: Ändra
   editing: Ändrar
   delete: Ta bort
