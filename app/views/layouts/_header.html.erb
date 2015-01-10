@@ -29,11 +29,9 @@
               </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
-                <%= header_link_to_current t('section'), committees_path %>
-                <%= header_link_to_current Post.model_name.human(count: 2), posts_path %>
-                <%= header_link_to_current Course.model_name.human(count: 2), courses_path %>
-                <li class="menu-item"><a href="https://chalmers.it/foretag/"><%= t 'business' %></a></li>
-                <li class="menu-item"><a href="https://chalmers.it/kontakt/"><%= t 'contact' %></a></li>
+                <% Menu.find_by(name: 'main').links.each do |link| %>
+                  <%= header_link_to_current link.title, link.path %>
+                <% end %>
               </ul>
             </nav>
           </div>

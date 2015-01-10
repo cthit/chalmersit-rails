@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141226224512) do
+ActiveRecord::Schema.define(version: 20150109212938) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -104,6 +104,25 @@ ActiveRecord::Schema.define(version: 20141226224512) do
   create_table "images", force: true do |t|
     t.string   "source"
     t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menu_links", force: true do |t|
+    t.integer  "menu_id"
+    t.string   "controller"
+    t.string   "action"
+    t.string   "params"
+    t.string   "title"
+    t.integer  "preferred_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_links", ["menu_id"], name: "index_menu_links_on_menu_id", using: :btree
+
+  create_table "menus", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
