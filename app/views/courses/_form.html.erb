@@ -1,42 +1,19 @@
-<%= form_for(@course) do |f| %>
-  <% if @course.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t 'errors.template.header', count:@course.errors.count, model: Course.model_name.human.downcase%>:</h2>
+<%= simple_form_for(@course) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @course.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.input :code %>
 
-  <div class="field">
-    <%= f.label :code %><br>
-    <%= f.text_field :code %>
-  </div>
-  <%= render partial: "localized_fields", locals:{f:f} %>
-  <div class="field">
-    <%= f.label :year %><br>
-    <%= f.number_field :year %>
-  </div>
-  <div class="field">
-    <%= f.label :required %><br>
-    <%= f.check_box :required %>
-  </div>
-  <div class="field">
-    <%= f.label :homepage %><br>
-    <%= f.text_field :homepage %>
-  </div>
-  <div class="field">
-    <%= f.label :period_ids, Course.human_attribute_name('period', count:2) %><br>
-    <%= f.collection_check_boxes(:period_ids , Period.all, :id, :name) %>
-  </div>
-  <div class="field">
-    <%= f.label :programme %><br>
-    <%= f.text_field :programme %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= render 'localized_fields', f: f %>
+
+  <%= f.input :year %>
+
+  <%= f.input :required %>
+
+  <%= f.input :homepage %>
+
+  <%= f.association :periods, as: :check_boxes, label: Course.human_attribute_name('period', count: 2)  %>
+
+  <%= f.input :programme %>
+
+  <%= f.button :submit %>
 <% end %>
