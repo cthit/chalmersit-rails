@@ -34,6 +34,8 @@ gem 'mini_magick'
 # Relative timestamps
 gem 'momentjs-rails'
 
+gem 'simple_form'
+
 # RSS feeds
 gem 'feedjira'
 

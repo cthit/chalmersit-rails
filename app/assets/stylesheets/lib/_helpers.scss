@@ -100,11 +100,11 @@ a.subtle-border {
 	@include label;
 }
 
-.required {
-	color: darken($dangerous-color, 10%);
-	font-weight: bold;
-	font-size: 1.2em;
-}
+// .required {
+// 	color: darken($dangerous-color, 10%);
+// 	font-weight: bold;
+// 	font-size: 1.2em;
+// }
 
 .plain-link {
 	@include plain-links;

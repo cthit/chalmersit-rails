@@ -1,29 +1,17 @@
 <div class="row">
   <div class="large-6 columns">
-    <%= f.label :event_date do %>
-      <%= Event.human_attribute_name(:event_date) %>
-      <%= f.date_field :event_date %>
-    <% end %>
+    <%= f.input :event_date, html5: true %>
   </div>
   <div class="large-6 columns">
-    <%= f.label :full_day do %>
-      <%= f.check_box :full_day %>
-      <%= Event.human_attribute_name(:full_day) %>
-    <% end %>
+    <%= f.input :full_day %>
   </div>
 </div>
 <div class="row">
   <div class="large-6 columns">
-    <%= f.label :start_time do %>
-      <%= Event.human_attribute_name(:start_time) %>
-      <%= f.time_field :start_time %>
-    <% end %>
+    <%= f.input :start_time, html5: true %>
   </div>
   <div class="large-6 columns">
-    <%= f.label :end_time do %>
-      <%= Event.human_attribute_name(:end_time) %>
-      <%= f.time_field :end_time %>
-    <% end %>
+    <%= f.input :end_time, html5: true %>
   </div>
 </div>
 <div class="row collapse">
@@ -37,15 +25,9 @@
 </div>
 <div class="row">
   <div class="large-6 columns">
-    <%= f.label :location do %>
-      <%= Event.human_attribute_name(:location) %>
-      <%= f.text_field :location %>
-    <% end %>
+    <%= f.input :location %>
   </div>
   <div class="large-6 columns">
-    <%= f.label :organizer do %>
-      <%= Event.human_attribute_name(:organizer) %>
-      <%= f.text_field :organizer, placeholder: t('.empty_if_group') %>
-    <% end %>
+    <%= f.input :organizer, placeholder: t('.empty_if_group') %>
   </div>
 </div>
