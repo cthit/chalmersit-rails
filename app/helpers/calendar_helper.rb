@@ -19,7 +19,7 @@ module CalendarHelper
   end
 
   class Calendar < Struct.new(:view, :date, :events)
-    HEADER = %w[Monday Tuesday Wednesday Thursday Friday Saturday Sunday]
+    HEADER = I18n.t(:"date.day_names").rotate
     START_DAY = :monday
 
     delegate :content_tag, to: :view
@@ -32,7 +32,7 @@ module CalendarHelper
 
     def header
       content_tag :tr do
-        HEADER.map { |day| content_tag :th, day[0] }.join.html_safe
+        HEADER.map { |day| content_tag :th, day[0].upcase }.join.html_safe
       end
     end
 
