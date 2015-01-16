@@ -31,6 +31,8 @@ gem 'jquery-fileupload-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'omniauth-oauth2'
+
 # Relative timestamps
 gem 'momentjs-rails'
 
