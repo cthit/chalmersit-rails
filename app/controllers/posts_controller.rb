@@ -31,6 +31,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     pp = set_destroy
+    pp.merge!(user_id: current_user.uid)
     @post = Post.new(pp)
 
     respond_to do |format|
@@ -48,6 +49,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1.json
   def update
     pp = set_destroy
+    pp.merge!(user_id: current_user.uid)
 
     respond_to do |format|
       if @post.update(pp)
@@ -78,7 +80,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:user_id, :group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
+      permitted = [:group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 

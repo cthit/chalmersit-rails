@@ -12,14 +12,6 @@
   <% end %>
   <div class="row">
     <div class="large-12 columns">
-      <%= f.label :user_id  do %>
-        <%= Comment.human_attribute_name(:user_id) %>
-      <%= f.text_field :user_id %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
       <%= f.label :body  do %>
         <%= Comment.human_attribute_name(:body) %>
       <%= f.text_area :body %>

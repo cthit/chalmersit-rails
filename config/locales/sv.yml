@@ -125,7 +125,7 @@ sv:
     form:
       title_placeholder: Titel för nyheten
       userid_placeholder: Ditt användarnamn!
-      groupid_placeholder: Förening eller kommitté
+      groupid_placeholder: Posta nyhet som
       body_placeholder: Nyhetsinnehållet skrivs här
     post:
       organizer_event: Arrangör av detta evenemang

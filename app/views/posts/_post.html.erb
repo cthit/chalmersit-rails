@@ -27,7 +27,7 @@
       <% end %>
       <li data-tooltip title="<%= t '.organizer_event' %>" class="icon-user">
       <% if post.event.organizer.blank? %>
-        <%= link_to post.group_id, committee_path(post.group_id) %>
+        <%= link_to_committee post %>
       <% else %>
         <%= post.event.organizer %>
       <% end %>

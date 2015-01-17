@@ -3,10 +3,9 @@
 
   <div class="row">
     <div class="large-6 columns">
-      <%= f.input :user_id, placeholder: t('.userid_placeholder') %>
-    </div>
-    <div class="large-6 columns">
-      <%= f.input :group_id, placeholder: t('.groupid_placeholder') %>
+      <%= f.input :group_id, label: t('.groupid_placeholder'),
+        collection: filter_committees(current_user),
+        prompt: false, label_method: :name, value_method: :slug %>
     </div>
   </div>
   <%= render 'localized_fields', f: f %>

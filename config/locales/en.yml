@@ -113,7 +113,7 @@ en:
     form:
       title_placeholder: Title for the news post
       userid_placeholder: Your username!
-      groupid_placeholder: Association or committee
+      groupid_placeholder: Publish post as
       body_placeholder: The news content goes here
     post:
       organizer_event: Organizer of this event
