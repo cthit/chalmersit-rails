@@ -29,16 +29,30 @@ class Post < ActiveRecord::Base
     not self.event.nil?
   end
 
+  def user
+    @user ||= User.find(user_id)
+  end
+
+  def group
+    @group ||= Committee.find_by(slug: group_id)
+  end
+
   def to_param
     "#{id}-#{slug}"
   end
 
-  def generate_slug
-    I18n.available_locales.each do |locale|
-      # Set slug to each locale if not already set.
-      Globalize.with_locale locale do
-        self.slug ||= title.try(&:parameterize)
+  private
+
+    def generate_slug
+      I18n.available_locales.each do |locale|
+        # Set slug to each locale if not already set.
+        Globalize.with_locale locale do
+          self.slug ||= title.try(&:parameterize)
+        end
       end
     end
-  end
+
+    def user_in_group
+      user.groups.include? group_id
+    end
 end
