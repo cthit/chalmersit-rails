@@ -44,6 +44,7 @@
           <ul class="header-controls horizontal-list">
             <% if signed_in? %>
               <li class="user-details">
+                <%= image_tag '', size: '32', class: 'avatar avatar-32 photo' %>
                 <strong><%= current_user.display_name %></strong>
               </li>
               <li class="dropdown">
