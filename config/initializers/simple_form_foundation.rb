@@ -92,7 +92,7 @@ SimpleForm.setup do |config|
   end
 
   # CSS class for buttons
-  config.button_class = 'button small-12'
+  config.button_class = 'button expand'
 
   # Set this to div to make the checkbox and radio properly work
   # otherwise simple_form adds a label tag instead of a div arround
