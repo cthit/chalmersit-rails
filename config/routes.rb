@@ -18,6 +18,9 @@ Rails.application.routes.draw do
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
+  get 'auth/:provider/callback' => 'sessions#create'
+  get 'signout' => 'sessions#destroy', as: :signout
+
   root 'home#index'
 
 

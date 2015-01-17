@@ -16,7 +16,7 @@
     <%= csrf_meta_tags %>
   </head>
 
-  <body class="<%= controller.controller_name %> <%= controller.controller_name %>-<%= action_name %>">
+  <body class="<%= body_classes %>">
     <header role="banner">
       <div class="top-bar">
         <div class="inner-bar">
@@ -42,18 +42,40 @@
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle" class="show-for-small">≡</a>
           <ul class="header-controls horizontal-list">
-              <li><%= link_to t('login'), "https://account.chalmers.it/?redirect_to=#{request.original_url}", class: 'button tiny', id: 'login-btn' %></li>
-              <li><a href="https://account.chalmers.it/?page=reset" class="button tiny secondary"><%= t 'pw_reset' %></a></li>
+            <% if signed_in? %>
+              <li class="user-details">
+                <%= image_tag '', size: '32', class: 'avatar avatar-32 photo' %>
+                <strong><%= current_user.display_name %></strong>
+              </li>
+              <li class="dropdown">
+                <span id="tools-menu-trigger" class="dropdown-trigger icon-cog">Verktyg</span>
+                <ul class="dropdown-sub">
+                  <li><%= link_to 'Posta nyhet', new_post_path %></li>
+                  <li><%= link_to 'Skriv ut', '#print_path' %></li>
+                  <li><%= link_to 'Boka rum', 'https://chalmers.it/bokning/' %></li>
+                  <li><%= link_to 'Schema', 'https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html', target: '_blank' %></li>
+                  <li><%= link_to 'Redigera profil', 'https://chalmers.it/profil/' %></li>
+                  <li><%= link_to 'Admin', '#admin_path', target: '_blank' %></li>
+                  <li><%= link_to t('logout'), signout_path %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
+            <% end %>
             <li>
               <form role="search" action="/" method="get">
                   <input type="search" placeholder="<%= t 'search' %>" results="0" name="s"/>
               </form>
             </li>
-            <% I18n.available_locales.each do |item| %>
-                <% unless I18n.locale == item %>
-                <li><%= link_to image_tag("flags/#{item}.svg"), locale: item == I18n.default_locale ? nil : item %></li>
+            <li class="flags">
+              <ul class="horizontal-list">
+                <% I18n.available_locales.each do |item| %>
+                  <% unless I18n.locale == item %>
+                    <li><%= link_to image_tag("flags/#{item}.svg"), locale: item == I18n.default_locale ? nil : item %></li>
+                  <% end %>
                 <% end %>
-            <% end %>
+              </ul>
+            </li>
           </ul>
         </div>
       </div>
