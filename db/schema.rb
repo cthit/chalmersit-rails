@@ -108,6 +108,25 @@ ActiveRecord::Schema.define(version: 20150116155033) do
     t.datetime "updated_at"
   end
 
+  create_table "menu_links", force: true do |t|
+    t.integer  "menu_id"
+    t.string   "controller"
+    t.string   "action"
+    t.string   "params"
+    t.string   "title"
+    t.integer  "preferred_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_links", ["menu_id"], name: "index_menu_links_on_menu_id", using: :btree
+
+  create_table "menus", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "pages", force: true do |t|
     t.string   "title"
     t.text     "body"
@@ -162,4 +181,5 @@ ActiveRecord::Schema.define(version: 20150116155033) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
 end

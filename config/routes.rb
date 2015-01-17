@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :menu_links
+
+  resources :menus
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees
 

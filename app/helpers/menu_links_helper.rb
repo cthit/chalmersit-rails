@@ -1,0 +1,2 @@
+module MenuLinksHelper
+end
