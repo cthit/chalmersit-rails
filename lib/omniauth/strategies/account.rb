@@ -4,7 +4,7 @@ module OmniAuth
       option :name, :account
 
       option :client_options, {
-        site: 'http://10.0.0.219:3000',
+        site: ENV['ACCOUNT_IP'],
         authorize_path: '/oauth/authorize'
       }
 

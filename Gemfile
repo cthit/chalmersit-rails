@@ -59,6 +59,8 @@ gem 'spring',        group: :development
 gem 'globalize', '~> 4.0.2'
 gem 'globalize-accessors', '~> 0.1.5'
 
+gem 'rest-client'
+
 group :development do
   # Nice error messages
   gem 'better_errors'

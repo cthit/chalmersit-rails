@@ -26,7 +26,8 @@ en:
   it: Information Technology
   chs: Chalmers Student Union
   cth: Chalmers University of Technology
-  login: Log in
+  login: Sign in
+  logout: Sign out
   sv: Swedish
   en: English
   pw_reset: Reset password
