@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :find_or_create_event, only: [:new, :edit]
 
   # GET /posts
   # GET /posts.json
@@ -20,12 +21,10 @@ class PostsController < ApplicationController
   # GET /posts/new
   def new
     @post = Post.new
-    @event = find_or_create_event
   end
 
   # GET /posts/1/edit
   def edit
-    @event = find_or_create_event
   end
 
   # POST /posts
@@ -84,8 +83,10 @@ class PostsController < ApplicationController
     end
 
     def find_or_create_event
-      return @post.event unless @post.event.nil?
-      Event.new(post: @post, event_date: Date.today, start_time: Time.now, end_time: Time.now + 1.hour)
+      @event ||= begin
+        return @post.event unless @post.nil? || @post.event.nil?
+        Event.new(post: @post, event_date: Date.today, start_time: Time.now.strftime('%R'), end_time: (Time.now + 1.hour).strftime('%R'))
+      end
     end
 
     def set_destroy

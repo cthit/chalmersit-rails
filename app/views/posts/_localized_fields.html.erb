@@ -1,30 +1,24 @@
 <dl class="tabs" data-tab>
-    <% I18n.available_locales.each do |locale| %>
-        <dd class="<%= "active" if I18n.locale == locale %>"><%= link_to image_tag("flags/#{locale}.svg", size: "32"), "#lan-#{locale}" %></dd>
-    <% end %>
+  <% I18n.available_locales.each do |locale| %>
+    <dd class="<%= "active" if I18n.locale == locale %>"><%= link_to image_tag("flags/#{locale}.svg", size: "32"), "#lan-#{locale}" %></dd>
+  <% end %>
 </dl>
 <div class="tabs-content">
-<% active = I18n.locale %>
-<% I18n.available_locales.each do |locale| %>
-<% I18n.with_locale(locale) do %>
-    <div class="content <%= "active" if active == locale %>" id="lan-<%= locale %>">
-    <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :title do %>
-            <%= Post.human_attribute_name(:title) %>
-            <%= f.text_field "title_#{locale}", placeholder: t('posts.form.title_placeholder') %>
-          <% end %>
+  <% active = I18n.locale %>
+  <% I18n.available_locales.each do |locale| %>
+    <% I18n.with_locale(locale) do %>
+      <div class="content <%= "active" if active == locale %>" id="lan-<%= locale %>">
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.input "title_#{locale}", label: Post.human_attribute_name(:title), placeholder: t('posts.form.title_placeholder') %>
+          </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="large-12 columns">
-          <%= f.label :body do %>
-              <%= Post.human_attribute_name(:body) %>
-            <%= f.text_area "body_#{locale}", rows: 20, placeholder: t('posts.form.body_placeholder') %>
-          <% end %>
+        <div class="row">
+          <div class="large-12 columns">
+            <%= f.input "body_#{locale}", label: Post.human_attribute_name(:body), as: :text, placeholder: t('posts.form.body_placeholder') %>
+          </div>
         </div>
-    </div>
-</div>
-<% end %>
-<% end %>
+      </div>
+    <% end %>
+  <% end %>
 </div>

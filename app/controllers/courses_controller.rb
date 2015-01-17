@@ -10,6 +10,9 @@ class CoursesController < ApplicationController
   # GET /courses/1
   # GET /courses/1.json
   def show
+    if request.path != course_path(@course)
+      redirect_to @course, status: :moved_permanently
+    end
   end
 
   # GET /courses/new
@@ -69,7 +72,7 @@ class CoursesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def course_params
-      permitted = [:code, :year, :required, :homepage, :period, :programme] + Course.globalize_attribute_names
+      permitted = [:code, :name, :year, :required,{period_ids: []}, :homepage, :programme, :description] + Course.globalize_attribute_names
       params.require(:course).permit(permitted)
     end
 end

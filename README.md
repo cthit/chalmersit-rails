@@ -9,6 +9,7 @@ vagrant plugin install vagrant-vbguest vagrant-librarian-chef
 # Start the VM and ssh into it
 vagrant up
 vagrant ssh
+echo "PATH=$PATH:/home/vagrant/.rbenv/versions/2.1.2/bin/" >> /home/vagrant/.bashrc
 
 # Install dependencies
 cd /vagrant

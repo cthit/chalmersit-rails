@@ -17,9 +17,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem 'activeresource'
+
 # Markdown for post body
 gem 'github-markdown'
 
+# iCalendar parsing (for example: Google calendar)
+gem 'icalendar'
 # Twitter feeds
 gem 'twitter'
 # Application settings
@@ -29,8 +33,12 @@ gem 'jquery-fileupload-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'omniauth-oauth2'
+
 # Relative timestamps
 gem 'momentjs-rails'
+
+gem 'simple_form'
 
 # RSS feeds
 gem 'feedjira'
@@ -50,6 +58,8 @@ gem 'spring',        group: :development
 # Internationalisation support (i.e. Swedish and English)
 gem 'globalize', '~> 4.0.2'
 gem 'globalize-accessors', '~> 0.1.5'
+
+gem 'rest-client'
 
 group :development do
   # Nice error messages

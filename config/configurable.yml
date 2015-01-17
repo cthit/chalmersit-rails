@@ -1,20 +1,20 @@
 # This file controls what config variables you want to be able to allow your users
 # to set, as well as those you'll be able to access from within the application.
-# 
+#
 # If you want to be able to access a string config[:site_title], for example:
-#   
+#
 # site_title:
 #   name: Site Title
 #   type: string
 #   default: My Site
-#   
+#
 # 'name' is the name that appears in the edit form
-# 
+#
 # 'type' can be 'string' for a text field, 'password' for a password field or 'text' for a text area
 #   'type' defaults to 'string'
-# 
+#
 # 'default' is the default value to use if there's no entry in the database. Otherwise, nil will be returned
-# 
+#
 site_title:
   name: Site Title
   type: string
@@ -43,3 +43,7 @@ locality:
   name: Locality
   type: string
   default: Göteborg
+calendar_url:
+  name: Calendar URL
+  type: string
+  default: "https://www.google.com/calendar/ical/a55ipd3o49n05cd2eebqo854qs%40group.calendar.google.com/public/basic.ics"

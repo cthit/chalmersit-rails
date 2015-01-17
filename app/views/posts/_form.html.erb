@@ -1,36 +1,17 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t 'errors.template.header', count: @post.errors.count, model:Post.model_name.human.downcase %>:</h2>
-
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
 
   <div class="row">
     <div class="large-6 columns">
-      <%= f.label :user_id do %>
-        <%= Post.human_attribute_name(:user_id) %>
-        <%= f.text_field :user_id, placeholder: t('.userid_placeholder') %>
-      <% end %>
+      <%= f.input :user_id, placeholder: t('.userid_placeholder') %>
     </div>
     <div class="large-6 columns">
-      <%= f.label :group_id do %>
-        <%= Post.human_attribute_name(:group_id) %>
-        <%= f.text_field :group_id, placeholder: t('.groupid_placeholder') %>
-      <% end %>
+      <%= f.input :group_id, placeholder: t('.groupid_placeholder') %>
     </div>
   </div>
-  <%= render partial: "localized_fields", locals:{f:f} %>
+  <%= render 'localized_fields', f: f %>
   <div class="row">
-    <%= f.label :sticky do %>
-      <%= f.check_box :sticky %>
-      <%= Post.human_attribute_name(:sticky) %>
-    <% end %>
+    <%= f.input :sticky %>
   </div>
   <div class="row">
     <%= check_box_tag 'post_is_event', 1, show_event_fields? %>
@@ -38,13 +19,13 @@
   </div>
   <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
     <legend><%= Event.model_name.human %></legend>
-    <%= f.fields_for :event do |builder| %>
-      <%= render partial: 'event_fields' , locals: {f: builder} %>
+    <%= f.fields_for @event do |builder| %>
+      <%= render 'event_fields', f: builder %>
     <% end %>
   </fieldset>
   <div class="row">
     <div class="large-12 columns">
-      <%= f.submit class: 'button large-12' %>
+      <%= f.button :submit %>
     </div>
   </div>
 <% end %>
