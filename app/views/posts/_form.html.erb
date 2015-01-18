@@ -18,7 +18,7 @@
   </div>
   <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
     <legend><%= Event.model_name.human %></legend>
-    <%= f.fields_for @event do |builder| %>
+    <%= f.simple_fields_for :event, @event do |builder| %>
       <%= render 'event_fields', f: builder %>
     <% end %>
   </fieldset>
