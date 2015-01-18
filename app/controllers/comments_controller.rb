@@ -5,12 +5,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+    @comment = @post.comments.build(comment_params.merge(user_id: current_user.uid))
     @comments = @post.comments.where('created_at IS NOT NULL')
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @post, notice: I18n.translate('model_created', name:I18n.translate('comment_definite')) }
+        format.html { redirect_to post_path(@post, anchor: 'comments'), notice: I18n.translate('model_created', name:I18n.translate('comment_definite')) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render 'posts/show', location: @post }
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     @post = @comment.post
     @comment.destroy
     respond_to do |format|
-      format.html { redirect_to @post, notice: I18n.translate('model_destroyed', name:I18n.translate('comment_definite')) }
+      format.html { redirect_to post_path(@post, anchor: 'comments'), notice: I18n.translate('model_destroyed', name:I18n.translate('comment_definite')) }
       format.json { head :no_content }
     end
   end
@@ -38,6 +38,6 @@ class CommentsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
-      params.require(:comment).permit(:post_id, :body, :user_id)
+      params.require(:comment).permit(:post_id, :body)
     end
 end

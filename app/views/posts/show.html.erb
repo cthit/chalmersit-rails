@@ -7,9 +7,9 @@
 </div>
 
 <section id="respond">
-  <%= render partial: 'comments/form' %>
+  <%= render 'comments/form' %>
 </section>
-
+<a href="#comments"></a>
 <% if @comments.any? %>
   <section id="comments">
     <ol class="commentlist">
