@@ -46,7 +46,7 @@
                 <strong><%= current_user.display_name %></strong>
               </li>
               <li class="dropdown">
-                <span id="tools-menu-trigger" class="dropdown-trigger icon-cog">Verktyg</span>
+                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: 'Verktyg' %></span>
                 <ul class="dropdown-sub">
                   <li><%= link_to 'Posta nyhet', new_post_path %></li>
                   <li><%= link_to 'Skriv ut', '#print_path' %></li>
