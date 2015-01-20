@@ -3,6 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
+  $('#print_printer').chosen
+    no_results_text: 'No matches'
+    search_contains: true
+
   $('#print_printer').on 'change', ->
     selected = $ 'option:selected', this
     setMedia selected.data('media').split(' ')

@@ -97,3 +97,6 @@ gem 'multi_fetch_fragments'
 
 # Used for SCP and SSH by print script to connect to chalmers servers
 gem 'net-scp', '~> 1.2.1'
+
+# Used for searching of selector in print
+gem 'chosen-rails'
