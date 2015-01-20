@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
     get 'print/new' => 'print#new', as: :new_print
-    post 'print' => 'print#print', as: :print
+    post 'print' => 'print#print', as: :prints
 
     resources :courses do
         member do

@@ -19,6 +19,10 @@ class Print
     "/usr/bin/lpr -P '#{printer.name}' -\# #{copies} #{options}"
   end
 
+  def persisted?
+    false
+  end
+
   def options
     [:duplex, :ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt}\='#{send opt}'" }.join " "
   end

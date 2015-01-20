@@ -11,6 +11,7 @@ $ ->
     console.log(this.textContent)
     $('#print_printer').val this.textContent
     $('#print_printer').trigger 'chosen:updated'
+    $('#print_printer').trigger 'change'
 
   $('#print_printer').on 'change', ->
     selected = $ 'option:selected', this
