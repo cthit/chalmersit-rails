@@ -1,3 +1,17 @@
 // Place all the styles related to the print controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+ol.printer-list {
+  list-style-type: none;
+  margin-left: 0;
+  li {
+    &::before {
+      content: "— ";
+    }
+    &::first-child::before {
+      content: "";
+    }
+    display: inline-block;
+  }
+}

@@ -13,10 +13,16 @@
   <%= f.file_field :file %>
   <%= f.label :printer %>
   <%= f.select :printer do %>
-    <% Printer.all.each do |p| %>
+    <% Printer.order(weight: :desc).each do |p| %>
       <%= content_tag(:option, p.name, value: p.name, data: { media: p.media, location: p.location }) %>
     <% end %>
   <% end %>
+  <%= label_tag("Suggestions") %>
+  <ol class="printer-list">
+  <% Printer.order(weight: :desc).limit(10).each do |p| %>
+    <li><%= link_to p.name, '#', class: 'set-printer'  %></li>
+  <% end %>
+  </ol>
   <%= f.label(:copies, "Number of copies") %>
   <%= f.number_field(:copies) %>
   <%= f.label(:duplex, "Doublepaged: ") %>
