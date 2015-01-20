@@ -7,13 +7,17 @@ class PrintController < ApplicationController
   end
 
   def print
+    printer = Printer.find_by!(name: print_params[:printer])
+
+    new_print_params = print_params.merge(printer: printer)
     # filepath = file.tempfile.path
-    @print = Print.new(print_params)
+    @print = Print.new(new_print_params)
+
 
 
     if @print.valid?
       begin
-        print_script @print
+        # print_script @print
         flash[:notice] = "Your document has been sent to the printer"
       rescue => e
         flash[:alert] = e.message

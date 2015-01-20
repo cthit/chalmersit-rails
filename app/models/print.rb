@@ -16,7 +16,7 @@ class Print
   end
 
   def to_s
-    "/usr/bin/lpr -P '#{printer}' -\# #{copies} #{options}"
+    "/usr/bin/lpr -P '#{printer.name}' -\# #{copies} #{options}"
   end
 
   def options
@@ -27,10 +27,6 @@ class Print
     @duplex ? "two-sided-long-edge" : "one-sided"
   end
 
-  def self.available_media
-    %w(A3 A4)
-  end
-
   def self.available_ppi
     %w(auto 600 1200)
   end
@@ -38,7 +34,13 @@ class Print
   validates :copies, numericality: { only_integer: true}
   validates :duplex, inclusion: { in: ["two-sided-long-edge", "one-sided"]}
   validates :ranges, format:  { with: /[0-9\-, ]+/, allow_blank: true}
-  validates :media, inclusion: { in: Print.available_media }
+  validate :media_in_printer # media, inclusion: { in: printer.media.split }
   validates :ppi, inclusion: { in: Print.available_ppi }
   validates :username, :password, :file, :printer, presence: true
+
+
+  private
+    def media_in_printer
+      self.errors[:media] << "not supported by printer" unless printer && printer.media.split.include?(media)
+    end
 end

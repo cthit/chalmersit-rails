@@ -182,4 +182,11 @@ ActiveRecord::Schema.define(version: 20150116155033) do
     t.datetime "updated_at"
   end
 
+  create_table "printers", force: true do |t|
+    t.string  "name"
+    t.string  "location"
+    t.string  "media"
+    t.integer "weight",   default: 10
+  end
+
 end
