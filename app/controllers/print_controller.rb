@@ -19,6 +19,7 @@ class PrintController < ApplicationController
       begin
         # print_script @print
         flash[:notice] = "Your document has been sent to the printer"
+        printer.increment!(:weight)
       rescue => e
         flash[:alert] = e.message
       end
