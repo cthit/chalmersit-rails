@@ -11,7 +11,13 @@
       </ul>
     </div>
   <% end %>
-  <%= f.file_field :file %>
+  <% if @print.file_cache %>
+    Uploaded file: <%= @print.file_name %>
+    <%= f.hidden_field :file_name %>
+    <%= f.hidden_field :file_cache %>
+  <% else %>
+    <%= f.file_field :file %>
+  <% end %>
   <%= f.label :printer %>
   <%= f.select :printer do %>
     <% Printer.order(weight: :desc).each do |p| %>
@@ -21,21 +27,27 @@
   <%= label_tag("Suggestions") %>
   <ol class="printer-list">
   <% Printer.order(weight: :desc).limit(10).each do |p| %>
-    <li><%= link_to p.name, '#', class: 'set-printer'  %></li>
+    <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
   <% end %>
   </ol>
   <%= f.label(:copies, "Number of copies") %>
-  <%= f.number_field(:copies) %>
-  <%= f.label(:duplex, "Doublepaged: ") %>
+  <%= f.number_field(:copies, min: 1) %>
+
   <%= f.check_box(:duplex, checked: true) %>
+  <%= f.label(:duplex, "Doublepaged") %>
+
   <%= f.label(:ranges, "Range: ") %>
   <%= f.text_field(:ranges) %>
+
   <%= f.label(:media, "Papersize:") %>
   <%= f.select(:media, options_for_select(["A4"])) %>
+
   <%= f.label(:ppi, "Resolution:") %>
   <%= f.select(:ppi, options_for_select(Print.available_ppi)) %>
+
   <%= f.label(:username, "Username:") %>
   <%= f.text_field(:username) %>
+
   <%= f.label(:password, "Password:") %>
   <%= f.password_field(:password) %>
   <%= submit_tag %>

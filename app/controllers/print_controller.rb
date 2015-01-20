@@ -7,19 +7,22 @@ class PrintController < ApplicationController
   end
 
   def print
-    printer = Printer.find_by!(name: print_params[:printer])
+    @print = Print.new(print_params)
+    if @print.file.present?
+      @print.file_name = @print.file.original_filename
+      @print.file_cache = @print.file.tempfile.path
+    end
 
-    new_print_params = print_params.merge(printer: printer)
-    # filepath = file.tempfile.path
-    @print = Print.new(new_print_params)
+    @print.file = File.new(@print.file_cache)
 
-
+    @print.printer = Printer.find_by!(name: print_params[:printer])
 
     if @print.valid?
       begin
-        # print_script @print
+        print_script @print
+        @print.printer.increment!(:weight)
+        @print.file_cache = nil
         flash[:notice] = "Your document has been sent to the printer"
-        printer.increment!(:weight)
       rescue => e
         flash[:alert] = e.message
       end
@@ -29,6 +32,6 @@ class PrintController < ApplicationController
 
   private
     def print_params
-      params.require(:print).permit(:username, :password, :file, :copies, :printer, :duplex, :ranges, :media, :ppi)
+      params.require(:print).permit(:username, :password, :copies, :printer, :file, :file_cache, :file_name, :duplex, :ranges, :media, :ppi)
     end
 end

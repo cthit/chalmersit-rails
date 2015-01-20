@@ -3,7 +3,7 @@ class Print
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :copies, :duplex, :ranges, :media, :username, :password, :ppi, :file, :printer
+  attr_accessor :copies, :duplex, :ranges, :media, :username, :password, :ppi, :file, :file_cache, :file_name, :printer
 
   def initialize(attributes = {})
     attributes.each do |name, value|
@@ -38,9 +38,10 @@ class Print
   validates :copies, numericality: { only_integer: true}
   validates :duplex, inclusion: { in: ["two-sided-long-edge", "one-sided"]}
   validates :ranges, format:  { with: /[0-9\-, ]+/, allow_blank: true}
-  validate :media_in_printer # media, inclusion: { in: printer.media.split }
+  validate :media_in_printer
   validates :ppi, inclusion: { in: Print.available_ppi }
-  validates :username, :password, :file, :printer, presence: true
+  validates :username, :password, :printer, presence: true
+  validates :file, presence: true, unless: 'file_cache.present?'
 
 
   private

@@ -5,7 +5,7 @@ module PrintHelper
   def print_script(print)
     output = nil
     Net::SSH.start(DOMAIN, print.username, password: print.password) do |ssh|
-      ssh.scp.upload!(print.file.tempfile.path, SSH_FILENAME)
+      ssh.scp.upload!(print.file.path, SSH_FILENAME)
       output = ssh.exec! print_string(print)
     end
     raise output unless output.nil?
