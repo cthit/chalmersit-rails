@@ -4,7 +4,7 @@ module OmniAuth
       option :name, :account
 
       option :client_options, {
-        site: ENV['ACCOUNT_IP'],
+        site: Rails.configuration.account_ip,
         authorize_path: '/oauth/authorize'
       }
 

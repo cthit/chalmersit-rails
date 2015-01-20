@@ -27,11 +27,11 @@ module ApplicationHelper
   end
 
   def edit_user_path
-    "#{ENV['ACCOUNT_IP']}/me/edit"
+    "#{Rails.configuration.account_ip}/me/edit"
   end
 
   def logout_path(return_to)
     return_to = "?return_to=#{return_to}" if return_to
-    "#{ENV['ACCOUNT_IP']}/logout#{return_to}"
+    "#{Rails.configuration.account_ip}/logout#{return_to}"
   end
 end

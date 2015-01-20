@@ -1,5 +1,5 @@
 class User < ActiveRestClient::Base
-  base_url ENV['ACCOUNT_IP']
+  base_url Rails.configuration.account_ip
 
   before_request :set_bearer
 
