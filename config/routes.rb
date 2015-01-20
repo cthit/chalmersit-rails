@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     get '' => 'home#index'
   end
-
+  resources :pages
   resources :images, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'

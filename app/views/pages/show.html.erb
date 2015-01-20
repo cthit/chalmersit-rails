@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+
+<% unless @page.parent.nil? %>
+    <%= link_to 'Parent', @page.parent %> 
+<% end %>
+<%= link_to 'Edit', edit_page_path(@page) %> |
+<%= link_to 'Back', pages_path %>
