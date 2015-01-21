@@ -3,7 +3,7 @@ class PrintController < ApplicationController
 
   def new
       @print = Print.new(copies: 1)
-
+      @print.username = current_user.uid if signed_in?
   end
 
   def print
