@@ -8,12 +8,15 @@ class PrintController < ApplicationController
 
   def print
     @print = Print.new(print_params)
+
+    # Solution for caching the uploaded file
+    # Saved in file_cache and then sent to the client
     if @print.file.present?
       @print.file_name = @print.file.original_filename
       @print.file_cache = @print.file.tempfile.path
     end
 
-    @print.file = File.new(@print.file_cache)
+    @print.file = File.new(@print.file_cache) if @print.file_cache
 
     @print.printer = Printer.find_by!(name: print_params[:printer])
 
@@ -24,6 +27,7 @@ class PrintController < ApplicationController
         @print.file_cache = nil
         flash[:notice] = "Your document has been sent to the printer"
       rescue => e
+        # Log error message to log/printer.log
         @print.print_logger e.message
         flash[:alert] = e.message
       end

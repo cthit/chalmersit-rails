@@ -4,9 +4,9 @@ module PrintHelper
   #Called to upload and print a file on a chalmers printer
   def print_script(print)
     output = nil
-    Net::SSH.start(DOMAIN, print.username, password: print.password) do |ssh|
+    Net::SSH.start(DOMAIN, print.username, password: print.password, number_of_password_prompts: 0) do |ssh|
       ssh.scp.upload!(print.file.path, SSH_FILENAME)
-      output = ssh.exec! print_string(print)
+      # output = ssh.exec! print_string(print)
     end
     raise output unless output.nil?
   end
