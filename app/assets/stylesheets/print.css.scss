@@ -6,11 +6,8 @@ ol.printer-list {
   list-style-type: none;
   margin-left: 0;
   li {
-    &::before {
+    &:not(:first-child):before {
       content: "— ";
-    }
-    &::first-child::before {
-      content: "";
     }
     display: inline-block;
   }
