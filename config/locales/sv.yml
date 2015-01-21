@@ -123,6 +123,12 @@ sv:
         ppi: Upplösning
         username: CID
         password: Lösenord
+    errors:
+      models:
+        print:
+          attributes:
+            media:
+              unsupported: stöds inte av skrivaren
 
   layouts:
     home:

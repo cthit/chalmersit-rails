@@ -111,6 +111,12 @@ en:
         ppi: Resolution
         username: CID
         password: Password
+    errors:
+      models:
+        print:
+          attributes:
+            media:
+              unsupported: Paper size is not supported by the printer
 
   layouts:
     home:

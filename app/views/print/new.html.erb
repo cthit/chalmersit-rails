@@ -4,7 +4,7 @@
 
   <% if @print.file_cache %>
     <%= f.label :file %>
-    <%= '.uploaded' %>: <%= @print.file_name %>
+    <%= @print.file_name %>
     <%= f.input :file_name, as: :hidden %>
     <%= f.input :file_cache, as: :hidden %>
   <% else %>
