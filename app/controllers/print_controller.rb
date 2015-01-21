@@ -24,6 +24,7 @@ class PrintController < ApplicationController
         @print.file_cache = nil
         flash[:notice] = "Your document has been sent to the printer"
       rescue => e
+        @print.print_logger e.message
         flash[:alert] = e.message
       end
     end

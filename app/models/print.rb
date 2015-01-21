@@ -43,6 +43,11 @@ class Print
   validates :username, :password, :printer, presence: true
   validates :file, presence: true, unless: 'file_cache.present?'
 
+  def print_logger(err)
+    @@print_logger ||= Logger.new(Rails.root.join('log', 'printer.log'))
+    @@print_logger.error "#{err} USER: #{self.username} CMD: \"#{self.to_s}\""
+  end
+
 
   private
     def media_in_printer
