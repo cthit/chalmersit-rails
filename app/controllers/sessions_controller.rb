@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  protect_from_forgery
+
   def create
     s = Session.from_omniauth(env["omniauth.auth"])
     session[:user_id] = s.uid
