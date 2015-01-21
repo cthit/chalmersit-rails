@@ -7,6 +7,21 @@ $ ->
     no_results_text: 'No matches'
     search_contains: true
 
+  $('.get-pq-button').on 'click', ->
+    $('#pq').show()
+    $('#pq .done').toggle()
+    $.ajax
+      url: '/print/pq.json'
+      type: 'POST'
+      data:
+        username: $('#print_username').val()
+        password: $('#print_password').val()
+    .success (data) ->
+      $('#pq .name').text(data.username)
+      $('#pq .pq').text(data.value)
+      $('#pq .done').toggle()
+
+
   $('.printer-list').on 'click', '.set-printer', ->
     console.log(this.textContent)
     $('#print_printer').val this.textContent

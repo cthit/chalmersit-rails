@@ -14,6 +14,7 @@ Rails.application.routes.draw do
 
     get 'print' => 'print#new', as: :new_print
     post 'print' => 'print#print', as: :prints
+    post 'print/pq' => 'print#pq', as: :pq_print
 
     resources :courses do
         member do

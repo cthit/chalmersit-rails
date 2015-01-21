@@ -35,6 +35,10 @@ class PrintController < ApplicationController
     render :new
   end
 
+  def pq
+    render json: print_pq(params[:username], params[:password])
+  end
+
   private
     def print_params
       params.require(:print).permit(:username, :password, :copies, :printer, :file, :file_cache, :file_name, :duplex, :ranges, :media, :ppi)

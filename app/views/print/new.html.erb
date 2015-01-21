@@ -44,10 +44,6 @@
     </div>
   </div>
 
-
-
-
-
   <fieldset>
     <legend><%= t '.user' %></legend>
     <div class="row collapse">
@@ -73,3 +69,9 @@
   </fieldset>
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>
+
+<%= button_tag 'PQ', class: 'button secondary get-pq-button' %>
+<div id="pq">
+  <%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>
+  <span class="done">PQ for <output class="name"></output>: <output class="pq"></output></span>
+</div>
