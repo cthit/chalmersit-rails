@@ -7,3 +7,6 @@ $ ->
     $this = $(this)
     handle = $this.data('handle')
     $this.find('.tweet-list').load("/twitter/feed/#{handle}?count=6")
+
+  $('.lunch_feed').load('/lunch/feed/')
+
