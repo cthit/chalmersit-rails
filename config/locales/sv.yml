@@ -108,6 +108,21 @@ sv:
         description: Beskrivning
         url: URL
         email: Epost
+  activemodel:
+    models:
+      print: Utskrift
+      printer: Skrivare
+    attributes:
+      print:
+        file: Fil
+        printer: Skrivare
+        copies: Antal kopior
+        duplex: Dubbelsidig utskrift
+        ranges: Intervall
+        media: Pappersstorlek
+        ppi: Upplösning
+        username: CID
+        password: Lösenord
 
   layouts:
     home:
@@ -143,6 +158,12 @@ sv:
     feed:
       lunch: Lunch
       no_lunch_today: Ingen lunch idag
+  print:
+    new:
+      suggestions: Förslag
+      user: Användare
+      uploaded: Uppladdad fil
+
 
 
   date:

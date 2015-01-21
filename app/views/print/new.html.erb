@@ -1,54 +1,58 @@
-<% content_for :title, 'Print' %>
-<%= form_for(@print) do |f| %>
-  <% if @print.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@print.errors.count, "error") %> prohibited this post from being saved:</h2>
+<% content_for :title, t('layouts.home.print') %>
+<%= simple_form_for(@print) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @print.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
   <% if @print.file_cache %>
-    Uploaded file: <%= @print.file_name %>
-    <%= f.hidden_field :file_name %>
-    <%= f.hidden_field :file_cache %>
+    <%= f.label :file %>
+    <%= '.uploaded' %>: <%= @print.file_name %>
+    <%= f.input :file_name, as: :hidden %>
+    <%= f.input :file_cache, as: :hidden %>
   <% else %>
-    <%= f.file_field :file %>
+    <%= f.input :file, as: :file %>
   <% end %>
-  <%= f.label :printer %>
-  <%= f.select :printer do %>
-    <% Printer.order(weight: :desc).each do |p| %>
-      <%= content_tag(:option, p.name, value: p.name, data: { media: p.media, location: p.location }) %>
-    <% end %>
+
+  <%= f.input :printer do %>
+    <%= f.select :printer, Printer.weighted.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
   <% end %>
-  <%= label_tag("Suggestions") %>
-  <ol class="printer-list">
-  <% Printer.order(weight: :desc).limit(10).each do |p| %>
-    <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
-  <% end %>
-  </ol>
-  <%= f.label(:copies, "Number of copies") %>
-  <%= f.number_field(:copies, min: 1) %>
 
-  <%= f.check_box(:duplex, checked: true) %>
-  <%= f.label(:duplex, "Doublepaged") %>
+  <div class="suggestions">
+    <%= f.label t('.suggestions') %>
+    <ol class="printer-list">
+      <% Printer.weighted.limit(10).each do |p| %>
+        <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
+      <% end %>
+    </ol>
+  </div>
 
-  <%= f.label(:ranges, "Range: ") %>
-  <%= f.text_field(:ranges) %>
+  <%= f.input :duplex, as: :boolean, input_html: { checked: true } %>
 
-  <%= f.label(:media, "Papersize:") %>
-  <%= f.select(:media, options_for_select(["A4"])) %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :copies, as: :integer, input_html: { min: 1 } %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :ranges %>
+    </div>
+  </div>
 
-  <%= f.label(:ppi, "Resolution:") %>
-  <%= f.select(:ppi, options_for_select(Print.available_ppi)) %>
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :media, collection: ['A4'] %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :ppi, collection: Print.available_ppi, prompt: false %>
+    </div>
+  </div>
 
-  <%= f.label(:username, "Username:") %>
-  <%= f.text_field(:username) %>
 
-  <%= f.label(:password, "Password:") %>
-  <%= f.password_field(:password) %>
-  <%= submit_tag %>
+
+
+
+  <fieldset>
+    <legend><%= t '.user' %></legend>
+    <%= f.input :username %>
+
+    <%= f.input :password %>
+  </fieldset>
+  <%= f.button :submit, t('layouts.home.print') %>
 <% end %>

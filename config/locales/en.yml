@@ -96,6 +96,21 @@ en:
       comment:
         user_id: User
         body: Comment
+  activemodel:
+    models:
+      print: Print
+      printer: Printer
+    attributes:
+      print:
+        file: File
+        printer: Printer
+        copies: No. of copies
+        duplex: Double-sided
+        ranges: Ranges
+        media: Paper size
+        ppi: Resolution
+        username: CID
+        password: Password
 
   layouts:
     home:
@@ -131,6 +146,11 @@ en:
     feed:
       lunch: Lunch
       no_lunch_today: No lunch today
+  print:
+    new:
+      suggestions: Suggestions
+      user: User
+      uploaded: Uploaded file
 
   date:
     abbr_day_names:
