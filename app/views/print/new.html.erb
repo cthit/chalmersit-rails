@@ -50,9 +50,24 @@
 
   <fieldset>
     <legend><%= t '.user' %></legend>
-    <%= f.input :username %>
+    <div class="row collapse">
+        <div class="small-3 large-1 columns">
+            <span class="prefix">
+                <%= fa_icon 'user' %>
+            </span>
+        </div>
+        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false, placeholder: t('activemodel.attributes.print.username') -%>
 
-    <%= f.input :password %>
+        <div class="small-3 large-1 columns large-offset-1">
+            <span class="prefix">
+                <%= fa_icon 'key' %>
+            </span>
+        </div>
+        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false, placeholder: t('activemodel.attributes.print.password') -%>
+    </div>
+    <div class="row">
+        <em><%= t('.password_notice') %></em>
+    </div>
   </fieldset>
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>

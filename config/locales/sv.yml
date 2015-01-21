@@ -163,7 +163,7 @@ sv:
       suggestions: Förslag
       user: Användare
       uploaded: Uppladdad fil
-
+      password_notice: "Notera: Det är ditt Chalmerslösenord du ska använda och inte det du använder för våra tjänster."
 
 
   date:

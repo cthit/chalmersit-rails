@@ -123,7 +123,6 @@ en:
       book_chalmers_desc: Book group room at Chalmers
       print_desc: Print on one of Chalmers printers
       charge_card_desc: Shortcut for charging your student union card
-
   posts:
     form:
       title_placeholder: Title for the news post
@@ -151,6 +150,7 @@ en:
       suggestions: Suggestions
       user: User
       uploaded: Uploaded file
+      password_notice: "Note: It is your Chalmers password you should use, not the one you use for our services."
 
   date:
     abbr_day_names:
