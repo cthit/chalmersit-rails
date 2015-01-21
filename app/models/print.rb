@@ -51,6 +51,6 @@ class Print
 
   private
     def media_in_printer
-      self.errors[:media] << "not supported by printer" unless printer && printer.media.split.include?(media)
+      errors.add(:media, :unsupported_media) unless printer && printer.media.split.include?(media)
     end
 end
