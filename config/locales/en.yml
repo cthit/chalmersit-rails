@@ -157,6 +157,7 @@ en:
       user: User
       uploaded: Uploaded file
       password_notice: "Note: It is your Chalmers password you should use, not the one you use for our services."
+      forgot_pw_notice: "If you have forgotten you password, visit "
 
   date:
     abbr_day_names:
