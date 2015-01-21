@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
-    get 'print/new' => 'print#new', as: :new_print
+    get 'print' => 'print#new', as: :new_print
     post 'print' => 'print#print', as: :prints
 
     resources :courses do
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
         end
     end
 
-    get '' => 'home#index'
+    get '/' => 'home#index'
   end
   resources :pages
   resources :images, only: [:create, :destroy]
