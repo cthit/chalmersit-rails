@@ -3,7 +3,7 @@ require 'json'
 
 namespace :cthit do
   desc "Get an access token from account.chalmers.it"
-  task :generate_token do
+  task generate_token: :environment do
     response = RestClient.post "#{Rails.configuration.account_ip}/oauth/token", {
       grant_type: 'client_credentials',
       client_id: ENV["OAUTH_ID"],
