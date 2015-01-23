@@ -45,14 +45,11 @@
                 <strong><%= current_user.display_name %></strong>
               </li>
               <li class="dropdown">
-                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: 'Verktyg' %></span>
+                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
                 <ul class="dropdown-sub">
-                  <li><%= link_to 'Posta nyhet', new_post_path %></li>
-                  <li><%= link_to 'Skriv ut', '#print_path' %></li>
-                  <li><%= link_to 'Boka rum', 'https://chalmers.it/bokning/' %></li>
-                  <li><%= link_to 'Schema', 'https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html', target: '_blank' %></li>
-                  <li><%= link_to 'Redigera profil', edit_user_path %></li>
-                  <li><%= link_to 'Admin', '#admin_path', target: '_blank' %></li>
+                  <li><%= link_to t('.new_news_post'), new_post_path %></li>
+                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
+                  <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
                   <li><%= link_to t('logout'), signout_path %></li>
                 </ul>
               </li>

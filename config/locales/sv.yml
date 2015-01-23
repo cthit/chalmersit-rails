@@ -137,6 +137,11 @@ sv:
               unsupported: stöds inte av skrivaren
 
   layouts:
+    header:
+      tools: Verktyg
+      new_news_post: Posta nyhet
+      edit_profile: Redigera profil
+      admin: Admin
     home:
       booking: Bokning
       group_room: Grupprum
@@ -147,6 +152,7 @@ sv:
       book_chalmers_desc: Boka grupprum på Chalmers
       print_desc: Skriv ut på Chalmers skrivare
       charge_card_desc: Genväg för att ladda ditt kårkort
+      events: Evenemang
 
   posts:
     form:

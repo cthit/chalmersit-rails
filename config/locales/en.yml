@@ -125,6 +125,11 @@ en:
               unsupported: Paper size is not supported by the printer
 
   layouts:
+    header:
+      tools: Tools
+      new_news_post: Publish news post
+      edit_profile: Edit profile
+      admin: Admin
     home:
       booking: Booking
       group_room: Group room
@@ -135,6 +140,7 @@ en:
       book_chalmers_desc: Book group room at Chalmers
       print_desc: Print on one of Chalmers printers
       charge_card_desc: Shortcut for charging your student union card
+      events: Events
   posts:
     form:
       title_placeholder: Title for the news post
