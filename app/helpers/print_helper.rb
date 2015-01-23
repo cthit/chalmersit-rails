@@ -34,10 +34,9 @@ module PrintHelper
     res = Net::HTTP.start(uri.hostname, uri.port, use_ssl: uri.scheme == 'https') do |http|
       http.request(req)
     end
+    return { error: res.message } if res.code == '401'
     doc = Nokogiri::HTML(res.body)
-
     b = doc.xpath(XPATH).last
-
     { value: b.inner_text.squish, username: user }
   end
 end

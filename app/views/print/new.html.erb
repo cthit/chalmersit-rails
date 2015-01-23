@@ -70,8 +70,18 @@
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>
 
-<%= button_tag 'PQ', class: 'button secondary get-pq-button' %>
-<div id="pq">
-  <%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>
-  <span class="done">PQ for <output class="name"></output>: <output class="pq"></output></span>
+<div id="pq" class="row">
+  <div class="small-3 columns">
+    <%= button_tag class: 'button secondary get-pq-button' do %>
+      <span class="done">PQ</span><%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>
+    <% end %>
+  </div>
+  <div class="small-9 columns">
+    <div data-alert class="alert-box alert hidden">
+      <span class="error"></span>
+    </div>
+    <div data-alert class="alert-box success hidden">
+      PQ for <output class="name"></output>: <output class="pq"></output>
+    </div>
+  </div>
 </div>
