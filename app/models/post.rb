@@ -55,6 +55,6 @@ class Post < ActiveRecord::Base
     end
 
     def user_in_group
-      errors.add(:group, :user_not_in_group) unless user.groups.include? group_id
+      errors.add(:group_id, :user_not_in_group, group: group_id) unless user.groups.include? group_id
     end
 end

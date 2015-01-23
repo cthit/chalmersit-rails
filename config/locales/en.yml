@@ -59,6 +59,12 @@ en:
   permalink: Permalink
   translation_missing: "This %{model} is missing a translation for your language."
   activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            group_id:
+              user_not_in_group: "You're not a member of %{group}"
     models:
       event:
         one: Event

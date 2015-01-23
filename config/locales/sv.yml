@@ -59,6 +59,12 @@ sv:
   permalink: Permalänk
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
   activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            group_id:
+              user_not_in_group: "Du är inte medlem i %{group}"
     models:
       event: Arrangemang
       post:
