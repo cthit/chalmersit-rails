@@ -15,10 +15,12 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    @other_pages = Page.order(:title)
   end
 
   # GET /pages/1/edit
   def edit
+    @other_pages = Page.order(:title).where("id != ?", @page.id)
   end
 
   # POST /pages

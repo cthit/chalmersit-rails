@@ -3,7 +3,6 @@
 
   <%= f.input :title %>
   <%= f.input :body %>
-  <%= f.collection_select :parent_id, Page.order(:title), :id, :title, include_blank: true  %>
+  <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
   <%= f.button :submit %>
-
 <% end %>
