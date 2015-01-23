@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
 
   private
     def set_committees
-      @committees = Committee.all
+      @committees = Committee.all.with_translations(I18n.locale)
     end
 
   def set_locale
