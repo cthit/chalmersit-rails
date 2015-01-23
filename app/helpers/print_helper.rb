@@ -1,18 +1,25 @@
 module PrintHelper
-  DOMAIN = "remote1.student.chalmers.se"
-  SSH_FILENAME = ".print/chalmersit.dat"
+  DOMAINS = ['remote1.student.chalmers.se', 'remote2.student.chalmers.se']
+  SSH_FILENAME = '.print/chalmersit.dat'
 
-  PQ_SITE = "https://print.chalmers.se/auth/fs.pl"
+  PQ_SITE = 'https://print.chalmers.se/auth/fs.pl'
   XPATH = '//td/b'
 
-  #Called to upload and print a file on a chalmers printer
+  # Called to upload and print a file on a chalmers printer
   def print_script(print)
     output = nil
-    Net::SSH.start(DOMAIN, print.username, password: print.password, number_of_password_prompts: 0) do |ssh|
-      ssh.scp.upload!(print.file.path, SSH_FILENAME)
-      # output = ssh.exec! print_string(print)
+    DOMAINS.shuffle.each do |d|
+      output = connect(print, d)
+      break if output.nil?
     end
     raise output unless output.nil?
+  end
+
+  def connect(print, domain)
+    Net::SSH.start(domain, print.username, password: print.password, number_of_password_prompts: 0, timeout: 10) do |ssh|
+      ssh.scp.upload!(print.file.path, SSH_FILENAME)
+      ssh.exec! print_string(print)
+    end
   end
 
   def print_string(print)
