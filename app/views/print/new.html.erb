@@ -2,18 +2,33 @@
 <%= simple_form_for(@print) do |f| %>
   <%= f.error_notification %>
 
-  <% if @print.file_cache %>
-    <%= f.label :file %>
-    <%= @print.file_name %>
-    <%= f.input :file_name, as: :hidden %>
-    <%= f.input :file_cache, as: :hidden %>
-  <% else %>
-    <%= f.input :file, as: :file %>
-  <% end %>
+  <div class="row">
+    <div class="small-6 columns">
+      <% if @print.file_cache %>
+        <%= f.label :file %>
+        <%= @print.file_name %>
+        <%= f.input :file_name, as: :hidden %>
+        <%= f.input :file_cache, as: :hidden %>
+      <% else %>
+        <%= f.input :file, as: :file %>
+      <% end %>
+    </div>
+    <div class="small-6 columns">
+      <em><%= t '.supported_file_types' %>:<br> <%= Print.permitted_mime_types.join ', ' %></em>
+    </div>
+  </div>
 
-  <%= f.input :printer do %>
-    <%= f.select :printer, Printer.weighted.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
-  <% end %>
+  <%= f.label :printer %>
+  <div class="row collapse">
+    <div class="small-3 large-1 columns">
+      <span class="prefix">
+        <%= fa_icon 'print' %>
+      </span>
+    </div>
+    <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
+      <%= f.select :printer, Printer.weighted.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
+    <% end %>
+  </div>
 
   <div class="suggestions">
     <%= f.label t('.suggestions') %>

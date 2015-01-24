@@ -121,6 +121,8 @@ en:
       models:
         print:
           attributes:
+            file:
+              invalid_type: File type is unsupported
             media:
               unsupported: Paper size is not supported by the printer
 
@@ -165,6 +167,7 @@ en:
       no_lunch_today: No lunch today
   print:
     new:
+      supported_file_types: Supported file types
       suggestions: Suggestions
       user: User
       uploaded: Uploaded file

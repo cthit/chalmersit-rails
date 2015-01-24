@@ -7,6 +7,7 @@ $ ->
     $('#print_printer').chosen
       no_results_text: 'No matches'
       search_contains: true
+      width: '91%'
 
     $('.get-pq-button').on 'click', ->
       $that = $(this)

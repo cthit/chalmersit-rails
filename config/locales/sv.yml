@@ -133,6 +133,8 @@ sv:
       models:
         print:
           attributes:
+            file:
+              invalid_type: Filtypen stöds ej
             media:
               unsupported: stöds inte av skrivaren
 
@@ -178,6 +180,7 @@ sv:
       no_lunch_today: Ingen lunch idag
   print:
     new:
+      supported_file_types: Filtyper som stöds
       suggestions: Förslag
       user: Användare
       uploaded: Uppladdad fil

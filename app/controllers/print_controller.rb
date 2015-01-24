@@ -31,6 +31,9 @@ class PrintController < ApplicationController
         @print.print_logger e.message
         flash[:alert] = e.message
       end
+    elsif @print.errors[:file].any?
+      @print.file = nil
+      @print.file_cache = nil
     end
     render :new
   end

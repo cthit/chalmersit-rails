@@ -8,8 +8,12 @@ class Print
     %w(auto 600 1200)
   end
 
+  def self.permitted_mime_types
+    %w(text/plain application/pdf)
+  end
+
   validates :copies, numericality: { only_integer: true }
-  validates :duplex, inclusion: { in: ["two-sided-long-edge", "one-sided"] }
+  validates :duplex, inclusion: { in: %w(two-sided-long-edge one-sided) }
   validates :ranges, format:  { with: /[0-9\-, ]+/, allow_blank: true }
   validate  :media_in_printer
   validate  :file_is_valid
@@ -57,14 +61,13 @@ class Print
     end
 
     def file_is_valid
-      # TODO: Validate file type
-      return errors.add_on_blank(:file) if file.nil? || !File.file?(file)
+      errors.add(:file, :invalid_type) unless Print.permitted_mime_types.include? mime_type(file)
+      errors.add_on_blank(:file) if file.nil? || !File.file?(file)
 
-      unless File.absolute_path(file).start_with?('/tmp')
-        self.file_cache = nil
-        self.file_name = nil
-        errors.add(:file, :invalid)
-      end
+      errors.add(:file, :invalid) unless File.absolute_path(file).start_with? '/tmp'
+    end
 
+    def mime_type(file)
+      `file --mime-type -b '#{File.absolute_path(file)}'`.chomp
     end
 end
