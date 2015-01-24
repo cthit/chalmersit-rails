@@ -155,6 +155,7 @@ sv:
       print_desc: Skriv ut på Chalmers skrivare
       charge_card_desc: Genväg för att ladda ditt kårkort
       events: Evenemang
+      next_event: Nästa evenemang
 
   posts:
     form:

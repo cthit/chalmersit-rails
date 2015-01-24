@@ -136,13 +136,15 @@ en:
       booking: Booking
       group_room: Group room
       print: Print
-      schema: Schema
+      schema: Schedule
       charge_card: S.U. card
       book_hubben_desc: Book Hubben or the group room
       book_chalmers_desc: Book group room at Chalmers
       print_desc: Print on one of Chalmers printers
       charge_card_desc: Shortcut for charging your student union card
       events: Events
+      next_event: Next event
+
   posts:
     form:
       title_placeholder: Title for the news post
