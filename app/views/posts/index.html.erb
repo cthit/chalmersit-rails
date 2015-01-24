@@ -1,32 +1,3 @@
-<% content_for(:title) do %>
-<%= Post.model_name.human(count: 2) %>
-<% end %>
+<% content_for :title, Post.model_name.human(count: 2) %>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Post.human_attribute_name('title') %></th>
-      <th><%= Post.human_attribute_name('user_id') %></th>
-      <th><%= Post.human_attribute_name('group_id') %></th>
-      <th><%= Post.human_attribute_name('sticky') %></th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.title, post %></td>
-        <td><%= post.user_id %></td>
-        <td><%= post.group_id %></td>
-        <td><%= t post.sticky.to_s %></td>
-        <td><%= link_to t('edit'), edit_post_path(post) %></td>
-        <td><%= link_to t('delete'), post, method: :delete, data: { confirm: t('confirm') } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to t('new', name:Post.model_name.human.downcase), new_post_path %>
+<%= render partial: 'posts/post', collection: @posts, cache: true %>

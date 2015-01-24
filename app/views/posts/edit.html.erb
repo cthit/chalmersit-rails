@@ -2,5 +2,6 @@
 
 <%= render 'form' %>
 
+<%= link_to t('delete'), @post, method: :delete, data: { confirm: t('confirm') }, class: 'button expand alert' %>
 <%= link_to t('show'), @post %> |
 <%= link_to t('back'), posts_path %>
