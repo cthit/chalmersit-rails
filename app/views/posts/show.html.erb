@@ -6,14 +6,13 @@
   <%= link_to t('.next_posts'), post_path(@post.next), rel: 'next', class: 'button large-4 columns' unless @post.next.nil? %>
 </div>
 
-<section id="respond">
-  <%= render 'comments/form' %>
-</section>
-<a href="#comments"></a>
-<% if @comments.any? %>
-  <section id="comments">
-    <ol class="commentlist">
-      <%= render partial: 'comments/comment', collection: @comments, cache: true %>
-    </ol>
+<section id="comments">
+  <section id="respond">
+    <%= render 'comments/form' %>
   </section>
-<% end %>
+    <% if @comments.any? %>
+      <ol class="commentlist">
+        <%= render partial: 'comments/comment', collection: @comments, cache: true %>
+      </ol>
+    <% end %>
+</section>

@@ -163,6 +163,9 @@ en:
       prev_posts: Previous news
       all_posts: All news
       next_posts: Next news post
+  comments:
+    form:
+      write_comment: Write a comment
   lunch:
     feed:
       lunch: Lunch

@@ -172,9 +172,12 @@ sv:
     event_fields:
       empty_if_group: Lämna tom om samma som skaparen av nyheten
     show:
-      prev_posts: Tidigare nyheter
+      prev_posts: Föregående nyhet
       all_posts: Alla nyheter
       next_posts: Nästa nyhet
+  comments:
+    form:
+      write_comment: Skriv en kommentar
   lunch:
     feed:
       lunch: Lunch

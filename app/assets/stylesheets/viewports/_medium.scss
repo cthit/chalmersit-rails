@@ -3,7 +3,7 @@
 
 @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall + 1) {
 	/* Global layout changes */
-	
+
 	.three.columns.pull-six {
 		right: 75%;
 	}
@@ -22,9 +22,9 @@
 }
 
 @media only screen and (max-width: $screenMedium) {
-	
+
 	/* Make columned lists single columns in sidebars */
-	.sidebar, 
+	.sidebar,
 	.side-nav {
 		.columned-list {
 			@include column-count(1);
@@ -53,24 +53,31 @@
 
 	.header-controls {
 		float: none;
-		text-align: center;	
+		text-align: center;
 	}
-	
-	.single .sidebar-nav a {
-		display: block;
-		width: 100%;
-		margin-bottom: $lineheight / 2;
-	}
-	.single [role="complementary"] {
-		.post-nav {
-			display: none;
-		}
-		.author-links {
-			float: right;
 
-			li {
-				display: inline-block;
-				margin: 0 .5em;
+	.posts-show, .pages-show {
+		h3 {
+			font-weight: 300;
+			font-size: 1.42857em;
+			margin-bottom: 0.75em;
+		}
+		.sidebar-nav a {
+			display: block;
+			width: 100%;
+			margin-bottom: $lineheight / 2;
+		}
+		[role="complementary"] {
+			.post-nav {
+				display: none;
+			}
+			.author-links {
+				float: right;
+
+				li {
+					display: inline-block;
+					margin: 0 .5em;
+				}
 			}
 		}
 	}
@@ -101,7 +108,7 @@
 			margin: .3em auto 0;
 		}
 	}
-	
+
 
 	[role="contentinfo"] {
 		.footer-contact {
