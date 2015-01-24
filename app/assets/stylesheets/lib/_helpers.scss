@@ -76,7 +76,7 @@ a.subtle-border {
 		color: white;
 		font-size: to_em(7);
 	}
-	&:hover {
+	&:hover, &:focus {
     text-decoration: none;
     color: white;
   }
