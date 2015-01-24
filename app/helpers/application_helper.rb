@@ -10,7 +10,7 @@ module ApplicationHelper
 
   def header_link_to_current(title, path)
     classes = 'menu-item'
-    classes += ' current_page_item' if current_page? path
+    classes += ' current_page_item' if current_page?(path) || request.fullpath.include?(path)
     content_tag :li, (link_to title, path), class: classes
   end
 
