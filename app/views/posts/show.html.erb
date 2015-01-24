@@ -1,3 +1,7 @@
+<% content_for :title, @post.title %>
+<% content_for :sidebar_right do %>
+<%= render 'users/sidebar', user: @post.user %>
+<% end %>
 <%= render @post %>
 
 <div class="row">
