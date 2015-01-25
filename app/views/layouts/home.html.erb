@@ -19,19 +19,7 @@
     </ul>
   </div>
   <div class="user-area large-3 columns">
-    <section class="current-event box">
-      <h2><%= t '.next_event' %></h2>
-      <div>
-        <% @events.each do |event| %>
-          <div>
-            <h3 class="event-title"><%= link_to event.post.title, event.post %></h3>
-            <ul class="meta">
-              <li><%= l event.start_date, format: '%e %B, %H:%M' %></li>
-            </ul>
-          </div>
-        <% end %>
-      </div>
-    </section>
+      <%= render 'home/today', events: @events %>
   </div>
 </header>
 
