@@ -22,6 +22,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
 
+# Caching with Redis
+gem 'redis-rails'
+
 # Markdown for post body
 gem 'github-markdown'
 

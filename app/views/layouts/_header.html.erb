@@ -29,8 +29,10 @@
               </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
-                <% Menu.find_by(name: 'main').links.each do |link| %>
-                  <%= header_link_to_current link.title, link.path %>
+                <% cache ['main-menu', I18n.locale] do %>
+                  <% Menu.find_by(name: 'main').links.each do |link| %>
+                    <%= header_link_to_current link.title, link.path %>
+                  <% end %>
                 <% end %>
               </ul>
             </nav>
@@ -44,15 +46,17 @@
               <li class="user-details">
                 <strong><%= current_user.display_name %></strong>
               </li>
-              <li class="dropdown">
-                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
-                <ul class="dropdown-sub">
-                  <li><%= link_to t('.new_news_post'), new_post_path %></li>
-                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
-                  <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
-                  <li><%= link_to t('logout'), signout_path %></li>
-                </ul>
-              </li>
+              <% cache ['user-menu', I18n.locale] do %>
+                <li class="dropdown">
+                  <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
+                  <ul class="dropdown-sub">
+                    <li><%= link_to t('.new_news_post'), new_post_path %></li>
+                    <li><%= link_to t('.edit_profile'), edit_user_path %></li>
+                    <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
+                    <li><%= link_to t('logout'), signout_path %></li>
+                  </ul>
+                </li>
+              <% end %>
             <% else %>
               <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
             <% end %>
