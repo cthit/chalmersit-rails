@@ -48,4 +48,6 @@
     </section>
   </div>
 </section>
-<%= render 'layouts/footer' %>
+<% cache ['footer', I18n.locale] do %>
+  <%= render 'layouts/footer' %>
+<% end %>

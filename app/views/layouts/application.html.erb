@@ -20,4 +20,6 @@
 <aside class="large-3 columns sidebar">
 <%= yield(:sidebar_right) %>
 </aside>
-<%= render 'layouts/footer' %>
+<% cache ['footer', I18n.locale] do %>
+  <%= render 'layouts/footer' %>
+<% end %>
