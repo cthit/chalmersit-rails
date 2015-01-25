@@ -19,8 +19,8 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
-# Using ActiveRestClient instead of ActiveResource, for flexibility!
-gem 'active_rest_client'
+# ActiveResource - fetching users and groups from account
+gem 'activeresource'
 
 # Markdown for post body
 gem 'github-markdown'
