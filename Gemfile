@@ -41,6 +41,9 @@ gem 'mini_magick'
 
 gem 'omniauth-oauth2'
 
+# Authorization
+gem 'pundit'
+
 # Relative timestamps
 gem 'momentjs-rails'
 
