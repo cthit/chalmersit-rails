@@ -34,12 +34,12 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    @post = current_user.posts.build(params_with_destroy)
+    @post = current_user.posts.build(post_params)
     authorize_post
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to @post, notice: I18n.translate('model_created', name:@post.title) }
+        format.html { redirect_to @post, notice: I18n.translate('model_created', name: @post.title) }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new }
@@ -54,8 +54,8 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
 
     respond_to do |format|
-      if @post.update(params_with_destroy)
-        format.html { redirect_to @post, notice: I18n.translate('model_updated', name:@post.title) }
+      if @post.update(post_params)
+        format.html { redirect_to @post, notice: I18n.translate('model_updated', name: @post.title) }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit }
@@ -69,7 +69,7 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to posts_url, notice: I18n.translate('model_destroyed', name:@post.title) }
+      format.html { redirect_to posts_url, notice: I18n.translate('model_destroyed', name: @post.title) }
       format.json { head :no_content }
     end
   end
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:group_id, :title, :body, :sticky, :show_public, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
+      permitted = [:group_id, :title, :body, :sticky, :show_public, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :_destroy, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 
@@ -92,11 +92,5 @@ class PostsController < ApplicationController
 
     def authorize_post
       authorize @post
-    end
-
-    def params_with_destroy
-      pp = post_params
-      pp[:event_attributes][:_destroy] = 1 unless params[:post_is_event]
-      pp
     end
 end

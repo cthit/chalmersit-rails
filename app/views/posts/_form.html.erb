@@ -12,16 +12,15 @@
   <div class="row">
     <%= f.input :sticky %> <%= f.input :show_public %>
   </div>
-  <div class="row">
-    <%= check_box_tag 'post_is_event', 1, show_event_fields? %>
-    <%= label_tag 'post_is_event', Event.model_name.human %>
-  </div>
-  <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
-    <legend><%= Event.model_name.human %></legend>
-    <%= f.simple_fields_for :event do |builder| %>
-      <%= render 'event_fields', f: builder %>
-    <% end %>
-  </fieldset>
+  <%= f.simple_fields_for :event do |builder| %>
+    <div class="row">
+      <%= builder.input :_destroy, as: :boolean, label: Event.model_name.human, checked: show_event_fields?, checked_value: 0, unchecked_value: 1 %>
+    </div>
+    <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
+      <legend><%= Event.model_name.human %></legend>
+        <%= render 'event_fields', f: builder %>
+    </fieldset>
+  <% end %>
   <div class="row">
     <div class="large-12 columns">
       <%= f.button :submit %>

@@ -8,7 +8,7 @@ $ ->
     datetime = $elem.attr 'datetime'
     $elem.text moment(new Date(datetime)).fromNow()
 
-  $('.posts #post_is_event').on 'change', ->
+  $('.posts #post_event_attributes__destroy').on 'change', ->
     $('#event_fields_container').toggle this.checked
 
   $('.posts #post_body').fileupload
