@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all.ordered
+    @posts = policy_scope(Post).ordered
   end
 
   # GET /posts/1
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(show_public: true)
     authorize_post
     build_event
   end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    @post.user = current_user
+    @post.user_id = current_user.id
 
     respond_to do |format|
       if @post.update(params_with_destroy)
@@ -82,7 +82,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:group_id, :title, :body, :sticky, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
+      permitted = [:group_id, :title, :body, :sticky, :show_public, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 

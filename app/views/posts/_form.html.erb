@@ -10,7 +10,7 @@
   </div>
   <%= render 'localized_fields', f: f %>
   <div class="row">
-    <%= f.input :sticky %>
+    <%= f.input :sticky %> <%= f.input :show_public %>
   </div>
   <div class="row">
     <%= check_box_tag 'post_is_event', 1, show_event_fields? %>

@@ -15,5 +15,22 @@ class PostPolicy < ApplicationPolicy
   def destroy?
     update?
   end
+
+  class Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.present?
+        scope.all
+      else
+        scope.where(show_public: true)
+      end
+    end
+  end
 end
 

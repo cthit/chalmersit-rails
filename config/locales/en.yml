@@ -100,6 +100,7 @@ en:
         group_id: Association / Committee
         sticky: Sticky
         body: Body
+        show_public: Show public (for visitors)
       comment:
         user_id: User
         body: Comment

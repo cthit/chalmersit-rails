@@ -106,6 +106,7 @@ sv:
         group_id: Förening/kommitté
         sticky: Fäst inlägget överst
         body: Innehåll
+        show_public: Visa publikt (för besökare)
       comment:
         user_id: Användare
         body: Kommentar

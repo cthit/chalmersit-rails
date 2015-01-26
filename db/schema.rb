@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150120203625) do
+ActiveRecord::Schema.define(version: 20150126153642) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -168,6 +168,7 @@ ActiveRecord::Schema.define(version: 20150120203625) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "comments_count",            default: 0
+    t.boolean  "show_public"
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree
