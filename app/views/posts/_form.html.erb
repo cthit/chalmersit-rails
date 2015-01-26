@@ -4,7 +4,7 @@
   <div class="row">
     <div class="large-6 columns">
       <%= f.input :group_id, label: t('.groupid_placeholder'),
-        collection: filter_committees(current_user),
+        collection: current_user.committees,
         prompt: false, label_method: :name, value_method: :slug %>
     </div>
   </div>
@@ -18,7 +18,7 @@
   </div>
   <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
     <legend><%= Event.model_name.human %></legend>
-    <%= f.simple_fields_for :event, @event do |builder| %>
+    <%= f.simple_fields_for :event do |builder| %>
       <%= render 'event_fields', f: builder %>
     <% end %>
   </fieldset>

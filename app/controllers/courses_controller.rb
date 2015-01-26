@@ -1,5 +1,6 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy, :site]
+  before_action :authorize_course, except: [:index, :create, :new, :site]
 
   # GET /courses
   # GET /courses.json
@@ -18,6 +19,7 @@ class CoursesController < ApplicationController
   # GET /courses/new
   def new
     @course = Course.new
+    authorize_course
   end
 
   # GET /courses/1/edit
@@ -28,6 +30,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
     @course = Course.new(course_params)
+    authorize_course
 
     respond_to do |format|
       if @course.save
@@ -72,6 +75,10 @@ class CoursesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_course
       @course = Course.find_by(code: params[:id])
+    end
+
+    def authorize_course
+      authorize @course
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

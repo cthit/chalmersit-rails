@@ -6,7 +6,9 @@
         <h3 class="fn"><%= comment.user.display_name %></h3>
         <p class="comment-meta">
           <time title="<%= comment.created_at.to_s(:iso_date_time) %>" datetime="<%= comment.created_at.to_s(:rfc822) %>" pubdate><%= comment.created_at.to_s(:iso_date_time) %></time>
-          <span class="sep">|</span> <%= link_to t('delete'), post_comment_path(comment.post, comment), method: :delete, data: { confirm: t('confirm') } %>
+          <% if policy(comment).destroy? %>
+            <span class="sep">|</span> <%= link_to t('delete'), post_comment_path(comment.post, comment), method: :delete, data: { confirm: t('confirm') } %>
+          <% end %>
         </p>
       </div>
     </header>

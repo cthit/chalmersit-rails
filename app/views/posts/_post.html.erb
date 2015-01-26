@@ -12,11 +12,13 @@
         <span class="sep">|</span> <time data-tooltip title="<%= t 'published' %> <%= post.created_at.to_s(:iso_date_time) %>" datetime="<%= post.created_at.to_s(:rfc822) %>" pubdate><%= post.created_at.to_s(:day_month) %></time>
         <span class="sep">|</span> <%= link_to t('permalink'), post %>
         <span class="sep">|</span>  <%= t '.posted_for' %> <%= link_to_committee post %> <%= t '.by' %> <%= link_to post.user.display_name, '#', title: "#{t '.posts_by'} #{post.user.display_name}", rel: 'author' %>
-        <span class="sep">|</span> <%= link_to t('helpers.submit.update', model: Post.model_name.human.downcase), edit_post_path(post) %>
+        <% if policy(post).update? %>
+          <span class="sep">|</span> <%= link_to t('helpers.submit.update', model: Post.model_name.human.downcase), edit_post_path(post) %>
+        <% end %>
       </p>
     <% if post.event? %>
     <ul class="meta event-meta">
-      <li class="icon-clock"><%= post.event.event_date.strftime('%e %b') %>, <%= post.event.start_time.strftime('%R') %>-<%= post.event.end_time.strftime('%R') %></li>
+      <li class="icon-clock"><%= l post.event.event_date, format: '%e %b' %>, <%= l post.event.start_time, format: '%R' %>-<%= l post.event.end_time, format: '%R' %></li>
       <% unless post.event.location.blank? %>
         <li class="icon-map-pin-fill"><%= post.event.location %></li>
       <% end %>

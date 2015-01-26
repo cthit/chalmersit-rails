@@ -3,6 +3,8 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
+  belongs_to :user
+  belongs_to :group, class_name: 'Committee'
 
   accepts_nested_attributes_for :event, allow_destroy: true
 
@@ -55,6 +57,6 @@ class Post < ActiveRecord::Base
     end
 
     def user_in_group
-      errors.add(:group_id, :user_not_in_group, group: group_id) unless user.groups.include? group_id
+      errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
     end
 end

@@ -13,7 +13,9 @@
 
   <section id="comments">
     <section id="respond">
-      <%= render 'comments/form' %>
+      <% if policy(Comment).create? %>
+        <%= render 'comments/form' %>
+      <% end %>
     </section>
       <% if @comments.any? %>
         <ol class="commentlist">

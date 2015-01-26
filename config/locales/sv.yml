@@ -58,6 +58,7 @@ sv:
   published: Publicerad
   permalink: Permalänk
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
+  not_authorized: Du har inte behörighet att utföra detta.
   activerecord:
     errors:
       models:

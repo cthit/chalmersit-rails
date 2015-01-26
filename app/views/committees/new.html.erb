@@ -1,4 +1,4 @@
-<h1><%= t 'new', name:Committee.model_name.human.downcase %></h1>
+<% content_for :title, t('new', name: Committee.model_name.human.downcase) %>
 
 <%= render 'form' %>
 

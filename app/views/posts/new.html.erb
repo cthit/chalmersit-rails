@@ -1,6 +1,4 @@
-<div class="row">
-<h1 class="columns large-12"><%= t('helpers.submit.create', model:Post.model_name.human.downcase) %></h1>
-</div>
+<% content_for :title, t('helpers.submit.create', model: Post.model_name.human.downcase) %>
 
 <%= render 'form' %>
 
