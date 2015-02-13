@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = policy_scope(Post).ordered
+    @posts = @posts.where(user_id: params[:user]) if params[:user]
   end
 
   # GET /posts/1

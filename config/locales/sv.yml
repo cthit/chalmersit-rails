@@ -179,6 +179,9 @@ sv:
   comments:
     form:
       write_comment: Skriv en kommentar
+  users:
+    sidebar:
+      see_all_posts_by: "Se alla nyheter av %{user}"
   lunch:
     feed:
       lunch: Lunch

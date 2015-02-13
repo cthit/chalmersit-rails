@@ -167,6 +167,9 @@ en:
   comments:
     form:
       write_comment: Write a comment
+  users:
+    sidebar:
+      see_all_posts_by: "Show all news post by %{user}"
   lunch:
     feed:
       lunch: Lunch

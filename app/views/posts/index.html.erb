@@ -1,3 +1,9 @@
 <% content_for :title, Post.model_name.human(count: 2) %>
 
 <%= render partial: 'posts/post', collection: @posts, cache: true %>
+
+<% if @posts.empty? %>
+<article role="article">
+  <h1>No posts found</h1>
+</article>
+<% end %>

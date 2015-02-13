@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126153642) do
+ActiveRecord::Schema.define(version: 20150212001113) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -112,7 +112,7 @@ ActiveRecord::Schema.define(version: 20150126153642) do
     t.integer  "menu_id"
     t.string   "controller"
     t.string   "action"
-    t.string   "params"
+    t.text     "params"
     t.string   "title"
     t.integer  "preferred_order"
     t.datetime "created_at"
