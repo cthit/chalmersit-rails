@@ -1,4 +1,4 @@
-<h1><%= t 'new', name:Course.model_name.human %></h1>
+<%= content_for :title, t('new', name: Course.model_name.human) %>
 
 <%= render 'form' %>
 <%= link_to t('back'), courses_path %>

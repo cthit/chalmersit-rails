@@ -3,7 +3,6 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
-  belongs_to :user
   belongs_to :group, class_name: 'Committee'
 
   accepts_nested_attributes_for :event, allow_destroy: true
@@ -11,7 +10,7 @@ class Post < ActiveRecord::Base
   translates :title, :body, :slug
   globalize_accessors
 
-  validates *globalize_attribute_names, :title, :body, :user_id, :group_id, presence: true
+  validates *globalize_attribute_names, :user_id, :group_id, presence: true, allow_blank: false
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..70 }
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
   validates :sticky, inclusion: { in: [true, false] }

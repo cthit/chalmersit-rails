@@ -5,7 +5,7 @@ FactoryGirl.define do
   	f.ranges '3, 5-7'
   	f.ppi '600'
     f.media 'A3'
-    f.file 'NO.txt'
+    f.file Tempfile.new 'test.txt'
     f.username 'user'
     f.password 'pass'
     f.printer

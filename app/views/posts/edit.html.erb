@@ -1,4 +1,4 @@
-<h1><%= t 'helpers.submit.update',model:Post.model_name.human.downcase %></h1>
+<% content_for :title, t('helpers.submit.update', model: Post.model_name.human.downcase) %>
 
 <%= render 'form' %>
 
