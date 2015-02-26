@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   resources :images, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
-  get 'karkort/:card_number' => 'karkort#fetch'
+  get 'karkort' => 'karkort#fetch'
 
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'signout' => 'sessions#destroy', as: :signout

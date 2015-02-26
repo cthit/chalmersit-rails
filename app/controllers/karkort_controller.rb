@@ -2,6 +2,8 @@ class KarkortController < ApplicationController
   include KarkortHelper
   def fetch
     # TODO caching for result
-    render json: balance(params[:card_number])
+    @card = current_user.card
+    authorize @card
+    render json: balance(@card)
   end
 end

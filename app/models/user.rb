@@ -8,6 +8,10 @@ class User < ActiveResource::Base
     @posts ||= Post.find_by(user_id: id)
   end
 
+  def card
+    @card ||= Karkort.find_by(cid: id)
+  end
+
   def id
     uid
   end
