@@ -136,6 +136,7 @@ ActiveRecord::Schema.define(version: 20150212001113) do
     t.integer  "parent_id"
   end
 
+  add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
   add_index "pages", ["title"], name: "index_pages_on_title", using: :btree
 
