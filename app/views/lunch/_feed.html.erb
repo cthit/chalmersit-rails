@@ -4,7 +4,7 @@
   </h2>
 </header>
 <% cache ["lunch", Date.today] do %>
-  <% @lunch.restaurants.each do |restaurant| %>
+  <% @restaurants.each do |restaurant| %>
     <h3><%= restaurant[:name]%></h3>
     <dl>
       <% restaurant[:meals].each do |meal| %>
