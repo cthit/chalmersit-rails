@@ -42,3 +42,5 @@ bin/*
 
 .kitchen/
 .kitchen.local.yml
+
+launch.sh
