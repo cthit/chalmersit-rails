@@ -16,6 +16,7 @@ sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclien
 
 cd /vagrant
 gem install bundler
+rbenv rehash
 bundle install
 
 # Create the secrets.yml file (fetch from wiki)
