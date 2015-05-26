@@ -5,7 +5,7 @@ class User < ActiveResource::Base
   self.site = Rails.configuration.account_ip
 
   def posts
-    @posts ||= Post.find_by(user_id: id)
+    @posts ||= Post.where(user_id: id)
   end
 
   def id
