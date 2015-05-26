@@ -12,19 +12,33 @@ vagrant ssh
 echo "PATH=$PATH:/home/vagrant/.rbenv/versions/2.1.2/bin/" >> /home/vagrant/.bashrc
 
 # Install dependencies
+sudo apt-get install libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclient-dev mysql-server redis-server
+
 cd /vagrant
+gem install bundler
 bundle install
 
 # Create the secrets.yml file (fetch from wiki)
 touch config/secrets.yml
 
+# Add keys needed for auth
+Go to 10.0.0.61, login using your standard account and then go to
+10.0.0.61/oauth/applications
+Add a new application:
+http://10.0.0.XXX:3000/auth/account/callback
+Where XXX is your assigned IP when connected to the digIT network
+Paste the generated tokens into the launch.sh file
+Export variables to shell (export OAUTH_ID=XXX, export OAUTH_SECRET=YYY)
+rake cthit:generate_token
+Copy the generated token into client_credentials at secrets.yml
+
 # Prepare the db
-rake db:create db:migrate
+rake db:setup
 rake rails:update:bin
 rbenv rehash
 
 # Then serve:
 rails server
 
-# The instance is now accessible at localhost:3000
+# To connect to the server simply connect to your ip address on port 3000
 ```
