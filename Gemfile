@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.8'
+gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'mysql2'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 4.0.5'
-gem 'compass-rails', '~> 2.0.0'
+gem 'sass-rails', '~> 5.0.1'
+gem 'compass-rails', '~> 2.0.4'
 # Foundation styles
-gem 'foundation-rails', '~> 5.4.0'
+gem 'foundation-rails', '~> 5.5.0'
 # Font awesome!!!
 gem 'font-awesome-rails'
 # Use Uglifier as compressor for JavaScript assets
@@ -65,8 +65,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
-gem 'globalize', '~> 4.0.2'
-gem 'globalize-accessors', '~> 0.1.5'
+gem 'globalize', '~> 5.0.1'
+gem 'globalize-accessors', '~> 0.2.1'
 
 gem 'rest-client'
 
