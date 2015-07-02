@@ -1,0 +1,8 @@
+<%= simple_form_for(@page) do |f| %>
+  <%= f.error_notification %>
+
+  <%= f.input :title %>
+  <%= f.input :body %>
+  <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
+  <%= f.button :submit %>
+<% end %>

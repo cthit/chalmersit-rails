@@ -1,6 +1,6 @@
 module TwitterHelper
-  def twitter_feed(username)
-    $twitter.user_timeline(username).map do |t|
+  def twitter_feed(username, options = {})
+    $twitter.user_timeline(username, options).map do |t|
       { html: format_tweet(t), tweet: t }
     end
   end

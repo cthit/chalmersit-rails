@@ -1,0 +1,102 @@
+<% content_for :title, t('layouts.home.print') %>
+<%= simple_form_for(@print) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="row">
+    <div class="small-6 columns">
+      <% if @print.file_cache %>
+        <%= f.label :file %>
+        <%= @print.file_name %>
+        <%= f.input :file_name, as: :hidden %>
+        <%= f.input :file_cache, as: :hidden %>
+      <% else %>
+        <%= f.input :file, as: :file %>
+      <% end %>
+    </div>
+    <div class="small-6 columns">
+      <em><%= t '.supported_file_types' %>:<br> <%= Print.permitted_mime_types.join ', ' %></em>
+    </div>
+  </div>
+
+  <%= f.label :printer %>
+  <div class="row collapse">
+    <div class="small-3 large-1 columns">
+      <span class="prefix">
+        <%= fa_icon 'print' %>
+      </span>
+    </div>
+    <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
+      <%= f.select :printer, Printer.weighted.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
+    <% end %>
+  </div>
+
+  <div class="suggestions">
+    <%= f.label t('.suggestions') %>
+    <ol class="printer-list">
+      <% Printer.weighted.limit(10).each do |p| %>
+        <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
+      <% end %>
+    </ol>
+  </div>
+
+  <%= f.input :duplex, as: :boolean, input_html: { checked: true } %>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :copies, as: :integer, input_html: { min: 1 } %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :ranges %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="small-12 medium-6 columns">
+      <%= f.input :media, collection: ['A4'] %>
+    </div>
+    <div class="small-12 medium-6 columns">
+      <%= f.input :ppi, collection: Print.available_ppi, prompt: false %>
+    </div>
+  </div>
+
+  <fieldset>
+    <legend><%= t '.user' %></legend>
+    <div class="row collapse">
+        <div class="small-3 large-1 columns">
+            <span class="prefix">
+                <%= fa_icon 'user' %>
+            </span>
+        </div>
+        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false, placeholder: t('activemodel.attributes.print.username') -%>
+
+        <div class="small-3 large-1 columns large-offset-1">
+            <span class="prefix">
+                <%= fa_icon 'key' %>
+            </span>
+        </div>
+        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false, placeholder: t('activemodel.attributes.print.password') -%>
+    </div>
+    <div class="row">
+        <em><%= t('.password_notice') %></em>
+        <br><br>
+        <em><%= t('.forgot_pw_notice') %><%= link_to 'cdks', 'https://cdks.chalmers.se' %></em>
+    </div>
+  </fieldset>
+  <%= f.button :submit, t('layouts.home.print') %>
+<% end %>
+
+<div id="pq" class="row">
+  <div class="small-3 columns">
+    <%= button_tag class: 'button secondary get-pq-button' do %>
+      <span class="done">PQ</span><%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>
+    <% end %>
+  </div>
+  <div class="small-9 columns">
+    <div data-alert class="alert-box alert hidden">
+      <span class="error"></span>
+    </div>
+    <div data-alert class="alert-box success hidden">
+      PQ for <output class="name"></output>: <output class="pq"></output>
+    </div>
+  </div>
+</div>

@@ -21,5 +21,6 @@
 </table>
 
 <br>
-
-<%= link_to t('new', name:Course.model_name.human), new_course_path %>
+<% if policy(Course).create? %>
+  <%= link_to t('new', name:Course.model_name.human), new_course_path %>
+<% end %>

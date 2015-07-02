@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141216220336) do
+ActiveRecord::Schema.define(version: 20150212001113) do
 
   create_table "comments", force: true do |t|
     t.integer  "post_id"
@@ -88,9 +88,41 @@ ActiveRecord::Schema.define(version: 20141216220336) do
     t.integer "course_id"
   end
 
+  create_table "events", force: true do |t|
+    t.date    "event_date"
+    t.boolean "full_day"
+    t.time    "start_time"
+    t.time    "end_time"
+    t.string  "location"
+    t.string  "organizer"
+    t.integer "post_id"
+    t.string  "facebook_link"
+  end
+
+  add_index "events", ["post_id"], name: "index_events_on_post_id", using: :btree
+
   create_table "images", force: true do |t|
     t.string   "source"
     t.string   "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "menu_links", force: true do |t|
+    t.integer  "menu_id"
+    t.string   "controller"
+    t.string   "action"
+    t.text     "params"
+    t.string   "title"
+    t.integer  "preferred_order"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "menu_links", ["menu_id"], name: "index_menu_links_on_menu_id", using: :btree
+
+  create_table "menus", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -101,8 +133,10 @@ ActiveRecord::Schema.define(version: 20141216220336) do
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
   end
 
+  add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
   add_index "pages", ["title"], name: "index_pages_on_title", using: :btree
 
@@ -135,11 +169,27 @@ ActiveRecord::Schema.define(version: 20141216220336) do
     t.datetime "updated_at"
     t.string   "slug"
     t.integer  "comments_count",            default: 0
+    t.boolean  "show_public"
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree
   add_index "posts", ["slug"], name: "index_posts_on_slug", using: :btree
   add_index "posts", ["title"], name: "index_posts_on_title", using: :btree
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
+
+  create_table "printers", force: true do |t|
+    t.string  "name"
+    t.string  "location"
+    t.string  "media"
+    t.integer "weight",   default: 10
+  end
+
+  create_table "sessions", force: true do |t|
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "token"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

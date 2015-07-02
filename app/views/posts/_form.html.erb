@@ -1,42 +1,29 @@
-<%= form_for(@post) do |f| %>
-  <% if @post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= t 'errors.template.header', count: @post.errors.count, model:Post.model_name.human.downcase %>:</h2>
+<%= simple_form_for(@post) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @post.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :group_id, label: t('.groupid_placeholder'),
+        collection: current_user.committees,
+        prompt: false, label_method: :name, value_method: :slug %>
     </div>
+  </div>
+  <%= render 'localized_fields', f: f %>
+  <div class="row">
+    <%= f.input :sticky %> <%= f.input :show_public %>
+  </div>
+  <%= f.simple_fields_for :event do |builder| %>
+    <div class="row">
+      <%= builder.input :_destroy, as: :boolean, label: Event.model_name.human, checked: show_event_fields?, checked_value: 0, unchecked_value: 1 %>
+    </div>
+    <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
+      <legend><%= Event.model_name.human %></legend>
+        <%= render 'event_fields', f: builder %>
+    </fieldset>
   <% end %>
-
-  <div class="row">
-    <div class="large-6 columns">
-      <%= f.label :user_id do %>
-        <%= Post.human_attribute_name(:user_id) %>
-        <%= f.text_field :user_id, placeholder: t('.userid_placeholder') %>
-      <% end %>
-    </div>
-    <div class="large-6 columns">
-      <%= f.label :group_id do %>
-        <%= Post.human_attribute_name(:group_id) %>
-        <%= f.text_field :group_id, placeholder: t('.groupid_placeholder') %>
-      <% end %>
-    </div>
-  </div>
-  <%= render partial: "localized_fields", locals:{f:f} %>
   <div class="row">
     <div class="large-12 columns">
-      <%= f.label :sticky do %>
-        <%= Post.human_attribute_name(:sticky) %>
-        <%= f.check_box :sticky %>
-      <% end %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="large-12 columns">
-      <%= f.submit class: 'button large-12' %>
+      <%= f.button :submit %>
     </div>
   </div>
 <% end %>

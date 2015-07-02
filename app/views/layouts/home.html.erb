@@ -11,15 +11,17 @@
   </div>
   <div class="quick-buttons large-5 columns">
     <ul class="box list">
-        <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top schedule-icon"><%= t '.schema' %></a></li>
-        <li><a data-tooltip title="<%= t '.book_hubben_desc' %>" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top booking-icon"><%= t '.booking' %></a></li>
-        <li><a data-tooltip title="<%= t '.book_chalmers_desc' %>" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top group-icon"><%= t '.group_room' %></a></li>
-        <li><a data-tooltip title="<%= t '.print_desc' %>" href="printpath" class="has-tip tip-top print-icon"><%= t '.print' %></a></li>
-        <li><a data-tooltip title="<%= t '.charge_card_desc' %>" href="http://kårkort.se" class="has-tip tip-top card-icon"><%= t '.charge_card' %></a></li>
+        <li><a data-tooltip title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" class="has-tip tip-top"><%= fa_icon 'table', text: t('.schema') %></a></li>
+        <li><a data-tooltip title="<%= t '.book_hubben_desc' %>" href="https://bookit.chalmers.it/bookings/new" class="has-tip tip-top"><%= fa_icon 'home', text: t('.booking') %></a></li>
+        <li><a data-tooltip title="<%= t '.book_chalmers_desc' %>" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top"><%= fa_icon 'users', text: t('.group_room') %></a></li>
+        <li><a data-tooltip title="<%= t '.print_desc' %>" href="<%= new_print_path %>" class="has-tip tip-top"><%= fa_icon 'print', text: t('.print') %></a></li>
+        <li><a data-tooltip title="<%= t '.charge_card_desc' %>" href="http://kårkort.se" class="has-tip tip-top"><%= fa_icon 'credit-card', text: t('.charge_card') %></a></li>
     </ul>
   </div>
   <div class="user-area large-3 columns">
-    USER LOGIN
+    <% cache ['today', I18n.locale] do %>
+      <%= render 'home/today', events: @events %>
+    <% end %>
   </div>
 </header>
 
@@ -32,5 +34,20 @@
       <%= yield %>
     </section>
   </div>
+  <div class="large-3 columns"></div>
+  <div class="large-3 columns">
+    <%#= render partial: 'twitter/widget', locals: { handle: 'chalmersit' } %>
+    <%#= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
+    <section class="box widget it-calendar">
+      <header>
+        <h3><%= t '.events' %></h3>
+      </header>
+      <div class="gce-widget-grid">
+        <%#= calendar Configurable.calendar_url %>
+      </div>
+    </section>
+  </div>
 </section>
-<%= render 'layouts/footer' %>
+<% cache ['footer', I18n.locale] do %>
+  <%= render 'layouts/footer' %>
+<% end %>

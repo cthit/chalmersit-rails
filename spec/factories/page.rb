@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :page do |f|
-    f.title 'Such title'
-    f.body 'very body'
+    title 'Such title'
+    body 'very body'
   end
 end

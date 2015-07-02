@@ -1,4 +1,4 @@
-<h1><%= t 'editing' %> <%= @course.code %> - <%= @course.name %></h1>
+<% content_for :title, "#{t('editing')} #{@course.code} - #{@course.name}" %>
 
 <%= render 'form' %>
 

@@ -32,7 +32,7 @@
 
 		.author-info {
 			margin: $lineheight 0;
-			
+
 			.detail {
 				display: block;
 			}
@@ -50,9 +50,9 @@
 
 			&:hover a {
 				color: $link-color;
-			}	
+			}
 		}
-		
+
 	}
 }
 
@@ -77,8 +77,9 @@
 		}
 	}
 
-	&.category-arrangemang, 
-	&.category-lunchforelasningar {
+	// &.category-arrangemang,
+	// &.category-lunchforelasningar
+	&.event {
 		header h1 {
 			@include icon("", $margin: 0 10px 0 0, $size: .6em);
 		}
@@ -91,17 +92,18 @@
 		}
 	}
 
-	&.category-arrangemang {
+	// &.category-arrangemang
+	&.event {
 		header h1::before {
 			content: "\e004";
 		}
 	}
 
-	&.category-lunchforelasningar {
-		header h1::before {
-			content: "\f0f5";
-		}
-	}
+	// &.category-lunchforelasningar {
+	// 	header h1::before {
+	// 		content: "\f0f5";
+	// 	}
+	// }
 }
 
 /* Style metadata for event posts */
@@ -137,7 +139,7 @@
 
 /* SINGLE POST */
 
-.posts {
+.posts-show {
 	.article-inner {
 		@include box;
 		padding: 5%;

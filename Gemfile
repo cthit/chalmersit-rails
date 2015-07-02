@@ -10,6 +10,8 @@ gem 'sass-rails', '~> 4.0.5'
 gem 'compass-rails', '~> 2.0.0'
 # Foundation styles
 gem 'foundation-rails', '~> 5.4.0'
+# Font awesome!!!
+gem 'font-awesome-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
@@ -17,9 +19,17 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# ActiveResource - fetching users and groups from account
+gem 'activeresource'
+
+# Caching with Redis
+gem 'redis-rails'
+
 # Markdown for post body
 gem 'github-markdown'
 
+# iCalendar parsing (for example: Google calendar)
+gem 'icalendar'
 # Twitter feeds
 gem 'twitter'
 # Application settings
@@ -29,8 +39,15 @@ gem 'jquery-fileupload-rails'
 gem 'carrierwave'
 gem 'mini_magick'
 
+gem 'omniauth-oauth2'
+
+# Authorization
+gem 'pundit'
+
 # Relative timestamps
 gem 'momentjs-rails'
+
+gem 'simple_form'
 
 # RSS feeds
 gem 'feedjira'
@@ -50,6 +67,8 @@ gem 'spring',        group: :development
 # Internationalisation support (i.e. Swedish and English)
 gem 'globalize', '~> 4.0.2'
 gem 'globalize-accessors', '~> 0.1.5'
+
+gem 'rest-client'
 
 group :development do
   # Nice error messages
@@ -81,3 +100,9 @@ gem 'multi_fetch_fragments'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+# Used for SCP and SSH by print script to connect to chalmers servers
+gem 'net-scp', '~> 1.2.1'
+
+# Used for searching of selector in print
+gem 'chosen-rails'

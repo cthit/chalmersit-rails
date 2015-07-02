@@ -18,8 +18,10 @@ $ ->
       $preview.find('.article-content').html(body)
       $preview.foundation('reveal', 'open')
     false
+  $('.posts #post_event_attributes__destroy').on 'change', ->
+    $('#event_fields_container').toggle this.checked
 
-  $('.posts textarea').fileupload
+  $('.posts #post_body').fileupload
     url: '/images.json',
     paramName: 'image[source]',
     add: (e, data) ->

@@ -1,19 +1,25 @@
-<%= render @post %>
+<% cache [@post, I18n.locale] do %>
+  <% content_for :title, @post.title %>
+  <% content_for :sidebar_right do %>
+    <%= render 'users/sidebar', user: @post.user %>
+  <% end %>
+  <%= render @post %>
 
-<div class="row">
-  <%= link_to t('.prev_posts'), post_path(@post.previous), rel: 'prev', class: 'button large-4 columns' unless @post.previous.nil? %>
-  <%= link_to t('.all_posts'), posts_path, class: 'button secondary large-4 columns' %>
-  <%= link_to t('.next_posts'), post_path(@post.next), rel: 'next', class: 'button large-4 columns' unless @post.next.nil? %>
-</div>
-
-<section id="respond">
-  <%= render partial: 'comments/form' %>
-</section>
-
-<% if @comments.any? %>
   <section id="comments">
-    <ol class="commentlist">
-      <%= render partial: 'comments/comment', collection: @comments, cache: true %>
-    </ol>
+      <% if @comments.any? %>
+        <ol class="commentlist">
+          <%= render partial: 'comments/comment', collection: @comments, cache: true %>
+        </ol>
+      <% end %>
+    <section id="respond">
+      <% if policy(Comment).create? %>
+        <%= render 'comments/form' %>
+      <% end %>
+    </section>
   </section>
+  <div class="row">
+    <%= link_to t('.prev_posts'), post_path(@post.previous), rel: 'prev', class: 'button large-4 columns' unless @post.previous.nil? %>
+    <%= link_to t('.all_posts'), posts_path, class: 'button secondary large-4 columns' %>
+    <%= link_to t('.next_posts'), post_path(@post.next), rel: 'next', class: 'button large-4 columns' unless @post.next.nil? %>
+  </div>
 <% end %>

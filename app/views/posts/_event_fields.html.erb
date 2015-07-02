@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :event_date, html5: true %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :full_day %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :start_time, html5: true %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :end_time, html5: true %>
+  </div>
+</div>
+<div class="row collapse">
+  <%= f.label :facebook_link %>
+  <div class="small-3 large-2 columns">
+    <span class="prefix">http://</span>
+  </div>
+  <div class="small-9 large-10 columns">
+    <%= f.text_field :facebook_link %>
+  </div>
+</div>
+<div class="row">
+  <div class="large-6 columns">
+    <%= f.input :location %>
+  </div>
+  <div class="large-6 columns">
+    <%= f.input :organizer, placeholder: t('.empty_if_group') %>
+  </div>
+</div>

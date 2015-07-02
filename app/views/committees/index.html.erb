@@ -1,4 +1,4 @@
-<h1><%= Committee.model_name.human(count:2) %></h1>
+<% content_for :title, Committee.model_name.human(count:2) %>
 
 <table>
   <thead>
@@ -14,13 +14,18 @@
       <tr>
         <td><%= committee.title %></td>
         <td><%= link_to committee.name, committee %></td>
-        <td><%= link_to t('edit'), edit_committee_path(committee) %></td>
-        <td><%= link_to t('delete'), committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if policy(committee).update? %>
+          <td><%= link_to t('edit'), edit_committee_path(committee) %></td>
+        <% end %>
+        <% if policy(committee).destroy? %>
+          <td><%= link_to t('delete'), committee, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to t('new', name:Committee.model_name.human.downcase), new_committee_path %>
+<% if policy(Committee).create?  %>
+  <%= link_to t('new', name: Committee.model_name.human.downcase), new_committee_path %>
+<% end %>

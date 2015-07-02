@@ -26,7 +26,10 @@ en:
   it: Information Technology
   chs: Chalmers Student Union
   cth: Chalmers University of Technology
-  login: Log in
+  login: Sign in
+  logout: Sign out
+  sv: Swedish
+  en: English
   pw_reset: Reset password
   search: Search chalmers.it
   contact: Contact
@@ -40,6 +43,7 @@ en:
   name: Name
   new: "New %{name}"
   more: "More %{model}"
+  in_locale: "%{name} in %{lang}"
   edit: Edit
   editing: Editing
   delete: Delete
@@ -55,8 +59,18 @@ en:
   published: Published
   permalink: Permalink
   translation_missing: "This %{model} is missing a translation for your language."
+  not_authorized: You are not authorized to perform this action.
   activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            group_id:
+              user_not_in_group: "You're not a member of %{group}"
     models:
+      event:
+        one: Event
+        other: Events
       post:
         one: News post
         other: News posts
@@ -87,40 +101,91 @@ en:
         group_id: Association / Committee
         sticky: Sticky
         body: Body
+        show_public: Show public (for visitors)
       comment:
         user_id: User
         body: Comment
+  activemodel:
+    models:
+      print: Print
+      printer: Printer
+    attributes:
+      print:
+        file: File
+        printer: Printer
+        copies: No. of copies
+        duplex: Double-sided
+        ranges: Ranges
+        media: Paper size
+        ppi: Resolution
+        username: CID
+        password: Password
+    errors:
+      models:
+        print:
+          attributes:
+            file:
+              invalid_type: File type is unsupported
+            media:
+              unsupported: Paper size is not supported by the printer
 
   layouts:
+    header:
+      tools: Tools
+      new_news_post: Publish news post
+      edit_profile: Edit profile
+      admin: Admin
     home:
       booking: Booking
       group_room: Group room
       print: Print
-      schema: Schema
-      charge_card: Charge S.U. card
+      schema: Schedule
+      charge_card: S.U. card
       book_hubben_desc: Book Hubben or the group room
       book_chalmers_desc: Book group room at Chalmers
       print_desc: Print on one of Chalmers printers
       charge_card_desc: Shortcut for charging your student union card
+      events: Events
 
   posts:
     form:
       title_placeholder: Title for the news post
       userid_placeholder: Your username!
-      groupid_placeholder: Association or committee
+      groupid_placeholder: Publish post as
       body_placeholder: The news content goes here
     post:
+      organizer_event: Organizer of this event
+      facebook_link_to_event: Link to Facebook event
       posted_for: Written for
       by: by
       posts_by: News posts written by
+    event_fields:
+      empty_if_group: Leave blank if same as post creator
     show:
       prev_posts: Previous news
       all_posts: All news
       next_posts: Next news post
+  comments:
+    form:
+      write_comment: Write a comment
+  users:
+    sidebar:
+      see_all_posts_by: "Show all news post by %{user}"
   lunch:
     feed:
       lunch: Lunch
       no_lunch_today: No lunch today
+  home:
+    today:
+      next_event: Next event
+  print:
+    new:
+      supported_file_types: Supported file types
+      suggestions: Suggestions
+      user: User
+      uploaded: Uploaded file
+      password_notice: "Note: It is your Chalmers password you should use, not the one you use for our services."
+      forgot_pw_notice: "If you have forgotten you password, visit "
 
   date:
     abbr_day_names:

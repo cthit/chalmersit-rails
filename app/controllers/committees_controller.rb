@@ -1,10 +1,11 @@
 class CommitteesController < ApplicationController
   before_action :set_committee, only: [:show, :edit, :update, :destroy]
+  before_action :authorize_committee, except: [:index, :create, :new]
 
   # GET /committees
   # GET /committees.json
   def index
-    @committees = Committee.all
+    # Committees are loaded in ApplicationController
   end
 
   # GET /committees/1
@@ -15,6 +16,7 @@ class CommitteesController < ApplicationController
   # GET /committees/new
   def new
     @committee = Committee.new
+    authorize_committee
   end
 
   # GET /committees/1/edit
@@ -25,6 +27,7 @@ class CommitteesController < ApplicationController
   # POST /committees.json
   def create
     @committee = Committee.new(committee_params)
+    authorize_committee
 
     respond_to do |format|
       if @committee.save
@@ -71,5 +74,9 @@ class CommitteesController < ApplicationController
     def committee_params
       permitted = [:slug, :name, :url, :email] + Committee.globalize_attribute_names
       params.require(:committee).permit(permitted)
+    end
+
+    def authorize_committee
+      authorize @committee
     end
 end

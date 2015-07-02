@@ -1,0 +1,13 @@
+<%= render 'layouts/header' %>
+<aside class="large-3 columns side-nav">
+<%= yield(:sidebar_left) %>
+</aside>
+<section class="large-6 columns main-col">
+  <%= yield %>
+</section>
+<aside role="complementary" class="large-3 columns sidebar">
+<%= yield(:sidebar_right) %>
+</aside>
+<% cache ['footer', I18n.locale] do %>
+  <%= render 'layouts/footer' %>
+<% end %>

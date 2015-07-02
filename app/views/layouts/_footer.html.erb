@@ -17,7 +17,7 @@
             <% 'footer_navigation' %>
           </nav>
         </section>
-
+      <% cache ['contact', I18n.locale], expires_in: 24.hours do %>
         <section class="large-4 columns">
           <dl class="footer-contact">
             <dt><%= t 'contact' %></dt>
@@ -39,15 +39,19 @@
             </a></dd>
           </dl>
         </section>
-
+      <% end %>
+      <% cache ['footer_committees', I18n.locale] do %>
         <section class="large-4 columns">
           <dl>
             <% @committees.each do |com| %>
-              <dt><%= com.title %></dt>
-              <dd><%= link_to com.name, com %></dd>
+              <% cache ['footer_committee', I18n.locale, com] do %>
+                <dt><%= com.title %></dt>
+                <dd><%= link_to com.name, com %></dd>
+              <% end %>
             <% end %>
           </dl>
         </section>
+      <% end %>
       </div>
 
       <div class="footer-foot wrapper">

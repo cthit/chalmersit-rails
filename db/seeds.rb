@@ -30,3 +30,24 @@
   c.merge!(slug: c[:name].gsub('.', '').parameterize, description_en: desc, description_sv: desc )
   Committee.create!(c)
 end
+  periods = [
+    { name: 'Period 1'},
+    { name: 'Period 2'},
+    { name: 'Period 3'},
+    { name: 'Period 4'}
+  ]
+  periods.each do |p|
+    Period.create!(p)
+  end
+
+main_menu = Menu.create(name: 'main')
+
+
+
+[
+  { controller: "committees", action: "index", title: "Sektionen", preferred_order: 0 },
+  { controller: "posts", action: "index", title: "Nyheter", preferred_order: 1 },
+  { controller: "courses", action: "index", title: "Kurser", preferred_order: 2 }
+].each do |link|
+  MenuLink.create(link.merge(menu: main_menu))
+end

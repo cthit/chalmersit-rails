@@ -14,9 +14,11 @@
 //= require jquery_ujs
 //= require foundation/foundation
 //= require foundation/foundation.tooltip
+//= require foundation/foundation.alert
 //= require foundation/foundation.reveal
 //= require foundation/foundation.tab
 //= require jquery-fileupload/basic
+//= require chosen-jquery
 //= require turbolinks
 //= require moment
 //= require moment/sv.js

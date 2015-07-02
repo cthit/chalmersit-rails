@@ -76,14 +76,14 @@ a.subtle-border {
 		color: white;
 		font-size: to_em(7);
 	}
-	&:hover {
+	&:hover, &:focus {
     text-decoration: none;
     color: white;
   }
   line-height: .7;
 	display: table-cell;
 	vertical-align: middle;
-	background: asset-url('logo.png') no-repeat;
+	background: asset-url('itlogo.svg') no-repeat;
   background-size: 88px;
   color: white;
 	height: 88px;
@@ -100,11 +100,11 @@ a.subtle-border {
 	@include label;
 }
 
-.required {
-	color: darken($dangerous-color, 10%);
-	font-weight: bold;
-	font-size: 1.2em;
-}
+// .required {
+// 	color: darken($dangerous-color, 10%);
+// 	font-weight: bold;
+// 	font-size: 1.2em;
+// }
 
 .plain-link {
 	@include plain-links;
@@ -195,37 +195,6 @@ a.subtle-border {
 }
 
 /* Icons */
-
-%icon {
-	background-repeat: no-repeat;
-	display: block;
-}
-
-.schedule-icon {
-	@extend %icon;
-	@include icon-image("icon-schedule.svg", 32px, 32px);
-}
-
-.print-icon {
-	@extend %icon;
-	@include icon-image("icon-printer.svg", 32px, 32px);
-}
-
-.group-icon {
-	@extend %icon;
-	@include icon-image("icon-group.svg", 32px, 32px);
-}
-
-.booking-icon {
-	@extend %icon;
-	@include icon-image("icon-booking.svg", 32px, 32px);
-}
-
-.card-icon {
-	@extend %icon;
-	@include icon-image("icon-card.svg", 32px, 32px);
-	background-position-y: 5px !important;
-}
 
 .hidden {
 	display: none;
