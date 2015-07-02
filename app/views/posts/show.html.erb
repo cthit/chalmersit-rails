@@ -8,8 +8,7 @@
   <section id="comments">
       <% if @comments.any? %>
         <ol class="commentlist">
-        <!-- comments.reverse to get the comments in the desirble order -->
-          <%= render partial: 'comments/comment', collection: @comments.reverse, cache: true %>
+          <%= render partial: 'comments/comment', collection: @comments, cache: true %>
         </ol>
       <% end %>
     <section id="respond">

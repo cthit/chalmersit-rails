@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  scope :latest_first, -> { order(created_at: :desc) }
+  scope :latest_last, -> { order(created_at: :asc) }
   belongs_to :post, counter_cache: true, touch: true
 
   validates :user_id, :body, presence: true
