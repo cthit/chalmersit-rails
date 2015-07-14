@@ -114,6 +114,7 @@ en:
         printer: Printer
         copies: No. of copies
         duplex: Double-sided
+        collated: Collated
         ranges: Ranges
         media: Paper size
         ppi: Resolution

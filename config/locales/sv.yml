@@ -126,6 +126,7 @@ sv:
         printer: Skrivare
         copies: Antal kopior
         duplex: Dubbelsidig utskrift
+        collated: Sorterade sidor 
         ranges: Intervall
         media: Pappersstorlek
         ppi: Upplösning
