@@ -39,8 +39,8 @@ rake db:setup
 rake rails:update:bin
 rbenv rehash
 
-# Then serve:
-rails server
+# Start server:
+Start the server by running the completed launch script.
 
 # To connect to the server simply connect to your ip address on port 3000
 ```
