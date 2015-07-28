@@ -32,6 +32,9 @@ sv:
   en: engelska
   pw_reset: Glömt lösenord
   search: Sök på chalmers.it
+  search_title: Resultat
+  search_found: "Hittade %{number} resultat"
+  search_failed: "Vänligen försök med din sökning igen"
   contact: Kontakt
   business: Företag
   mailing_address: Postadress
