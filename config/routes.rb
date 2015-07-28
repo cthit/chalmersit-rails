@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
+    get 'search' => 'search#index', as: :search
+
     get 'print' => 'print#new', as: :new_print
     post 'print' => 'print#print', as: :prints
     post 'print/pq' => 'print#pq', as: :pq_print
