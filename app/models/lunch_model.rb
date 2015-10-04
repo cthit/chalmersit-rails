@@ -23,25 +23,34 @@ class LunchModel
   def einstein
     # url = "http://butlercatering.se/einstein"
     url = "http://butlercatering.se/print/6"
-
-    menu = Nokogiri.HTML(open(url))
-    price = 80
-    week = menu.css('h2.lunch-titel').first.content.scan(/\d/).join('').to_i
-    meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.map do |day|
-      day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
-        content = meal.content.gsub(/\s+\Z/, '')
-        { title: 'Einstein food', summary: content, price: price }
+    begin 
+      menu = Nokogiri.HTML(open(url))
+      price = 80
+      week = menu.css('h2.lunch-titel').first.content.scan(/\d/).join('').to_i
+      meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.map do |day|
+        day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
+          content = meal.content.gsub(/\s+\Z/, '')
+          { title: 'Einstein food', summary: content, price: price }
+        end
       end
+      [{ name: 'Einstein', meals: meals }]
+    rescue
+      [{name: 'Einstein', meals: {}}]
     end
-    [{ name: 'Einstein', meals: meals }]
   end
 
   def chalmrest
     date = Time.new.strftime("%Y-%m-%d")
     restaurants = {
-      "Linsen"          => "http://cm.lskitchen.se/johanneberg/linsen/sv/#{date}.rss",
-      "Kårrestaurangen" => "http://cm.lskitchen.se/johanneberg/karrestaurangen/sv/#{date}.rss",
-      "L's kitchen"     => "http://cm.lskitchen.se/lindholmen/foodcourt/sv/#{date}.rss"}
+      "Linsen"            => "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true",
+      "Kårrestaurangen"   => "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true",
+      "L's kitchen"       => "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true",
+      "Express"           => "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true",
+      "J.A Pripps"        => "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true",
+      "Restaurang Hyllan" => "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true",
+      "L's Resto"         => "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true",
+      "Kokboken"          => "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true"}
+
     restaurants.map do |key, url|
       meals = Feed.fetch_and_parse(url).entries.map do |entry|
         summary, price = entry.summary.split('@')
