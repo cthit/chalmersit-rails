@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
   scope :ordered, -> { order(created_at: :desc) }
 
+  after_save :send_mail
+
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
   belongs_to :group, class_name: 'Committee'
@@ -57,5 +59,9 @@ class Post < ActiveRecord::Base
 
     def user_in_group
       errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
+    end
+
+    def send_mail 
+      PostMailer.send_newsmail(self).deliver_later
     end
 end
