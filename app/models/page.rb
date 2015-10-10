@@ -9,7 +9,11 @@ class Page < ActiveRecord::Base
     before_validation :generate_slug
     
     def to_param
-        slug
+        if self.parent.nil?
+            slug
+        else
+            self.parent.to_param()+"/"+slug
+        end 
     end
 
     def generate_slug
