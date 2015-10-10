@@ -32,7 +32,7 @@ en:
   en: English
   pw_reset: Reset password
   search: Search chalmers.it
-  search_title: Results
+  search_title: "Results for '%{search_term}'"
   search_found: "Found %{number} results"
   search_failed: "Please try your search again"
   contact: Contact
