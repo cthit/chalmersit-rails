@@ -44,3 +44,5 @@ Start the server by running the completed launch script.
 
 # To connect to the server simply connect to your ip address on port 3000
 ```
+
+#Test mail functionality with mailcatcher (mailcatcher.me) Start with "mailcatcher --ip=0.0.0.0" if you want to run on your webbrowser. Check Vagrant file for portforwarding.
