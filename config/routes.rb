@@ -25,8 +25,10 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'home#index'
+    get '*path' => 'pages#show'
   end
-  resources :pages
+  resources :pages do
+  end
   resources :images, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
