@@ -25,10 +25,8 @@ Rails.application.routes.draw do
     end
 
     get '/' => 'home#index'
-    get '*path' => 'pages#show'
   end
-  resources :pages do
-  end
+  resources :pages
   resources :images, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
@@ -37,4 +35,5 @@ Rails.application.routes.draw do
   get 'signout' => 'sessions#destroy', as: :signout
 
   root 'home#index'
+  get '*path' => 'pages#show'
 end
