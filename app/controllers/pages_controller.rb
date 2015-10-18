@@ -15,6 +15,8 @@ class PagesController < ApplicationController
     else
       @page = Page.find_by!(slug: params[:path].split('/').last)
     end
+    @pages = Page.all
+    @committees = Committee.all
   end
 
   # GET /pages/new
