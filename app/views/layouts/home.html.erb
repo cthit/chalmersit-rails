@@ -36,16 +36,16 @@
   </div>
   <div class="large-3 columns lunch_feed box"></div>
   <div class="large-3 columns">
-    <%= render partial: 'twitter/widget', locals: { handle: 'chalmersit' } %>
-    <%= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
     <section class="box widget it-calendar">
       <header>
         <h3><%= t '.events' %></h3>
       </header>
       <div class="gce-widget-grid">
-        <%#= calendar Configurable.calendar_url %>
+        <%= calendar Configurable.calendar_url %>
       </div>
     </section>
+    <%= render partial: 'twitter/widget', locals: { handle: 'chalmersit' } %>
+    <%= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
   </div>
 </section>
 <% cache ['footer', I18n.locale] do %>
