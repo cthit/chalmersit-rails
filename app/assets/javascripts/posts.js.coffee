@@ -7,17 +7,20 @@ $ ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
     $elem.text moment(new Date(datetime)).fromNow()
+  
 
   $('.posts .preview').on 'click', ->
-    locale = $(this).data('locale')
-    title = $('#post_title_' + locale).val()
-    text = $('#post_body_' + locale).val()
+    textid = $(this).data('text')
+    titleid = $(this).data('title')
+    title = $(titleid).val()
+    text = $(textid).val()
     $.post '/preview', { text: text }, (body) ->
       $preview = $('#preview')
       $preview.find('.post-title').text(title)
       $preview.find('.article-content').html(body)
       $preview.foundation('reveal', 'open')
     false
+
   $('.posts #post_event_attributes__destroy').on 'change', ->
     $('#event_fields_container').toggle this.checked
 

@@ -18,7 +18,7 @@
             <%= f.input "body_#{locale}", as: :text, label: Post.human_attribute_name(:body), placeholder: t('posts.form.body_placeholder'), input_html: { rows: 20 } %>
           </div>
         </div>
-        <button class="preview" data-locale="<%= locale %>"><%= t 'preview' %></button>
+        <button class="preview" data-text="#post_body_<%= locale %>" data-title="#post_title_<%= locale %>"><%= t 'preview' %></button>
       </div>
     <% end %>
   <% end %>

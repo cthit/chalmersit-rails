@@ -6,6 +6,17 @@
     </div>
   </div>
   <div class="row">
+    <button class="preview large-12 columns" data-text="#comment_body" data-locale="<%= locale %>"><%= t 'preview' %></button>
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<div id="preview" class="reveal-modal" data-reveal>
+  <h2 class="post-title"></h2>
+  <article role="article">
+    <div class="article-inner">
+      <div class="article-content"></div>
+    </div>
+  </article>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
