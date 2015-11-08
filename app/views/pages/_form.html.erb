@@ -4,5 +4,18 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
+    
+  <button class="preview large-12 columns" data-text="#page_body" data-title="#page_title"><%= t 'preview' %></button>
+
   <%= f.button :submit %>
 <% end %>
+
+<div id="preview" class="reveal-modal" data-reveal>
+  <h2 class="post-title"></h2>
+  <article role="article">
+    <div class="article-inner">
+      <div class="article-content"></div>
+    </div>
+  </article>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

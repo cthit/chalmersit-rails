@@ -9,7 +9,7 @@ $ ->
     $elem.text moment(new Date(datetime)).fromNow()
   
 
-  $('.posts .preview').on 'click', ->
+  $('.preview').on 'click', ->
     textid = $(this).data('text')
     titleid = $(this).data('title')
     title = $(titleid).val()
