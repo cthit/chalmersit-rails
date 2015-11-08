@@ -32,6 +32,9 @@ sv:
   en: engelska
   pw_reset: Glömt lösenord
   search: Sök på chalmers.it
+  search_title: "Resultat för '%{search_term}'"
+  search_found: "Hittade %{number} resultat"
+  search_failed: "Vänligen försök med din sökning igen"
   contact: Kontakt
   preview: Förhandsgranska
   business: Företag
@@ -127,6 +130,7 @@ sv:
         printer: Skrivare
         copies: Antal kopior
         duplex: Dubbelsidig utskrift
+        collated: Sorterade sidor 
         ranges: Intervall
         media: Pappersstorlek
         ppi: Upplösning

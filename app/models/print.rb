@@ -21,7 +21,7 @@ class Print
   validates :username, :password, :printer, presence: true
   validates :file, presence: true, unless: 'file_cache.present?'
 
-  attr_accessor :copies, :duplex, :ranges, :media, :username, :password, :ppi, :file, :file_cache, :file_name, :printer
+  attr_accessor :copies, :duplex, :collate, :ranges, :media, :username, :password, :ppi, :file, :file_cache, :file_name, :printer
 
 
   def initialize(attributes = {})
@@ -31,8 +31,9 @@ class Print
   end
 
   def options
-    [:duplex, :ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt}\='#{send opt}'" }.join " "
+    [:collate, :duplex, :ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt}\='#{send opt}'" }.join " "
   end
+
 
   def duplex
     @duplex ? "two-sided-long-edge" : "one-sided"
@@ -41,6 +42,17 @@ class Print
   def duplex=(duplex_param)
     @duplex = (duplex_param == true || duplex_param == '1')
   end
+
+  def collate
+    return "True" if @collate
+  end
+
+  def collate=(collate_param)
+    if (collate_param == true || collate_param == '1')
+      @collate = true
+    end
+  end
+
 
   def persisted?
     false

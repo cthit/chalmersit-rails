@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:show, :edit, :update, :destroy]
+  before_action :set_page, only: [:edit, :update, :destroy]
 
   # GET /pages
   # GET /pages.json
@@ -10,6 +10,13 @@ class PagesController < ApplicationController
   # GET /pages/1
   # GET /pages/1.json
   def show
+    if params[:id]
+      @page = Page.find_by(slug: params[:id])
+    else
+      @page = Page.find_by!(slug: params[:path].split('/').last)
+    end
+    @pages = Page.all
+    @committees = Committee.all
   end
 
   # GET /pages/new

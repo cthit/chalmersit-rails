@@ -1,8 +1,8 @@
 <%= render 'layouts/header' %>
-<aside class="large-3 columns side-nav">
+<aside class="large-3 columns sidebar">
 <%= yield(:sidebar_left) %>
 </aside>
-<section class="large-6 columns main-col">
+<section class="large-6 columns">
   <article class="box" role="article">
     <% if content_for? :subtitle %>
       <hgroup class="page-title">

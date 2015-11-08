@@ -1,0 +1,13 @@
+<% if @search.nil? or @search.empty? %>
+  <% content_for :title, t(:search_failed) %>
+<% else %>
+  <% content_for :title, t(:search_title, search_term: @search) %>
+  <% content_for :subtitle, t(:search_found, number: @posts.size) %>
+  <div id="posts">
+  <ul>
+  <% @posts.each do |post| %>
+     <li><%= link_to post.title, post %></li>
+  <%end %>
+  </ul>
+  </div>
+<% end %>

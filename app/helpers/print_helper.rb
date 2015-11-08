@@ -1,5 +1,5 @@
 module PrintHelper
-  DOMAINS = ['remote1.student.chalmers.se', 'remote2.student.chalmers.se']
+  DOMAINS = ['remote11.chalmers.se', 'remote12.chalmers.se']
   SSH_FILENAME = '.print/chalmersit.dat'
 
   PQ_SITE = 'https://print.chalmers.se/auth/fs.pl'
@@ -18,7 +18,7 @@ module PrintHelper
   def connect(print, domain)
     Net::SSH.start(domain, print.username, password: print.password, number_of_password_prompts: 0, timeout: 10) do |ssh|
       ssh.scp.upload!(print.file.path, SSH_FILENAME)
-      ssh.exec! print_string(print)
+      #ssh.exec! print_string(print)
     end
   end
 
