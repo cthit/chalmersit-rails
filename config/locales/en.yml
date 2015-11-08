@@ -180,7 +180,7 @@ en:
       no_lunch_today: No lunch today
   home:
     today:
-      next_event: Next event
+      next_event: Events today
   print:
     new:
       supported_file_types: Supported file types

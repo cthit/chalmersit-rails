@@ -179,7 +179,7 @@ sv:
     show:
       prev_posts: Föregående nyhet
       all_posts: Alla nyheter
-      next_posts: Nästa nyhet
+      next_posts: Nyheter idag
   comments:
     form:
       write_comment: Skriv en kommentar
