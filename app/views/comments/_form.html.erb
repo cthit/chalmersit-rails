@@ -6,6 +6,13 @@
     </div>
   </div>
   <div class="row">
+    <%= button_tag :class => 'preview large-12 columns',
+                   :data => {:text => "#comment_body"} do %>
+      <%= t "preview" %>
+    <% end %>
+
     <%= f.button :submit %>
   </div>
 <% end %>
+
+<%= render "shared/markdown_preview" %>

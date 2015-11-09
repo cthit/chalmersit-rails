@@ -31,6 +31,11 @@ Rails.application.routes.draw do
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
+  post 'preview' => 'preview#preview'
+
+
+  # Example of regular route:
+  #   get 'products/:id' => 'catalog#view'
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'signout' => 'sessions#destroy', as: :signout
 

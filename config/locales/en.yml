@@ -36,6 +36,7 @@ en:
   search_found: "Found %{number} results"
   search_failed: "Please try your search again"
   contact: Contact
+  preview: Preview
   business: Business
   mailing_address: Mailing address
   visiting_address: Visiting address

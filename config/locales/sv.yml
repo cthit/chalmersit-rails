@@ -36,6 +36,7 @@ sv:
   search_found: "Hittade %{number} resultat"
   search_failed: "Vänligen försök med din sökning igen"
   contact: Kontakt
+  preview: Förhandsgranska
   business: Företag
   mailing_address: Postadress
   visiting_address: Besöksadress
