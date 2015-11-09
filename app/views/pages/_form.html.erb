@@ -4,8 +4,11 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
-    
-  <button class="preview large-12 columns" data-text="#page_body" data-title="#page_title"><%= t 'preview' %></button>
+
+  <%= button_tag :class => 'preview large-12 columns',
+                 :data => {:text => "#page_body", :title => "#page_title"} do %>
+    <%= t "preview" %>
+  <% end %>
 
   <%= f.button :submit %>
 <% end %>
