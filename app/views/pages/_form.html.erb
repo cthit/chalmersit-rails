@@ -10,12 +10,4 @@
   <%= f.button :submit %>
 <% end %>
 
-<div id="preview" class="reveal-modal" data-reveal>
-  <h2 class="post-title"></h2>
-  <article role="article">
-    <div class="article-inner">
-      <div class="article-content"></div>
-    </div>
-  </article>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
+<%= render "shared/markdown_preview" %>
