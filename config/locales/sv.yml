@@ -180,7 +180,7 @@ sv:
     show:
       prev_posts: Föregående nyhet
       all_posts: Alla nyheter
-      next_posts: Nyheter idag
+      next_posts: Nästa nyhet
   comments:
     form:
       write_comment: Skriv en kommentar
@@ -193,7 +193,7 @@ sv:
       no_lunch_today: Ingen lunch idag
   home:
     today:
-      next_event: Nästa evenemang
+      next_event: Evenemang idag
   print:
     new:
       supported_file_types: Filtyper som stöds
