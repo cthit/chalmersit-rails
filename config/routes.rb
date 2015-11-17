@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+  get 'contact/new'
+
+  get 'contact/index'
+
+  get 'contact/create'
+
   resources :menu_links
   resources :menus
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    resources :committees
-
+    resources :committees, :contact 
+    
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end
