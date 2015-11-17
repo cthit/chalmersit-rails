@@ -1,9 +1,4 @@
 Rails.application.routes.draw do
-  get 'contact/new'
-
-  get 'contact/index'
-
-  get 'contact/create'
 
   resources :menu_links
   resources :menus
