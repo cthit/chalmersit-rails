@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150702205539) do
+ActiveRecord::Schema.define(version: 20151201184958) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20150702205539) do
   end
 
   add_index "configurables", ["name"], name: "index_configurables_on_name", using: :btree
+
+  create_table "contacts", force: :cascade do |t|
+    t.text     "title",      limit: 65535
+    t.text     "body",       limit: 65535
+    t.string   "email",      limit: 255
+    t.text     "to_whom",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
 
   create_table "course_translations", force: :cascade do |t|
     t.integer  "course_id",   limit: 4,     null: false
@@ -170,6 +179,7 @@ ActiveRecord::Schema.define(version: 20150702205539) do
     t.string   "slug",           limit: 255
     t.integer  "comments_count", limit: 4,     default: 0
     t.boolean  "show_public"
+    t.string   "image",          limit: 255
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree

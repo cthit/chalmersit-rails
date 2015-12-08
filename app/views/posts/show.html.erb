@@ -8,7 +8,7 @@
   <section id="comments">
       <% if @comments.any? %>
         <ol class="commentlist">
-        
+
           <%= render partial: 'comments/comment', collection: @comments, cache: true %>
         </ol>
       <% end %>

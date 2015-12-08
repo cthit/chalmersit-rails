@@ -22,6 +22,8 @@ class Post < ActiveRecord::Base
 
   before_validation :generate_slug
 
+  mount_uploader :image, ArticleImageUploader
+
   def previous
     Post.where('id < ?', id).order(id: :desc).first
   end
@@ -46,6 +48,11 @@ class Post < ActiveRecord::Base
     "#{id}-#{slug}"
   end
 
+  def image_upload=(file)
+    uploader = ArticleImageUploader.new
+    uploader.store!(file)
+  end
+
   private
 
     def generate_slug
@@ -61,7 +68,7 @@ class Post < ActiveRecord::Base
       errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
     end
 
-    def send_mail 
+    def send_mail
       PostMailer.send_newsmail(self).deliver_later
     end
 end

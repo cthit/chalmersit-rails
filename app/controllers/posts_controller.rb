@@ -36,6 +36,8 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
+    @post.image = post_params[:image_upload]
+
     authorize_post
 
     respond_to do |format|
@@ -83,7 +85,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:group_id, :title, :body, :sticky, :show_public, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :_destroy, :organizer, :id] }] + Post.globalize_attribute_names
+      permitted = [:group_id, :title, :body, :sticky, :show_public, :image_upload, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :_destroy, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 
