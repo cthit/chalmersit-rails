@@ -23,7 +23,7 @@ bundle install
 touch config/secrets.yml
 
 # Add keys needed for auth
-You need to be connected to the digIT network for these steps.
+You need to be connected to the digIT network for these steps (contact them if you need access).
 Go to korriban.chalmers.it, login using your standard account and then go to
 korriban.chalmers.it/oauth/applications
 Add a new application:
