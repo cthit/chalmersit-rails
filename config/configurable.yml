@@ -46,4 +46,4 @@ locality:
 calendar_url:
   name: Calendar URL
   type: string
-  default: "https://www.google.com/calendar/ical/a55ipd3o49n05cd2eebqo854qs%40group.calendar.google.com/public/basic.ics"
+  default: "https://calendar.google.com/calendar/ical/a55ipd3o49n05cd2eebqo854qs%40group.calendar.google.com/public/basic.ics"
