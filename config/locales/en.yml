@@ -62,6 +62,12 @@ en:
   permalink: Permalink
   translation_missing: "This %{model} is missing a translation for your language."
   not_authorized: You are not authorized to perform this action.
+  body: Body
+  subject: Subject
+  email_empty: Email (Leave empty if you want to be anonymous)
+  to_whom: Who do you want to contact?
+  what_to_say: What do you want to say
+  send_contact: Send message
   activerecord:
     errors:
       models:

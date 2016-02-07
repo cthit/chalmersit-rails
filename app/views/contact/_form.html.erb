@@ -2,15 +2,15 @@
 
   <%= f.error_notification %>
 
-  <%= f.input :title, label: 'Subject' %>
-  <%= f.input :body, placeholder: 'What do you want to say?', input_html: { rows: 10 } %>
-  <%= f.input :email, as: :email, label: 'Email (Leave empty if you want to be anonymous)',
+  <%= f.input :title, label: t('subject') %>
+  <%= f.input :body, label: t('body'), placeholder: t('what_to_say'), input_html: { rows: 10 } %>
+  <%= f.input :email, as: :email, label: t('email_empty'),
   	 	placeholder: 'user@domain.com' %>
-  <%= f.label 'Who do you want to contact?' %>
   <%= f.input :value, label: 'Text', as: :hidden %>
+  <%= f.label t('to_whom') %>
   <%= f.collection_check_boxes :to_whom, [['styrit@chalmers.it', 'styrIT'], 
   		['samo@chalmers.it', 'SAMO'], ['snit@chalmers.it', 'snIT'], 
   		['valberedningen@chalmers.it', 'Valberedningen']], :first, :last %>
-  <%= f.button :submit %>
+  <%= f.button :submit, t('send_contact') %>
 
 <% end %>

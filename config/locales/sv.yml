@@ -62,6 +62,12 @@ sv:
   permalink: Permalänk
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
   not_authorized: Du har inte behörighet att utföra detta.
+  body: Innehåll
+  subject: Ämne
+  email_empty: Epostadress (Fyll inte i om du vill vara anononym)
+  to_whom: Vem vill du kontatkta
+  what_to_say: Vad vill du säga?
+  send_contact: Skicka meddelande
   activerecord:
     errors:
       models:
