@@ -5,7 +5,7 @@ def index
 end
 
 def create 
-   if params[:value].blank? then
+   if params[:value].blank? && !params[:to_whom].blank? then
       contact_params = params[:contact]
       mail_array = contact_params[:to_whom] << contact_params[:email]
 
