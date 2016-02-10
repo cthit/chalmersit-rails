@@ -1,7 +1,7 @@
 <%= simple_form_for @contact, url: contact_index_path, method: :post do |f| %>
 
   <%= f.error_notification %>
-
+  <h1><%= t('contact_form') %> </h1>
   <%= f.input :title, label: t('subject') %>
   <%= f.input :body, label: t('body'), placeholder: t('what_to_say'), input_html: { rows: 10 } %>
   <%= f.input :email, as: :email, label: t('email_empty'),

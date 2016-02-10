@@ -68,6 +68,7 @@ sv:
   to_whom: Vem vill du kontatkta
   what_to_say: Vad vill du säga?
   send_contact: Skicka meddelande
+  contact_form: Kontaktformulär
   activerecord:
     errors:
       models:
