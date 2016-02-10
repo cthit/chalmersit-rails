@@ -2,10 +2,9 @@
 
   <%= f.error_notification %>
   <h1><%= t('contact_form') %> </h1>
-  <%= f.input :title, label: t('subject') %>
-  <%= f.input :body, label: t('body'), placeholder: t('what_to_say'), input_html: { rows: 10 } %>
-  <%= f.input :email, as: :email, label: t('email_empty'),
-  	 	placeholder: 'user@domain.com' %>
+  <%= f.input :title %>
+  <%= f.input :body, input_html: { rows: 10 } %>
+  <%= f.input :email, as: :email %>
   <%= f.input :value, label: 'Text', as: :hidden %>
   <%= f.label t('to_whom') %>
   <%= f.collection_check_boxes :to_whom, [['styrit@chalmers.it', 'styrIT'], 
