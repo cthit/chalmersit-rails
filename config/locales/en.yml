@@ -63,6 +63,9 @@ en:
   permalink: Permalink
   translation_missing: "This %{model} is missing a translation for your language."
   not_authorized: You are not authorized to perform this action.
+  to_whom: Who do you want to contact?
+  send_contact: Send message
+  contact_form: Contact form
   activerecord:
     errors:
       models:
@@ -394,3 +397,14 @@ en:
       long: ! '%B %d, %Y %H:%M'
       short: ! '%d %b %H:%M'
     pm: pm
+  simple_form:
+    labels:
+      contact:
+        body: Body
+        title: Title
+        email: Email (Leave empty if you want to be anonymous)
+        contact_form: Kontaktformulär
+    placeholders:
+      contact:
+        body: What do you want to say?
+        email: user@domain.com

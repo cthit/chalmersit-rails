@@ -63,6 +63,9 @@ sv:
   permalink: Permalänk
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
   not_authorized: Du har inte behörighet att utföra detta.
+  send_contact: Skicka meddelande
+  to_whom: Vem vill du kontakta
+  contact_form: Kontaktformulär
   activerecord:
     errors:
       models:
@@ -395,3 +398,13 @@ sv:
       long: ! '%e %B %Y %H:%M'
       short: ! '%e %b %H:%M'
     pm: ''
+  simple_form:
+    labels:
+      contact:
+        body: Innehåll
+        title: Ämne
+        email: Epostadress (Fyll inte i om du vill vara anononym)
+    placeholders:
+      contact:
+        body: Vad vill du säga?
+        email: user@domain.com

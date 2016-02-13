@@ -11,8 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151201184958) do
-
+ActiveRecord::Schema.define(version: 20160207194741) do
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
     t.text     "body",       limit: 65535
@@ -26,8 +25,8 @@ ActiveRecord::Schema.define(version: 20151201184958) do
   create_table "committee_translations", force: :cascade do |t|
     t.integer  "committee_id", limit: 4,     null: false
     t.string   "locale",       limit: 255,   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "title",        limit: 255
     t.text     "description",  limit: 65535
   end
@@ -64,13 +63,14 @@ ActiveRecord::Schema.define(version: 20151201184958) do
     t.text     "to_whom",    limit: 65535
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.text     "value",      limit: 65535
   end
 
   create_table "course_translations", force: :cascade do |t|
     t.integer  "course_id",   limit: 4,     null: false
     t.string   "locale",      limit: 255,   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "name",        limit: 255
     t.text     "description", limit: 65535
   end
@@ -158,8 +158,8 @@ ActiveRecord::Schema.define(version: 20151201184958) do
   create_table "post_translations", force: :cascade do |t|
     t.integer  "post_id",    limit: 4,     null: false
     t.string   "locale",     limit: 255,   null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "title",      limit: 255
     t.text     "body",       limit: 65535
     t.string   "slug",       limit: 255
@@ -201,5 +201,8 @@ ActiveRecord::Schema.define(version: 20151201184958) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "sessions", ["provider"], name: "index_sessions_on_provider", using: :btree
+  add_index "sessions", ["uid"], name: "index_sessions_on_uid", using: :btree
 
 end
