@@ -7,13 +7,9 @@ class Page < ActiveRecord::Base
     validates  :slug, allow_blank: false, uniqueness: { case_sensitive: true }, presence: true
 
     before_validation :generate_slug
-    
+
     def to_param
-        if self.parent.nil?
-            slug
-        else
-            self.parent.to_param()+"/"+slug
-        end 
+        slug
     end
 
     def generate_slug
