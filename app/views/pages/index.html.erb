@@ -13,10 +13,10 @@
   <tbody>
     <% @pages.each do |page| %>
       <tr>
-        <td><%= link_to page.title, page %></td>
-        <td><%= link_to 'Show', page %></td>
+        <td><%= link_to page.title, path_to_page(page) %></td>
+        <td><%= link_to 'Show', path_to_page(page) %></td>
         <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', path_to_page(page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
