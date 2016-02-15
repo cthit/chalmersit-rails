@@ -2,8 +2,8 @@
   <section>
     <h2>Om Sektionen</h2>
     <% @pages.each do |page| %>
-      <p><%= link_to page.title, page %></p>
-    <% end %> 
+      <p><%= link_to page.title, path_to_page(page) %></p>
+    <% end %>
   </section>
 
   <section>
