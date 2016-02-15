@@ -1,10 +1,9 @@
 module PagesHelper
   def path_to_page(page)
-    slug = page.slug
-    while !page.parent.nil?
-      slug = page.parent.slug + '/' + slug
-      page = page.parent
+    unless page.parent.nil?
+      path_to_page(page.parent) + '/' + page.slug
+    else
+      root_url + page.slug
     end
-    slug
   end
 end
