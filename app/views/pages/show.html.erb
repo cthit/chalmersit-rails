@@ -2,6 +2,9 @@
 <% content_for :sidebar_left do %>
 	<%= render partial: 'pages/sidebar' %>
 <% end %>
+
+<%= markdown @page.body %>
+
 <p id="notice"><%= notice %></p>
 
 <% unless @page.parent.nil? %>
