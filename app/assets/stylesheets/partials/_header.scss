@@ -59,6 +59,10 @@
 
 .header-toolbar {
 	padding: $lineheight / 2 1%;
+
+	ul {
+		display: flex;
+	}
 }
 
 body.logged-in [role="banner"] {
