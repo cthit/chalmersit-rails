@@ -40,7 +40,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.account_ip = 'http://10.0.0.61/'
+  config.account_ip = 'https://korriban.chalmers.it/'
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
