@@ -3,7 +3,7 @@
   <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
   </h2>
 </header>
-<% cache ["lunch", Date.today] do %>
+<% cache ["lunch/#{I18n.locale}", Date.today] do %>
   <% @restaurants.each do |restaurant| %>
     <h3><%= restaurant[:name]%></h3>
     <dl>
