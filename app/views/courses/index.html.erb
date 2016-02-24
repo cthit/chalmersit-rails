@@ -4,7 +4,9 @@
     <tr>
         <th><%= Course.human_attribute_name('code') %></th>
         <th><%= t 'name' %></th>
-      <th colspan="2"></th>
+        <% if policy(Course).update? %>
+          <th colspan="2"></th>
+        <% end %>
     </tr>
   </thead>
 
@@ -13,8 +15,12 @@
       <tr>
         <td><%= link_to course.code, course %></td>
         <td><%= course.name %></td>
-        <td><%= link_to t('edit'), edit_course_path(course) %></td>
-        <td><%= link_to t('delete'), course, method: :delete, data: { confirm: t('confirm') } %></td>
+        <% if policy(Course).update? %>
+          <td><%= link_to t('edit'), edit_course_path(course) %></td>
+        <% end %>
+        <% if policy(Course).destroy? %>
+          <td><%= link_to t('delete'), course, method: :delete, data: { confirm: t('confirm') } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
