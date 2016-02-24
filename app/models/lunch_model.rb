@@ -23,7 +23,7 @@ class LunchModel
   def einstein
     # url = "http://butlercatering.se/einstein"
     url = "http://butlercatering.se/print/6"
-    begin 
+    begin
       menu = Nokogiri.HTML(open(url))
       price = 80
       week = menu.css('h2.lunch-titel').first.content.scan(/\d/).join('').to_i
