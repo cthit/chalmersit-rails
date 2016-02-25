@@ -42,6 +42,7 @@
   <strong><%= Course.human_attribute_name('description') %>:</strong>
   <%= @course.description %>
 </p>
-
-<%= link_to t('edit'), edit_course_path(@course) %> |
+<% if policy(Course).update? %>
+  <%= link_to t('edit'), edit_course_path(@course) %> |
+<% end %>
 <%= link_to t('back'), courses_path %>
