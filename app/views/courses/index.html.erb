@@ -2,12 +2,11 @@
 <table width="100%;">
   <thead>
     <tr>
-        <th><%= Course.human_attribute_name 'code' %></th>
+        <th colspan="2"><%= Course.human_attribute_name 'code' %></th>
         <th><%= Course.human_attribute_name 'name' %></th>
         <th><%= Course.human_attribute_name 'year' %></th>
         <th><%= Course.human_attribute_name 'period' %></th>
         <th><%= Course.human_attribute_name 'required' %></th>
-        <th><%= Course.human_attribute_name 'homepage' %></th>
         <% if policy(Course).update? %>
           <th colspan="2">Actions</th>
         <% end %>
@@ -18,11 +17,11 @@
     <% @courses.sort_by{ |c| c.year}.each do |course| %>
       <tr>
         <td><%= link_to course.code, course %></td>
+        <td><%= if course.homepage? then link_to "", "http://#{course.homepage}" else "" end  %></td>
         <td><%= course.name %></td>
         <td><%= course.year %></td>
-        <td><%= course.periods.map{ |p| p.name}.join(", ") %></td>
+        <td><%= "Period #{course.periods.map{ |p| p.id}.join(", ")}" %></td>
         <td><%= course.required ? t('yes') : t('no')  %></td>
-        <td><%= if course.homepage? then link_to "Home", "http://#{course.homepage}" else "" end  %></td>
         <% if policy(Course).update? %>
           <td><%= link_to t('edit'), edit_course_path(course) %></td>
         <% end %>
