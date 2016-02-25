@@ -66,6 +66,8 @@ sv:
   send_contact: Skicka meddelande
   to_whom: Vem vill du kontakta
   contact_form: Kontaktformulär
+  yes: Ja
+  no: Nej
   activerecord:
     errors:
       models:

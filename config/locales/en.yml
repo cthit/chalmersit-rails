@@ -66,6 +66,8 @@ en:
   to_whom: Who do you want to contact?
   send_contact: Send message
   contact_form: Contact form
+  yes: Yes
+  no: No
   activerecord:
     errors:
       models:
