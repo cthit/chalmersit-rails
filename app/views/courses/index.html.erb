@@ -15,7 +15,7 @@
   </thead>
 
   <tbody>
-    <% @courses.each do |course| %>
+    <% @courses.sort_by{ |c| c.year}.each do |course| %>
       <tr>
         <td><%= link_to course.code, course %></td>
         <td><%= course.name %></td>
