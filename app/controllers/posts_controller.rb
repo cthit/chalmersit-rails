@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
-
+  after_action :send_mail, only:[:update, :create]
   # GET /posts
   # GET /posts.json
   def index
@@ -96,4 +96,22 @@ class PostsController < ApplicationController
     def authorize_post
       authorize @post
     end
+
+
+    def send_mail
+  		pathPushMail = '/applications/push-to-subscribers/1'
+		link = Rails.application.config.account_ip + pathPushMail
+		url = URI.parse(link)
+		http = Net::HTTP.new(url.host, url.port)
+		http.use_ssl = true
+		req = Net::HTTP::Get.new(url.path)
+		req.add_field('Authorization', 'Token token=' + Rails.application.secrets.push_mail_token)
+		req.add_field('push_message', @post.body)
+		req.add_field('push_title', @post.title)
+		req.add_field('push_url',post_url(@post))
+		req.add_field('push_url_title', @post.title)
+		response = http.request(req)	
+   	end
+
+
 end

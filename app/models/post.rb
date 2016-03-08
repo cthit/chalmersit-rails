@@ -1,10 +1,5 @@
 class Post < ActiveRecord::Base
-	require "net/http"
-	require "net/https"
-	require "uri"
   scope :ordered, -> { order(created_at: :desc) }
-
-  after_save :send_mail
 
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
@@ -71,23 +66,4 @@ class Post < ActiveRecord::Base
       errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
     end
 
-
-    def send_mail
-  
-		url = URI.parse("https://beta-account.chalmers.it/applications/push-to-subscribers/1")
-		http = Net::HTTP.new(url.host, url.port)
-		http.use_ssl = true
-		http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-
-		req = Net::HTTP::Get.new(url.path)
-		
-
-		req.add_field('Authorization', 'Token token=' + Rails.application.secrets.push_mail_token)
-		req.add_field('push_message', self.body)
-		req.add_field('push_title', self.title)
-		req.add_field('push_url', Rails.application.routes.url_helpers.post_url(:id => id))
-		req.add_field('push_url_title', self.title)
-
-		response = http.request(req)	
-   	end
 end
