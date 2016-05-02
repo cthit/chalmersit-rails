@@ -20,8 +20,8 @@ touch config/secrets.yml
 
 # Add keys needed for auth
 You need to be connected to the digIT network for these steps (contact them if you need access).
-Go to https://korriban.chalmers.it, login using your standard account and then go to
-https://korriban.chalmers.it/oauth/applications
+Go to https://beta-account.chalmers.it, login using your standard account and then go to
+https://beta-account.chalmers.it/oauth/applications
 Add a new application:
 http://10.0.0.XXX:3000/auth/account/callback
 Where XXX is your assigned IP when connected to the digIT network
