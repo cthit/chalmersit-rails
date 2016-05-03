@@ -60,7 +60,7 @@
 .header-toolbar {
 	padding: $lineheight / 2 1%;
 
-	ul {
+	ul:not(.dropdown-sub) {
 		display: flex;
 	}
 }
