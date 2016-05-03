@@ -183,7 +183,6 @@ GEM
     multi_json (1.11.1)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
-    mysql2 (0.3.18)
     naught (1.0.0)
     nenv (0.2.0)
     net-scp (1.2.1)
@@ -207,6 +206,7 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    pg (0.18.4)
     pry (0.10.1)
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
@@ -375,9 +375,9 @@ DEPENDENCIES
   mini_magick
   momentjs-rails
   multi_fetch_fragments
-  mysql2
   net-scp (~> 1.2.1)
   omniauth-oauth2
+  pg
   pundit
   rack-mini-profiler
   rails (= 4.2.3)
@@ -394,4 +394,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.10.6
+   1.11.2
