@@ -135,7 +135,7 @@ sv:
         printer: Skrivare
         copies: Antal kopior
         duplex: Dubbelsidig utskrift
-        collated: Sorterade sidor 
+        collated: Sorterade sidor
         ranges: Intervall
         media: Pappersstorlek
         ppi: Upplösning
@@ -199,6 +199,7 @@ sv:
   home:
     today:
       next_event: Evenemang idag
+      no_events: Det finns inga evenemang idag
   print:
     new:
       supported_file_types: Filtyper som stöds

@@ -187,6 +187,7 @@ en:
   home:
     today:
       next_event: Events today
+      no_events: There are no events today
   print:
     new:
       supported_file_types: Supported file types
