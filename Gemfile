@@ -36,7 +36,7 @@ gem 'twitter'
 gem 'configurable_engine'
 # File uploads
 gem 'jquery-fileupload-rails'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 
 gem 'omniauth-oauth2'

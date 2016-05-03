@@ -110,6 +110,7 @@ en:
         sticky: Sticky
         body: Body
         show_public: Show public (for visitors)
+        documents: Documents
       comment:
         user_id: User
         body: Comment

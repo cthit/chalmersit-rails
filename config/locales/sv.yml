@@ -116,6 +116,7 @@ sv:
         sticky: Fäst inlägget överst
         body: Innehåll
         show_public: Visa publikt (för besökare)
+        documents: Dokument
       comment:
         user_id: Användare
         body: Kommentar
@@ -135,7 +136,7 @@ sv:
         printer: Skrivare
         copies: Antal kopior
         duplex: Dubbelsidig utskrift
-        collated: Sorterade sidor 
+        collated: Sorterade sidor
         ranges: Intervall
         media: Pappersstorlek
         ppi: Upplösning
