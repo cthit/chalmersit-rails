@@ -64,9 +64,10 @@
             <% else %>
               <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
             <% end %>
-            <li>
+            <li id="header-search">
               <%= form_tag(search_path, :method => :get) do %>
                 <%= search_field_tag :search, params[:search] %>
+                <i class="fa fa-search"></i>
               <% end %>
             </li>
             <li class="flags">
