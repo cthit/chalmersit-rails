@@ -10,8 +10,8 @@
   </div>
   <%= render 'localized_fields', f: f %>
   <div class="large-12 columns">
-    <%= f.label :documents, Post.human_attribute_name(:documents)%>
-    <%= f.file_field :documents,  multiple: true, accept: "application/pdf, text/plain" %>
+    <%= f.label :documents, Post.human_attribute_name(:documents) + " (pdf, md, txt)"%>
+    <%= f.file_field :documents,  multiple: true %>
   </div>
   <div class="row">
     <%= f.input :sticky %> <%= f.input :show_public %>
