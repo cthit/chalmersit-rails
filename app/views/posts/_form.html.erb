@@ -13,6 +13,9 @@
     <%= f.label :documents, Post.human_attribute_name(:documents) + " (pdf, md, txt)"%>
     <%= f.file_field :documents,  multiple: true %>
   </div>
+  <ul class="list-document-urls" id="list-document-urls">
+
+  </ul>
   <div class="row">
     <%= f.input :sticky %> <%= f.input :show_public %>
   </div>

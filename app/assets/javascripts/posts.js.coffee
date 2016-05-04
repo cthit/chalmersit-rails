@@ -7,7 +7,7 @@ $ ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
     $elem.text moment(new Date(datetime)).fromNow()
-  
+
 
   $('.preview').on 'click', ->
     textid = $(this).data('text')
@@ -69,3 +69,31 @@ image_thumbnail_markdown = (title, url, url_thumb) ->
 
 remove_ext = (filename) ->
   filename.substr(0, filename.lastIndexOf('.'))
+
+`
+$("#post_documents").change(updateFileUrls);
+$("#post_title_en").change(updateFileUrls);
+function convertToSlug(Text)
+{
+    return Text
+        .toLowerCase()
+        .replace(/[^\w ]+/g,'')
+        .replace(/ +/g,'-')
+        ;
+}
+
+function updateFileUrls(){
+  var element = document.getElementById("post_documents");
+  var fileList = element.files;
+  var ul = document.getElementById("list-document-urls");
+  $('.document-url').remove()
+  for(var i=0,file;file=fileList[i];i++) {
+      var li = document.createElement("li");
+      var slug = convertToSlug(document.getElementById("post_title_en").value);
+      var outString = "[(INSERT TEXT HERE)](http://"+window.location.host+"/uploads/post/documents/"+ slug +"/"+file.name+")";
+      li.appendChild(document.createTextNode(outString));
+      li.className += "document-url";
+      ul.appendChild(li);
+  }
+}
+`
