@@ -7,6 +7,7 @@ class Page < ActiveRecord::Base
     validates  :slug, allow_blank: false, uniqueness: { case_sensitive: true }, presence: true
 
     before_validation :generate_slug
+    mount_uploaders :documents, DocumentUploader
 
     def to_param
         slug

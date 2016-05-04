@@ -4,7 +4,10 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
-
+  <div class="large-12 columns">
+    <%= f.label :documents, Post.human_attribute_name(:documents)%>
+    <%= f.file_field :documents,  multiple: true, accept: "application/pdf, text/plain" %>
+  </div>
   <%= button_tag :class => 'preview large-12 columns',
                  :data => {:text => "#page_body", :title => "#page_title"} do %>
     <%= t "preview" %>

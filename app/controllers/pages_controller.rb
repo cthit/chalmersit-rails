@@ -78,7 +78,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      permitted = [:title,:body,:parent_id]
+      permitted = [:title,:body,:parent_id, {documents: []}]
       params.require(:page).permit(permitted)
       #params.require(:title,:body).permit(:parent)
     end
