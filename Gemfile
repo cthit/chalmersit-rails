@@ -106,3 +106,5 @@ gem 'net-scp', '~> 1.2.1'
 
 # Used for searching of selector in print
 gem 'chosen-rails'
+
+gem 'i18n-js'
