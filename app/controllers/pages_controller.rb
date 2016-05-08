@@ -33,6 +33,9 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
+    params[:document].each do |doc|
+      params[:page][:documents].push(doc)
+    end
     @page = Page.new(page_params)
 
     respond_to do |format|

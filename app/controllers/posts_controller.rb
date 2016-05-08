@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
-  after_action :send_mail, only:[:update, :create]
+#  after_action :send_mail, only:[:update, :create]
   # GET /posts
   # GET /posts.json
   def index
@@ -35,6 +35,9 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
+    params[:document].each do |doc|
+      params[:post][:documents].push(doc)
+    end
     @post = current_user.posts.build(post_params)
     @post.image = post_params[:image_upload]
 
@@ -45,6 +48,7 @@ class PostsController < ApplicationController
         format.html { redirect_to @post, notice: I18n.translate('model_created', name: @post.title) }
         format.json { render :show, status: :created, location: @post }
       else
+        p @post.errors
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
@@ -110,7 +114,7 @@ class PostsController < ApplicationController
 		req.add_field('push_title', @post.title)
 		req.add_field('push_url',post_url(@post))
 		req.add_field('push_url_title', @post.title)
-		response = http.request(req)	
+		response = http.request(req)
    	end
 
 

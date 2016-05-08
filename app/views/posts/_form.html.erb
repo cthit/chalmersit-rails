@@ -9,13 +9,13 @@
     </div>
   </div>
   <%= render 'localized_fields', f: f %>
-  <div class="large-12 columns">
+  <div class="large-12 columns" id="documents_container">
     <%= f.label :documents, Post.human_attribute_name(:documents) + " (pdf, md, txt)"%>
-    <%= f.file_field :documents,  multiple: true %>
+    <%= f.file_field :documents,  multiple: true, :class => "document-input" %>
   </div>
-  <ul class="list-document-urls" id="list-document-urls">
-
-  </ul>
+  <button type="button" class="ui-button ui-button-text-only" style="display:none;" id="addFile" onclick="addFileInput();">Add file</button>
+  <div class="list-document-urls" id="list-document-urls">
+  </div>
   <div class="row">
     <%= f.input :sticky %> <%= f.input :show_public %>
   </div>
