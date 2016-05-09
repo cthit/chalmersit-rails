@@ -8,6 +8,7 @@ class Page < ActiveRecord::Base
 
     before_validation :generate_slug
     mount_uploaders :documents, DocumentUploader
+    serialize :documents, JSON
 
     def to_param
         slug

@@ -22,6 +22,8 @@ class Post < ActiveRecord::Base
 
   mount_uploader :image, ArticleImageUploader
   mount_uploaders :documents, DocumentUploader
+  serialize :documents, JSON
+
   def previous
     Post.where('id < ?', id).order(id: :desc).first
   end
