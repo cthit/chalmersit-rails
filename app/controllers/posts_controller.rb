@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :delete_document]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
 #  after_action :send_mail, only:[:update, :create]
@@ -54,10 +54,36 @@ class PostsController < ApplicationController
       end
     end
   end
+  def delete_document
+    remain_documents = []
+    @post.documents.each do |doc|
+      puts "checking: " + doc.path
+      unless File.basename(doc.path, ".*") == params[:document_name]
+        remain_documents.push(doc)
+        puts "adding: " + doc.path
+      end
+    end
+    if remain_documents.empty?
+      @post.remove_documents = true
+    else
+      @post.documents = remain_documents # re-assign back
+    end
+    if @post.save
+      redirect_to @post, notice: 'Page was successfully updated.'
+    else
+      render :edit
+    end
+  end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
+    unless params[:post][:documents].nil?
+      documents = @post.documents
+      documents += params[:post][:documents]
+      params[:post][:documents] = ""
+      @post.documents = documents
+    end
     @post.user_id = current_user.id
 
     respond_to do |format|

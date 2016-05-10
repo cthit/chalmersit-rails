@@ -18,6 +18,12 @@
   </div>
   <div class="list-document-urls" id="list-document-urls">
   </div>
+  <% @post.documents.each do |doc| %>
+    <div class="article-single-attachment">
+      <%= link_to File.basename(doc.path), doc.url, target: :blank %>
+      <%= link_to "delete", delete_post_document_url(@post, File.basename(doc.path)),:data => {:confirm => 'Are you sure?'} %>
+    </div>
+  <% end %>
   <div class="row">
     <%= f.input :sticky %> <%= f.input :show_public %>
   </div>
