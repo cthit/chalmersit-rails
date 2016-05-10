@@ -33,9 +33,9 @@ function updateFileUrls(){
     var slug = convertToSlug(document.getElementById("page_title").value);
     var model = "page";
   }
-  var outString = "["+trans+"](http://"+window.location.host+"/uploads/"+model+"/documents/"+ slug +"/"+file.name+")";
   for(var i=0,file;file=fileList[i];i++) {
       var li = document.createElement("li");
+      var outString = "["+trans+"](http://"+window.location.host+"/uploads/"+model+"/documents/"+ slug +"/"+file.name+")";
       li.appendChild(document.createTextNode(outString));
       li.className += "document-url";
       ul.appendChild(li);
