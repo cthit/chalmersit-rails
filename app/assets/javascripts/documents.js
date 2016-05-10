@@ -10,7 +10,6 @@ function convertToSlug(Text)
         ;
 }
 function documentsChanged(){
-  $("#addFile").show();
   updateFileUrls();
 }
 function updateFileUrls(){
@@ -43,15 +42,18 @@ function updateFileUrls(){
 }
 function addFileInput(){
   element = `
-  <input type="file" name="document[]" class="document-input" multiple="multiple"/>
-  <button type="button" onclick="removeFile(this);">X</button>
+  <div class="documents-input-container">
+    <input type="file" name="document[]" class="document-input" multiple="multiple"/>
+    <ul class="button-group even-2">
+      <li><button type="button" class="rem-file-button tiny"onclick="removeFile(this);"><i class="fa fa-minus-circle" aria-hidden="true"></i></button></li>
+      <li><button type="button" class="ui-button tiny add-file-button" onclick="addFileInput();"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></li>
+    </ul>
+  </div>
   `;
   $("#documents_container").append(element);
   $(".document-input").change(documentsChanged);
 }
 function removeFile(element){
-  $(element).prev().value = "";
-  $(element).prev().remove();
-  $(element).remove();
+  $(element).parent().parent().parent().remove();
   updateFileUrls();
 }

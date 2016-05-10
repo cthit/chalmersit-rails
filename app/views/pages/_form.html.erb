@@ -6,9 +6,11 @@
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
   <div class="large-12 columns" id="documents_container">
     <%= f.label :documents, Post.human_attribute_name(:documents) + " (pdf, md, txt)"%>
-    <%= f.file_field :documents,  multiple: true, :class => "document-input"  %>
+    <div class="documents-input-container">
+      <%= f.file_field :documents,  multiple: true, :class => "document-input"  %>
+      <button type="button" class="ui-button tiny add-file-button" id="addFile" onclick="addFileInput();"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+    </div>
   </div>
-  <button type="button" class="ui-button ui-button-text-only" style="display:none;" id="addFile" onclick="addFileInput();">Add file</button>
   <div class="list-document-urls" id="list-document-urls">
   </div>
   <%= button_tag :class => 'preview large-12 columns',
