@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :set_page, only: [:edit, :update, :destroy]
+  before_action :set_page, only: [:edit, :update, :destroy, :delete_document]
 
   # GET /pages
   # GET /pages.json
@@ -52,6 +52,12 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
+    unless params[:page][:documents].nil?
+      documents = @page.documents
+      documents += params[:page][:documents]
+      params[:page][:documents] = ""
+      @page.documents = documents
+    end
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
@@ -72,7 +78,26 @@ class PagesController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+  def delete_document
+    remain_documents = []
+    @page.documents.each do |doc|
+      puts "checking: " + doc.path
+      unless File.basename(doc.path, ".*") == params[:document_name]
+        remain_documents.push(doc)
+        puts "adding: " + doc.path
+      end
+    end
+    if remain_documents.empty?
+      @page.documents = ""
+    else
+      @page.documents = remain_documents(true) # re-assign back
+    end
+    if @page.save
+      redirect_to @page, notice: 'Page was successfully updated.'
+    else
+      render :edit
+    end
+  end
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_page

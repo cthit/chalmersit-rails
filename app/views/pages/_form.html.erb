@@ -10,6 +10,12 @@
       <%= f.file_field :documents,  multiple: true, :class => "document-input"  %>
       <button type="button" class="ui-button tiny add-file-button" id="addFile" onclick="addFileInput();"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
     </div>
+    <% @page.documents.each do |doc| %>
+      <div class="article-single-attachment">
+        <%= link_to File.basename(doc.path), doc.url, target: :blank %>
+        <%= link_to "delete", delete_document_url(@page, File.basename(doc.path)),:data => {:confirm => 'Are you sure?'} %>
+      </div>
+    <% end %>
   </div>
   <div class="list-document-urls" id="list-document-urls">
   </div>

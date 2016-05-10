@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :menus
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    resources :committees, :contact 
-    
+    resources :committees, :contact
+
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end
@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   post 'preview' => 'preview#preview'
 
+  get 'pages/:id/delete_document/:document_name', to: 'pages#delete_document', as: :delete_document
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
