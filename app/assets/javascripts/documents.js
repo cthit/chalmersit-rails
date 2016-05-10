@@ -26,16 +26,16 @@ function updateFileUrls(){
   var ul = document.getElementById("list-document-urls");
   var trans = I18n.t("activerecord.attributes.post.title");
   $('.document-url').remove()
+  if(document.getElementById("post_title_en") != null){
+    var slug = convertToSlug(document.getElementById("post_title_en").value);
+    var model = "post";
+  }else if (document.getElementById("page_title") != null) {
+    var slug = convertToSlug(document.getElementById("page_title").value);
+    var model = "page";
+  }
+  var outString = "["+trans+"](http://"+window.location.host+"/uploads/"+model+"/documents/"+ slug +"/"+file.name+")";
   for(var i=0,file;file=fileList[i];i++) {
       var li = document.createElement("li");
-      if(document.getElementById("post_title_en") != null){
-        var slug = convertToSlug(document.getElementById("post_title_en").value);
-        var model = "post";
-      }else if (document.getElementById("page_title") != null) {
-        var slug = convertToSlug(document.getElementById("page_title").value);
-        var model = "page";
-      }
-      var outString = "["+trans+"](http://"+window.location.host+"/uploads/"+model+"/documents/"+ slug +"/"+file.name+")";
       li.appendChild(document.createTextNode(outString));
       li.className += "document-url";
       ul.appendChild(li);
