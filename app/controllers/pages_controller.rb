@@ -88,9 +88,9 @@ class PagesController < ApplicationController
       end
     end
     if remain_documents.empty?
-      @page.documents = ""
+      @page.remove_documents = true
     else
-      @page.documents = remain_documents(true) # re-assign back
+      @page.documents = remain_documents # re-assign back
     end
     if @page.save
       redirect_to @page, notice: 'Page was successfully updated.'
