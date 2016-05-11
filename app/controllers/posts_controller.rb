@@ -69,7 +69,7 @@ class PostsController < ApplicationController
       @post.documents = remain_documents # re-assign back
     end
     if @post.save
-      redirect_to @post, notice: 'Page was successfully updated.'
+      redirect_to edit_post_url(@post), notice: 'Post was successfully updated.'
     else
       render :edit
     end

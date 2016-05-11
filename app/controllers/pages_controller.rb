@@ -93,7 +93,7 @@ class PagesController < ApplicationController
       @page.documents = remain_documents # re-assign back
     end
     if @page.save
-      redirect_to @page, notice: 'Page was successfully updated.'
+      redirect_to edit_page_url(@page), notice: 'Page was successfully updated.'
     else
       render :edit
     end
