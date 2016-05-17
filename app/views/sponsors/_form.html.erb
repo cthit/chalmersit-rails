@@ -1,0 +1,7 @@
+<%= simple_form_for(@sponsor) do |f| %>
+  <%= f.error_notification %>
+  <%= f.input :name %>
+
+  <%= f.file_field :image %>
+  <%= f.submit %>
+<% end %>
