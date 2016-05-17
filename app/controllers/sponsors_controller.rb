@@ -20,7 +20,7 @@ class SponsorsController < ApplicationController
   end
   def update
     if @sponsor.update(sponsor_params)
-      redirect_to sponsor(@sponsor)
+      redirect_to sponsor_path(@sponsor)
     else
       render :new
     end
