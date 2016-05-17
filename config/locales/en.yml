@@ -68,6 +68,7 @@ en:
   contact_form: Contact form
   yes: Yes
   no: No
+  unsupported_file_format: Unsupported file format (only pdf/md/txt)
   activerecord:
     errors:
       models:
