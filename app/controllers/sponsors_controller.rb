@@ -1,5 +1,7 @@
 class SponsorsController < ApplicationController
   before_action :set_sponsor, only: [:update, :edit, :show, :destroy]
+  before_filter :ensure_admin
+
   def index
     @sponsors = Sponsor.all
   end
@@ -31,6 +33,12 @@ class SponsorsController < ApplicationController
   end
 
 private
+  def ensure_admin
+    unless current_user && current_user.admin?
+      flash[:alert] = t 'not_authorized'
+      redirect_to(request.referrer || root_path)
+    end
+  end
   def sponsor_params
     params.require(:sponsor).permit(:name, :image)
   end
