@@ -68,6 +68,7 @@ en:
   contact_form: Contact form
   yes: Yes
   no: No
+  unsupported_file_format: Unsupported file format (only pdf/md/txt)
   activerecord:
     errors:
       models:
@@ -110,6 +111,7 @@ en:
         sticky: Sticky
         body: Body
         show_public: Show public (for visitors)
+        documents: Documents
       comment:
         user_id: User
         body: Comment

@@ -16,6 +16,10 @@ class PostPolicy < ApplicationPolicy
     update?
   end
 
+  def delete_document?
+    update?
+  end
+
   class Scope
     attr_reader :user, :scope
 
@@ -33,4 +37,3 @@ class PostPolicy < ApplicationPolicy
     end
   end
 end
-

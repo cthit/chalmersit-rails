@@ -11,7 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160207194741) do
+ActiveRecord::Schema.define(version: 20160509075508) do
+
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
     t.text     "body",       limit: 65535
@@ -143,6 +144,7 @@ ActiveRecord::Schema.define(version: 20160207194741) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "parent_id",  limit: 4
+    t.string   "documents",  limit: 255
   end
 
   add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
@@ -180,6 +182,7 @@ ActiveRecord::Schema.define(version: 20160207194741) do
     t.integer  "comments_count", limit: 4,     default: 0
     t.boolean  "show_public"
     t.string   "image",          limit: 255
+    t.string   "documents",      limit: 255
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree

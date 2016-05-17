@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Pundit
+  before_filter :export_i18n_messages
+
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
@@ -9,14 +11,17 @@ class ApplicationController < ActionController::Base
     if exception.response.status == 401
       session[:user_id] = nil
       redirect_to root_url, alert: "Access token expired, try signing in again."
-    end
   end
+end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   before_action :set_committees, :set_locale
 
   private
+    def export_i18n_messages
+      SimplesIdeias::I18n.export! if Rails.env.development?
+    end 
     def user_not_authorized
       flash[:alert] = t 'not_authorized'
       redirect_to(request.referrer || root_path)
