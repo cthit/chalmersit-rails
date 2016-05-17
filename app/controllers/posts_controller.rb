@@ -35,8 +35,10 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    params[:document].each do |doc|
-      params[:post][:documents].push(doc)
+    unless params[:document].nil?
+      params[:document].each do |doc|
+        params[:post][:documents].push(doc)
+      end
     end
     @post = current_user.posts.build(post_params)
     @post.image = post_params[:image_upload]

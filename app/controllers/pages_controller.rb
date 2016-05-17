@@ -33,8 +33,10 @@ class PagesController < ApplicationController
   # POST /pages
   # POST /pages.json
   def create
-    params[:document].each do |doc|
-      params[:page][:documents].push(doc)
+    unless params[:document].nil?
+      params[:document].each do |doc|
+        params[:page][:documents].push(doc)
+      end
     end
     @page = Page.new(page_params)
 
