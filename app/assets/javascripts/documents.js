@@ -9,6 +9,20 @@ function convertToSlug(Text)
         .replace(/ +/g,'-')
         ;
 }
+$(document).ready(function () {
+  try {
+    trans = I18n.t("activerecord.attributes.post.title");
+  } catch (e){
+    trans = "Title";
+  }
+  if(document.getElementById("post_title_en") != null){
+    slug = convertToSlug(document.getElementById("post_title_en").value);
+    model = "post";
+  }else if (document.getElementById("page_title") != null) {
+    slug = convertToSlug(document.getElementById("page_title").value);
+    model = "page";
+  }
+});
 function updateFileUrls(){
   var div = document.getElementById("documents_container");
   var elements = div.getElementsByTagName("input");
@@ -20,19 +34,7 @@ function updateFileUrls(){
   }
 
   var ul = document.getElementById("list-document-urls");
-  try {
-    var trans = I18n.t("activerecord.attributes.post.title");
-  } catch (e){
-    var trans = "Title";
-  }
   $('.document-url').remove()
-  if(document.getElementById("post_title_en") != null){
-    var slug = convertToSlug(document.getElementById("post_title_en").value);
-    var model = "post";
-  }else if (document.getElementById("page_title") != null) {
-    var slug = convertToSlug(document.getElementById("page_title").value);
-    var model = "page";
-  }
   for(var i=0,file;file=fileList[i];i++) {
       var li = document.createElement("li");
       var outString = "["+trans+"](http://"+window.location.host+"/uploads/"+model+"/documents/"+ slug +"/"+file.name+")";
