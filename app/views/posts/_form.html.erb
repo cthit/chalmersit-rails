@@ -19,9 +19,15 @@
   <div class="list-document-urls" id="list-document-urls">
   </div>
   <% @post.documents.each do |doc| %>
-    <div class="article-single-attachment">
-      <%= link_to File.basename(doc.path), doc.url, target: :blank %>
-      <%= link_to "delete", delete_post_document_url(@post, File.basename(doc.path)),:data => {:confirm => 'Are you sure?'} %>
+    <div class="article-single-attachment row">
+      <div class="large-6 columns">
+        <%= link_to File.basename(doc.path), doc.url, target: :blank %>
+      </div>
+      <div class="large-2 columns">
+        <%= link_to(delete_post_document_url(@post, File.basename(doc.path)),:data => {:confirm => 'Are you sure?'}) do %>
+          <button type="button" class="ui-button tiny"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <% end %>
+      </div>
     </div>
   <% end %>
   <div class="row">
