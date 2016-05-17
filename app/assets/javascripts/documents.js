@@ -15,13 +15,6 @@ $(document).ready(function () {
   } catch (e){
     trans = "Title";
   }
-  if(document.getElementById("post_title_en") != null){
-    slug = convertToSlug(document.getElementById("post_title_en").value);
-    model = "post";
-  }else if (document.getElementById("page_title") != null) {
-    slug = convertToSlug(document.getElementById("page_title").value);
-    model = "page";
-  }
 });
 function updateFileUrls(){
   var div = document.getElementById("documents_container");
@@ -31,6 +24,13 @@ function updateFileUrls(){
     for (var j = 0; j < elements[i].files.length; j += 1) {
       fileList.push(elements[i].files[j]);
     }
+  }
+  if(document.getElementById("post_title_en") != null){
+    slug = convertToSlug(document.getElementById("post_title_en").value);
+    model = "post";
+  }else if (document.getElementById("page_title") != null) {
+    slug = convertToSlug(document.getElementById("page_title").value);
+    model = "page";
   }
 
   var ul = document.getElementById("list-document-urls");
@@ -54,7 +54,7 @@ function addFileInput(){
   </div>
   `;
   $("#documents_container").append(element);
-  $(".document-input").change(documentsChanged);
+  $(".document-input").change(updateFileUrls);
 }
 function removeFile(element){
   $(element).parent().parent().parent().remove();
