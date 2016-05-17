@@ -23,7 +23,11 @@ function updateFileUrls(){
   }
 
   var ul = document.getElementById("list-document-urls");
-  var trans = I18n.t("activerecord.attributes.post.title");
+  try {
+    var trans = I18n.t("activerecord.attributes.post.title");
+  } catch (e){
+    var trans = "Title";
+  }
   $('.document-url').remove()
   if(document.getElementById("post_title_en") != null){
     var slug = convertToSlug(document.getElementById("post_title_en").value);
