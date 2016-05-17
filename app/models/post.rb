@@ -71,7 +71,7 @@ class Post < ActiveRecord::Base
     def documents_extension
       documents.each do |doc|
         unless %w{pdf md txt}.include?(doc.file.extension)
-          errors.add(:documents, "Includes unsupport file format (only pdf/md/txt)")
+          errors.add(:documents, I18n.t('unsupported_file_format'))
         end
       end
     end
