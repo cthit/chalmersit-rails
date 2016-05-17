@@ -34,7 +34,14 @@
       <%= yield %>
     </section>
   </div>
-  <div class="large-3 columns lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>"></div>
+  <div class="large-3 columns">
+    <div class="lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>"></div>
+    <div class="box">
+      <% Sponsor.all.each do |sponsor| %>
+        <%= render :partial => 'sponsors/sponsor', :locals => {:sponsor => sponsor} %>
+      <% end %>
+    </div>
+  </div>
   <div class="large-3 columns">
     <section class="box widget it-calendar">
       <header>
