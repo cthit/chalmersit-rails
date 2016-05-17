@@ -13,12 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160509075508) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "comments", force: :cascade do |t|
-    t.integer  "post_id"
-    t.text     "body"
+    t.integer  "post_id",    limit: 4
+    t.text     "body",       limit: 65535
     t.string   "user_id",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -27,12 +24,12 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id", using: :btree
 
   create_table "committee_translations", force: :cascade do |t|
-    t.integer  "committee_id",             null: false
-    t.string   "locale",       limit: 255, null: false
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "committee_id", limit: 4,     null: false
+    t.string   "locale",       limit: 255,   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.string   "title",        limit: 255
-    t.text     "description"
+    t.text     "description",  limit: 65535
   end
 
   add_index "committee_translations", ["committee_id"], name: "index_committee_translations_on_committee_id", using: :btree
@@ -41,7 +38,7 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   create_table "committees", force: :cascade do |t|
     t.string   "name",        limit: 255
     t.string   "title",       limit: 255
-    t.text     "description"
+    t.text     "description", limit: 65535
     t.string   "url",         limit: 255
     t.string   "email",       limit: 255
     t.string   "slug",        limit: 255
@@ -61,22 +58,22 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   add_index "configurables", ["name"], name: "index_configurables_on_name", using: :btree
 
   create_table "contacts", force: :cascade do |t|
-    t.text     "title"
-    t.text     "body"
+    t.text     "title",      limit: 65535
+    t.text     "body",       limit: 65535
     t.string   "email",      limit: 255
-    t.text     "to_whom"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-    t.text     "value"
+    t.text     "to_whom",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.text     "value",      limit: 65535
   end
 
   create_table "course_translations", force: :cascade do |t|
-    t.integer  "course_id",               null: false
-    t.string   "locale",      limit: 255, null: false
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.integer  "course_id",   limit: 4,     null: false
+    t.string   "locale",      limit: 255,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.string   "name",        limit: 255
-    t.text     "description"
+    t.text     "description", limit: 65535
   end
 
   add_index "course_translations", ["course_id"], name: "index_course_translations_on_course_id", using: :btree
@@ -85,11 +82,11 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   create_table "courses", force: :cascade do |t|
     t.string   "code",        limit: 255
     t.string   "name",        limit: 255
-    t.integer  "year"
+    t.integer  "year",        limit: 4
     t.boolean  "required"
     t.string   "homepage",    limit: 255
     t.string   "programme",   limit: 255
-    t.text     "description"
+    t.text     "description", limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,8 +94,8 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   add_index "courses", ["code"], name: "index_courses_on_code", using: :btree
 
   create_table "courses_periods", id: false, force: :cascade do |t|
-    t.integer "period_id"
-    t.integer "course_id"
+    t.integer "period_id", limit: 4
+    t.integer "course_id", limit: 4
   end
 
   create_table "events", force: :cascade do |t|
@@ -108,7 +105,7 @@ ActiveRecord::Schema.define(version: 20160509075508) do
     t.time    "end_time"
     t.string  "location",      limit: 255
     t.string  "organizer",     limit: 255
-    t.integer "post_id"
+    t.integer "post_id",       limit: 4
     t.string  "facebook_link", limit: 255
   end
 
@@ -122,12 +119,12 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   end
 
   create_table "menu_links", force: :cascade do |t|
-    t.integer  "menu_id"
+    t.integer  "menu_id",         limit: 4
     t.string   "controller",      limit: 255
     t.string   "action",          limit: 255
-    t.text     "params"
+    t.text     "params",          limit: 65535
     t.string   "title",           limit: 255
-    t.integer  "preferred_order"
+    t.integer  "preferred_order", limit: 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -142,12 +139,12 @@ ActiveRecord::Schema.define(version: 20160509075508) do
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255
-    t.text     "body"
+    t.text     "body",       limit: 65535
     t.string   "slug",       limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id"
-    t.string   "documents"
+    t.integer  "parent_id",  limit: 4
+    t.string   "documents",  limit: 255
   end
 
   add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
@@ -161,12 +158,12 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   end
 
   create_table "post_translations", force: :cascade do |t|
-    t.integer  "post_id",                null: false
-    t.string   "locale",     limit: 255, null: false
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "post_id",    limit: 4,     null: false
+    t.string   "locale",     limit: 255,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
     t.string   "title",      limit: 255
-    t.text     "body"
+    t.text     "body",       limit: 65535
     t.string   "slug",       limit: 255
   end
 
@@ -174,18 +171,18 @@ ActiveRecord::Schema.define(version: 20160509075508) do
   add_index "post_translations", ["post_id"], name: "index_post_translations_on_post_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "user_id",        limit: 20,                  null: false
+    t.string   "user_id",        limit: 20,                    null: false
     t.string   "group_id",       limit: 20
     t.string   "title",          limit: 255
-    t.text     "body"
-    t.boolean  "sticky",                     default: false, null: false
+    t.text     "body",           limit: 65535
+    t.boolean  "sticky",                       default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "slug",           limit: 255
-    t.integer  "comments_count",             default: 0
+    t.integer  "comments_count", limit: 4,     default: 0
     t.boolean  "show_public"
     t.string   "image",          limit: 255
-    t.string   "documents"
+    t.string   "documents",      limit: 255
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree
@@ -197,7 +194,7 @@ ActiveRecord::Schema.define(version: 20160509075508) do
     t.string  "name",     limit: 255
     t.string  "location", limit: 255
     t.string  "media",    limit: 255
-    t.integer "weight",               default: 10
+    t.integer "weight",   limit: 4,   default: 10
   end
 
   create_table "sessions", force: :cascade do |t|
