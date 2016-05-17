@@ -1,3 +1,16 @@
-<% @sponsors.each do |sponsor| %>
-  <%= render 'sponsor', :sponsor => sponsor %>
-<% end %>
+<table class="sponsor-list">
+  <% @sponsors.each do |sponsor| %>
+    <tr>
+      <td><h3><%= sponsor.name %></h3></td>
+      <td><%= image_tag sponsor.image %></td>
+      <td>
+        <%= link_to edit_sponsor_path(sponsor) do %>
+          <button type="button" class="ui-button tiny"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        <% end %>
+        <%= link_to sponsor_path(sponsor), :method => :delete ,:data => {:confirm => t('confirm')} do %>
+          <button type="button" class="ui-button alert tiny"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
