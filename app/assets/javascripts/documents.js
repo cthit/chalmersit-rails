@@ -1,4 +1,4 @@
-$(".document-input").change(documentsChanged);
+$(".document-input").change(updateFileUrls);
 $("#post_title_en").change(updateFileUrls);
 $("#page_title").change(updateFileUrls);
 function convertToSlug(Text)
@@ -8,9 +8,6 @@ function convertToSlug(Text)
         .replace(/[^\w ]+/g,'')
         .replace(/ +/g,'-')
         ;
-}
-function documentsChanged(){
-  updateFileUrls();
 }
 function updateFileUrls(){
   var div = document.getElementById("documents_container");
