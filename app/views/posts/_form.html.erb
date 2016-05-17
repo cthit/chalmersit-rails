@@ -24,7 +24,7 @@
         <%= link_to File.basename(doc.path), doc.url, target: :blank %>
       </div>
       <div class="large-2 columns">
-        <%= link_to(delete_post_document_url(@post, File.basename(doc.path)),:data => {:confirm => 'Are you sure?'}) do %>
+        <%= link_to(delete_post_document_url(@post, File.basename(doc.path)),:data => {:confirm => t('confirm')}) do %>
           <button type="button" class="ui-button tiny"><i class="fa fa-times" aria-hidden="true"></i></button>
         <% end %>
       </div>
