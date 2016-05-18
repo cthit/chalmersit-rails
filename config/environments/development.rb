@@ -7,7 +7,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   config.cache_classes = false
-
+  config.assets.initialize_on_precompile = true
   # Do not eager load code on boot.
   config.eager_load = false
 
