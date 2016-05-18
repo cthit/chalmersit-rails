@@ -35,7 +35,8 @@ Rails.application.routes.draw do
 
   post 'preview' => 'preview#preview'
 
-
+  get 'pages/:id/delete_document/:document_name', to: 'pages#delete_document', as: :delete_page_document
+  get 'posts/:id/delete_document/:document_name', to: 'posts#delete_document', as: :delete_post_document
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]

@@ -2,8 +2,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
-# Use sqlite3 as the database for Active Record
-# gem 'sqlite3'
+
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
@@ -36,7 +35,7 @@ gem 'twitter'
 gem 'configurable_engine'
 # File uploads
 gem 'jquery-fileupload-rails'
-gem 'carrierwave'
+gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
 gem 'mini_magick'
 
 gem 'omniauth-oauth2'
@@ -106,3 +105,5 @@ gem 'net-scp', '~> 1.2.1'
 
 # Used for searching of selector in print
 gem 'chosen-rails'
+
+gem 'i18n-js'

@@ -23,5 +23,6 @@
 //= require moment
 //= require moment/sv.js
 //= require_tree .
+//= require i18n/translations
 
 $(function(){ $(document).foundation(); });

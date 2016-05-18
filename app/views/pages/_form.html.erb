@@ -4,7 +4,27 @@
   <%= f.input :title %>
   <%= f.input :body %>
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
-
+  <div class="large-12 columns" id="documents_container">
+    <%= f.label :documents, Post.human_attribute_name(:documents) + " (pdf, md, txt)"%>
+    <div class="documents-input-container">
+      <%= f.file_field :documents,  multiple: true, :class => "document-input"  %>
+      <button type="button" class="ui-button tiny add-file-button" id="addFile" onclick="addFileInput();"><i class="fa fa-plus-circle" aria-hidden="true"></i></button>
+    </div>
+  </div>
+  <div class="list-document-urls" id="list-document-urls">
+  </div>
+  <% @page.documents.each do |doc| %>
+    <div class="article-single-attachment row">
+      <div class="large-6 columns">
+        <%= link_to File.basename(doc.path), doc.url, target: :blank %>
+      </div>
+      <div class="large-2 columns">
+        <%= link_to(delete_page_document_url(@page, File.basename(doc.path)),:data => {:confirm => t('confirm')}) do %>
+          <button type="button" class="ui-button tiny"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
   <%= button_tag :class => 'preview large-12 columns',
                  :data => {:text => "#page_body", :title => "#page_title"} do %>
     <%= t "preview" %>

@@ -15,12 +15,14 @@ class Post < ActiveRecord::Base
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
   validates :sticky, inclusion: { in: [true, false] }
   validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
-
+  validate :documents_extension
   validate :user_in_group
 
   before_validation :generate_slug
 
   mount_uploader :image, ArticleImageUploader
+  mount_uploaders :documents, DocumentUploader
+  serialize :documents, JSON
 
   def previous
     Post.where('id < ?', id).order(id: :desc).first
@@ -66,4 +68,11 @@ class Post < ActiveRecord::Base
       errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
     end
 
+    def documents_extension
+      documents.each do |doc|
+        unless %w{pdf md txt}.include?(doc.file.extension)
+          errors.add(:documents, I18n.t('unsupported_file_format'))
+        end
+      end
+    end
 end

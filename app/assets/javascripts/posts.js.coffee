@@ -7,7 +7,7 @@ $ ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
     $elem.text moment(new Date(datetime)).fromNow()
-  
+
 
   $('.preview').on 'click', ->
     textid = $(this).data('text')

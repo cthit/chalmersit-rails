@@ -69,6 +69,7 @@ sv:
   yes: Ja
   no: Nej
   partner: Samarbetspartner
+  unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt)
   activerecord:
     errors:
       models:
@@ -117,6 +118,7 @@ sv:
         sticky: Fäst inlägget överst
         body: Innehåll
         show_public: Visa publikt (för besökare)
+        documents: Dokument
       comment:
         user_id: Användare
         body: Kommentar
