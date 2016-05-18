@@ -68,6 +68,7 @@ sv:
   contact_form: Kontaktformulär
   yes: Ja
   no: Nej
+  partner: Samarbetspartner
   activerecord:
     errors:
       models:
