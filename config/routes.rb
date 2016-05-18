@@ -2,10 +2,11 @@ Rails.application.routes.draw do
 
   resources :menu_links
   resources :menus
-
+  resources :sponsors
+  
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
-    resources :committees, :contact 
-    
+    resources :committees, :contact
+
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end

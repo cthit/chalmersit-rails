@@ -68,6 +68,7 @@ en:
   contact_form: Contact form
   yes: Yes
   no: No
+  partner: Businesspartner
   activerecord:
     errors:
       models:
