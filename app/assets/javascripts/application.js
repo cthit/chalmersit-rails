@@ -19,7 +19,6 @@
 //= require foundation/foundation.tab
 //= require jquery-fileupload/basic
 //= require chosen-jquery
-//= require turbolinks
 //= require moment
 //= require moment/sv.js
 //= require_tree .
