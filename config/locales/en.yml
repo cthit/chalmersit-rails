@@ -68,7 +68,7 @@ en:
   contact_form: Contact form
   yes: Yes
   no: No
-  partner: Businesspartner
+  partner: Partner
   unsupported_file_format: Unsupported file format (only pdf/md/txt)
   activerecord:
     errors:
