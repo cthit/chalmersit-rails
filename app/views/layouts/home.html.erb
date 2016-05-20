@@ -43,13 +43,8 @@
     <% end %>
   </div>
   <div class="large-3 columns">
-    <section class="box widget it-calendar">
-      <header>
-        <h3><%= t '.events' %></h3>
-      </header>
-      <div class="gce-widget-grid">
-        <%= calendar Configurable.calendar_url %>
-      </div>
+    <section class="box widget it-calendar" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
+
     </section>
     <%= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
   </div>

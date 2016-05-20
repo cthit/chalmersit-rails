@@ -9,4 +9,5 @@ $ ->
     $this.find('.tweet-list').load("/twitter/feed/#{handle}?count=6")
 
   $('.lunch_feed').load($('.lunch_feed').attr('data-url'))
+  $('.it-calendar').load($('.it-calendar').attr('data-url'))
 

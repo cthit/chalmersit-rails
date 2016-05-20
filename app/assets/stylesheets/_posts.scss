@@ -15,3 +15,11 @@
 .article-single-attachment{
   font-size: 18px;
 }
+
+.image-upload-button {
+    input {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+    }
+}

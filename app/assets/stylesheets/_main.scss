@@ -18,6 +18,10 @@ body {
 	background-color: $bg;
 }
 
+.it-calendar {
+    min-height: 390px;
+}
+
 .wrapper {
 	@include wrapper;
 }

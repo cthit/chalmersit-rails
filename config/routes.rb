@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'calendar/fetch'
+
   resources :menu_links
   resources :menus
   resources :sponsors
