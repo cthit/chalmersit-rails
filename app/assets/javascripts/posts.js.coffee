@@ -24,7 +24,9 @@ $ ->
   $('.posts #post_event_attributes__destroy').on 'change', ->
     $('#event_fields_container').toggle this.checked
 
-  $('.posts #post_body').fileupload
+  post_body = '.posts #post_body_en, .posts #post_body_sv'
+
+  $(post_body + ', #post_image_upload').fileupload
     url: '/images.json',
     paramName: 'image[source]',
     add: (e, data) ->
@@ -32,7 +34,7 @@ $ ->
         data.orig_name = remove_ext data.files[0].name
       else
         data.orig_name = 'image'
-      data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter(this)
+      data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($(post_body))
       data.label = $('<label>').insertAfter(data.progress_bar)
       data.submit()
     progress: (e, data) ->
@@ -47,7 +49,7 @@ $ ->
       data.progress_bar.remove()
       data.label.remove()
       src = data.result.source
-      insertTextAtCaret(this, image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
+      insertTextAtCaret($(post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
 
 insertTextAtCaret = (elem, text) ->
   $elem = $(elem)
