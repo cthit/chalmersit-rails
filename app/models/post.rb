@@ -59,7 +59,9 @@ class Post < ActiveRecord::Base
       I18n.available_locales.each do |locale|
         # Set slug to each locale if not already set.
         Globalize.with_locale locale do
-          self.slug ||= title.try(&:parameterize)
+          if eval("self.slug_#{locale}.nil?")
+            self.send("slug_#{locale}=", title.try(&:parameterize))
+          end
         end
       end
     end
