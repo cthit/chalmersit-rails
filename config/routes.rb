@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :menu_links
   resources :menus
   resources :sponsors
-  
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 
@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     get '/' => 'home#index'
   end
   resources :pages
+  resources :documents, only: [:create, :destroy]
   resources :images, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
