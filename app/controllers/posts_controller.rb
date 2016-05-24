@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy, :delete_document]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
 #  after_action :send_mail, only:[:update, :create]
@@ -35,11 +35,6 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.json
   def create
-    unless params[:document].nil?
-      params[:document].each do |doc|
-        params[:post][:documents].push(doc)
-      end
-    end
     @post = current_user.posts.build(post_params)
     @post.image = post_params[:image_upload]
 
@@ -56,36 +51,10 @@ class PostsController < ApplicationController
       end
     end
   end
-  def delete_document
-    remain_documents = []
-    @post.documents.each do |doc|
-      puts "checking: " + doc.path
-      unless File.basename(doc.path, ".*") == params[:document_name]
-        remain_documents.push(doc)
-        puts "adding: " + doc.path
-      end
-    end
-    if remain_documents.empty?
-      @post.remove_documents = true
-    else
-      @post.documents = remain_documents # re-assign back
-    end
-    if @post.save
-      redirect_to edit_post_url(@post), notice: 'Post was successfully updated.'
-    else
-      render :edit
-    end
-  end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    unless params[:post][:documents].nil?
-      documents = @post.documents
-      documents += params[:post][:documents]
-      params[:post][:documents] = ""
-      @post.documents = documents
-    end
     @post.user_id = current_user.id
 
     respond_to do |format|
@@ -117,7 +86,7 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      permitted = [:group_id, :title, :body, :sticky, :show_public, :image_upload, {documents: []}, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :_destroy, :organizer, :id] }] + Post.globalize_attribute_names
+      permitted = [:group_id, :title, :body, :sticky, :show_public, :image_upload, { event_attributes: [:event_date, :full_day, :start_time, :end_time, :facebook_link, :location, :_destroy, :organizer, :id] }] + Post.globalize_attribute_names
       params.require(:post).permit(permitted)
     end
 
