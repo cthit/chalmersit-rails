@@ -53,7 +53,7 @@ $ ->
 
 insertTextAtCaret = (elem, text) ->
   $elem = $(elem)
-  caretPos = elem.selectionStart
+  caretPos = elem[0].selectionStart
   oldText = $elem.val()
   $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
 

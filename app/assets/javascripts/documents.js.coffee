@@ -25,15 +25,3 @@ $ ->
       data.label.remove()
       src = data.result.document
       insertTextAtCaret($(post_body), link_markdown(data.orig_name, src.url) + "\n")
-
-insertTextAtCaret = (elem, text) ->
-  $elem = $(elem)
-  caretPos = elem.selectionStart
-  oldText = $elem.val()
-  $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
-
-link_markdown = (text, url) ->
-    "[#{text}](#{url})"
-
-remove_ext = (filename) ->
-  filename.substr(0, filename.lastIndexOf('.'))
