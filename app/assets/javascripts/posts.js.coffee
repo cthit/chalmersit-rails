@@ -26,9 +26,9 @@ $ ->
 
   post_body = '.posts #post_body_en, .posts #post_body_sv'
 
-  $(post_body + ', #post_image_upload').fileupload
-    url: '/images.json',
-    paramName: 'image[source]',
+  $(post_body + ', #post_item_upload').fileupload
+    url: '/uploads.json',
+    paramName: 'upload[source]',
     add: (e, data) ->
       if data.files[0].name
         data.orig_name = remove_ext data.files[0].name

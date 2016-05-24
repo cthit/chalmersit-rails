@@ -5,7 +5,7 @@
   <%= f.input :body %>
   <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title, include_blank: true %>
   <div class="large-12 columns image-upload-button">
-    <%= f.file_field :document_upload %>
+    <%= f.file_field :item_upload %>
   </div>
   <%= button_tag :class => 'preview large-12 columns',
                  :data => {:text => "#page_body", :title => "#page_title"} do %>

@@ -31,8 +31,7 @@ Rails.application.routes.draw do
     get '/' => 'home#index'
   end
   resources :pages
-  resources :documents, only: [:create, :destroy]
-  resources :images, only: [:create, :destroy]
+  resources :uploads, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
