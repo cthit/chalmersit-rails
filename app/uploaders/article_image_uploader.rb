@@ -24,8 +24,7 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-
-  process resize_to_limit: [1000, 1000]
+  process resize_to_limit: [1000, 1000], :if => :image?
 
   # Create different versions of your uploaded files:
   version :thumb, if: :too_large? do
@@ -34,8 +33,8 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-  def extension_white_list
-    %w(jpg jpeg gif png webp)
+  def extension_whitelist
+    %w(pdf md txt jpg jpeg gif png webp)
   end
 
   # Override the filename of the uploaded files:
@@ -51,8 +50,12 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
     end
 
     def too_large?(image)
+      return unless image?(image)
       width, height = ::MiniMagick::Image.open(file.file)[:dimensions]
       width > 500 || height > 500
     end
 
+    def image?(new_file)
+      new_file.content_type.start_with? 'image'
+    end
 end
