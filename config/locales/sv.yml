@@ -69,7 +69,7 @@ sv:
   yes: Ja
   no: Nej
   partner: Samarbetspartner
-  unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt)
+  unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
   activerecord:
     errors:
       models:
