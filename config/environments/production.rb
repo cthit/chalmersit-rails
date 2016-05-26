@@ -80,6 +80,7 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  
-  config.account_ip = 'https://account.chalmers.it'
+
+  config.account_ip = 'https://beta-account.chalmers.it'
+  config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
 end

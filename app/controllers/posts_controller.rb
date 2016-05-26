@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
-  after_action :send_mail, only:[:update, :create]
+  after_action :post_event, only:[:update, :create]
   # GET /posts
   # GET /posts.json
   def index
@@ -98,21 +98,35 @@ class PostsController < ApplicationController
       authorize @post
     end
 
+    def post_event
+      send_mail
+      send_irkk
+    end
 
     def send_mail
   		pathPushMail = '/applications/push-to-subscribers/1'
-		link = Rails.application.config.account_ip + pathPushMail
-		url = URI.parse(link)
-		http = Net::HTTP.new(url.host, url.port)
-		http.use_ssl = true
-		req = Net::HTTP::Get.new(url.path)
-		req.add_field('Authorization', 'Token token=' + Rails.application.secrets.push_mail_token)
-		req.add_field('push_message', @post.body)
-		req.add_field('push_title', @post.title)
-		req.add_field('push_url',post_url(@post))
-		req.add_field('push_url_title', @post.title)
-		response = http.request(req)
+  		link = Rails.application.config.account_ip + pathPushMail
+  		url = URI.parse(link)
+  		http = Net::HTTP.new(url.host, url.port)
+  		http.use_ssl = true
+  		req = Net::HTTP::Get.new(url.path)
+  		req.add_field('Authorization', 'Token token=' + Rails.application.secrets.push_mail_token)
+  		req.add_field('push_message', @post.body)
+  		req.add_field('push_title', @post.title)
+  		req.add_field('push_url',post_url(@post))
+  		req.add_field('push_url_title', @post.title)
+  		response = http.request(req)
    	end
 
+    def send_irkk
+      link = Rails.application.config.irkk_push_ip + "/commit"
+      url = URI.parse(link)
+      http = Net::HTTP.new(url.host, url.port)
+      http.use_ssl = false
+      req = Net::HTTP::Post.new(url.path)
+      req.add_field('Content-Type', 'application/json')
+      req.body = {'message' => @post.title + " : " + post_url(@post)}.to_json
+      response = http.request(req)
+    end
 
 end
