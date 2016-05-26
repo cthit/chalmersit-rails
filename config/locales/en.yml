@@ -27,7 +27,9 @@ en:
   chs: Chalmers Student Union
   cth: Chalmers University of Technology
   login: Sign in
+  signed_out: You have been signed out
   logout: Sign out
+  signed_in: You have been signed in
   sv: Swedish
   en: English
   pw_reset: Reset password

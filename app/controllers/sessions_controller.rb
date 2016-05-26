@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def create
     s = Session.from_omniauth(env["omniauth.auth"])
     session[:user_id] = s.uid
-    redirect_to root_url, notice: :signed_in
+    redirect_to root_url, :notice => t('signed_in')
   end
 
   def destroy
