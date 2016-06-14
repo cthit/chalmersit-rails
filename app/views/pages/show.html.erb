@@ -4,13 +4,6 @@
 <% end %>
 
 <%= markdown @page.body %>
-<div class="page-attachments">
-	<% @page.documents.each do |doc| %>
-		<div class="page-single-attachment">
-			<%= link_to File.basename(doc.path), doc.url, target: :blank %>
-		</div>
-	<% end %>
-</div>
 <p id="notice"><%= notice %></p>
 
 <% unless @page.parent.nil? %>
