@@ -99,8 +99,10 @@ class PostsController < ApplicationController
     end
 
     def post_event
-      send_mail
-      send_irkk
+      if Rails.env.production?
+        send_mail
+        send_irkk
+      end
     end
 
     def send_mail
