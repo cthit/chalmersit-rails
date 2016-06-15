@@ -39,7 +39,7 @@ class PostsController < ApplicationController
     @post.image = post_params[:image_upload]
 
     authorize_post
-
+    #Tries to save the post and gives the output in the requested format.
     respond_to do |format|
       if @post.save
         format.html { redirect_to @post, notice: I18n.translate('model_created', name: @post.title) }
@@ -105,6 +105,7 @@ class PostsController < ApplicationController
       end
     end
 
+    #Pushes the token and the post message to account server.
     def send_mail
   		pathPushMail = '/applications/push-to-subscribers/1'
   		link = Rails.application.config.account_ip + pathPushMail
