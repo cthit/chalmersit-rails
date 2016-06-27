@@ -1,4 +1,4 @@
-<% cache ['home_posts', I18n.locale] do  %>
+<% cache ['home_posts', I18n.locale, @posts.first] do  %>
   <% @posts.each do |post| %>
     <% cache ['home', I18n.locale, post] do %>
       <%= render post %>
