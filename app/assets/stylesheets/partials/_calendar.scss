@@ -46,6 +46,7 @@
 .it-calendar,
 .widget .gce-widget-grid .gce-calendar {
 	$caption-height: 3em;
+	width: 100%;
 
 	abbr {
 		border: 0;
@@ -70,6 +71,11 @@
 		border: 1px solid #ccc;
 		text-align: center;
 		color: #ccc;
+		padding: 0;
+	}
+	
+	th {
+		padding: 0;
 	}
 
 	.gce-month-title,
