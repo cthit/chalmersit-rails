@@ -2,8 +2,9 @@ module ApplicationHelper
   def markdown(content)
     pipeline = HTML::Pipeline.new [
       HTML::Pipeline::MarkdownFilter,
-      HTML::Pipeline::SanitizationFilter
-    ]
+      HTML::Pipeline::SanitizationFilter,
+      HTML::Pipeline::EmojiFilter
+    ], { asset_root: "https://assets-cdn.github.com/images/icons"}
     result = pipeline.call(content)
     result[:output].to_s.html_safe
   end

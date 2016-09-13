@@ -27,6 +27,7 @@ gem 'redis-rails'
 # Markdown for post body
 gem 'github-markdown'
 gem 'sanitize'
+gem 'gemoji'
 
 gem 'html-pipeline'
 # iCalendar parsing (for example: Google calendar)
