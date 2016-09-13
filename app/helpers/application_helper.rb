@@ -1,6 +1,11 @@
 module ApplicationHelper
   def markdown(content)
-    GitHub::Markdown.render_gfm(content).html_safe
+    pipeline = HTML::Pipeline.new [
+      HTML::Pipeline::MarkdownFilter,
+      HTML::Pipeline::SanitizationFilter
+    ]
+    result = pipeline.call(content)
+    result[:output].to_s.html_safe
   end
 
   # Returns true if entity has a translation to _locale_
