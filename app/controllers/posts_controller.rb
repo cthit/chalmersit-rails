@@ -37,6 +37,9 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @post.image = post_params[:image_upload]
+    unless @post.event.facebook_link.include?("http://") || @post.event.facebook_link.include?("https://")
+      @post.event.facebook_link.insert(0, "https://")
+    end
 
     authorize_post
     #Tries to save the post and gives the output in the requested format.
