@@ -38,6 +38,9 @@ en:
   search_found: "Found %{number} results"
   search_failed: "Please try your search again"
   contact: Contact
+  services: services
+  news: News
+  courses: Courses
   preview: Preview
   business: Business
   mailing_address: Mailing address
