@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :menus
   resources :sponsors
 
+  # Redirects (necessary due to menu system only allowing inbound links)
+  get 'redirect/findit' => 'redirect#findit'
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 

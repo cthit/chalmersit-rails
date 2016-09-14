@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160524185532) do
+ActiveRecord::Schema.define(version: 20160614174244) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -173,7 +173,6 @@ ActiveRecord::Schema.define(version: 20160524185532) do
     t.string   "slug",           limit: 255
     t.integer  "comments_count", limit: 4,     default: 0
     t.boolean  "show_public"
-    t.string   "image",          limit: 255
   end
 
   add_index "posts", ["group_id"], name: "index_posts_on_group_id", using: :btree

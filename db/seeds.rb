@@ -42,13 +42,12 @@ end
 
 main_menu = Menu.create(name: 'main')
 
-
-
 [
-  { controller: "pages", action: "index", title: "Sektionen", preferred_order: 0 },
-  { controller: "posts", action: "index", title: "Nyheter", preferred_order: 1 },
-  { controller: "courses", action: "index", title: "Kurser", preferred_order: 2 },
-  { controller: "contact", action: "index", title: "Kontakt", preferred_order: 3 }
+  { controller: "pages", action: "index", title: "section", preferred_order: 0 },
+  { controller: "posts", action: "index", title: "news", preferred_order: 1 },
+  { controller: "courses", action: "index", title: "courses", preferred_order: 2 },
+  { controller: "redirect", action: "findit", title: "services", preferred_order: 3 },
+  { controller: "contact", action: "index", title: "contact", preferred_order: 4 }
 ].each do |link|
   MenuLink.create(link.merge(menu: main_menu))
 end
