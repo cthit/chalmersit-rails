@@ -44,3 +44,4 @@ bin/*
 .kitchen.local.yml
 
 launch.sh
+/public/javascripts/translations.js 
