@@ -18,10 +18,6 @@ body {
 	background-color: $bg;
 }
 
-.it-calendar {
-    min-height: 390px;
-}
-
 .wrapper {
 	@include wrapper;
 }
@@ -73,6 +69,7 @@ ul, ol, dl {
 @import "partials/calendar";
 @import "partials/comments";
 @import "partials/widgets";
+@import "partials/loading-indicator";
 @import "partials/modal";
 @import "partials/documents";
 // VIEWS

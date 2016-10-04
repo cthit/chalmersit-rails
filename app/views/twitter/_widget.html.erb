@@ -4,6 +4,11 @@
       <h1>Twitter</h1>
       <%= link_to "@#{handle}", "http://twitter.com/#{handle}", class: 'header-more' %>
     </header>
-    <div class="tweet-list"</div>
+    <div class="tweet-list">
+    	<div class="loading-indicator">
+    	  <i class="fa fa-twitter loading-indicator-feature"></i>
+    	  <div class="loading-indicator-text"><%= t 'loading' %>...</div>
+    	</div>
+    </div>
   </section>
 <% end %>
