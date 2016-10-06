@@ -21,7 +21,7 @@
   <%= f.label :printer %>
   <div class="row collapse">
     <div class="small-3 large-1 columns">
-      <span class="prefix">
+      <span class="prefix icon-align">
         <%= fa_icon 'print' %>
       </span>
     </div>
@@ -64,14 +64,14 @@
     <legend><%= t '.user' %></legend>
     <div class="row collapse">
         <div class="small-3 large-1 columns">
-            <span class="prefix">
+            <span class="prefix icon-align">
                 <%= fa_icon 'user' %>
             </span>
         </div>
         <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false, placeholder: t('activemodel.attributes.print.username') -%>
 
         <div class="small-3 large-1 columns large-offset-1">
-            <span class="prefix">
+            <span class="prefix icon-align">
                 <%= fa_icon 'key' %>
             </span>
         </div>

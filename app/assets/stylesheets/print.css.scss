@@ -52,6 +52,12 @@ ol.printer-list {
   background-position: -18px 10px;
 }
 
+.icon-align {
+    display: flex!important;
+    align-items: center;
+    justify-content: center;
+}
+
 #pq {
   .hidden {
     display: none;
