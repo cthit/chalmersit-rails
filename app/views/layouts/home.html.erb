@@ -35,7 +35,18 @@
     </section>
   </div>
   <div class="large-3 columns">
-    <div class="lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>"></div>
+    <div class="lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>">
+      <header>
+          <h2><%= t '.lunch' %>
+          <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
+          </h2>
+      </header>
+
+      <div class="loading-indicator">
+        <i class="fa fa-cutlery loading-indicator-feature"></i>
+        <div class="loading-indicator-text"><%= t 'loading' %>...</div>
+      </div>
+    </div>
     <% Sponsor.all.each do |sponsor| %>
       <div class="box">
         <%= render :partial => 'sponsors/sponsor', :locals => {:sponsor => sponsor} %>
@@ -44,7 +55,14 @@
   </div>
   <div class="large-3 columns">
     <section class="box widget it-calendar" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
+      <header>
+          <h3><%= t '.events' %></h3>
+      </header>
 
+      <div class="loading-indicator">
+        <i class="fa fa-calendar loading-indicator-feature"></i>
+        <div class="loading-indicator-text"><%= t 'loading' %>...</div>
+      </div>
     </section>
     <%= render partial: 'twitter/widget', locals: { handle: 'FlashITChalmers' } %>
   </div>

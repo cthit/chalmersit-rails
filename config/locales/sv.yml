@@ -28,6 +28,7 @@ sv:
   cth: Chalmers Tekniska Högskola
   login: Logga in
   signed_in: Du har blivit inloggad
+  loading: Laddar
   logout: Logga ut
   signed_out: Du har blivit utloggad
   sv: svenska
