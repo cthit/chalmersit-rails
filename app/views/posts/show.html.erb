@@ -1,7 +1,7 @@
 <% cache [@post, I18n.locale] do %>
   <% content_for :title, @post.title %>
   <% content_for :sidebar_right do %>
-    <%= render 'users/sidebar', user: @post.user %>
+    <%= render 'users/sidebar', {:user => @post.user, :group => @post.group} %>
   <% end %>
   <%= render @post %>
 
