@@ -1,13 +1,39 @@
 # require 'net/http'
 # require 'icalendar'
+# require 'icalendar/recurrence'
 
 module CalendarHelper
 
   def calendar_data(url, date)
     cal_data = Net::HTTP.get(URI.parse(url))
     cals = Icalendar.parse(cal_data)
-    events = cals.first.events
+    calendar = cals.first;
+    events = calendar.events
+
+    first = Date.new(Date.today.year, Date.today.month, 1)
+    last = Date.new(Date.today.year, Date.today.month, -1)
+
+    events = get_all_events calendar, first, last
     events.select{ |e| same_month? e.dtstart, date }.group_by{ |e| e.dtstart.day }
+
+  end
+
+  def get_all_events(calendar, first, last)
+    new_calendar = Icalendar::Calendar.new
+
+    for event in calendar.events
+
+      recurring_events = event.occurrences_between(first, last)
+      for recurring_event in recurring_events
+        new_event = Icalendar::Event.new
+        new_event.dtstart = recurring_event.start_time
+        new_event.dtend = recurring_event.end_time
+        new_event.summary = event.summary
+        new_calendar.add_event(new_event)
+      end
+      #end
+    end
+    events = new_calendar.events;
   end
 
   def same_month?(date1, date2)

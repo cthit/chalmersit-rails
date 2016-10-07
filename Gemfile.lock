@@ -160,6 +160,10 @@ GEM
     i18n-js (2.1.2)
       i18n
     icalendar (2.3.0)
+    icalendar-recurrence (1.1.1)
+      icalendar (~> 2.0)
+      ice_cube (~> 0.13.0)
+    ice_cube (0.13.3)
     jbuilder (2.3.0)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -387,6 +391,7 @@ DEPENDENCIES
   html-pipeline
   i18n-js
   icalendar
+  icalendar-recurrence
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
@@ -412,4 +417,4 @@ DEPENDENCIES
   uglifier (>= 1.3.0)
 
 BUNDLED WITH
-   1.12.1
+   1.13.1

@@ -32,6 +32,7 @@ gem 'gemoji'
 gem 'html-pipeline'
 # iCalendar parsing (for example: Google calendar)
 gem 'icalendar'
+gem 'icalendar-recurrence'
 # Twitter feeds
 gem 'twitter'
 # Application settings
