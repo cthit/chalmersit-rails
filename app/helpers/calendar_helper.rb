@@ -10,15 +10,12 @@ module CalendarHelper
     calendar = cals.first;
     events = calendar.events
 
-    first = Date.new(Date.today.year, Date.today.month, 1)
-    last = Date.new(Date.today.year, Date.today.month, -1)
-
-    events = get_all_events calendar, first, last
-    events.select{ |e| same_month? e.dtstart, date }.group_by{ |e| e.dtstart.day }
+    events = get_events_between calendar, date.beginning_of_month, date.end_of_month
+    events.group_by{ |e| e.dtstart.day }
 
   end
 
-  def get_all_events(calendar, first, last)
+  def get_events_between(calendar, first, last)
     new_calendar = Icalendar::Calendar.new
 
     for event in calendar.events
@@ -31,13 +28,8 @@ module CalendarHelper
         new_event.summary = event.summary
         new_calendar.add_event(new_event)
       end
-      #end
     end
     events = new_calendar.events;
-  end
-
-  def same_month?(date1, date2)
-    date1.year == date2.year && date1.month == date2.month
   end
 
   def calendar(url, date = Date.today)
