@@ -209,6 +209,9 @@ sv:
     today:
       next_event: Evenemang idag
       no_events: Det finns inga evenemang idag
+  calendar:
+      fetch:
+        events: "Evenemang"
   print:
     new:
       supported_file_types: Filtyper som stöds
