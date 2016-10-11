@@ -15,16 +15,22 @@ Install the following: Ruby, mysql, nodejs, rbenv
 rbenv rehash
 bundle install
 
-# Create the secrets.yml file (fetch from wiki)
-touch config/secrets.yml
+# Create the secrets.yml file (digIT might want to fetch from wiki instead)
+cp config/secrets.yml.example config/secrets.yml
+edit it so it looks like this:
+
+development:
+  secret_key_base: (AUTO GENERATED)
+  client_credentials:
+
+We will get the client_credentials later.
 
 # Add keys needed for auth
 You need to be connected to the digIT network for these steps (contact them if you need access).
 Go to https://beta-account.chalmers.it, login using your standard account and then go to
 https://beta-account.chalmers.it/oauth/applications
 Add a new application:
-http://10.0.0.XXX:3000/auth/account/callback
-Where XXX is your assigned IP when connected to the digIT network
+http://0.0.0.0:3000/auth/account/callback
 Paste the generated tokens into the launch.sh file
 Export variables to shell (export OAUTH_ID=XXX, export OAUTH_SECRET=YYY)
 rake cthit:generate_token
@@ -34,6 +40,10 @@ Copy the generated token into client_credentials at secrets.yml
 rake db:setup
 rake rails:update:bin
 rbenv rehash
+
+# Fix launch script
+cp launch.sh.example launch.sh
+Edit the script and insert your oauth id and secret from before.
 
 # Start server:
 Start the server by running the completed launch script.
