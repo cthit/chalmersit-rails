@@ -1,7 +1,7 @@
     <header>
         <h3><%= t '.events' %></h3>
     </header>
-    <% cache 'home_calendar', expires_in: 1.hour do  %>
+    <% cache ['home_calendar', I18n.locale], expires_in: 1.hour do  %>
         <div class="gce-widget-grid">
             <%= calendar Configurable.calendar_url %>
         </div>
