@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 
+    resources :pages
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end
@@ -31,9 +32,9 @@ Rails.application.routes.draw do
         end
     end
 
-    get '/' => 'home#index'
+    root 'home#index'
+    get '*path' => 'pages#show'
   end
-  resources :pages
   resources :uploads, only: [:create, :destroy]
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
@@ -46,7 +47,4 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'signout' => 'sessions#destroy', as: :signout
-
-  root 'home#index'
-  get '*path' => 'pages#show'
 end
