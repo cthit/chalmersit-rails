@@ -68,6 +68,7 @@ sv:
   published: Publicerad
   permalink: Permalänk
   translation_missing: "Denna %{model} saknar en översättning till ditt språk"
+  no_posts_found: Inga nyheter hittades
   not_authorized: Du har inte behörighet att utföra detta.
   send_contact: Skicka meddelande
   to_whom: Vem vill du kontakta
@@ -91,6 +92,8 @@ sv:
       course:
         one: Kurs
         other: Kurser
+      contact:
+        one: Kontakt
       comment:
         one: Kommentar
         other: Kommentarer
@@ -144,7 +147,7 @@ sv:
         printer: Skrivare
         copies: Antal kopior
         duplex: Dubbelsidig utskrift
-        collated: Sorterade sidor
+        collate: Sortera
         ranges: Intervall
         media: Pappersstorlek
         ppi: Upplösning
@@ -418,7 +421,7 @@ sv:
       contact:
         body: Innehåll
         title: Ämne
-        email: Epostadress (Fyll inte i om du vill vara anononym)
+        email: Epostadress (Fyll inte i om du vill vara anonym)
     placeholders:
       contact:
         body: Vad vill du säga?
