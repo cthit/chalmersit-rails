@@ -68,6 +68,7 @@ en:
   published: Published
   permalink: Permalink
   translation_missing: "This %{model} is missing a translation for your language."
+  no_posts_found: No posts found
   not_authorized: You are not authorized to perform this action.
   to_whom: Who do you want to contact?
   send_contact: Send message
@@ -93,6 +94,8 @@ en:
       course:
         one: Course
         other: Courses
+      contact:
+        one: Contact
       comment:
         one: Comment
         other: Comments
