@@ -1,7 +1,7 @@
 /*	=BUTTONS
 ----------------------------------------------------------------------*/
 
-@mixin states($color, 
+@mixin states($color,
 		$hover: darken($color, 20%)) {
 
 	$bg: $color;
@@ -15,11 +15,11 @@
 	@include background(linear-gradient($color, $bgalt));
 	@include transition(text-shadow .15s ease-out);
 	@include box-shadow(
-		$border 0 3px 0, 
+		$border 0 3px 0,
 		inset rgba(#fff, .1) 0 1px 0,
 		inset rgba(#fff, .1) 0 -1px 0,
 		rgba(0,0,0, 0.2) 0 2px 8px);
-	
+
 	&:hover,
 	&:focus {
 		outline: none;
@@ -29,12 +29,18 @@
 		@include background(linear-gradient(darken($color, 2%),
 			darken($bgalt, 3%)));
 	}
-	
+
 	&:active {
 		top: 1px;
 		@include box-shadow($border 0 2px 0);
 	}
 
+}
+
+.button.smaller {
+	padding: 10px 20px;
+	margin: 0;
+	font-size: 0.9rem;
 }
 
 // .btn,
@@ -51,10 +57,10 @@
 // 	color: #fff;
 // 	font: bold 1em/1 $sans;
 // 	text-align: center;
-	
+
 // 	@include border-radius(.2em);
 // 	@include states($btn-color);
-	
+
 // 	&.large {
 // 		padding: .6em 1.5em;
 // 		font-size: to_em(20);
@@ -65,7 +71,7 @@
 // 		font-size: to_em(13);
 // 		padding: .4em 1em;
 // 	}
-	
+
 // 	&.wide {
 // 		@extend .btn.large;
 // 		width: 100%;

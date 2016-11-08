@@ -215,6 +215,7 @@ sv:
   calendar:
       fetch:
         events: "Evenemang"
+        subscribe: "Prenumerera (Google Kalender)"
   print:
     new:
       supported_file_types: Filtyper som stöds

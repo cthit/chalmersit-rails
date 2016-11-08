@@ -211,7 +211,7 @@ en:
   calendar:
     fetch:
       events: "Events"
-
+      subscribe: "Subscribe (Google Calendar)"
   date:
     abbr_day_names:
     - Sun
