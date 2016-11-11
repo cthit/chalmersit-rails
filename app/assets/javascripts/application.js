@@ -24,4 +24,15 @@
 //= require_tree .
 //= require i18n/translations
 
-$(function(){ $(document).foundation(); });
+$(function(){
+
+$(document).foundation();
+
+var $menu = $('#site-menu');
+
+$('#main-nav-toggle').on('click', function() {
+	$menu.toggle();
+});
+
+
+});

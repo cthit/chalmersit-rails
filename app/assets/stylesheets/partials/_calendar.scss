@@ -15,7 +15,7 @@
 }
 .gce-qtip-content {
 	background-color: transparent !important;
-	
+
 	.gce-event-info {
 		border: 0;
 		background-color: #000;
@@ -47,6 +47,7 @@
 .widget .gce-widget-grid .gce-calendar {
 	$caption-height: 3em;
 	width: 100%;
+	margin-bottom: 10px;
 
 	abbr {
 		border: 0;

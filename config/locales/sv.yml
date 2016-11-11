@@ -174,10 +174,12 @@ sv:
       print: Skriv ut
       schema: Schema
       charge_card: Kårkort
+      slack: Slack
       book_hubben_desc: Boka Hubben eller grupprummet
       book_chalmers_desc: Boka grupprum på Chalmers
       print_desc: Skriv ut på Chalmers skrivare
       charge_card_desc: Genväg för att ladda ditt kårkort
+      slack_desc: Gå med i IT-sektionens chatt
       events: Evenemang
 
   posts:
@@ -215,6 +217,7 @@ sv:
   calendar:
       fetch:
         events: "Evenemang"
+        subscribe: "Prenumerera (Google Kalender)"
   print:
     new:
       supported_file_types: Filtyper som stöds
