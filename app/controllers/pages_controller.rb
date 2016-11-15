@@ -22,6 +22,7 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
+    authorize @page
     @other_pages = Page.order(:title)
   end
 

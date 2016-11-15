@@ -8,6 +8,10 @@ class PagePolicy < ApplicationPolicy
     super
   end
 
+  def new?
+    create?
+  end
+
   def update?
     super
   end
