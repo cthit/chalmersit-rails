@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
 
     root 'home#index'
+    get '*path' => 'pages#show'
   end
   resources :uploads, only: [:create, :destroy]
 
@@ -46,5 +47,4 @@ Rails.application.routes.draw do
   #   get 'products/:id' => 'catalog#view'
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'signout' => 'sessions#destroy', as: :signout
-  get '*path' => 'pages#show'
 end
