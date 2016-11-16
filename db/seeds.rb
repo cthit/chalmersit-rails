@@ -21,7 +21,8 @@
   {title_en: 'Photo Committee', title_sv: 'Foto', name: 'FlashIT', url: 'http://flashit.chalmers.it', email: 'flashit@chalmers.it' },
   {title_en: 'Chugging Committee', title_sv: 'Häfv och odygd', name: 'HookIT', url: 'http://hookit.chalmers.it', email: 'hookit@chalmers.it' },
   {title_en: 'Auditors', title_sv: 'Sektionens revisorer', name: 'Revisorer', url: 'http://revisorer.chalmers.it', email: 'revisorer@chalmers.it' },
-  {title_en: 'Nomination Committee', title_sv: 'Valberedning', name: 'Valberedningen', url: 'http://valberedningen.chalmers.it', email: 'valberedningen@chalmers.it'  }
+  {title_en: 'Nomination Committee', title_sv: 'Valberedning', name: 'Valberedningen', url: 'http://valberedningen.chalmers.it', email: 'valberedningen@chalmers.it'  },
+  {title_en: 'Legacy', title_sv: 'Legacy', name: 'Legacy', url: 'http://chalmers.it', email: 'digit@chalmers.it'  }
 ]
 
  Committee.delete_all
