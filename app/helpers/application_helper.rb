@@ -42,6 +42,6 @@ module ApplicationHelper
   end
   def randomized_background_image
     images = ["header_prit_16.jpg", "header_nollkit_16.jpg", "header_styrit_16.jpg", "header.jpg"]
-    image_path images[rand(images.size)]
+    image_path images.sample
   end
 end
