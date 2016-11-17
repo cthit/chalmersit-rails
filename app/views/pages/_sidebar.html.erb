@@ -1,13 +1,13 @@
 <div class="sidebar box">
   <section>
-    <h2>Om Sektionen</h2>
+    <h2><%= t("about_section") %></h2>
     <% @pages.each do |page| %>
       <p><%= link_to page.title, path_to_page(page) %></p>
     <% end %>
   </section>
 
   <section>
-    <h2>Kommittéer, föreningar och andra instanser</h2>
+    <h2><%= t("committees_assoiciations") %> </h2>
     <% @committees.each do |committee| %>
       <p><%= link_to committee.name, committee %></p>
     <% end %>

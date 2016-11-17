@@ -77,6 +77,8 @@ en:
   no: No
   partner: Partner
   unsupported_file_format: Unsupported file format (only pdf/md/txt/jpg/jpeg/gif/png/webp)
+  about_section: About our division
+  committees_assoiciations: Committees, associations and other instances
   activerecord:
     errors:
       models:
