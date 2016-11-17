@@ -1,6 +1,11 @@
 /* =COMMENTS
 ------------------------------ */
-
+figure {
+	margin: 0;
+}
+figure img{
+	border-radius: 50%;
+}
 .posts-show #comments {
 	@include box;
 	padding: 5%;
