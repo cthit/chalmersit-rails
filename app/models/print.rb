@@ -18,8 +18,7 @@ class Print
   validate  :media_in_printer
   validate  :file_is_valid
   validates :ppi, inclusion: { in: Print.available_ppi }
-  validates :username, :password, :printer, presence: true
-  validates :file, presence: true, unless: 'file_cache.present?'
+  validates :username, :password, :printer, :file, presence: true
 
   attr_accessor :copies, :duplex, :collate, :ranges, :media, :username, :password, :ppi, :file, :file_cache, :file_name, :printer
 
