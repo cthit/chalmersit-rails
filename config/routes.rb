@@ -39,6 +39,10 @@ Rails.application.routes.draw do
     post 'print' => 'print#print', as: :prints
     post 'print/pq' => 'print#pq', as: :pq_print
 
+    get 'frontpage/edit' => 'frontpage#edit', as: :edit_frontpage
+    patch 'frontpage/update' => 'frontpage#update'
+    put 'fronpage/update' => 'frontpage#update'
+
     resources :courses do
         member do
           get 'site'

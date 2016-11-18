@@ -51,3 +51,6 @@ main_menu = Menu.create(name: 'main')
 ].each do |link|
   MenuLink.create(link.merge(menu: main_menu))
 end
+
+page = Page.create(title: "Student Division", body: "Lorem ipsum etc", slug: "student-division", parent_id: nil)
+frontpage = Frontpage.create(page_id: page.id)
