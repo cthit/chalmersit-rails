@@ -1,9 +1,9 @@
 <div class="box">
-  <h1>Update pages front page</h1>
+  <h1><%= t('.update_form_title') %></h1>
   <%= simple_form_for @frontpage, url: frontpage_update_path do |f| %>
     <%= f.error_notification %>
 
-    <%= f.input :page_id, as: :select, collection: @pages , value_method: :id, label_method: :title%>
+    <%= f.input :page_id, as: :select, collection: @pages , value_method: :id, label_method: :title, label: t('.page') %>
     <%= f.button :submit %>
   <% end %>
 </div>
