@@ -1,10 +1,12 @@
 class ContactController < ApplicationController
+  layout 'bare', only: [:index, :show]
 
-def index 
+
+def index
    @contact = Contact.new
 end
 
-def create 
+def create
    if params[:value].blank? && !params[:to_whom].blank? then
       contact_params = params[:contact]
       mail_array = contact_params[:to_whom] << contact_params[:email]
