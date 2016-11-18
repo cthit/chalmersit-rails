@@ -1,6 +1,8 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy, :site]
   before_action :authorize_course, except: [:index, :create, :new, :site]
+  layout 'bare', only: [:index, :show]
+
 
   # GET /courses
   # GET /courses.json
