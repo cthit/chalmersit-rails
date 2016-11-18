@@ -25,11 +25,11 @@ class PrintController < ApplicationController
         print_script @print
         @print.printer.increment!(:weight)
         @print.file_cache = nil
-        flash[:notice] = "Your document has been sent to the printer"
+        flash.now[:notice] = "Your document has been sent to the printer"
       rescue => e
         # Log error message to log/printer.log
         @print.print_logger e.message
-        flash[:alert] = e.message
+        flash.now[:alert] = e.message
       end
     elsif @print.errors[:file].any?
       @print.file = nil
