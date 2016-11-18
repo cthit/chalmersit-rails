@@ -63,6 +63,7 @@
                     <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                     <% if current_user.admin? %>
                       <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
+                      <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
                     <% end %>
                     <li><%= link_to t('logout'), signout_path %></li>
                   </ul>
