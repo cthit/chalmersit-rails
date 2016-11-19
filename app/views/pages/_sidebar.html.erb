@@ -10,15 +10,15 @@
       <% else %>
         <%= link_to parent_page.title, path_to_page(parent_page) %>
       <% end %>
+      <hr>
       <% @pages.where(parent_id: parent_page.id).each do |child_page| %>
-        <hr class="child">
         <% if current_page == child_page %>
           <p class="child"><%= child_page.title %></p>
         <% else %>
           <%= link_to child_page.title, path_to_page(child_page), class: "child"%>
         <% end %>
+        <hr class="child">
       <% end %>
-      <hr>
     <% end %>
   </section>
 
