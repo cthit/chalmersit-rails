@@ -1,15 +1,28 @@
-<div class="sidebar box">
+<% current_committee = nil if local_assigns[:current_committee].nil? %>
+<% current_page = nil if local_assigns[:current_page].nil? %>
+
+<div class="sidebar box left">
   <section>
     <h2><%= t("about_section") %></h2>
     <% @pages.each do |page| %>
-      <p><%= link_to page.title, path_to_page(page) %></p>
+      <% if current_page == page %>
+        <p><%= page.title %></p>
+      <% else %>
+        <%= link_to page.title, path_to_page(page) %>
+      <% end %>
+      <hr>
     <% end %>
   </section>
 
   <section>
     <h2><%= t("committees_assoiciations") %> </h2>
     <% @committees.each do |committee| %>
-      <p><%= link_to committee.name, committee %></p>
+      <% if committee == current_committee %>
+        <p><%= committee.name %></p>
+      <% else %>
+        <%= link_to committee.name, committee %>
+      <% end %>
+      <hr>
     <% end %>
   </section>
 </div>
