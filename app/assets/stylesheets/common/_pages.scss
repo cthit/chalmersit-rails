@@ -25,6 +25,31 @@
 	color: #444;
 
 	p {
-		margin-bottom: $lineheight;		
+		margin-bottom: $lineheight;
+	}
+}
+
+.sidebar .left{
+	a:hover {
+		background-color: #eff6f7;
+		text-decoration: none;
+		color: #000;
+    font-weight: 500;
+	}
+	a {
+		color: #000;
+    font-weight: 500;
+		display: block;
+	}
+	hr {
+		margin: 2px;
+	}
+	p {
+		font-weight: 500;
+		color: #999;
+	}
+	.child {
+		margin-left: 15px;
+		margin-right: 15px;
 	}
 }
