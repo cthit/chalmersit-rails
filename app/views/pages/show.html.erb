@@ -1,6 +1,6 @@
 <% content_for :title, @page.title %>
 <% content_for :sidebar_left do %>
-	<%= render partial: 'pages/sidebar' %>
+	<%= render partial: 'pages/sidebar', locals: {current_page: @page} %>
 <% end %>
 
 <%= markdown @page.body %>

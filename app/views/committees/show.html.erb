@@ -2,7 +2,7 @@
   <%= render partial: 'committees/sidebar' %>
 <% end %>
 <% content_for :sidebar_left do %>
-  <%= render partial: 'pages/sidebar' %>
+  <%= render partial: 'pages/sidebar', locals: {current_committee: @committee} %>
 <% end %>
 <% content_for :title, @committee.name %>
 <% content_for :subtitle, @committee.title %>
