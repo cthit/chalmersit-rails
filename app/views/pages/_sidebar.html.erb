@@ -4,7 +4,7 @@
 <div class="sidebar box left">
   <section>
     <h2><%= t("about_section") %></h2>
-    <% @pages.where(parent_id: nil).each do |page| %>
+    <% @pages.where(parent_id: nil).each do |parent_page| %>
       <% if current_page == parent_page %>
         <p><%= parent_page.title %></p>
       <% else %>
