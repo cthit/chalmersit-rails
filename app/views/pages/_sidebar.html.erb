@@ -4,11 +4,19 @@
 <div class="sidebar box left">
   <section>
     <h2><%= t("about_section") %></h2>
-    <% @pages.each do |page| %>
-      <% if current_page == page %>
-        <p><%= page.title %></p>
+    <% @pages.where(parent_id: nil).each do |page| %>
+      <% if current_page == parent_page %>
+        <p><%= parent_page.title %></p>
       <% else %>
-        <%= link_to page.title, path_to_page(page) %>
+        <%= link_to parent_page.title, path_to_page(parent_page) %>
+      <% end %>
+      <% @pages.where(parent_id: parent_page.id).each do |child_page| %>
+        <hr class="child">
+        <% if current_page == child_page %>
+          <p class="child"><%= child_page.title %></p>
+        <% else %>
+          <%= link_to child_page.title, path_to_page(child_page), class: "child"%>
+        <% end %>
       <% end %>
       <hr>
     <% end %>
