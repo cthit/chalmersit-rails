@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
+    @frontpage = Page.find(Frontpage.first.page_id)
     @pages = Page.all
   end
 
