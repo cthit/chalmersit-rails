@@ -36,10 +36,8 @@
               </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
-                <% cache ['main-menu', I18n.locale] do %>
-                  <% Menu.where(name: 'main').last.links.each do |link| %>
-                    <%= header_link_to_current t(link.title), link.path %>
-                  <% end %>
+                <% Menu.links_for_menu_cached('main').each do |link| %>
+                  <%= header_link_to_current t(link.title), link.path %>
                 <% end %>
               </ul>
             </nav>
