@@ -83,6 +83,9 @@
 	.user-area .box{
 		height: $lineheight * 4;
 		overflow: hidden;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 
 		// Don't force a height when the site is in vertical mode (i.e. mobile)
 		@media screen and (max-width: $medium-breakpoint) {
