@@ -24,12 +24,12 @@ class PagesController < ApplicationController
   def new
     @page = Page.new
     authorize @page
-    @other_pages = Page.order(:title)
+    @other_pages = Page.all
   end
 
   # GET /pages/1/edit
   def edit
-    @other_pages = Page.order(:title).where("id != ?", @page.id)
+    @other_pages = Page.where("id != ?", @page.id)
   end
 
   # POST /pages
@@ -82,7 +82,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      permitted = [:title,:body,:parent_id]
+      permitted = [:parent_id] + Page.globalize_attribute_names
       params.require(:page).permit(permitted)
       #params.require(:title,:body).permit(:parent)
     end

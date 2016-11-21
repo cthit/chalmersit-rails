@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118170047) do
+ActiveRecord::Schema.define(version: 20161118120115) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -137,6 +137,18 @@ ActiveRecord::Schema.define(version: 20161118170047) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "page_translations", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4,     null: false
+    t.string   "locale",     limit: 255,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+  end
+
+  add_index "page_translations", ["locale"], name: "index_page_translations_on_locale", using: :btree
+  add_index "page_translations", ["page_id"], name: "index_page_translations_on_page_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255
