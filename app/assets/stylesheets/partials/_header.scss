@@ -101,6 +101,12 @@ body.logged-in [role="banner"] {
 	top: 0;
 }
 
+@media screen and (max-width: 1110px) {
+	.logo-text {
+		display: none;
+	}
+}
+
 .inner-bar {
 	background-color: #000;
 	background-color: rgba(#000, .7);

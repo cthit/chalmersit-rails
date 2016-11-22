@@ -88,9 +88,10 @@
 		}
 
 		.logo {
-			width: 80px;
-			height: 80px;
-			background-size: cover;
+			width: 48px;
+			height: 48px;
+			background-size: contain;
+			margin-top: 2px;
 			background-position: left top;
 			position: absolute;
 		}
