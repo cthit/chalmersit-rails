@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160614174244) do
+ActiveRecord::Schema.define(version: 20161118170047) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -111,6 +111,14 @@ ActiveRecord::Schema.define(version: 20160614174244) do
 
   add_index "events", ["post_id"], name: "index_events_on_post_id", using: :btree
 
+  create_table "frontpages", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  add_index "frontpages", ["page_id"], name: "index_frontpages_on_page_id", using: :btree
+
   create_table "menu_links", force: :cascade do |t|
     t.integer  "menu_id",         limit: 4
     t.string   "controller",      limit: 255
@@ -129,6 +137,18 @@ ActiveRecord::Schema.define(version: 20160614174244) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "page_translations", force: :cascade do |t|
+    t.integer  "page_id",    limit: 4,     null: false
+    t.string   "locale",     limit: 255,   null: false
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.string   "title",      limit: 255
+    t.text     "body",       limit: 65535
+  end
+
+  add_index "page_translations", ["locale"], name: "index_page_translations_on_locale", using: :btree
+  add_index "page_translations", ["page_id"], name: "index_page_translations_on_page_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
     t.string   "title",      limit: 255

@@ -1,6 +1,6 @@
 <% content_for :title, @page.title %>
 <% content_for :sidebar_left do %>
-	<%= render partial: 'pages/sidebar' %>
+	<%= render partial: 'pages/sidebar', locals: {current_page: @page} %>
 <% end %>
 
 <%= markdown @page.body %>
@@ -9,5 +9,7 @@
 <% unless @page.parent.nil? %>
     <%= link_to 'Parent', path_to_page(@page.parent) %>
 <% end %>
-<%= link_to 'Edit', edit_page_path(@page) %> |
+<% if policy(Page).update? %>
+	<%= link_to 'Edit', edit_page_path(@page) %> |
+<% end %>
 <%= link_to 'Back', pages_path %>

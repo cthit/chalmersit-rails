@@ -3,7 +3,7 @@ module PagesHelper
     unless page.parent.nil?
       path_to_page(page.parent) + '/' + page.slug
     else
-      root_url + '/' + page.slug
+      root_url(trailing_slash: true) + page.slug
     end
   end
 end

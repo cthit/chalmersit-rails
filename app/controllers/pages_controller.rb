@@ -4,6 +4,7 @@ class PagesController < ApplicationController
   # GET /pages
   # GET /pages.json
   def index
+    @frontpage = Page.find(Frontpage.first.page_id)
     @pages = Page.all
   end
 
@@ -22,18 +23,20 @@ class PagesController < ApplicationController
   # GET /pages/new
   def new
     @page = Page.new
-    @other_pages = Page.order(:title)
+    authorize @page
+    @other_pages = Page.all
   end
 
   # GET /pages/1/edit
   def edit
-    @other_pages = Page.order(:title).where("id != ?", @page.id)
+    @other_pages = Page.where("id != ?", @page.id)
   end
 
   # POST /pages
   # POST /pages.json
   def create
     @page = Page.new(page_params)
+    authorize @page
 
     respond_to do |format|
       if @page.save
@@ -49,6 +52,7 @@ class PagesController < ApplicationController
   # PATCH/PUT /pages/1
   # PATCH/PUT /pages/1.json
   def update
+    authorize @page
     respond_to do |format|
       if @page.update(page_params)
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
@@ -63,6 +67,7 @@ class PagesController < ApplicationController
   # DELETE /pages/1
   # DELETE /pages/1.json
   def destroy
+    authorize @page
     @page.destroy
     respond_to do |format|
       format.html { redirect_to pages_url, notice: 'Page was successfully destroyed.' }
@@ -77,7 +82,7 @@ class PagesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_params
-      permitted = [:title,:body,:parent_id]
+      permitted = [:parent_id] + Page.globalize_attribute_names
       params.require(:page).permit(permitted)
       #params.require(:title,:body).permit(:parent)
     end

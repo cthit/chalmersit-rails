@@ -9,6 +9,19 @@ Rails.application.routes.draw do
   # Redirects (necessary due to menu system only allowing inbound links)
   get 'redirect/findit' => 'redirect#findit'
 
+  resources :uploads, only: [:create, :destroy]
+
+  get 'twitter/feed/:twitter_handle' => 'twitter#feed'
+
+  post 'preview' => 'preview#preview'
+
+  get 'pages/:id/delete_document/:document_name', to: 'pages#delete_document', as: :delete_page_document
+  get 'posts/:id/delete_document/:document_name', to: 'posts#delete_document', as: :delete_post_document
+
+  match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
+  get 'signout' => 'sessions#destroy', as: :signout
+
+
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 
@@ -26,6 +39,10 @@ Rails.application.routes.draw do
     post 'print' => 'print#print', as: :prints
     post 'print/pq' => 'print#pq', as: :pq_print
 
+    get 'frontpage/edit' => 'frontpage#edit', as: :edit_frontpage
+    patch 'frontpage/update' => 'frontpage#update'
+    put 'fronpage/update' => 'frontpage#update'
+
     resources :courses do
         member do
           get 'site'
@@ -33,18 +50,6 @@ Rails.application.routes.draw do
     end
 
     root 'home#index'
+    get '*path' => 'pages#show'
   end
-  resources :uploads, only: [:create, :destroy]
-
-  get 'twitter/feed/:twitter_handle' => 'twitter#feed'
-
-  post 'preview' => 'preview#preview'
-
-  get 'pages/:id/delete_document/:document_name', to: 'pages#delete_document', as: :delete_page_document
-  get 'posts/:id/delete_document/:document_name', to: 'posts#delete_document', as: :delete_post_document
-  # Example of regular route:
-  #   get 'products/:id' => 'catalog#view'
-  match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
-  get 'signout' => 'sessions#destroy', as: :signout
-  get '*path' => 'pages#show'
 end

@@ -77,6 +77,8 @@ sv:
   no: Nej
   partner: Samarbetspartner
   unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
+  about_section: Om Sektionen
+  committees_assoiciations: Kommittéer, föreningar och andra instanser
   activerecord:
     errors:
       models:
@@ -100,6 +102,8 @@ sv:
       committee:
         one: Kommitté
         other: Kommitteér
+      frontpage:
+        one: "Framsida"
     attributes:
       event:
         event_date: Arrangemangsdatum
@@ -168,6 +172,7 @@ sv:
       new_news_post: Posta nyhet
       edit_profile: Redigera profil
       admin: Admin
+      edit_frontpage: "Ändra sektionsida"
     home:
       booking: Bokning
       group_room: Grupprum
@@ -226,6 +231,11 @@ sv:
       uploaded: Uppladdad fil
       password_notice: "Notera: Det är ditt Chalmerslösenord du ska använda och inte det du använder för våra tjänster."
       forgot_pw_notice: "Om du har glömt ditt lösenord, besök "
+  frontpage:
+    form:
+      update_form_title: "Ändra sektionssida"
+      frontpage: "Framsida"
+      page: "Sida"
 
 
   date:

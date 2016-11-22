@@ -1,27 +1,17 @@
+<% content_for :title, @frontpage.title %>
+
+
 <% content_for :sidebar_left do %>
   <%= render partial: 'pages/sidebar' %>
 <% end %>
-<h1>Listing pages</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th><%= Page.human_attribute_name('title') %></th>
-    </tr>
-  </thead>
+<%= markdown @frontpage.body %>
+<p id="notice"><%= notice %></p>
 
-  <tbody>
-    <% @pages.each do |page| %>
-      <tr>
-        <td><%= link_to page.title, path_to_page(page) %></td>
-        <td><%= link_to 'Show', path_to_page(page) %></td>
-        <td><%= link_to 'Edit', edit_page_path(page) %></td>
-        <td><%= link_to 'Destroy', path_to_page(page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Page', new_page_path %>
+<% unless @frontpage.parent.nil? %>
+    <%= link_to 'Parent', path_to_page(@frontpage.parent) %>
+<% end %>
+<% if policy(Page).update? %>
+  <%= link_to 'Edit', edit_page_path(@frontpage) %> |
+<% end %>
+<%= link_to 'Back', pages_path %>

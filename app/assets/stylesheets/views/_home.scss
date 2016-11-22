@@ -94,6 +94,13 @@
 		}
 	}
 
+	.quick-buttons .box {
+		display: flex;
+		justify-content: space-around;
+		align-items: center;
+		flex-wrap: wrap;
+	}
+
 	.quick-buttons {
 
 		ul {
@@ -140,7 +147,6 @@
 
 			@media screen and (min-width: $medium-breakpoint) and (max-width: 1340px) {
 				font-size: 0.8em;
-				padding-top: 8px;
 			}
 		}
 	}
@@ -229,6 +235,26 @@
 			margin-bottom: $lineheight;
 			&:last-child {
 				margin-bottom: 0;
+			}
+		}
+	}
+
+	.lunch-group {
+		border-top: 1px solid #eee;
+		padding-top: 30px;
+
+		&:first-child {
+			border-top: none;
+			padding-top: 0;
+		}
+
+		a {
+			display: inline-block;
+			margin-bottom: 20px;
+
+			img {
+				max-width: 200px;
+				width: 100%;
 			}
 		}
 	}

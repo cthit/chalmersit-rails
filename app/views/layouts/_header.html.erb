@@ -36,10 +36,8 @@
               </h1>
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
-                <% cache ['main-menu', I18n.locale] do %>
-                  <% Menu.where(name: 'main').last.links.each do |link| %>
-                    <%= header_link_to_current t(link.title), link.path %>
-                  <% end %>
+                <% Menu.links_for_menu_cached('main').each do |link| %>
+                  <%= header_link_to_current t(link.title), link.path %>
                 <% end %>
               </ul>
             </nav>
@@ -48,7 +46,7 @@
 
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle">≡</a>
-          <ul class="header-controls horizontal-list">
+          <ul class="header-controls horizontal-list icon-align">
             <% if signed_in? %>
               <li class="user-details">
                 <strong><%= current_user.display_name %></strong>
@@ -63,6 +61,7 @@
                     <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                     <% if current_user.admin? %>
                       <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
+                      <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
                     <% end %>
                     <li><%= link_to t('logout'), signout_path %></li>
                   </ul>
@@ -77,8 +76,9 @@
                 <i class="fa fa-search"></i>
               <% end %>
             </li>
-            <li class="flags">
-              <ul class="horizontal-list">
+            <li class="flags dropdown">
+              <span class="dropdown-trigger"><%= image_tag("flags/#{I18n.locale}.svg") %></span>
+              <ul class="dropdown-sub">
                 <% I18n.available_locales.each do |item| %>
                   <% unless I18n.locale == item %>
                     <li><%= link_to image_tag("flags/#{item}.svg"), locale: item == I18n.default_locale ? nil : item %></li>

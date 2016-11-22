@@ -77,6 +77,8 @@ en:
   no: No
   partner: Partner
   unsupported_file_format: Unsupported file format (only pdf/md/txt/jpg/jpeg/gif/png/webp)
+  about_section: About our division
+  committees_assoiciations: Committees, associations and other instances
   activerecord:
     errors:
       models:
@@ -156,6 +158,7 @@ en:
       new_news_post: Publish news post
       edit_profile: Edit profile
       admin: Admin
+      edit_frontpage: "Edit section frontpage"
     home:
       booking: Booking
       group_room: Group room
@@ -214,6 +217,11 @@ en:
     fetch:
       events: "Events"
       subscribe: "Subscribe (Google Calendar)"
+  frontpage:
+    form:
+      update_form_title: "Change section frontpage"
+      frontpage: "Frontpage"
+      page: "Page"
   date:
     abbr_day_names:
     - Sun
