@@ -46,13 +46,13 @@
 
         <div class="header-toolbar wrapper">
           <a id="main-nav-toggle" class="show-for-small">≡</a>
-          <ul class="header-controls horizontal-list">
+          <ul class="header-controls horizontal-list icon-align">
             <% if signed_in? %>
-              <li class="user-details icon-align">
+              <li class="user-details">
                 <strong><%= current_user.display_name %></strong>
               </li>
               <% cache ['user-menu', I18n.locale] do %>
-                <li class="dropdown icon-align">
+                <li class="dropdown">
                   <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
                   <ul class="dropdown-sub">
                     <% if policy(Post).create? %>
