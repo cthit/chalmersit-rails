@@ -10,6 +10,7 @@
       <div class="content <%= "active" if active == locale %>" id="lan-<%= locale %>">
         <%= f.input "title_#{locale}", label: Course.human_attribute_name(:title) %>
         <%= f.input "body_#{locale}", as: :text, label: Course.human_attribute_name(:body) %>
+        <button class="preview large-12 columns" data-text="#page_body_<%= locale %>" data-title="#page_title_<%= locale %>"><%= t 'preview' %></button>
       </div>
     <% end %>
   <% end %>

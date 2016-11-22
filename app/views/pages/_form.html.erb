@@ -7,10 +7,6 @@
   <div class="large-12 columns image-upload-button">
     <%= f.file_field :item_upload %>
   </div>
-  <%= button_tag :class => 'preview large-12 columns',
-                 :data => {:text => "#page_body", :title => "#page_title"} do %>
-    <%= t "preview" %>
-  <% end %>
   <%= f.button :submit %>
 <% end %>
 
