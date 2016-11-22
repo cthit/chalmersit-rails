@@ -30,8 +30,8 @@
           <div class="wrapper group">
               <h1>
                 <%= link_to root_path(locale: locale_or_nil), class: 'logo' do %>
-                    <%= t 'it' %><br />
-                    <small><%= t 'chs' %></small>
+                    <span class="logo-text"><%= t 'it' %><br />
+                    <small><%= t 'chs' %></small></span>
                 <% end %>
               </h1>
             <nav role="navigation" class="main-nav">
@@ -45,7 +45,7 @@
         </div>
 
         <div class="header-toolbar wrapper">
-          <a id="main-nav-toggle" class="show-for-small">≡</a>
+          <a id="main-nav-toggle">≡</a>
           <ul class="header-controls horizontal-list icon-align">
             <% if signed_in? %>
               <li class="user-details">

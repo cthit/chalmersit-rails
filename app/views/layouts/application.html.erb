@@ -8,7 +8,7 @@
 <aside class="large-3 columns sidebar">
 <%= yield(:sidebar_left) %>
 </aside>
-<section class="large-6 columns">
+<section class="large-6 columns <%= 'large-offset-3' if !content_for?(:sidebar_left) && !content_for?(:sidebar_right) %>">
   <article class="box" role="article">
     <% if content_for? :subtitle %>
       <hgroup class="page-title">

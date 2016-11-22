@@ -101,7 +101,7 @@
 		}
 	}
 
-	[role="navigation"].main-nav li.current_page_item a, 
+	[role="navigation"].main-nav li.current_page_item a,
 	[role="navigation"].main-nav li.current-page-ancestor a {
 		@include box-shadow(none);
 
@@ -109,7 +109,7 @@
 			display: none;
 		}
 	}
-	
+
 	.mobile-home-link {
 		color: #ccc;
 		display: block;
@@ -135,8 +135,8 @@
 		font-size: 16px !important;
 	}
 
-	/* The main-nav toggle button */ 
-	
+	/* The main-nav toggle button */
+
 	#main-nav-toggle {
 		position: absolute;
 		z-index: 101;
@@ -147,6 +147,7 @@
 		bottom: 0;
 		height: 30px;
 		line-height: .5;
+		top: 20px;
 		font-size: 40px;
 		cursor: pointer;
 		@include transition(all .15s ease-out);

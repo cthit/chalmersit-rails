@@ -52,7 +52,7 @@
 	}
 
 	.header-controls {
-		float: none;
+		float: left;
 		text-align: center;
 	}
 
@@ -84,28 +84,21 @@
 
 	[role="banner"] {
 		h1 {
-			position: static;
+			position: absolute;
 		}
 
 		.logo {
-			width: 80px;
-			height: 80px;
-			background-size: cover;
-			background-position: left top;
-			position: absolute;
+			position: static;
+			background-position: center;
+			width: 48px;
+			height: 48px;
+			margin-top: -3px;
+			background-size: contain;
+			margin: .3em auto 0;
 		}
 
 		.inner-bar {
 			margin-top: 0;
-		}
-
-		body.home & .logo {
-			position: static;
-			background-position: center;
-			height: 70px;
-			background-size: contain;
-			width: 300px;
-			margin: .3em auto 0;
 		}
 	}
 
@@ -115,8 +108,6 @@
 			dt,
 			dd {
 				float: none;
-				text-align: center;
-				margin-right: 0;
 			}
 		}
 	}
