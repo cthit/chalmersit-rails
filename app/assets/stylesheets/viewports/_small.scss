@@ -7,8 +7,7 @@
 		$gutter: $page-margin*2;
 		margin-top: -10.2em;
 		margin-left: -$gutter;
-		margin-right: -$gutter / 2;
-		width: $gutter * 2 + 100;
+		width: $gutter * 2 - $gutter / 2 + 100;
 		@include background(linear-gradient(transparent, rgba(#000, .7)));
 
 		.box {
