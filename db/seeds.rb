@@ -52,5 +52,7 @@ main_menu = Menu.create(name: 'main')
   MenuLink.create(link.merge(menu: main_menu))
 end
 
-page = Page.create(title_sv: "Sektionen", body_sv: "Lorem ipsum osv", title_en: "Student Division", body_en: "Lorem ipsum etc", slug: "student-division", parent_id: nil)
-frontpage = Frontpage.create(page_id: page.id)
+unless Page.where(slug: "student-division").exists?
+  page = Page.create(title_sv: "Sektionen", body_sv: "Lorem ipsum osv", title_en: "Student Division", body_en: "Lorem ipsum etc", slug: "student-division", parent_id: nil)
+  frontpage = Frontpage.create(page_id: page.id)
+end
