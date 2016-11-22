@@ -15,7 +15,7 @@
 	margin-top: $lineheight;
 	padding: $lineheight 0 $lineheight*2;
 	clear: both;
-	
+
 	background-color: $dark;
 	color: #fff;
 	font-size: .9em;
@@ -23,7 +23,7 @@
 	small {
 		color: $teal;
 	}
-	
+
 	a {
 		color: #fff;
 	}
@@ -39,16 +39,16 @@
 			text-shadow: rgba(#000, .8) 0 2px 0, rgba($teal, .5) 0 0 20px;
 		}
 	}
-	
+
 	dl {
 		@include clearfix;
 	}
-	
+
 	dt, dd {
-		float: left;
+		//float: left;
 		margin: 0 0 $lineheight;
 	}
-	
+
 	dt {
 		clear: left;
 		min-width: 30%;
@@ -58,7 +58,7 @@
 		font-size: 1.1em;
 		text-align: right;
 	}
-	
+
 	section:last-child {
 		dt {
 			min-width: 50%;
@@ -75,9 +75,13 @@
 		display: inline-block;
 		margin-right: 10px;
 	}
+
+	@media screen and (max-width: 1024px) {
+		text-align: center;
+		margin-top: 24px;
+	}
 }
 
 .footer-nav {
 	@include column-count(2);
 }
-
