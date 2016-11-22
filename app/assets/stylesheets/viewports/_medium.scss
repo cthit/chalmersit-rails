@@ -84,7 +84,7 @@
 
 	[role="banner"] {
 		h1 {
-			position: static;
+			position: absolute;
 		}
 
 		.logo {
@@ -103,9 +103,10 @@
 		body.home & .logo {
 			position: static;
 			background-position: center;
-			height: 70px;
+			width: 48px;
+			height: 48px;
+			margin-top: 2px;
 			background-size: contain;
-			width: 300px;
 			margin: .3em auto 0;
 		}
 	}

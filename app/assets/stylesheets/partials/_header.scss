@@ -172,3 +172,9 @@ body.logged-in [role="banner"] {
 		display: none;
 	}
 }
+
+@media screen and (min-width: 768px) {
+	#main-nav-toggle {
+		display: none;
+	}
+}
