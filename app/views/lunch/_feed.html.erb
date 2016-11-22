@@ -1,16 +1,36 @@
 <header>
   <h2><%= t '.lunch' %>
-  <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
+    <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
   </h2>
 </header>
 <% cache ["lunch/#{I18n.locale}", Date.today] do %>
-  <% @restaurants.each do |restaurant| %>
+<div>
+  <div class="lunch-group">
+    <% @restaurants.each do |restaurant| %>
     <h3><%= restaurant[:name]%></h3>
     <dl>
       <% restaurant[:meals].each do |meal| %>
-        <dt><%= meal[:title] %></dt>
-        <dd><%= meal[:summary] %></dd>
+      <dt><%= meal[:title] %></dt>
+      <dd><%= meal[:summary] %></dd>
       <% end %>
     </dl>
-  <% end %>
+    <% end %>
+  </div>
+
+  <div class="lunch-group">
+    <a href="http://chalmerskonferens.se/" target="_blank">
+      <img src="http://chalmerskonferens.se/wp-content/uploads/2016/08/Chalmers_konferens_logo_sigill_vanster.png">
+    </a>
+
+    <% @chalmers_restaurants.each do |restaurant| %>
+    <h3><%= restaurant[:name]%></h3>
+    <dl>
+      <% restaurant[:meals].each do |meal| %>
+      <dt><%= meal[:title] %></dt>
+      <dd><%= meal[:summary] %></dd>
+      <% end %>
+    </dl>
+    <% end %>
+  </div>
+</div>
 <% end %>
