@@ -1,8 +1,8 @@
 image_exts = [".jpg", ".jpeg", ".gif", ".png", ".webp"]
 doc_exts = [".pdf", ".md", ".txt"]
-post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body, #page_body'
-en_post_body = '.posts #post_body_en, #page_body'
-sv_post_body = '.posts #post_body_sv, #page_body'
+post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body_sv, #page_body_en'
+en_post_body = '.posts #post_body_en, #page_body_en'
+sv_post_body = '.posts #post_body_sv, #page_body_sv'
 
 $ ->
 
