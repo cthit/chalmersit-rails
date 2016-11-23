@@ -1,6 +1,9 @@
 image_exts = [".jpg", ".jpeg", ".gif", ".png", ".webp"]
 doc_exts = [".pdf", ".md", ".txt"]
-post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body'
+post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body, #page_body'
+en_post_body = '.posts #post_body_en, #page_body'
+sv_post_body = '.posts #post_body_sv, #page_body'
+
 $ ->
 
   $(post_body + ', #post_item_upload, #page_item_upload').fileupload
@@ -32,9 +35,11 @@ $ ->
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
       if $.inArray(extension, image_exts) > -1
-        insertTextAtCaret($(post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
+        insertTextAtCaret($(sv_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
+        insertTextAtCaret($(en_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
       else
-        insertTextAtCaret($(post_body), link_markdown(data.orig_name, src.url) + "\n")
+        insertTextAtCaret($(sv_post_body), link_markdown(data.orig_name, src.url) + "\n")
+        insertTextAtCaret($(en_post_body), link_markdown(data.orig_name, src.url) + "\n")
 
 handle_file_error = (data) ->
   data.label.text I18n.t('unsupported_file_format')
