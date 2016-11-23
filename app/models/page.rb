@@ -19,7 +19,16 @@ class Page < ActiveRecord::Base
     end
 
     def notOwnParent
-        errors.add :parent_id, 'Cannot be own parent' if self == self.parent
+        parentRecursive self
+    end
+
+
+    def parentRecursive page
+        if page.parent == self
+            errors.add :parent_id, 'Cannot be own parent'
+        else
+            parentRecursive page.parent unless page.parent.nil?
+        end
     end
 
 end
