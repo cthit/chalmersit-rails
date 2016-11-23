@@ -6,7 +6,7 @@ sv_post_body = '.posts #post_body_sv, #page_body_sv'
 
 $ ->
 
-  $(post_body + ', #post_item_upload, #page_item_upload').fileupload
+  $(en_post_body + sv_post_body).fileupload
     url: '/uploads.json',
     paramName: 'upload[source]',
     add: (e, data) ->

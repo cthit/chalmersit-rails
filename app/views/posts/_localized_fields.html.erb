@@ -15,10 +15,7 @@
         </div>
         <div class="row">
           <div class="large-12 columns">
-            <%= f.input "body_#{locale}", as: :text, label: Post.human_attribute_name(:body), placeholder: t('posts.form.body_placeholder'), input_html: { rows: 20 } %>
-          </div>
-          <div class="large-12 columns image-upload-button">
-            <%= f.file_field :item_upload %>
+            <%= f.input "body_#{locale}", as: :text, label: Post.human_attribute_name(:body), placeholder: t('posts.form.body_placeholder'), input_html: { rows: 20 }, :class => "upload_listener" %>
           </div>
         </div>
         <button class="preview large-12 columns" data-text="#post_body_<%= locale %>" data-title="#post_title_<%= locale %>"><%= t 'preview' %></button>
