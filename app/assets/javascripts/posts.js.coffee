@@ -6,6 +6,7 @@ $ ->
   $('time').each (index, elem) ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
+    moment.locale(I18n.locale)
     $elem.text moment(new Date(datetime)).fromNow()
 
 
