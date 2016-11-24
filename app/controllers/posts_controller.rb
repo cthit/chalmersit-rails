@@ -107,8 +107,9 @@ class PostsController < ApplicationController
         send_mail
         begin
           send_irkk
-        rescue 
+        rescue
         end
+        send_slack
       end
     end
 
@@ -139,4 +140,11 @@ class PostsController < ApplicationController
       response = http.request(req)
     end
 
+    def send_slack
+      notifier = Slack::Notifier.new "https://hooks.slack.com/services/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"
+      body = {
+        text: @post.body
+      }
+      notifier.ping "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}", attachments: [body]
+    end
 end
