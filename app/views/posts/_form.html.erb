@@ -28,8 +28,8 @@
 	</div>
 <% end %>
 
-<%= simple_form_for(@post) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(@post, html: { novalidate: true }) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <div class="row">
     <div class="large-6 columns">

@@ -1,5 +1,5 @@
-<%= simple_form_for(@page) do |f| %>
-  <%= f.error_notification %>
+<%= simple_form_for(@page, html: { novalidate: true }) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
 
   <%= render "localized_fields", f: f %>
 
