@@ -65,6 +65,11 @@
         <div class="loading-indicator-text"><%= t 'loading' %>...</div>
       </div>
     </section>
+
+    <section class="box widget card-balance">
+      <h3><%= t '.student_union_card' %></h3>
+      <%= render partial: 'card_balance_form' %>
+    </section>
   </div>
 </section>
 <% cache ['footer', I18n.locale] do %>
