@@ -71,6 +71,9 @@ gem 'globalize-accessors', '~> 0.2.1'
 
 gem 'rest-client'
 
+gem 'poltergeist'
+gem 'capybara'
+
 group :development do
   # Nice error messages
   gem 'better_errors'
