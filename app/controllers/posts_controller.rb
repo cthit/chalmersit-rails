@@ -141,7 +141,7 @@ class PostsController < ApplicationController
     end
 
     def send_slack
-      notifier = Slack::Notifier.new Rails.application.config.slack_url
+      notifier = Slack::Notifier.new Rails.application.secrets.slack_url
       body = {
         text: @post.body
       }
