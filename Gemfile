@@ -30,6 +30,10 @@ gem 'sanitize'
 gem 'gemoji'
 
 gem 'html-pipeline'
+
+# Slack notifier
+gem 'slack-notifier'
+
 # iCalendar parsing (for example: Google calendar)
 gem 'icalendar'
 gem 'icalendar-recurrence'
