@@ -51,22 +51,20 @@
               <li class="user-details">
                 <strong><%= current_user.display_name %></strong>
               </li>
-              <% cache ['user-menu', I18n.locale] do %>
-                <li class="dropdown">
-                  <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
-                  <ul class="dropdown-sub">
-                    <% if policy(Post).create? %>
-                      <li><%= link_to t('.new_news_post'), new_post_path %></li>
-                    <% end %>
-                    <li><%= link_to t('.edit_profile'), edit_user_path %></li>
-                    <% if current_user.admin? %>
-                      <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
-                      <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
-                    <% end %>
-                    <li><%= link_to t('logout'), signout_path %></li>
-                  </ul>
-                </li>
-              <% end %>
+              <li class="dropdown">
+                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
+                <ul class="dropdown-sub">
+                  <% if policy(Post).create? %>
+                    <li><%= link_to t('.new_news_post'), new_post_path %></li>
+                  <% end %>
+                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
+                  <% if current_user.admin? %>
+                    <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
+                    <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
+                  <% end %>
+                  <li><%= link_to t('logout'), signout_path %></li>
+                </ul>
+              </li>
             <% else %>
               <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
             <% end %>
