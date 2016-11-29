@@ -1,6 +1,6 @@
 class LunchController < ApplicationController
   def feed
-    @lunch = LunchModel.new
+    @lunch = Lunch.new
     @restaurants = @lunch.einstein
     @restaurants.sort_by!{|r| r[:name]}
     @chalmers_restaurants = @lunch.chalmrest
