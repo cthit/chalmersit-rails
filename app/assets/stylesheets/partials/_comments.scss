@@ -113,7 +113,12 @@ figure img{
 /* COMMENTS FORM */
 
 #respond {
-	margin-bottom: $lineheight*2;
+	form {
+		margin: 0
+	}
+	.row .button:last-child {
+		margin-bottom: 0
+	}
 }
 
 .cancel-reply {
