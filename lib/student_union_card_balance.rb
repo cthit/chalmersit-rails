@@ -17,7 +17,7 @@ class StudentUnionCardBalance
   def student_union_card_balance(number)
     visit CARD_BALANCE_URL
     begin
-      fill_in 'txtCardNumber', with: "3819282333001531"
+      fill_in 'txtCardNumber', with: "#{number}"
       click_button('btnNext')
     rescue Capybara::ElementNotFound
       raise "Failed to submit number."

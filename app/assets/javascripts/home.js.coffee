@@ -11,6 +11,6 @@ $ ->
   $('.lunch_feed').load($('.lunch_feed').attr('data-url'))
   $('.it-calendar').load($('.it-calendar').attr('data-url'))
 
-  $('#card-balande-submit').on 'click', ->
+  $('#card-balance-submit').on 'click', ->
     card_number = $('#student-union-card-number').val()
     $('#student-union-card').load("/home/card_balance/#{card_number}")
