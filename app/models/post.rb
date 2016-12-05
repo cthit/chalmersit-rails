@@ -34,7 +34,11 @@ class Post < ActiveRecord::Base
   end
 
   def user
-    @user ||= User.find(user_id)
+    begin
+      @user ||= User.find(user_id)
+    rescue
+      @user = User.new(id: user_id, display_name: user_id)
+    end
   end
 
   def group
