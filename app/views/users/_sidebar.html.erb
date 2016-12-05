@@ -5,8 +5,9 @@
   <hgroup>
     <h3><%= user.display_name %></h3>
     <h4><%= begin
+            user.positions[group.slug] 
               user.positions.send(group.slug)
-            rescue 
+            rescue
             end
             %> i <%= group.name %></h4>
   </hgroup>
