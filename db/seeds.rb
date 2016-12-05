@@ -47,7 +47,8 @@ main_menu = Menu.create(name: 'main')
   { controller: "posts", action: "index", title: "news", preferred_order: 1 },
   { controller: "courses", action: "index", title: "courses", preferred_order: 2 },
   { controller: "redirect", action: "findit", title: "services", preferred_order: 3 },
-  { controller: "contact", action: "index", title: "contact", preferred_order: 4 }
+  { controller: "contact", action: "index", title: "contact", preferred_order: 4 },
+  { controller: "business", action: "index", title: "business", preferred_order: 5}
 ].each do |link|
   MenuLink.create(link.merge(menu: main_menu))
 end
@@ -55,4 +56,7 @@ end
 unless Page.where(slug: "student-division").exists?
   page = Page.create(title_sv: "Sektionen", body_sv: "Lorem ipsum osv", title_en: "Student Division", body_en: "Lorem ipsum etc", slug: "student-division", parent_id: nil)
   frontpage = Frontpage.create(page_id: page.id)
+end
+unless Page.where(slug: "business").exists?
+  page = Page.create(title_sv: "Företag", body_sv: "Lorem ipsum osv", title_en: "Business", body_en: "Lorem ipsum etc", slug: "business", parent_id: nil)
 end

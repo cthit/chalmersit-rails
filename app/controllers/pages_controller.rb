@@ -43,6 +43,7 @@ class PagesController < ApplicationController
         format.html { redirect_to @page, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
+        @other_pages = Page.all
         format.html { render :new }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end
@@ -58,6 +59,7 @@ class PagesController < ApplicationController
         format.html { redirect_to @page, notice: 'Page was successfully updated.' }
         format.json { render :show, status: :ok, location: @page }
       else
+        @other_pages = Page.where("id != ?", @page.id)
         format.html { render :edit }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end

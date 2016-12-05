@@ -1,6 +1,6 @@
-<% cache ['home_posts', I18n.locale, @posts.first] do  %>
+<% cache_unless current_user.present?, ['home_posts', I18n.locale, @posts.first] do  %>
   <% @posts.each do |post| %>
-    <% cache ['home', I18n.locale, post] do %>
+    <% cache_unless current_user.present?, ['home', I18n.locale, post] do %>
       <%= render post %>
     <% end %>
   <% end %>

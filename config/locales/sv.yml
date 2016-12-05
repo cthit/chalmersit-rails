@@ -205,6 +205,7 @@ sv:
       prev_posts: Föregående nyhet
       all_posts: Alla nyheter
       next_posts: Nästa nyhet
+      sign_in_add_comment: Logga in för att kommentera
   comments:
     form:
       write_comment: Skriv en kommentar
