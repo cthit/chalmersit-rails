@@ -365,6 +365,8 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.7.1)
+    unmarkdown (0.1.1)
+      nokogiri
     xpath (2.0.0)
       nokogiri (~> 1.3)
 
@@ -390,12 +392,14 @@ DEPENDENCIES
   globalize-accessors (~> 0.2.1)
   guard-rspec
   html-pipeline
+  i18n (~> 0.7.0)
   i18n-js
   icalendar
   icalendar-recurrence
   jbuilder (~> 2.0)
   jquery-fileupload-rails
   jquery-rails
+  json
   mini_magick
   momentjs-rails
   multi_fetch_fragments
@@ -417,6 +421,7 @@ DEPENDENCIES
   spring
   twitter
   uglifier (>= 1.3.0)
+  unmarkdown
 
 BUNDLED WITH
    1.13.6
