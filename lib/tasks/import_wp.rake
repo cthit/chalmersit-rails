@@ -1,5 +1,5 @@
 namespace :cthit do
-  desc "Get an access token from account.chalmers.it"
+  desc "import posts from chalmers.it"
   task import_wp: :environment do
     Post.delete_all
     client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => "it_test")
@@ -24,7 +24,7 @@ namespace :cthit do
       post.user_id = row["user_login"]
       post.group_id = "legacy"
       post.created_at = row["post_date"]
-      post.save!
+      post.save
     end
   end
 end
