@@ -11,9 +11,11 @@ class PostPolicy < ApplicationPolicy
   def update?
     super || (user && user.committees.include?(record.group))
   end
+
   def edit?
     update?
   end
+
   def destroy?
     update?
   end
