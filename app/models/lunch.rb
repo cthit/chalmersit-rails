@@ -1,4 +1,4 @@
-class LunchModel
+class Lunch
   include Feedjira
   include Nokogiri
   include OpenURI
@@ -53,9 +53,17 @@ class LunchModel
     restaurants.map do |key, url|
       meals = Feed.fetch_and_parse(url).entries.map do |entry|
         summary, price = entry.summary.split('@')
-        { title: entry.title, summary: summary, price: price.try(&:to_i) }
+        summary = summary.strip
+        price = price.strip
+
+        unless summary.empty?
+          { title: entry.title, summary: summary, price: price.try(&:to_i) }
+        end
+      end.compact
+
+      unless meals.empty?
+        { name: key, meals: meals }
       end
-      { name: key, meals: meals }
-    end
+    end.compact
   end
 end
