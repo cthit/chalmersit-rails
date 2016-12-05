@@ -1,7 +1,6 @@
 namespace :cthit do
   desc "import posts from chalmers.it"
   task import_wp: :environment do
-    Post.delete_all
     client = Mysql2::Client.new(:host => "localhost", :username => "root", :database => "it_test")
     results = client.query("select it_posts.*, it_users.user_login from it_posts INNER JOIN it_users on it_users.id=it_posts.post_author where post_status='publish' and post_content!='' and post_title!='' and post_type='post'; ")
     #[:group_id, :title, :body, :sticky, :show_public, :image_upload,
