@@ -2,6 +2,8 @@
 
 <%= render partial: 'posts/post', collection: @posts, cache: true %>
 
+<%= will_paginate @posts %>
+
 <% if @posts.empty? %>
 <article role="article">
   <h1><%= t(:no_posts_found) %></h1>

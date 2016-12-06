@@ -29,7 +29,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end
-
+    resources :business, only: [:index]
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 

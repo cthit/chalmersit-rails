@@ -191,6 +191,7 @@ en:
       prev_posts: Previous news
       all_posts: All news
       next_posts: Next news post
+      sign_in_add_comment: Sign in to add comment
   comments:
     form:
       write_comment: Write a comment

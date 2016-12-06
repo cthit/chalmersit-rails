@@ -43,6 +43,7 @@ class PagesController < ApplicationController
         format.html { redirect_to @page, notice: 'Page was successfully created.' }
         format.json { render :show, status: :created, location: @page }
       else
+        @other_pages = Page.all
         format.html { render :new }
         format.json { render json: @page.errors, status: :unprocessable_entity }
       end

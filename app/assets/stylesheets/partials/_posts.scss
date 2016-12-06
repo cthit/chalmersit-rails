@@ -117,17 +117,14 @@
 	width: 100%;
 	text-align: center;
 	font-size: to_em(16) !important;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 
 	li {
 		display: table-cell;
 		border-right: 1px solid $border-color;
-		padding: .5em 0;
-
-		/* Don't grow too large .. */
-		max-width: 145px;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		white-space: nowrap;
+		padding: .5em .5em;
 
 		&:last-child {
 			border: 0;
