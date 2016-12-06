@@ -11,13 +11,15 @@
         <%= render partial: 'comments/comment', collection: @comments, cache: true %>
       </ol>
     <% end %>
-  <section id="respond" class="message">
-    <% if policy(Comment).create? %>
+  <% if policy(Comment).create? %>
+    <section id="respond">
       <%= render 'comments/form' %>
-    <% else %>
+    </section>
+  <% else %>
+    <section id="respond" class="message">
       <%= t '.sign_in_add_comment' %>
-    <% end -%>
-  </section>
+    </section>
+  <% end -%>
 </section>
 <div class="row">
   <%= link_to t('.prev_posts'), post_path(@post.previous), rel: 'prev', class: 'button large-4 columns' unless @post.previous.nil? %>
