@@ -174,7 +174,7 @@ sv:
       admin: Admin
       edit_frontpage: "Ändra sektionsida"
     home:
-      booking: Bokning
+      booking: bookIT
       group_room: Grupprum
       print: Skriv ut
       schema: Schema

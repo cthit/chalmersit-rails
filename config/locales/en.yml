@@ -160,7 +160,7 @@ en:
       admin: Admin
       edit_frontpage: "Edit section frontpage"
     home:
-      booking: Booking
+      booking: bookIT
       group_room: Group room
       print: Print
       schema: Schedule
