@@ -22,6 +22,8 @@ class Lunch
 
   def einstein
     url = "http://butlercatering.se/print/6"
+    rest_name = 'Einstein'
+    rest_name = 'Einstein 🍨' if Date.today.friday?
     begin
       menu = Nokogiri.HTML(open(url))
       price = 80
@@ -32,9 +34,9 @@ class Lunch
           { title: '', summary: content, price: price }
         end
       end
-      [{ name: 'Einstein', meals: meals }]
+      [{ name: rest_name, meals: meals }]
     rescue
-      [{ name: 'Einstein', meals: {}}]
+      [{ name: rest_name, meals: {}}]
     end
   end
 
