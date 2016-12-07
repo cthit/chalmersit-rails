@@ -1,0 +1,15 @@
+<dl class="tabs" data-tab>
+  <% I18n.available_locales.each do |locale| %>
+    <dd class="<%= "active" if I18n.locale == locale %>"><%= link_to image_tag("flags/#{locale}.svg", size: "32"), "#lan-#{locale}" %></dd>
+  <% end %>
+</dl>
+<div class="tabs-content">
+  <% active = I18n.locale %>
+  <% I18n.available_locales.each do |locale| %>
+    <% I18n.with_locale(locale) do %>
+      <div class="content <%= "active" if active == locale %>" id="lan-<%= locale %>">
+        <%= f.input "title_#{locale}", label: Course.human_attribute_name(:title) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -6,7 +6,11 @@
 <% cache ["lunch/#{I18n.locale}", Date.today] do %>
 <div>
   <div class="lunch-group">
-    <% @restaurants.each do |restaurant| %>
+    <a href="http://chalmerskonferens.se/" target="_blank">
+      <img src="<%= asset_path('chalmers-konferens.png') %>">
+    </a>
+
+    <% @chalmers_restaurants.each do |restaurant| %>
     <h3><%= restaurant[:name]%></h3>
     <dl>
       <% restaurant[:meals].each do |meal| %>
@@ -18,11 +22,7 @@
   </div>
 
   <div class="lunch-group">
-    <a href="http://chalmerskonferens.se/" target="_blank">
-      <img src="<%= asset_path('chalmers-konferens.png') %>">
-    </a>
-
-    <% @chalmers_restaurants.each do |restaurant| %>
+    <% @restaurants.each do |restaurant| %>
     <h3><%= restaurant[:name]%></h3>
     <dl>
       <% restaurant[:meals].each do |meal| %>
