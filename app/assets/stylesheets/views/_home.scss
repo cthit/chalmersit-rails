@@ -83,6 +83,36 @@
 		}
 	}
 
+    .quick-button-chalmers {
+		position: absolute;
+		top: 0;
+		right: 9px;
+		margin-top: 10px;
+		width: 24px;
+		height: 24px;
+		background: #ffffff;
+		padding: 1px;
+		border-radius: 50%;
+		z-index: 1;
+
+		@media screen and (max-width: 1340px) {
+			margin-top: 0;
+			right: 3px;
+		}
+
+		@media screen and (max-width: 1024px) {
+			right: 50%;
+			margin-right: -30px;
+			margin-top: 10px;
+		}
+
+		img {
+			vertical-align: top;
+			width: 100%;
+			height: auto;
+		}
+    }
+
 	.quick-buttons .box,
 	.user-area .box{
 		height: $lineheight * 4;
