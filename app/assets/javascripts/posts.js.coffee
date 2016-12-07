@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 $ ->
-  $('time').each (index, elem) ->
+  $('article time').each (index, elem) ->
     $elem = $(elem)
     datetime = $elem.attr 'datetime'
     moment.locale(I18n.locale)
