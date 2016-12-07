@@ -48,10 +48,12 @@
         <div class="loading-indicator-text"><%= t 'loading' %>...</div>
       </div>
     </div>
-    <% Sponsor.all.each do |sponsor| %>
-      <div class="box">
-        <%= render :partial => 'sponsors/sponsor', :locals => {:sponsor => sponsor} %>
-      </div>
+    <% cache ['sponsors', [I18n.locale, Sponsor.all]] do %>
+      <% Sponsor.all.order(:order).each do |sponsor| %>
+        <div class="box">
+          <%= render :partial => 'sponsors/sponsor', :locals => {:sponsor => sponsor} %>
+        </div>
+      <% end %>
     <% end %>
   </div>
   <div class="large-3 columns">

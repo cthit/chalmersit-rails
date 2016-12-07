@@ -1,6 +1,9 @@
 <%= simple_form_for(@sponsor) do |f| %>
   <%= f.error_notification %>
   <%= f.input :name %>
+  <%= f.input :order %>
+
+  <%= render 'localized_fields', f: f %>
 
   <%= f.file_field :image %>
   <%= f.submit %>
