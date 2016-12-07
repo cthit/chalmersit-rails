@@ -20,9 +20,7 @@
     </ul>
   </div>
   <div class="user-area large-3 columns">
-    <% cache ['today', I18n.locale] do %>
-      <%= render 'home/today', events: @events %>
-    <% end %>
+    <%= render 'home/today', events: @events %>
   </div>
 </header>
 
