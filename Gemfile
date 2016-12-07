@@ -18,6 +18,9 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Pagination
+gem 'will_paginate', '~> 3.1.0'
+
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
 

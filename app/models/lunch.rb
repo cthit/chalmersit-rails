@@ -22,19 +22,21 @@ class Lunch
 
   def einstein
     url = "http://butlercatering.se/print/6"
+    rest_name = 'Einstein'
+    rest_name = 'Einstein 🍨' if Date.today.friday?
     begin
       menu = Nokogiri.HTML(open(url))
       price = 80
       week = menu.css('h2.lunch-titel').first.content.scan(/\d/).join('').to_i
       meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.flat_map do |day|
         day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
-          content = meal.content.gsub(/\s+\Z/, '')
-          { title: '', summary: content, price: price }
-        end
+          content = meal.content.gsub(/[\s\u00A0]/, ' ').strip
+          { title: '', summary: content, price: price } unless content.empty?
+        end.compact
       end
-      [{ name: 'Einstein', meals: meals }]
+      [{ name: rest_name, meals: meals }]
     rescue
-      [{ name: 'Einstein', meals: {}}]
+      [{ name: rest_name, meals: {}}]
     end
   end
 
