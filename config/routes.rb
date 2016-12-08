@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Redirects (necessary due to menu system only allowing inbound links)
   get 'redirect/findit' => 'redirect#findit'
+  get 'redirect/courses' => 'redirect#courses'
 
   resources :uploads, only: [:create, :destroy]
 
