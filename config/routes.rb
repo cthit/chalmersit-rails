@@ -44,12 +44,6 @@ Rails.application.routes.draw do
     patch 'frontpage/update' => 'frontpage#update'
     put 'fronpage/update' => 'frontpage#update'
 
-    resources :courses do
-        member do
-          get 'site'
-        end
-    end
-
     root 'home#index'
     get '*path' => 'pages#show'
   end
