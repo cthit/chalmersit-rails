@@ -1,4 +1,9 @@
 class Page < ActiveRecord::Base
+
+    def self.page_admins
+      %w(styrit armit snit)
+    end
+
     translates :title, :body
     globalize_accessors
 

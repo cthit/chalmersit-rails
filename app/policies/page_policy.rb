@@ -5,7 +5,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def create?
-    super
+    super || (user && user.committees_include_any?(Page.page_admins))
   end
 
   def new?
@@ -13,7 +13,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def update?
-    super
+    create?
   end
 
   def destroy?

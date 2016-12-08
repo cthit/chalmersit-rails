@@ -44,7 +44,7 @@ describe PostPolicy, type: :policy do
       expect(subject).not_to permit(user, post)
     end
   end
-  
+
   permissions :destroy? do
     it "should allow destroy if user in committee" do
       committee = 'nollkit'

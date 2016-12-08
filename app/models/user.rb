@@ -30,6 +30,10 @@ class User < ActiveResource::Base
     committees.any?
   end
 
+  def committees_include_any?(committee)
+    !(committee & groups).empty?
+  end
+
   def self.headers
     { 'authorization' => "Bearer #{Rails.application.secrets.client_credentials}"}
   end
