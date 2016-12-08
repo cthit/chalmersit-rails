@@ -5,7 +5,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def create?
-    super || (user && !(user.committees.select { |c| page_admins.include?(c.slug)  }).empty?)
+    super || (user && user.committees_include_any?(record.page_admins))
   end
 
   def new?
@@ -22,9 +22,5 @@ class PagePolicy < ApplicationPolicy
 
   def delete_document?
     update?
-  end
-private
-  def page_admins
-    ["styrit", "armit", "snit"]
   end
 end
