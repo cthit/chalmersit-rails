@@ -5,7 +5,7 @@ class PagePolicy < ApplicationPolicy
   end
 
   def create?
-    super || (user && user.committees_include_any?(record.page_admins))
+    super || (user && user.committees_include_any?(Page.page_admins))
   end
 
   def new?

@@ -1,6 +1,9 @@
 class Page < ActiveRecord::Base
-    @@page_admins = ["styrit", "armit", "snit"]
-    cattr_reader :page_admins
+
+    def self.page_admins
+      %w(styrit armit snit)
+    end
+
     translates :title, :body
     globalize_accessors
 
