@@ -14,7 +14,6 @@ class Post < ActiveRecord::Base
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 3..100 }
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..10000 }
   validates :sticky, inclusion: { in: [true, false] }
-  validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
   validate :user_in_group
 
   before_validation :generate_slug
