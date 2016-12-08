@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
-  after_action :post_event, only: [:update, :create]
+  after_action :post_event, only: [:create]
   # GET /posts
   # GET /posts.json
   def index
