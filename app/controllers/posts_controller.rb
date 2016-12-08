@@ -103,13 +103,15 @@ class PostsController < ApplicationController
     end
 
     def post_event
-      if Rails.env.production?
-        send_mail
-        begin
-          send_irkk
-        rescue
+      if @post.valid?
+        if Rails.env.production?
+          send_mail
+          begin
+            send_irkk
+          rescue
+          end
+          send_slack
         end
-        send_slack
       end
     end
 
