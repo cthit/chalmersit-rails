@@ -45,12 +45,12 @@ class Lunch
     restaurants = {
       "Linsen"            => "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true&locale=#{I18n.locale.to_s}",
       "Kårrestaurangen"   => "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true&locale=#{I18n.locale.to_s}",
-      #{}"L's kitchen"       => "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true#{I18n.locale.to_s}",
-      "Express"           => "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{I18n.locale.to_s}"}
-      #{}"J.A Pripps"        => "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true#{I18n.locale.to_s}",
-      #{}"Restaurang Hyllan" => "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true#{I18n.locale.to_s}",
-      #{}"L's Resto"         => "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true#{I18n.locale.to_s}",
-      #{}"Kokboken"          => "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true#{I18n.locale.to_s}"}
+      "L's kitchen"       => "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true&locale=#{I18n.locale.to_s}",
+      "Express"           => "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{I18n.locale.to_s}",
+      #"J.A Pripps"        => "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{I18n.locale.to_s}",
+      #"Restaurang Hyllan" => "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{I18n.locale.to_s}",
+      "L's Resto"         => "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true&locale=#{I18n.locale.to_s}",
+      "Kokboken"          => "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true&locale=#{I18n.locale.to_s}"}
 
     restaurants.map do |key, url|
       meals = Feed.fetch_and_parse(url).entries.map do |entry|
