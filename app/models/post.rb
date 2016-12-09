@@ -11,10 +11,9 @@ class Post < ActiveRecord::Base
   globalize_accessors
 
   validates *globalize_attribute_names, :user_id, :group_id, presence: true, allow_blank: false
-  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 5..70 }
-  validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..5000 }
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 3..100 }
+  validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..10000 }
   validates :sticky, inclusion: { in: [true, false] }
-  validates :slug, uniqueness: { case_sensitive: true }, presence: true, if: 'title.present?'
   validate :user_in_group
 
   before_validation :generate_slug
@@ -34,7 +33,11 @@ class Post < ActiveRecord::Base
   end
 
   def user
-    @user ||= User.find(user_id)
+    begin
+      @user ||= User.find(user_id)
+    rescue
+      @user = User.new(id: user_id, display_name: user_id)
+    end
   end
 
   def group
@@ -64,6 +67,6 @@ class Post < ActiveRecord::Base
     end
 
     def user_in_group
-      errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
+      #errors.add(:group_id, :user_not_in_group, group: group.title) unless user.committees.include? group
     end
 end

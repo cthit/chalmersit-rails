@@ -21,7 +21,7 @@ end
   private
     def export_i18n_messages
       SimplesIdeias::I18n.export! if Rails.env.development?
-    end 
+    end
     def user_not_authorized
       flash[:alert] = t 'not_authorized'
       redirect_to(request.referrer || root_path)
@@ -32,7 +32,12 @@ end
     end
 
   def set_locale
-    I18n.locale = params[:locale] || I18n.default_locale
+    if current_user
+      I18n.locale = params[:locale] || current_user.preferred_language || I18n.default_locale
+    else
+      I18n.locale = params[:locale] || I18n.default_locale
+    end
+
   end
 
   def default_url_options(options = {})

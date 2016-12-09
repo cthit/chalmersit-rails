@@ -2,11 +2,11 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
   layout 'bare', only: [:index, :show]
   before_action :authorize_post, except: [:index, :create, :new]
-  after_action :post_event, only:[:update, :create]
+  after_action :post_event, only: [:create]
   # GET /posts
   # GET /posts.json
   def index
-    @posts = policy_scope(Post).ordered
+    @posts = policy_scope(Post).page(params[:page]).ordered
     @posts = @posts.where(user_id: params[:user]) if params[:user]
   end
 
@@ -103,11 +103,14 @@ class PostsController < ApplicationController
     end
 
     def post_event
-      if Rails.env.production?
-        send_mail
-        begin
-          send_irkk
-        rescue 
+      if @post.valid?
+        if Rails.env.production?
+          send_mail
+          begin
+            send_irkk
+          rescue
+          end
+          send_slack
         end
       end
     end
@@ -139,4 +142,11 @@ class PostsController < ApplicationController
       response = http.request(req)
     end
 
+    def send_slack
+      notifier = Slack::Notifier.new Rails.application.secrets.slack_url
+      body = {
+        text: @post.body
+      }
+      notifier.ping "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}", attachments: [body]
+    end
 end

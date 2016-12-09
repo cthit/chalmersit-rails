@@ -40,7 +40,8 @@ private
     end
   end
   def sponsor_params
-    params.require(:sponsor).permit(:name, :image)
+    permitted = [:name, :image, :order] + Sponsor.globalize_attribute_names
+    params.require(:sponsor).permit(permitted)
   end
   def set_sponsor
     @sponsor = Sponsor.find(params[:id])

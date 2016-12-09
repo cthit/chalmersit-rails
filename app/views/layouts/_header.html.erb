@@ -18,6 +18,12 @@
     <% I18n.available_locales.each do |locale| %>
       <%= auto_discovery_link_tag(:rss, feed_url(locale: locale), title: t('in_locale', {name: Post.model_name.human(count: 2), lang: t(locale)})) %>
     <% end %>
+    <%= javascript_include_tag "i18n" %>
+    <%= javascript_include_tag "translations" %>
+    <%= javascript_tag do %>
+      I18n.defaultLocale = "<%= I18n.default_locale %>";
+      I18n.locale = "<%= I18n.locale %>";
+    <% end %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
     <%= csrf_meta_tags %>
@@ -51,22 +57,20 @@
               <li class="user-details">
                 <strong><%= current_user.display_name %></strong>
               </li>
-              <% cache ['user-menu', I18n.locale] do %>
-                <li class="dropdown">
-                  <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
-                  <ul class="dropdown-sub">
-                    <% if policy(Post).create? %>
-                      <li><%= link_to t('.new_news_post'), new_post_path %></li>
-                    <% end %>
-                    <li><%= link_to t('.edit_profile'), edit_user_path %></li>
-                    <% if current_user.admin? %>
-                      <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
-                      <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
-                    <% end %>
-                    <li><%= link_to t('logout'), signout_path %></li>
-                  </ul>
-                </li>
-              <% end %>
+              <li class="dropdown">
+                <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
+                <ul class="dropdown-sub">
+                  <% if policy(Post).create? %>
+                    <li><%= link_to t('.new_news_post'), new_post_path %></li>
+                  <% end %>
+                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
+                  <% if current_user.admin? %>
+                    <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>
+                    <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
+                  <% end %>
+                  <li><%= link_to t('logout'), signout_path %></li>
+                </ul>
+              </li>
             <% else %>
               <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
             <% end %>
@@ -81,7 +85,7 @@
               <ul class="dropdown-sub">
                 <% I18n.available_locales.each do |item| %>
                   <% unless I18n.locale == item %>
-                    <li><%= link_to image_tag("flags/#{item}.svg"), locale: item == I18n.default_locale ? nil : item %></li>
+                    <li><%= link_to image_tag("flags/#{item}.svg"), locale: item %></li>
                   <% end %>
                 <% end %>
               </ul>

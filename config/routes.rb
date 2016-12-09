@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   # Redirects (necessary due to menu system only allowing inbound links)
   get 'redirect/findit' => 'redirect#findit'
+  get 'redirect/courses' => 'redirect#courses'
 
   resources :uploads, only: [:create, :destroy]
 
@@ -30,7 +31,7 @@ Rails.application.routes.draw do
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
     end
-
+    resources :business, only: [:index]
     get 'lunch/feed/' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
@@ -43,12 +44,6 @@ Rails.application.routes.draw do
     get 'frontpage/edit' => 'frontpage#edit', as: :edit_frontpage
     patch 'frontpage/update' => 'frontpage#update'
     put 'fronpage/update' => 'frontpage#update'
-
-    resources :courses do
-        member do
-          get 'site'
-        end
-    end
 
     root 'home#index'
     get '*path' => 'pages#show'

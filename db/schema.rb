@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161118170047) do
+ActiveRecord::Schema.define(version: 20161208101200) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -78,20 +78,6 @@ ActiveRecord::Schema.define(version: 20161118170047) do
 
   add_index "course_translations", ["course_id"], name: "index_course_translations_on_course_id", using: :btree
   add_index "course_translations", ["locale"], name: "index_course_translations_on_locale", using: :btree
-
-  create_table "courses", force: :cascade do |t|
-    t.string   "code",        limit: 255
-    t.string   "name",        limit: 255
-    t.integer  "year",        limit: 4
-    t.boolean  "required"
-    t.string   "homepage",    limit: 255
-    t.string   "programme",   limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "courses", ["code"], name: "index_courses_on_code", using: :btree
 
   create_table "courses_periods", id: false, force: :cascade do |t|
     t.integer "period_id", limit: 4
@@ -218,11 +204,24 @@ ActiveRecord::Schema.define(version: 20161118170047) do
   add_index "sessions", ["provider"], name: "index_sessions_on_provider", using: :btree
   add_index "sessions", ["uid"], name: "index_sessions_on_uid", using: :btree
 
+  create_table "sponsor_translations", force: :cascade do |t|
+    t.integer  "sponsor_id", limit: 4,   null: false
+    t.string   "locale",     limit: 255, null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.string   "title",      limit: 255
+  end
+
+  add_index "sponsor_translations", ["locale"], name: "index_sponsor_translations_on_locale", using: :btree
+  add_index "sponsor_translations", ["sponsor_id"], name: "index_sponsor_translations_on_sponsor_id", using: :btree
+
   create_table "sponsors", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.string   "image",      limit: 255
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.string   "title",      limit: 255
+    t.integer  "order",      limit: 4
   end
 
   create_table "uploads", force: :cascade do |t|

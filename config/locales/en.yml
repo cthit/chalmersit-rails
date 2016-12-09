@@ -136,7 +136,7 @@ en:
         file: File
         printer: Printer
         copies: No. of copies
-        duplex: Double-sided
+        sides: Double-sided
         collated: Collated
         ranges: Ranges
         media: Paper size
@@ -192,6 +192,7 @@ en:
       prev_posts: Previous news
       all_posts: All news
       next_posts: Next news post
+      sign_in_add_comment: Sign in to add comment
   comments:
     form:
       write_comment: Write a comment

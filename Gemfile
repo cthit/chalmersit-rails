@@ -18,8 +18,13 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+# Pagination
+gem 'will_paginate', '~> 3.1.0'
+
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
+
+gem 'i18n', '~> 0.7.0'
 
 # Caching with Redis
 gem 'redis-rails'
@@ -28,8 +33,12 @@ gem 'redis-rails'
 gem 'github-markdown'
 gem 'sanitize'
 gem 'gemoji'
-
+gem 'json'
 gem 'html-pipeline'
+
+# Slack notifier
+gem 'slack-notifier'
+
 # iCalendar parsing (for example: Google calendar)
 gem 'icalendar'
 gem 'icalendar-recurrence'
@@ -74,6 +83,7 @@ gem 'rest-client'
 gem 'poltergeist'
 gem 'capybara'
 
+gem 'unmarkdown'
 group :development do
   # Nice error messages
   gem 'better_errors'

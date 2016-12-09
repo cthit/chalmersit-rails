@@ -14,7 +14,9 @@ class User < ActiveResource::Base
 
   def self.find(id)
     Rails.cache.fetch("users/#{id}.json") do
-      super id
+      user = super id
+      user.positions = OpenStruct.new(user.positions.attributes).to_h
+      user
     end
   end
 
@@ -26,6 +28,10 @@ class User < ActiveResource::Base
 
   def in_committee?
     committees.any?
+  end
+
+  def committees_include_any?(committee)
+    !(committee & groups).empty?
   end
 
   def self.headers
