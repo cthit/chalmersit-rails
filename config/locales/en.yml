@@ -212,6 +212,7 @@ en:
       get_balance: Get balance
     card_balance:
       balance: Balance
+      card_holder: Card holder
   print:
     new:
       supported_file_types: Supported file types
