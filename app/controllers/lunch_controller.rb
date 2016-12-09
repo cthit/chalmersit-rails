@@ -1,8 +1,9 @@
 class LunchController < ApplicationController
   def feed
-    @lunch = Lunch.new
-    @restaurants = @lunch.einstein
-    @chalmers_restaurants = @lunch.chalmrest
+    @restaurants, @chalmers_restaurants = Rails.cache.fetch("lunch/#{I18n.locale}/#{Date.today}") do
+      @lunch = Lunch.new
+      [@lunch.einstein, @lunch.chalmrest]
+    end
 
     render partial: "feed"
   end

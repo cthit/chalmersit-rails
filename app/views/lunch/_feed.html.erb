@@ -3,7 +3,6 @@
     <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
   </h2>
 </header>
-<% cache ["lunch", I18n.locale, Date.today] do %>
 <div>
   <div class="lunch-group">
     <a href="http://chalmerskonferens.se/" target="_blank">
@@ -32,4 +31,3 @@
     <% end %>
   </div>
 </div>
-<% end %>
