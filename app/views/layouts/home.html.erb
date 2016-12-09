@@ -33,7 +33,7 @@
       <%= yield %>
     </section>
   </div>
-  <div class="large-3 columns">
+  <div class="large-3 medium-6 columns">
     <div class="lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>">
       <header>
           <h2><%= t '.lunch' %>
@@ -54,7 +54,7 @@
       <% end %>
     <% end %>
   </div>
-  <div class="large-3 columns">
+  <div class="large-3 medium-6 columns">
     <section class="box widget it-calendar" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
       <header>
           <h3><%= t '.events' %></h3>
