@@ -37,7 +37,7 @@ class Lunch
       [{ name: rest_name, meals: meals }]
     rescue
       [{ name: rest_name, meals: {}}]
-    end
+    end.sort_by { |r| r[:name] }
   end
 
   def chalmrest
@@ -66,6 +66,6 @@ class Lunch
       unless meals.empty?
         { name: key, meals: meals }
       end
-    end.compact
+    end.compact.sort_by { |r| r[:name] }
   end
 end
