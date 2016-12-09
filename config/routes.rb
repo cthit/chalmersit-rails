@@ -22,10 +22,15 @@ Rails.application.routes.draw do
   match 'auth/:provider/callback' => 'sessions#create', via: [:get, :post]
   get 'signout' => 'sessions#destroy', as: :signout
 
-  get 'home/card_balance/:number' => 'home#card_balance'
 
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
+
+    resources :home, only: [] do
+      collection do
+        get 'card_balance/:number', action: :card_balance
+      end
+    end
 
     resources :pages
     resources :posts do
