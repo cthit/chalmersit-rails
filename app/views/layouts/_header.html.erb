@@ -63,6 +63,9 @@
                   <% if policy(Post).create? %>
                     <li><%= link_to t('.new_news_post'), new_post_path %></li>
                   <% end %>
+                  <% if policy(Page).create? %>
+                    <li><%= link_to t('.new_page'), new_page_path %></li>
+                  <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                   <% if current_user.admin? %>
                     <li><%= link_to t('.admin'), '#admin_path', target: '_blank' %></li>

@@ -156,6 +156,7 @@ en:
     header:
       tools: Tools
       new_news_post: Publish news post
+      new_page: Add new page
       edit_profile: Edit profile
       admin: Admin
       edit_frontpage: "Edit section frontpage"
