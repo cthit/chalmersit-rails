@@ -6,8 +6,12 @@ class HomeController < ApplicationController
   end
 
   def card_balance
-    @balance = StudentUnionCardBalance.new.student_union_card_balance(card_balance_params[:number])
-    render partial: "card_balance"
+    begin
+      @balance, @name = StudentUnionCardBalance.new.student_union_card_balance(card_balance_params[:number])
+      render partial: "card_balance"
+    rescue
+      render json: {error: "Bad number"}, status: :bad_request
+    end
   end
 
   private
