@@ -79,6 +79,7 @@ sv:
   unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
+
   activerecord:
     errors:
       models:
@@ -186,6 +187,7 @@ sv:
       charge_card_desc: Genväg för att ladda ditt kårkort
       slack_desc: Gå med i IT-sektionens chatt
       events: Evenemang
+      student_union_card: Kårkortssaldo
 
   posts:
     form:
@@ -220,6 +222,12 @@ sv:
     today:
       next_event: Evenemang idag
       no_events: Det finns inga evenemang idag
+    card_balance_form:
+      card_number: Kortnummer
+      get_balance: Hämta saldo
+    card_balance:
+      balance: Saldo
+      card_holder: Kortinnehavare
   calendar:
       fetch:
         events: "Evenemang"

@@ -172,6 +172,7 @@ en:
       charge_card_desc: Shortcut for charging your student union card
       slack_desc: Join the IT student division chat
       events: Events
+      student_union_card: Student union card balance
 
   posts:
     form:
@@ -206,6 +207,12 @@ en:
     today:
       next_event: Events today
       no_events: There are no events today
+    card_balance_form:
+      card_number: Card number
+      get_balance: Get balance
+    card_balance:
+      balance: Balance
+      card_holder: Card holder
   print:
     new:
       supported_file_types: Supported file types

@@ -79,6 +79,10 @@ gem 'globalize', '~> 5.0.1'
 gem 'globalize-accessors', '~> 0.2.1'
 
 gem 'rest-client'
+
+gem 'poltergeist'
+gem 'capybara'
+
 gem 'unmarkdown'
 group :development do
   # Nice error messages
@@ -91,7 +95,6 @@ end
 gem 'rspec-rails', group: [:test, :development]
 group :test do
   gem 'factory_girl_rails'
-  gem 'capybara'
   gem 'guard-rspec'
   gem 'shoulda-matchers', require: false
 end

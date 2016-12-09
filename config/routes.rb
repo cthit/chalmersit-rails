@@ -26,6 +26,12 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 
+    resources :home, only: [] do
+      collection do
+        get 'card_balance/:number', action: :card_balance
+      end
+    end
+
     resources :pages
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
