@@ -12,6 +12,6 @@
     <%= link_to 'Parent', path_to_page(@frontpage.parent) %>
 <% end %>
 <% if policy(Page).update? %>
-  <%= link_to 'Edit', edit_page_path(@frontpage) %> |
+  <%= content_for :buttons, (link_to 'Edit', edit_page_path(@frontpage), class: "button tiny") %>
 <% end %>
 <%= link_to 'Back', pages_path %>

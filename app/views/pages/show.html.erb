@@ -10,6 +10,6 @@
     <%= link_to 'Parent', path_to_page(@page.parent) %>
 <% end %>
 <% if policy(Page).update? %>
-	<%= link_to 'Edit', edit_page_path(@page) %> |
+	<%= content_for :buttons, (link_to 'Edit', edit_page_path(@page), class: "button tiny") %>
 <% end %>
 <%= link_to 'Back', pages_path %>

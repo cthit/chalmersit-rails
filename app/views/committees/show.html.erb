@@ -11,6 +11,6 @@
   <%= markdown @committee.description unless @committee.description.nil? %>
 </p>
 <% if policy(@committee).update? %>
-  <%= link_to t('edit'), edit_committee_path(@committee) %> |
+  <% content_for :buttons, (link_to t('edit'), edit_committee_path(@committee), class: "button tiny") %>
 <% end %>
 <%= link_to t('back'), committees_path %>
