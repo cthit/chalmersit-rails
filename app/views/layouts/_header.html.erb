@@ -72,10 +72,19 @@
                   <% if policy(Page).create? %>
                     <li><%= link_to t('.new_page'), new_page_path %></li>
                   <% end %>
-                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
-                  <% if current_user.admin? %>
+                  <% if policy(Frontpage).create? %>
                     <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
                   <% end %>
+                  <% if policy(Committee).create? %>
+                    <li><%= link_to t('.add_committee'), new_committee_path %></li>
+                  <% end %>
+                  <% if policy(MenuLink).create? %>
+                    <li><%= link_to t('.edit_menu_links'), menu_links_path %></li>
+                  <% end %>
+                  <% if policy(Menu).create? %>
+                    <li><%= link_to t('.edit_menu'), menus_path %></li>
+                  <% end %>
+                  <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                   <li><%= link_to t('logout'), signout_path %></li>
                 </ul>
               </li>
