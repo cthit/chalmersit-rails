@@ -72,16 +72,16 @@
                   <% if policy(Page).create? %>
                     <li><%= link_to t('.new_page'), new_page_path %></li>
                   <% end %>
-                  <% if policy(Frontpage).create? %>
+                  <% if policy(Frontpage).edit? %>
                     <li><%= link_to t('.edit_frontpage'), edit_frontpage_path %></li>
                   <% end %>
                   <% if policy(Committee).create? %>
                     <li><%= link_to t('.add_committee'), new_committee_path %></li>
                   <% end %>
-                  <% if policy(MenuLink).create? %>
+                  <% if policy(MenuLink).edit? %>
                     <li><%= link_to t('.edit_menu_links'), menu_links_path %></li>
                   <% end %>
-                  <% if policy(Menu).create? %>
+                  <% if policy(Menu).edit? %>
                     <li><%= link_to t('.edit_menu'), menus_path %></li>
                   <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
