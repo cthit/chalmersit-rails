@@ -34,17 +34,24 @@
     </section>
   </div>
   <div class="large-3 medium-6 columns">
-    <div class="lunch_feed box" data-url="<%= url_for controller: 'lunch', action: 'feed' %>">
+    <div class="lunch_feed box">
       <header>
           <h2>Lunch
           <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
           </h2>
       </header>
 
-      <div class="loading-indicator">
-        <i class="fa fa-cutlery loading-indicator-feature"></i>
-        <div class="loading-indicator-text"><%= t 'loading' %>...</div>
-      </div>
+      <% if Lunch.cache_present? %>
+        <%= render 'lunch/feed' %>
+      <% else %>
+        <div class="lunch-loader" data-url="<%= url_for controller: 'lunch', action: 'feed' %>">
+          <div class="loading-indicator">
+            <i class="fa fa-cutlery loading-indicator-feature"></i>
+            <div class="loading-indicator-text"><%= t 'loading' %>...</div>
+          </div>
+        </div>
+      <% end -%>
+
     </div>
     <% cache ['sponsors', [I18n.locale, Sponsor.all]] do %>
       <% Sponsor.all.order(:order).each do |sponsor| %>

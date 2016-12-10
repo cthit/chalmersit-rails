@@ -3,6 +3,10 @@ class HomeController < ApplicationController
   def index
     @posts = policy_scope(Post).ordered.limit(10)
     @events = Event.today
+
+    if Lunch.cache_present?
+      @restaurants, @chalmers_restaurants = Lunch.today_cached
+    end
   end
 
   def card_balance
