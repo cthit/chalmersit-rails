@@ -171,6 +171,7 @@ sv:
     header:
       tools: Verktyg
       new_news_post: Posta nyhet
+      new_page: Lägg till ny sida
       edit_profile: Redigera profil
       admin: Admin
       edit_frontpage: "Ändra sektionsida"
