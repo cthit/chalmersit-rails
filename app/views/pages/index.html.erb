@@ -12,6 +12,5 @@
     <%= link_to 'Parent', path_to_page(@frontpage.parent) %>
 <% end %>
 <% if policy(Page).update? %>
-  <%= link_to 'Edit', edit_page_path(@frontpage) %> |
+  <%= link_to 'Edit', edit_page_path(@frontpage) %>
 <% end %>
-<%= link_to 'Back', pages_path %>
