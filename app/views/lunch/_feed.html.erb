@@ -1,16 +1,11 @@
-<header>
-  <h2><%= t '.lunch' %>
-    <time datetime="<%= Date.today.to_s '%F' %>"><%= l Date.today, format: '%e %B' %></time>
-  </h2>
-</header>
 <div>
   <div class="lunch-group">
     <%= link_to "http://chalmerskonferens.se/", target: '_blank' do %>
       <%= image_tag asset_path('chalmers-konferens.png') %>
     <% end -%>
-    <%= render 'restaurants', restaurants: @chalmers_restaurants %>
+    <%= render 'lunch/restaurants', restaurants: @chalmers_restaurants %>
   </div>
   <div class="lunch-group">
-    <%= render 'restaurants', restaurants: @restaurants %>
+    <%= render 'lunch/restaurants', restaurants: @restaurants %>
   </div>
 </div>

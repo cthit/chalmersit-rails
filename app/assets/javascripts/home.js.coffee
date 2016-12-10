@@ -23,7 +23,9 @@ $ ->
     handle = $this.data('handle')
     $this.find('.tweet-list').load("/twitter/feed/#{handle}?count=6")
 
-  $('.lunch_feed').load($('.lunch_feed').attr('data-url'))
+  $.get $('.lunch-loader').attr('data-url'), (data) ->
+    $('.lunch-loader').replaceWith(data)
+
   $('.it-calendar').load($('.it-calendar').attr('data-url'))
 
   $('#student-union-card').on 'click', '#card-balance-submit', ->

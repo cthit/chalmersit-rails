@@ -4,8 +4,16 @@ class Lunch
     include Nokogiri
     include OpenURI
 
+    def cache_key
+      "lunch/#{I18n.locale}/#{Date.today}"
+    end
+
+    def cache_present?
+      Rails.cache.exist? self
+    end
+
     def today_cached
-      Rails.cache.fetch "lunch/#{I18n.locale}/#{Date.today}" do
+      Rails.cache.fetch self do
         [Lunch.einstein, Lunch.chalmrest]
       end
     end
