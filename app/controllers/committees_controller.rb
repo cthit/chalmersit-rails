@@ -6,6 +6,7 @@ class CommitteesController < ApplicationController
   # GET /committees.json
   def index
     # Committees are loaded in ApplicationController
+    redirect_to '/committees/styrit'
   end
 
   # GET /committees/1
