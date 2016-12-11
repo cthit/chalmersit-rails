@@ -4,9 +4,8 @@
 @import "navigation";
 
 [role="banner"] {
-	@include box-shadow(rgba(#000, .3) 0 1px 10px);
-	border-bottom: 1px solid rgba(#000, .4);
 	margin-bottom: $lineheight / 2;
+	background-color: #212121; // Default bg color, visible while loading
 	background-image: asset-url("header.jpg");
 	background-repeat: no-repeat;
 	background-position: center center;

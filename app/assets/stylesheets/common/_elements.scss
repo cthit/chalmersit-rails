@@ -42,7 +42,7 @@ embed,
 iframe {
 	max-width: 100%;
 	height: auto;
-	
+
 	&.noscale {
 		max-width: none;
 	}
@@ -56,8 +56,8 @@ iframe {
 hr {
 	border: 0;
 	height: 1px;
-	background-color: #ccc;
-	margin: $lineheight*2 10%;
+	background-color: #e6e6e6;
+	margin: $lineheight*2 0;
 }
 
 /* User avatars */
@@ -93,4 +93,3 @@ nav ol {
 	margin: 0;
 	padding: 0;
 }
-

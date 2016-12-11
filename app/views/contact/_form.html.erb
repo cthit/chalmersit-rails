@@ -1,4 +1,4 @@
-<article class="box">
+<article class="box box-overlap-header">
   <%= simple_form_for @contact, url: contact_index_path, method: :post do |f| %>
     <%= f.error_notification %>
     <h1><%= Contact.model_name.human(count:1) %></h1>
