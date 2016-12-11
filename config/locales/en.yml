@@ -216,7 +216,9 @@ en:
       get_balance: Get balance
     card_balance:
       balance: Balance
+      card_number: Card number
       card_holder: Card holder
+      remove_card: Remove card
   print:
     new:
       supported_file_types: Supported file types

@@ -231,7 +231,9 @@ sv:
       get_balance: Hämta saldo
     card_balance:
       balance: Saldo
+      card_number: Kortnummer
       card_holder: Kortinnehavare
+      remove_card: Ta bort kort
   calendar:
       fetch:
         events: "Evenemang"

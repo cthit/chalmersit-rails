@@ -25,7 +25,7 @@ class StudentUnionCardBalance
 
     sleep 0.5
     begin
-      [find(:id, 'txtPTMCardValue').text, find(:id, 'txtPTMCardName').text]
+      [find(:id, 'txtPTMCardValue').text, find(:id, 'txtPTMCardName').text, find(:id, 'txtPTMCardNumber').text]
     rescue Capybara::ElementNotFound => e
       raise "error, saved page to app root, #{e.message}"
     end
