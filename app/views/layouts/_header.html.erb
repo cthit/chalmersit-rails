@@ -49,7 +49,7 @@
             <nav role="navigation" class="main-nav">
               <ul id="menu-huvudnavigation">
                 <% Menu.links_for_menu_cached('main').each do |link| %>
-                  <%= header_link_to_current t(link.title), link.path %>
+                  <%= header_link_to_current t(link.title), link.path, link.controller %>
                 <% end %>
               </ul>
             </nav>

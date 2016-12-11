@@ -1,7 +1,7 @@
 <% current_committee = nil if local_assigns[:current_committee].nil? %>
 <% current_page = nil if local_assigns[:current_page].nil? %>
 
-<div class="sidebar box left">
+<div class="sidebar sidebar-list box">
   <section>
     <h2><%= t("about_section") %></h2>
     <% @pages.where(parent_id: nil).each do |parent_page| %>
