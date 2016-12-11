@@ -13,4 +13,3 @@
 <% if policy(@committee).update? %>
   <% content_for :buttons, (link_to t('edit'), edit_committee_path(@committee), class: "button tiny") %>
 <% end %>
-<%= link_to t('back'), committees_path %>
