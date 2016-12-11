@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208101200) do
+ActiveRecord::Schema.define(version: 20161211101004) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -65,23 +65,6 @@ ActiveRecord::Schema.define(version: 20161208101200) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.text     "value",      limit: 65535
-  end
-
-  create_table "course_translations", force: :cascade do |t|
-    t.integer  "course_id",   limit: 4,     null: false
-    t.string   "locale",      limit: 255,   null: false
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-  end
-
-  add_index "course_translations", ["course_id"], name: "index_course_translations_on_course_id", using: :btree
-  add_index "course_translations", ["locale"], name: "index_course_translations_on_locale", using: :btree
-
-  create_table "courses_periods", id: false, force: :cascade do |t|
-    t.integer "period_id", limit: 4
-    t.integer "course_id", limit: 4
   end
 
   create_table "events", force: :cascade do |t|
@@ -148,12 +131,6 @@ ActiveRecord::Schema.define(version: 20161208101200) do
   add_index "pages", ["parent_id"], name: "index_pages_on_parent_id", using: :btree
   add_index "pages", ["slug"], name: "index_pages_on_slug", using: :btree
   add_index "pages", ["title"], name: "index_pages_on_title", using: :btree
-
-  create_table "periods", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "post_translations", force: :cascade do |t|
     t.integer  "post_id",    limit: 4,     null: false
