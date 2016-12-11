@@ -1,4 +1,4 @@
-class PagePolicy < ApplicationPolicy
+class FrontpagePolicy < ApplicationPolicy
 
   def show?
     super

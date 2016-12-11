@@ -174,7 +174,10 @@ sv:
       new_page: Lägg till ny sida
       edit_profile: Redigera profil
       admin: Admin
-      edit_frontpage: "Ändra sektionsida"
+      edit_frontpage: Ändra sektionsida
+      add_committee: Lägg till ny kommitté
+      edit_menu_links: Ändra menylänkar
+      edit_menu: Ändra meny
     home:
       booking: Bokning
       group_room: Grupprum

@@ -11,6 +11,5 @@
   <%= markdown @committee.description unless @committee.description.nil? %>
 </p>
 <% if policy(@committee).update? %>
-  <%= link_to t('edit'), edit_committee_path(@committee) %> |
+  <%= link_to t('edit'), edit_committee_path(@committee) %>
 <% end %>
-<%= link_to t('back'), committees_path %>
