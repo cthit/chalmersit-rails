@@ -1,4 +1,5 @@
 <table class="sponsor-list">
+  <%= link_to t('.new_sponsor'), new_sponsor_path, class: "button tiny" %>
   <% @sponsors.each do |sponsor| %>
     <tr>
       <td><h3><%= sponsor.name %></h3></td>
