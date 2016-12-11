@@ -204,7 +204,7 @@ sv:
       facebook_link_to_event: Arrangemangets sida på Facebook
       posted_for: Skriven för
       by: av
-      posts_by: Nyheter skriva av
+      posts_by: Nyheter skrivna av
     event_fields:
       empty_if_group: Lämna tom om samma som skaparen av nyheten
     show:
