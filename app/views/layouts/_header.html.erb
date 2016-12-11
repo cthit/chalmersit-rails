@@ -84,6 +84,9 @@
                   <% if policy(Menu).edit? %>
                     <li><%= link_to t('.edit_menu'), menus_path %></li>
                   <% end %>
+                  <% if policy(Sponsor).edit? %>
+                    <li><%= link_to t('.edit_sponsor'), sponsors_path %></li>
+                  <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                   <li><%= link_to t('logout'), signout_path %></li>
                 </ul>
