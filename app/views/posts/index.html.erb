@@ -5,7 +5,7 @@
 <%= will_paginate @posts %>
 
 <% if @posts.empty? %>
-<article role="article">
+<article role="article" class="main-content">
   <h1><%= t(:no_posts_found) %></h1>
 </article>
 <% end %>
