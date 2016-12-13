@@ -3,7 +3,7 @@ class Menu < ActiveRecord::Base
 
   def self.links_for_menu_cached(menu_name)
     Rails.cache.fetch("menus/#{menu_name}") do
-      Menu.where(name: menu_name).last.links.to_a
+      Menu.where(name: menu_name).last.links.sort_by{|l| l.preferred_order}.to_a
     end
   end
 end
