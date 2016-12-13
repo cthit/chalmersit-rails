@@ -224,7 +224,7 @@ sv:
       no_lunch_today: Ingen lunch idag
   home:
     today:
-      next_event: Evenemang idag
+      next_event: Kommande evenemang
       no_events: Det finns inga evenemang idag
     card_balance_form:
       card_number: Kortnummer

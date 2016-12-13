@@ -209,7 +209,7 @@ en:
       no_lunch_today: No lunch today
   home:
     today:
-      next_event: Events today
+      next_event: Upcoming events
       no_events: There are no events today
     card_balance_form:
       card_number: Card number
