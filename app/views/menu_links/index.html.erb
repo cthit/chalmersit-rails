@@ -1,13 +1,12 @@
-<h1>Listing menu_links</h1>
+<%= content_for :title, "Menu links" %>
+<%= content_for :buttons, (link_to 'New Menu link', new_menu_link_path, class: "button tiny") %>
 
 <table>
   <thead>
     <tr>
-      <th>Menu</th>
+      <th>Title</th>
       <th>Controller</th>
       <th>Action</th>
-      <th>Params</th>
-      <th>Title</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,11 +14,9 @@
   <tbody>
     <% @menu_links.each do |menu_link| %>
       <tr>
-        <td><%= menu_link.menu %></td>
+        <td><%= menu_link.title %></td>
         <td><%= menu_link.controller %></td>
         <td><%= menu_link.action %></td>
-        <td><%= menu_link.params %></td>
-        <td><%= menu_link.title %></td>
         <td><%= link_to 'Show', menu_link %></td>
         <td><%= link_to 'Edit', edit_menu_link_path(menu_link) %></td>
         <td><%= link_to 'Destroy', menu_link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
