@@ -121,3 +121,6 @@ gem 'net-scp', '~> 1.2.1'
 gem 'chosen-rails'
 
 gem 'i18n-js'
+
+gem 'paint'
+gem 'paint-shortcuts'

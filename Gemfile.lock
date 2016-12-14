@@ -225,6 +225,9 @@ GEM
     omniauth-oauth2 (1.3.1)
       oauth2 (~> 1.0)
       omniauth (~> 1.2)
+    paint (1.0.1)
+    paint-shortcuts (1.0.0)
+      paint (~> 1.0)
     poltergeist (1.11.0)
       capybara (~> 2.1)
       cliver (~> 0.3.1)
@@ -415,6 +418,8 @@ DEPENDENCIES
   mysql2
   net-scp (~> 1.2.1)
   omniauth-oauth2
+  paint
+  paint-shortcuts
   poltergeist
   pundit
   rack-mini-profiler
