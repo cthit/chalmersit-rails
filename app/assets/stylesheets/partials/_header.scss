@@ -53,9 +53,19 @@
 	}
 
 	&.horizontal-list .flags img {
-		height: 38px;
+		height: 24px;
 		// vertical-align: top;
 	}
+}
+
+.flags {
+	margin-left: 2em;
+}
+
+.dropdown-trigger {
+    i {
+        margin-left: 5px;
+    }
 }
 
 .header-toolbar {

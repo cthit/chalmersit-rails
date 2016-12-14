@@ -98,7 +98,7 @@
               <% end %>
             </li>
             <li class="flags dropdown">
-              <span class="dropdown-trigger"><%= image_tag("flags/#{I18n.locale}.svg") %></span>
+              <span class="dropdown-trigger"><%= image_tag("flags/#{I18n.locale}.svg") %> <i class="fa fa-caret-down"></i></span>
               <ul class="dropdown-sub">
                 <% I18n.available_locales.each do |item| %>
                   <% unless I18n.locale == item %>
