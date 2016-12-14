@@ -64,7 +64,7 @@
   <div class="large-3 medium-6 columns">
     <section class="box widget it-calendar" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
       <header>
-          <h3><%= t '.events' %></h3>
+          <h2><%= t '.events' %></h2>
       </header>
 
       <div class="loading-indicator">
@@ -74,7 +74,9 @@
     </section>
 
     <section class="box widget card-balance">
-      <h3><%= t '.student_union_card' %></h3>
+       <header>
+        <h2><%= t '.student_union_card' %></h2>
+      </header>
       <div id="student-union-card">
         <%= render partial: 'card_balance_form' %>
       </div>
