@@ -164,6 +164,7 @@ en:
       edit_menu_links: Edit menu links
       edit_menu: Edit menu
       edit_sponsor: Edit sponsors
+      search_news: Search news
     home:
       booking: Booking
       group_room: Group room
@@ -210,14 +211,16 @@ en:
       no_lunch_today: No lunch today
   home:
     today:
-      next_event: Events today
+      next_event: Upcoming events
       no_events: There are no events today
     card_balance_form:
       card_number: Card number
       get_balance: Get balance
     card_balance:
       balance: Balance
+      card_number: Card number
       card_holder: Card holder
+      remove_card: Remove card
   print:
     new:
       supported_file_types: Supported file types

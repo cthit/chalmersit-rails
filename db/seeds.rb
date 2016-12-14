@@ -31,15 +31,6 @@
   c.merge!(slug: c[:name].gsub('.', '').parameterize, description_en: desc, description_sv: desc )
   Committee.create!(c)
 end
-  periods = [
-    { name: 'Period 1'},
-    { name: 'Period 2'},
-    { name: 'Period 3'},
-    { name: 'Period 4'}
-  ]
-  periods.each do |p|
-    Period.create!(p)
-  end
 
 main_menu = Menu.create(name: 'main')
 

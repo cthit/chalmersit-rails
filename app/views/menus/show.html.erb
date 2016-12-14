@@ -1,9 +1,14 @@
+<%= content_for :title, (@menu.name + " menu") %>
+<% content_for :buttons do %>
+  <%= link_to 'Edit', edit_menu_path(@menu), class: "button tiny" %>
+  <%= link_to 'Back', menus_path, class: "button tiny" %>
+<% end %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @menu.name %>
+  <strong>Links:</strong>
+  <% @menu.links.each do |link| %>
+    <%= link_to link.title, link %>
+  <% end %>
 </p>
-
-<%= link_to 'Edit', edit_menu_path(@menu) %> |
-<%= link_to 'Back', menus_path %>

@@ -179,6 +179,7 @@ sv:
       edit_menu_links: Ändra menylänkar
       edit_menu: Ändra meny
       edit_sponsor: Ändra sponsorer
+      search_news: Sök nyheter
     home:
       booking: Bokning
       group_room: Grupprum
@@ -205,7 +206,7 @@ sv:
       facebook_link_to_event: Arrangemangets sida på Facebook
       posted_for: Skriven för
       by: av
-      posts_by: Nyheter skriva av
+      posts_by: Nyheter skrivna av
     event_fields:
       empty_if_group: Lämna tom om samma som skaparen av nyheten
     show:
@@ -225,14 +226,16 @@ sv:
       no_lunch_today: Ingen lunch idag
   home:
     today:
-      next_event: Evenemang idag
+      next_event: Kommande evenemang
       no_events: Det finns inga evenemang idag
     card_balance_form:
       card_number: Kortnummer
       get_balance: Hämta saldo
     card_balance:
       balance: Saldo
+      card_number: Kortnummer
       card_holder: Kortinnehavare
+      remove_card: Ta bort kort
   calendar:
       fetch:
         events: "Evenemang"

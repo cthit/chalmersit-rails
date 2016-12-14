@@ -1,5 +1,5 @@
 class MenuLink < ActiveRecord::Base
-  belongs_to :menu
+  belongs_to :menu, touch: true
   serialize :params, Hash
 
   def url_params
