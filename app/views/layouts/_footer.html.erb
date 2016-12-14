@@ -67,25 +67,14 @@
         </section>
       <% end %>
       </div>
-
-      <div class="footer-foot wrapper">
-          <p><small><%= t 'developed_by' %> <a href="https://digit.chalmers.it" title="digIT"> digIT</a>  |  <a href="/humans.txt"><%= t 'more_info' %></a></small>
-        </p>
-
-        <div class="social-sharing">
-        <div class="fb-like"
-          data-href="https://www.facebook.com/chalmers.it"
-          data-send="false"
-          data-layout="button_count"
-          data-width="200"
-          data-colorscheme="dark"
-          data-show-faces="true"></div>
-
-
-        <a href="https://twitter.com/chalmersit" class="twitter-follow-button" data-show-count="false" data-lang="sv" data-size="small" data-dnt="true"><%= t 'follow' %> @chalmersit</a>
-        </div>
       </div>
     </footer>
+    <div class="footer-foot">
+        <div class="wrapper">
+        <p><small><%= t 'developed_by' %> <a href="https://digit.chalmers.it" title="digIT"> digIT</a>  <span class="footer-foot-divider">|</span>  <a href="/humans.txt"><%= t 'more_info' %></a></small></p>
+          </div>
+      </div>
+    </div>
     <%= javascript_include_tag "application" %>
   </body>
 </html>
