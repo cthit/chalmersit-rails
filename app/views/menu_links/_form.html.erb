@@ -1,37 +1,11 @@
-<%= form_for(@menu_link) do |f| %>
-  <% if @menu_link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@menu_link.errors.count, "error") %> prohibited this menu_link from being saved:</h2>
+<%= simple_form_for(@menu_link) do |f| %>
+  <%= f.error_notification %>
 
-      <ul>
-      <% @menu_link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+  <%= f.association :menu %>
+  <%= f.input :controller %>
+  <%= f.input :action %>
+  <%= f.input :title %>
+  <%= f.input :preferred_order %>
 
-  <div class="field">
-    <%= f.label :menu_id %><br>
-    <%= f.text_field :menu_id %>
-  </div>
-  <div class="field">
-    <%= f.label :controller %><br>
-    <%= f.text_field :controller %>
-  </div>
-  <div class="field">
-    <%= f.label :action %><br>
-    <%= f.text_field :action %>
-  </div>
-  <div class="field">
-    <%= f.label :params %><br>
-    <%= f.text_field :params %>
-  </div>
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.button :submit %>
 <% end %>

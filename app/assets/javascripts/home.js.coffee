@@ -36,6 +36,7 @@ $ ->
 
   oc = $('#student-union-card').html()
   $('#student-union-card').on 'click', '#student-union-exit', ->
+    localStorage.removeItem(card_number_local_storage_key)
     $('#student-union-card').html(oc)
 
   card_number = localStorage.getItem(card_number_local_storage_key)
