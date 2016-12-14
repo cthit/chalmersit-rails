@@ -12,7 +12,9 @@ textarea {
 	-webkit-appearance: none;
 	font: normal 90%/1 $sans;
 	color: $bodycolor;
-	border: 1px solid #bebebe;
+	border: 1px solid #ccc;
+    box-shadow: none;
+    border-radius: 2px;
 	padding: 5px;
 
 	&.large {
@@ -62,6 +64,8 @@ textarea {
 	width: 120px;
 	height: 38px;
 	margin: 0;
+    border: none;
+    border-radius: 2px;
 
 	&:focus {
 		width: 200px;

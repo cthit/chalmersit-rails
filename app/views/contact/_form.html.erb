@@ -1,8 +1,8 @@
-<article class="box">
+<article class="box box-overlap-header">
   <%= simple_form_for @contact, url: contact_index_path, method: :post do |f| %>
     <%= f.error_notification %>
     <h1><%= Contact.model_name.human(count:1) %></h1>
-    <%= f.input :title %>
+    <%= f.input :title  %>
     <%= f.input :body, input_html: { rows: 10 } %>
     <%= f.input :email, as: :email %>
     <%= f.input :value, label: 'Text', as: :hidden %>

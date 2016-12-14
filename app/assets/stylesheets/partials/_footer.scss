@@ -29,15 +29,8 @@
 	}
 
 	hgroup {
-		color: $teal;
+		color: #fff;
 		text-align: center;
-		text-shadow: rgba(#000, .8) 0 2px 0;
-		@include transition(color .15s ease-out);
-
-		&:hover {
-			color: lighten($teal, 10%);
-			text-shadow: rgba(#000, .8) 0 2px 0, rgba($teal, .5) 0 0 20px;
-		}
 	}
 
 	dl {
@@ -70,16 +63,22 @@
 }
 
 .footer-foot {
+    background: #0f1617;
+    padding: 20px;
+    color: #fff;
+    text-align: center;
+
 	& > p,
 	& > div {
 		display: inline-block;
 		margin-right: 10px;
 	}
+}
 
-	@media screen and (max-width: 1024px) {
-		text-align: center;
-		margin-top: 24px;
-	}
+.footer-foot-divider {
+    opacity: 0.2;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 .footer-nav {

@@ -37,6 +37,15 @@
 
 }
 
+.button, input[type="submit"] {
+	border-radius: 2px;
+	font-weight: bold;
+
+	&:last-child {
+		margin-bottom: 0;
+	}
+}
+
 .button.smaller {
 	padding: 10px 20px;
 	margin: 0;

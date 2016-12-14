@@ -14,10 +14,15 @@ module ApplicationHelper
     entity.translations.any? { |e| e.locale == locale}
   end
 
-  def header_link_to_current(title, path)
+  def header_link_to_current(title, path, controller)
     classes = 'menu-item'
     classes += ' current_page_item' if current_page?(path) || request.fullpath.include?(path)
-    content_tag :li, (link_to title, path), class: classes
+
+    if controller == 'redirect'
+      title += ' <i class="fa fa-external-link"></i>'
+    end
+
+    content_tag :li, (link_to title.html_safe, path), class: classes
   end
 
   def locale_or_nil(locale = I18n.default_locale)

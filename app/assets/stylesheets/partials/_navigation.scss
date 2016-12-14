@@ -20,7 +20,7 @@
 	ul {
 		margin: 0;
 	}
-	
+
 	li {
 		&.current_page_item a,
 		&.current-page-ancestor a {
@@ -31,23 +31,10 @@
 
 			position: relative;
 			color: #fff;
-			text-shadow: rgba(#fff, .4) 0 0 3px;
 			cursor: default;
-			@include box-shadow(rgba(#000, .5) 0 2px 5px, inset rgba(#fff, .4) 0 1px 0);
-			@include border-radius(3px);
-
-			&::after {
-				display: block;
-				position: absolute;
-				content: "";
-				@include arrow-down($size: 10px, $color: darken($bg, 10%));
-				bottom: -10px;
-				left: 50%;
-				margin-left: -10px;
-			}
 		}
 	}
-	
+
 	a {
 		color: #ddd;
 		text-transform: uppercase;
@@ -56,10 +43,9 @@
 		white-space: nowrap;
 		letter-spacing: 1px;
 		font-weight: bold;
-		
+
 		&:hover {
 			text-decoration: none;
-			text-shadow: rgba(#fff, .5) 0 0 3px;
 			color: #fff;
 		}
 	}
@@ -130,7 +116,7 @@
 		&:last-child span,
 		&:last-child a {
 			@include border-top-right-radius(3px);
-			@include border-bottom-right-radius(3px);	
+			@include border-bottom-right-radius(3px);
 		}
 	}
 
