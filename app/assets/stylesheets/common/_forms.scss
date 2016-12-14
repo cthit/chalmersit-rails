@@ -12,7 +12,9 @@ textarea {
 	-webkit-appearance: none;
 	font: normal 90%/1 $sans;
 	color: $bodycolor;
-	border: 1px solid #bebebe;
+	border: 1px solid #ccc;
+    box-shadow: none;
+    border-radius: 2px;
 	padding: 5px;
 
 	&.large {
