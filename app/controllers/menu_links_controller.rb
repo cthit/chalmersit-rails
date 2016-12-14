@@ -72,7 +72,8 @@ class MenuLinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def menu_link_params
-      params.require(:menu_link).permit(:menu_id, :controller, :action, :params, :title)
+      permitted = [:menu_id, :controller, :action, :params, :title, :preferred_order]
+      params.require(:menu_link).permit(permitted)
     end
 
     def authorize_menu_link
