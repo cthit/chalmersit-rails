@@ -90,10 +90,17 @@
 		margin-top: 10px;
 		width: 24px;
 		height: 24px;
-		background: #ffffff;
-		padding: 1px;
+		background: $primary-color;
+        border: 2px solid #fff;
+		padding-top: 4px;
+		text-align: center;
 		border-radius: 50%;
 		z-index: 1;
+
+		i {
+	        font-size: 10px !important;
+	        color: #fff !important;
+		}
 
 		@media screen and (max-width: 1340px) {
 			margin-top: 0;
