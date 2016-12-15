@@ -46,7 +46,7 @@ module ApplicationHelper
     "#{Rails.configuration.account_ip}/logout#{return_to}"
   end
   def randomized_background_image
-    images = ["header_prit_16.jpg", "header_nollkit_16.jpg", "header_styrit_16.jpg", "header_sexit_16.jpg"]
-    image_path images.sample
+    banner = Banner.all.sample
+    image_path banner.image
   end
 end
