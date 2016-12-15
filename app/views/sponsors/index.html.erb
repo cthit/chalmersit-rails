@@ -1,3 +1,5 @@
+<%= content_for :title, Sponsor.model_name.human(count:2) %>
+<%= link_to t('.new_sponsor'), new_sponsor_path, class: "button tiny" %>
 <table class="sponsor-list">
   <% @sponsors.each do |sponsor| %>
     <tr>
