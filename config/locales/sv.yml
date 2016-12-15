@@ -79,7 +79,6 @@ sv:
   unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
-
   activerecord:
     errors:
       models:
@@ -103,6 +102,9 @@ sv:
       committee:
         one: Kommitté
         other: Kommitteér
+      banner:
+        one: Banderoll
+        other: Banderoller
       frontpage:
         one: "Framsida"
     attributes:

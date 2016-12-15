@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :menu_links
   resources :menus
   resources :sponsors
+  resources :banners
 
   # Redirects (necessary due to menu system only allowing inbound links)
   get 'redirect/findit' => 'redirect#findit'
