@@ -6,13 +6,13 @@
    width: 100%; /* for IE 6 */
 }
 
-.banner-image h3 {
+.banner-image h3, h3 .banner-head {
    position: absolute;
    bottom: 20px;
    left: 0;
    width: 100%;
 }
-.banner-image h3 span {
+.banner-image h3 span, .banner-span {
    color: white;
    display: block;
    background: rgb(0, 0, 0); /* fallback color */
