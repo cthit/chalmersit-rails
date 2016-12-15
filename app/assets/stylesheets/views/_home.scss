@@ -86,7 +86,7 @@
     .quick-button-chalmers {
 		position: absolute;
 		top: 0;
-		right: 9px;
+		right: -4px;
 		margin-top: 10px;
 		width: 24px;
 		height: 24px;
@@ -104,7 +104,7 @@
 
 		@media screen and (max-width: 1340px) {
 			margin-top: 0;
-			right: 3px;
+			right: -13px;
 		}
 
 		@media screen and (max-width: 1024px) {
