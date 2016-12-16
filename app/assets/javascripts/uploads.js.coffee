@@ -17,7 +17,7 @@ $ ->
         unless valid_file(data.files[0].name)
           handle_file_error(data)
         if data.files[0].name
-          data.orig_name = remove_ext data.files[0].name
+          data.orig_name = data.files[0].name
         else
           data.orig_name = 'image'
         data.submit().error (e) ->
@@ -35,14 +35,11 @@ $ ->
       data.label.remove()
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
+      console.log(data)
       if $.inArray(extension, image_exts) > -1
-        insertTextAtCaret($(sv_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
-        insertTextAtCaret($(en_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
-        addToFileList(data.orig_name, src.url)
+        addToFileList(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
       else
-        insertTextAtCaret($(sv_post_body), link_markdown(data.orig_name, src.url) + "\n")
-        insertTextAtCaret($(en_post_body), link_markdown(data.orig_name, src.url) + "\n")
-        addToFileList(data.orig_name, src.url)
+        addToFileList(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
 
 handle_file_error = (data) ->
   data.label.text I18n.t('unsupported_file_format')
@@ -56,16 +53,9 @@ valid_file = (filename) ->
   console.log extension
   $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
 
-insertTextAtCaret = (elem, text) ->
-  $elem = $(elem)
-  caretPos = elem[0].selectionStart
-  oldText = $elem.val()
-  $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
-
-addToFileList = (fileName, url) ->
+addToFileList = (fileName, url, markdown_url) ->
   content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
-  content += "<button class='button tiny copy-file' data-clipboard-text='" + link_markdown(fileName, url) + "'>Copy link</div>"
-  #content = fileName + "<i class='fa fa-icon-copy'></i><br>"
+  content += "<button class='button tiny copy-file' data-clipboard-text='" + markdown_url + "'>Copy link</div>"
   $("#file-list").append(content)
 
 image_markdown = (title, url) ->
