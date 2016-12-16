@@ -35,7 +35,6 @@ $ ->
       data.label.remove()
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
-      console.log(data)
       if $.inArray(extension, image_exts) > -1
         addToFileList(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
       else
@@ -50,12 +49,11 @@ handle_file_error = (data) ->
 
 valid_file = (filename) ->
   extension = filename.substr(filename.lastIndexOf('.'), filename.length)
-  console.log extension
   $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
 
 addToFileList = (fileName, url, markdown_url) ->
   content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
-  content += "<button class='button tiny copy-file' data-clipboard-text='" + markdown_url + "'>Copy link</div>"
+  content += "<button class='button tiny copy-file' data-clipboard-text='" + markdown_url + "'>" + I18n.t('copy_link') + "</div>"
   $("#file-list").append(content)
 
 image_markdown = (title, url) ->
