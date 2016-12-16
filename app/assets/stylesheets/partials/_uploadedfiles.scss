@@ -6,11 +6,17 @@
   .button {
     margin: 0;
     max-height: 1em;
+    min-width: 95px;
     display: flex;
     align-items: center;
     line-height: 0;
     padding-left: 1em;
     padding-right: 1em;
     margin-left: 10px;
+  }
+
+  a {
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

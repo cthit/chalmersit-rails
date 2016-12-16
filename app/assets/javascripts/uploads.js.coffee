@@ -62,7 +62,7 @@ insertTextAtCaret = (elem, text) ->
   $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
 
 addToFileList = (fileName, url) ->
-  content = "<div class='file-entry'><a target='_blank' title='Open file in new tab' href='" + url + "'>" + fileName + "</a>"
+  content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
   content += "<button class='button tiny copy-file-link' data-markdown='" + link_markdown(fileName, url) + "'>Copy link</div>"
   #content = fileName + "<i class='fa fa-icon-copy'></i><br>"
   $("#file-list").html(content)
