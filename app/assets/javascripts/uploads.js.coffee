@@ -5,6 +5,7 @@ en_post_body = '.posts #post_body_en, #page_body_en'
 sv_post_body = '.posts #post_body_sv, #page_body_sv'
 
 $ ->
+  new Clipboard('.copy-file');
 
   $(en_post_body + sv_post_body).fileupload
     url: '/uploads.json',
@@ -63,7 +64,7 @@ insertTextAtCaret = (elem, text) ->
 
 addToFileList = (fileName, url) ->
   content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
-  content += "<button class='button tiny copy-file-link' data-markdown='" + link_markdown(fileName, url) + "'>Copy link</div>"
+  content += "<button class='button tiny copy-file' data-clipboard-text='" + link_markdown(fileName, url) + "'>Copy link</div>"
   #content = fileName + "<i class='fa fa-icon-copy'></i><br>"
   $("#file-list").html(content)
 
