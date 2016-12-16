@@ -66,7 +66,7 @@ addToFileList = (fileName, url) ->
   content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
   content += "<button class='button tiny copy-file' data-clipboard-text='" + link_markdown(fileName, url) + "'>Copy link</div>"
   #content = fileName + "<i class='fa fa-icon-copy'></i><br>"
-  $("#file-list").html(content)
+  $("#file-list").append(content)
 
 image_markdown = (title, url) ->
   "![#{title}](#{url})"
