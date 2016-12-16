@@ -37,9 +37,11 @@ $ ->
       if $.inArray(extension, image_exts) > -1
         insertTextAtCaret($(sv_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
         insertTextAtCaret($(en_post_body), image_thumbnail_markdown(data.orig_name, src.url, src.thumb.url) + "\n")
+        addToFileList(data.orig_name, src.url)
       else
         insertTextAtCaret($(sv_post_body), link_markdown(data.orig_name, src.url) + "\n")
         insertTextAtCaret($(en_post_body), link_markdown(data.orig_name, src.url) + "\n")
+        addToFileList(data.orig_name, src.url)
 
 handle_file_error = (data) ->
   data.label.text I18n.t('unsupported_file_format')
@@ -58,6 +60,12 @@ insertTextAtCaret = (elem, text) ->
   caretPos = elem[0].selectionStart
   oldText = $elem.val()
   $elem.val(oldText.substring(0, caretPos) + text + oldText.substring(caretPos))
+
+addToFileList = (fileName, url) ->
+  content = "<div class='file-entry'><a target='_blank' title='Open file in new tab' href='" + url + "'>" + fileName + "</a>"
+  content += "<button class='button tiny copy-file-link' data-markdown='" + link_markdown(fileName, url) + "'>Copy link</div>"
+  #content = fileName + "<i class='fa fa-icon-copy'></i><br>"
+  $("#file-list").html(content)
 
 image_markdown = (title, url) ->
   "![#{title}](#{url})"
