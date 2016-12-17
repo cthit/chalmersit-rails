@@ -224,6 +224,8 @@ sv:
     feed:
       lunch: Lunch
       no_lunch_today: Ingen lunch idag
+      show_lunch: Visa lunchmeny
+      hide_lunch: Dölj lunchmeny
   home:
     today:
       next_event: Kommande evenemang
