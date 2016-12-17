@@ -5,7 +5,7 @@ en_post_body = '.posts #post_body_en, #page_body_en'
 sv_post_body = '.posts #post_body_sv, #page_body_sv'
 
 $ ->
-  new Clipboard('.copy-file');
+  new Clipboard('.copy-file')
 
   $(en_post_body + sv_post_body).fileupload
     url: '/uploads.json',
@@ -40,6 +40,19 @@ $ ->
       else
         addToFileList(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
 
+  $(post_body).on 'paste', (event) ->
+    postBody = event.currentTarget
+    pastedText = event.originalEvent.clipboardData.getData('text')
+    caretPosition = postBody.selectionStart
+    if pastedText.indexOf("![") == -1 #Ignore images with thumbnails
+      #Paste event is fired before data is pasted, wait 100ms to make sure that the text is there.
+      setTimeout ( ->
+          firstPos = postBody.value.indexOf(pastedText, caretPosition)
+          lastPos = firstPos + pastedText.indexOf("]")
+          postBody.setSelectionRange(firstPos + 1, lastPos - 1)
+
+      ), 100
+
 handle_file_error = (data) ->
   data.label.text I18n.t('unsupported_file_format')
   data.progress_bar.remove()
@@ -60,7 +73,7 @@ image_markdown = (title, url) ->
   "![#{title}](#{url})"
 
 link_markdown = (text, url) ->
-    "[#{text}](#{url})"
+  "[#{text}](#{url})"
 
 image_thumbnail_markdown = (title, url, url_thumb) ->
   if url_thumb
