@@ -456,3 +456,8 @@ sv:
       contact:
         body: Vad vill du säga?
         email: user@domain.com
+
+  will_paginate:
+    previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> Föregående</div>'
+    page_gap: ...
+    next_label: '<div class="button tiny">Nästa <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
