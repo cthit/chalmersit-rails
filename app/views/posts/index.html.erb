@@ -2,7 +2,7 @@
 
 <%= render partial: 'posts/post', collection: @posts, cache: true %>
 
-<%= will_paginate @posts %>
+<%= will_paginate @posts, inner_window: 1 %>
 
 <% if @posts.empty? %>
 <article role="article">
