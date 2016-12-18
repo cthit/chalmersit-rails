@@ -36,20 +36,20 @@ $ ->
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
       if $.inArray(extension, image_exts) > -1
-        addToFileList(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
+        add_to_file_list(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
       else
-        addToFileList(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
+        add_to_file_list(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
 
   $(post_body).on 'paste', (event) ->
-    postBody = event.currentTarget
-    pastedText = event.originalEvent.clipboardData.getData('text')
-    caretPosition = postBody.selectionStart
-    if pastedText.indexOf("![") == -1 #Ignore images with thumbnails
+    post_body = event.currentTarget
+    pasted_text = event.originalEvent.clipboardData.getData('text')
+    caret_position = post_body.selectionStart
+    if pasted_text.indexOf("![") == -1 #Ignore images with thumbnails
       #Paste event is fired before data is pasted, wait 100ms to make sure that the text is there.
       setTimeout ( ->
-          firstPos = postBody.value.indexOf(pastedText, caretPosition)
-          lastPos = firstPos + pastedText.indexOf("]")
-          postBody.setSelectionRange(firstPos + 1, lastPos - 1)
+          first_pos = post_body.value.indexOf(pasted_text, caret_position)
+          last_pos = first_pos + pasted_text.indexOf("]")
+          post_body.setSelectionRange(first_pos + 1, last_pos)
 
       ), 100
 
@@ -64,9 +64,11 @@ valid_file = (filename) ->
   extension = filename.substr(filename.lastIndexOf('.'), filename.length)
   $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
 
-addToFileList = (fileName, url, markdown_url) ->
-  content = "<div class='file-entry'><a target='_blank' title='" + fileName + "' href='" + url + "'>" + fileName + "</a>"
-  content += "<button class='button tiny copy-file' data-clipboard-text='" + markdown_url + "'>" + I18n.t('copy_link') + "</div>"
+add_to_file_list = (filename, url, markdown_url) ->
+  content = "<div class='file-entry'>
+              <a target='_blank' title='#{filename}' href='#{url}'> #{filename} </a>
+              <button class='button tiny copy-file' data-clipboard-text='#{markdown_url}'> #{I18n.t('copy_link')} </button>
+            </div>"
   $("#file-list").append(content)
 
 image_markdown = (title, url) ->
