@@ -209,6 +209,8 @@ en:
     feed:
       lunch: Lunch
       no_lunch_today: No lunch today
+      show_lunch: Show lunch
+      hide_lunch: Hide lunch
   home:
     today:
       next_event: Upcoming events
