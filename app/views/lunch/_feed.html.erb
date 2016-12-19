@@ -1,11 +1,15 @@
 <div>
-  <div class="lunch-group">
-    <%= link_to "http://chalmerskonferens.se/", target: '_blank' do %>
-      <%= image_tag asset_path('chalmers-konferens.png') %>
-    <% end -%>
-    <%= render 'lunch/restaurants', restaurants: @chalmers_restaurants %>
-  </div>
-  <div class="lunch-group">
-    <%= render 'lunch/restaurants', restaurants: @restaurants %>
+  <button id="show-lunch" class="button smaller expand"><%= t '.show_lunch' %></button>
+  <button id="hide-lunch" class="button smaller expand"><%= t '.hide_lunch' %></button>
+  <div id="lunches">
+    <div class="lunch-group">
+      <%= link_to "http://chalmerskonferens.se/", target: '_blank' do %>
+        <%= image_tag asset_path('chalmers-konferens.png') %>
+      <% end -%>
+      <%= render 'lunch/restaurants', restaurants: @chalmers_restaurants %>
+    </div>
+    <div class="lunch-group">
+      <%= render 'lunch/restaurants', restaurants: @restaurants %>
+    </div>
   </div>
 </div>

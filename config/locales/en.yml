@@ -211,6 +211,8 @@ en:
     feed:
       lunch: Lunch
       no_lunch_today: No lunch today
+      show_lunch: Show lunch
+      hide_lunch: Hide lunch
   home:
     today:
       next_event: Upcoming events
@@ -454,3 +456,8 @@ en:
       contact:
         body: What do you want to say?
         email: user@domain.com
+
+  will_paginate:
+    previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous</div>'
+    page_gap: ...
+    next_label: '<div class="button tiny">Next <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
