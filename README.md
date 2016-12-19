@@ -97,3 +97,8 @@ Start the server by running the completed launch script.
 
 #Test mail functionality with mailcatcher:
 (mailcatcher.me) Start with "mailcatcher --ip=0.0.0.0" if you want to run on your webbrowser. Check Vagrant file for portforwarding.
+
+
+#For student union card balance:
+`phantomjs` needs to be installed on the server/developer's machine
+
