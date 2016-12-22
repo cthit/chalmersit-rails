@@ -1,3 +1,15 @@
+<style>
+  <%
+    banner = Banner.where(group_id: @committee.slug).sample
+    unless banner.nil?
+  %>
+  [role="banner"] {
+    background-image: url( <%= image_path banner.image %> );
+  }
+  <%
+    end
+  %>
+</style>
 <% content_for :sidebar_right do %>
   <%= render partial: 'committees/sidebar' %>
 <% end %>
