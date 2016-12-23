@@ -47,6 +47,10 @@ module ApplicationHelper
   end
   def randomized_background_image
     banner = Banner.all.sample
-    image_path banner.image
+    if banner.nil?
+      image_path "header_styrit_16.jpg"
+    else
+      image_path banner.image
+    end
   end
 end
