@@ -45,16 +45,5 @@ module ApplicationHelper
     return_to = "?return_to=#{return_to}" if return_to
     "#{Rails.configuration.account_ip}/logout#{return_to}"
   end
-  def randomized_background_image
-    unless @banner.nil?
-      image_path @banner.image
-    else
-      banner = Banner.all.sample
-      if banner.nil?
-        image_path "header_styrit_16.jpg"
-      else
-        image_path banner.image
-      end
-    end
-  end
+  
 end

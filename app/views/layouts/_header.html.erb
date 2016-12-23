@@ -29,7 +29,7 @@
     <%= csrf_meta_tags %>
     <style type="text/css">
       [role="banner"] {
-        background-image: url( <%= randomized_background_image %> );
+        background-image: url( <%= @banner.nil? ? (image_path "header_styrit_16.jpg") : (image_path @banner.image) %> );
       }
     </style>
 
