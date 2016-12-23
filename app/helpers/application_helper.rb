@@ -46,11 +46,15 @@ module ApplicationHelper
     "#{Rails.configuration.account_ip}/logout#{return_to}"
   end
   def randomized_background_image
-    banner = Banner.all.sample
-    if banner.nil?
-      image_path "header_styrit_16.jpg"
+    unless @banner.nil?
+      image_path @banner.image
     else
-      image_path banner.image
+      banner = Banner.all.sample
+      if banner.nil?
+        image_path "header_styrit_16.jpg"
+      else
+        image_path banner.image
+      end
     end
   end
 end
