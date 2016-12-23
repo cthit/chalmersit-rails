@@ -18,7 +18,10 @@ class BannersController < ApplicationController
     authorize_banner
     respond_to do |format|
       if @banner.save
-        format.html { redirect_to @banner, notice: I18n.translate('model_created', name: 'banner') }
+        format.html {
+          render :crop
+          #redirect_to @banner, notice: I18n.translate('model_created', name: 'banner')
+        }
         format.json { render :show, status: :created, location: @banner }
       else
         p @banner.errors
@@ -53,6 +56,6 @@ private
     authorize @banner
   end
   def banner_params
-    params.require(:banner).permit([:image, :group_id])
+    params.require(:banner).permit([:image_crop_x, :image_crop_y, :image_crop_w, :image_crop_h, :image, :group_id])
   end
 end
