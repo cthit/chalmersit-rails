@@ -9,7 +9,7 @@
       <% end %>
       <p class="meta">
         <%= link_to post.comments.size, post_path(post, anchor: 'comments'), title: "#{post.comments.size} #{Comment.model_name.human(count:post.comments.size).downcase}", class: 'comments-bubble smooth', data: { tooltip: '' } %>
-        <span class="sep">|</span> <time data-tooltip title="<%= t 'published' %> <%= post.created_at.to_s(:iso_date_time) %>" datetime="<%= post.created_at.to_s(:rfc822) %>" pubdate><%= post.created_at.to_s(:day_month) %></time>
+        <span class="sep">|</span> <time data-tooltip title="<%= t 'published' %> <%= post.created_at.to_s(:iso_date_time) %>" datetime="<%= post.created_at.to_s(:rfc822) %>" pubdate itemprop="datePublished"><%= post.created_at.to_s(:day_month) %></time>
         <span class="sep">|</span> <%= link_to t('permalink'), post %>
         <span class="sep">|</span>  <%= t '.posted_for' %> <%= link_to_committee post %> <%= t '.by' %> <%= link_to post.user.display_name, posts_path(user: post.user), title: "#{t '.posts_by'} #{post.user.display_name}", rel: 'author' %>
         <% if policy(post).update? %>
