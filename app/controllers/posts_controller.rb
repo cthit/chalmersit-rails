@@ -144,9 +144,6 @@ class PostsController < ApplicationController
 
     def send_slack
       notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      body = {
-        text: @post.body
-      }
-      notifier.ping "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}", attachments: [body]
+      notifier.ping "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}"
     end
 end
