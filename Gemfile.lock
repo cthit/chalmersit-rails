@@ -417,6 +417,7 @@ DEPENDENCIES
   multi_fetch_fragments
   mysql2
   net-scp (~> 1.2.1)
+  nokogiri
   omniauth-oauth2
   paint
   paint-shortcuts

@@ -3,19 +3,23 @@ module PostsHelper
     body = markdown post.body
     "<meta property=\"og:url\" content=\"#{post_url post}\"/>
     <meta property=\"og:title\" content=\"#{post.title}\"/>
-    <meta property=\"og:description\" content=\"#{first_paragraph body}\"/>
+    <meta property=\"og:description\" content=\"#{text_body body}\"/>
     <meta property=\"og:image\" content=\"#{get_first_image body}\"/>"
   end
   #get first image or set default
   def get_first_image body
-    image = body[/img.*?src="(.*?)"/i,1]
-    if image.nil?
+    html_doc = Nokogiri::HTML.parse(body)
+    tag = html_doc.css('img').first
+    if tag.nil?
       image = asset_path "logo-dark-txt.png"
+    else
+      image = tag.attr('src')
     end
     image
   end
-  def first_paragraph body
-    body[/<p>(.*)<\/p>/i,1]
+  def text_body body
+    html_doc = Nokogiri::HTML.parse(body)
+    html_doc.text
   end
   def show_event_fields?
     not @post.new_record? && @post.event?

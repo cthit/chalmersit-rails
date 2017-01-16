@@ -26,6 +26,9 @@ gem 'activeresource'
 
 gem 'i18n', '~> 0.7.0'
 
+# For html parsing
+gem 'nokogiri'
+
 # Caching with Redis
 gem 'redis-rails'
 
