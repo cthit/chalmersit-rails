@@ -19,7 +19,7 @@ module PostsHelper
   end
   def text_body body
     html_doc = Nokogiri::HTML.parse(body)
-    html_doc.text
+    html_doc.text.gsub(/\n+/, " ")
   end
   def show_event_fields?
     not @post.new_record? && @post.event?
