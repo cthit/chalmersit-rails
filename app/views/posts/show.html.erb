@@ -1,3 +1,6 @@
+<% content_for :head do %>
+  <%= post_meta(@post).html_safe %>
+<% end %>
 <% content_for :sidebar_right do %>
   <%= render 'users/sidebar', {:user => @post.user, :group => @post.group} %>
 <% end %>
