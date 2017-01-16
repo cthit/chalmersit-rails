@@ -40,7 +40,7 @@ gem 'json'
 gem 'html-pipeline'
 
 # Slack notifier
-gem 'slack-notifier'
+gem 'slack-notifier', '~> 2.0.0' 
 
 # iCalendar parsing (for example: Google calendar)
 gem 'icalendar'

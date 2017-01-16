@@ -144,6 +144,6 @@ class PostsController < ApplicationController
 
     def send_slack
       notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      notifier.ping "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}"
+      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}"
     end
 end
