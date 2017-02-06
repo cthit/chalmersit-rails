@@ -77,6 +77,8 @@ sv:
   no: Nej
   partner: Samarbetspartner
   unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
+  copy_link: Kopiera länk
+  uploaded_files: Uppladdade filer
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
 
