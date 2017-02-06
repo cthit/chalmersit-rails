@@ -33,14 +33,14 @@ class BannersController < ApplicationController
   def destroy
     @banner.destroy
     respond_to do |format|
-      format.html { redirect_to banners_url, notice: I18n.translate('model_destroyed', name: 'banner') }
+      format.html { redirect_to banners_url, notice: I18n.translate('model_destroyed', name: @banner.model_name.human) }
       format.json { head :no_content }
     end
   end
   def update
     respond_to do |format|
       if @banner.update(banner_params)
-        format.html { redirect_to @banner, notice: I18n.translate('model_updated', name: 'banner') }
+        format.html { redirect_to @banner, notice: I18n.translate('model_updated', name: @banner.model_name.human) }
         format.json { render :show, status: :ok, location: @banner }
       else
         format.html { render :edit }
