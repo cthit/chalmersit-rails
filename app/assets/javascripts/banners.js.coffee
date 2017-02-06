@@ -1,6 +1,3 @@
-jQuery ->
-  new CarrierWaveCropper()
-
 class CarrierWaveCropper
   constructor: ->
     $('#banner_image_cropbox').Jcrop
@@ -25,3 +22,5 @@ class CarrierWaveCropper
       height: Math.round(100/coords.h * $('#banner_image_cropbox').height()) + 'px'
       marginLeft: '-' + Math.round(100/coords.w * coords.x) + 'px'
       marginTop: '-' + Math.round(100/coords.h * coords.y) + 'px'
+
+new CarrierWaveCropper()
