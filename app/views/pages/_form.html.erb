@@ -2,6 +2,10 @@
   <%= render 'shared/markdown_help' %>
 <% end %>
 
+<% content_for :sidebar_right do %>
+  <%= render 'shared/file_list' %>
+<% end %>
+
 <%= simple_form_for(@page, html: { novalidate: true }) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
 
