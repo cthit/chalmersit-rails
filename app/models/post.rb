@@ -29,7 +29,7 @@ class Post < ActiveRecord::Base
   end
 
   def event?
-    not self.event.nil?
+    self.event.present?
   end
 
   def user

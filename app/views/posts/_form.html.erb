@@ -19,7 +19,7 @@
   </div>
   <%= f.simple_fields_for :event do |builder| %>
     <div class="row">
-      <%= builder.input :_destroy, as: :boolean, label: Event.model_name.human, checked: show_event_fields?, checked_value: 0, unchecked_value: 1 %>
+      <%= builder.input :_destroy, as: :boolean, label: Event.model_name.human, input_html: {checked: show_event_fields?}, checked_value: 0, unchecked_value: 1 %>
     </div>
     <fieldset id="event_fields_container" class="<%= ('hide' unless show_event_fields?) %>">
       <legend><%= Event.model_name.human %></legend>
