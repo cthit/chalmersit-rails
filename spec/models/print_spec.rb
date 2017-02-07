@@ -6,7 +6,7 @@ describe Print do
     expect(print_str).to include(' -# 100 ')
     expect(print_str).to include(" -o duplex='two-sided-long-edge'")
     expect(print_str).to include(" -o collate='True'")
-    expect(print_str).to include(" -o ranges='3, 5-7'")
+    expect(print_str).to include(" -o page-ranges='3, 5-7'")
     expect(print_str).to include(" -o ppi='600'")
     expect(print_str).to include(" -o media='A3'")
 
