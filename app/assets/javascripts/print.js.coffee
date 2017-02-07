@@ -45,7 +45,7 @@ $ ->
     $('#print_printer').on 'change', ->
       selected = $ 'option:selected', this
       setMedia selected.data('media').split(' ')
-      printer_name = selected["0"].textContent
+      printer_name = this.value
       localStorage.setItem(printer_local_storage_key, printer_name)
 
     setMedia $('#print_printer option:selected').data('media').split(' ')
