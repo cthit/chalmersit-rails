@@ -30,9 +30,8 @@ class Print
   end
 
   def options
-    [:collate, :sides, :ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt}\='#{send opt}'" }.join " "
+    [:collate, :sides, :page_ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt.to_s.dasherize}\='#{send opt}'" }.join " "
   end
-
 
   def sides
     @sides ? "two-sided-long-edge" : "one-sided"
@@ -52,6 +51,9 @@ class Print
     end
   end
 
+  def page_ranges
+    @ranges
+  end
 
   def persisted?
     false
