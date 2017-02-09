@@ -10,6 +10,22 @@
 <p>
   <%= markdown @committee.description unless @committee.description.nil? %>
 </p>
+<% @committee.positions.each do |pos| %>
+  <div class="row committee-position">
+    <% user = User.find(pos.first) %>
+    <figure class="large-2 columns"><%= image_tag user.avatar %></figure>
+      <div class="large-10 columns">
+        <% unless pos.third.nil? %>
+          <h3 class="fn"><%= user.display_name %></h3>
+          <p>
+            <% pos.third %>
+          </p>
+        <% else %>
+          <h2 class="fn"><%= user.display_name %></h2>
+        <% end %>
+      </div>
+  </div>
+<% end %>
 <% if policy(@committee).update? %>
   <% content_for :buttons, (link_to t('edit'), edit_committee_path(@committee), class: "button tiny") %>
 <% end %>

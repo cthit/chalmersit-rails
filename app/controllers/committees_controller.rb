@@ -70,6 +70,7 @@ class CommitteesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_committee
       @committee = Committee.find_by(slug: params[:id])
+      @committee.positions
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

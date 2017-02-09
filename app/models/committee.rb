@@ -8,4 +8,11 @@ class Committee < ActiveRecord::Base
   def to_param
     slug
   end
+  def positions
+    Rails.cache.fetch("positions/#{self.slug}2", expires_in: 30.minutes) do
+      group = open(Rails.configuration.account_ip+"/groups/#{slug}.json",
+      'Authorization' => "Bearer #{Rails.application.secrets.client_credentials}")
+      JSON.parse(group.read)["positions"].map { |i| i.split(';').reverse }.to_h
+    end
+  end
 end
