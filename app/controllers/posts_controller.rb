@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.comments.latest_last
-    @comment = @post.comments.build
     if request.path != post_path(@post)
       redirect_to @post, status: :moved_permanently
     end
