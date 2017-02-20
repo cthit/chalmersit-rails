@@ -16,7 +16,7 @@
     <% end %>
   <% if policy(Comment).create? %>
     <section id="respond">
-      <%= render 'comments/form' %>
+      <%= render 'comments/form', comment: @post.comments.build %>
     </section>
   <% else %>
     <section id="respond" class="message">
