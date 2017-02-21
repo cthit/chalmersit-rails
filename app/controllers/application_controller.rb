@@ -32,7 +32,8 @@ end
   end
 
   def set_background_banner
-    @banner = Banner.all.sample
+    id = Banner.all.pluck(:group_id).uniq.sample
+    @banner = Banner.where(:group_id => id).sample
   end
 
   def set_locale
