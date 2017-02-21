@@ -1,0 +1,19 @@
+<%= content_for :title, Banner.model_name.human(count:2) %>
+<%= link_to t('.new_banner'), new_banner_path, class: "button tiny" %>
+<table class="banner-list">
+  <% @banners.each do |banner| %>
+    <tr>
+      <td>
+        <%= render :partial => 'banners/banner', :locals => {:banner => banner} %>
+      </td>
+      <td>
+        <%= link_to edit_banner_path(banner) do %>
+          <button type="button" class="ui-button tiny"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+        <% end %>
+        <%= link_to banner_path(banner), :method => :delete ,:data => {:confirm => t('confirm')} do %>
+          <button type="button" class="ui-button alert tiny"><i class="fa fa-times" aria-hidden="true"></i></button>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>

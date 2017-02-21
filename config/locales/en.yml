@@ -106,6 +106,9 @@ en:
       committee:
         one: Committee
         other: Committees
+      banner:
+        one: Banner
+        other: Banners
     attributes:
       course:
         year: Year

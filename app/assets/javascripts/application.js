@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.jcrop
 //= require jquery_ujs
 //= require foundation/foundation
 //= require foundation/foundation.tooltip

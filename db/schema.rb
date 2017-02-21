@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211101004) do
+ActiveRecord::Schema.define(version: 20161215125315) do
+
+  create_table "banners", force: :cascade do |t|
+    t.string   "image",      limit: 255
+    t.string   "group_id",   limit: 20
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id",    limit: 4
@@ -66,6 +73,18 @@ ActiveRecord::Schema.define(version: 20161211101004) do
     t.datetime "updated_at",               null: false
     t.text     "value",      limit: 65535
   end
+
+  create_table "course_translations", force: :cascade do |t|
+    t.integer  "course_id",   limit: 4,     null: false
+    t.string   "locale",      limit: 255,   null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "name",        limit: 255
+    t.text     "description", limit: 65535
+  end
+
+  add_index "course_translations", ["course_id"], name: "index_course_translations_on_course_id", using: :btree
+  add_index "course_translations", ["locale"], name: "index_course_translations_on_locale", using: :btree
 
   create_table "events", force: :cascade do |t|
     t.date    "event_date"

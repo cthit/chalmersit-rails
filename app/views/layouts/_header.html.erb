@@ -32,7 +32,7 @@
     <% end %>
     <style type="text/css">
       [role="banner"] {
-        background-image: url( <%= randomized_background_image %> );
+        background-image: url( <%= @banner.nil? ? (image_path "header_styrit_16.jpg") : (image_path @banner.image) %> );
       }
     </style>
     
@@ -92,6 +92,9 @@
                   <% end %>
                   <% if policy(Sponsor).edit? %>
                     <li><%= link_to t('.edit_sponsor'), sponsors_path %></li>
+                  <% end %>
+                  <% if policy(Banner).create? %>
+                    <li><%= link_to Banner.model_name.human(:count => 2), banners_path %></li>
                   <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                   <li><%= link_to t('logout'), signout_path %></li>
