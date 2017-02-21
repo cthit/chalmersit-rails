@@ -1,0 +1,16 @@
+<%= simple_form_for(@user_group_info) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :group_id, label: t('.groupid_placeholder'),
+        collection: current_user.committees,
+        prompt: false, label_method: :name, value_method: :slug %>
+    </div>
+  </div>
+  <%= f.input :user_id %>
+  
+  <%= render 'localized_fields', f: f %>
+
+
+  <%= f.button :submit %>
+<% end %>

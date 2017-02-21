@@ -1,0 +1,12 @@
+<figure class="large-2 columns"><%= image_tag user.avatar %></figure>
+  <div class="large-10 columns">
+    <h3 class="fn"><%= position %></h3>
+    <% unless info.nil? %>
+      <h3 class="fn"><%= user.display_name %></h3>
+      <p>
+        <% info %>
+      </p>
+    <% else %>
+      <h2 class="fn"><%= user.display_name %></h2>
+    <% end %>
+  </div>

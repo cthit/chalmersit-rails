@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :user_group_infos
   get 'calendar/fetch'
 
   resources :menu_links
