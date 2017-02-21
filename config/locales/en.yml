@@ -81,6 +81,9 @@ en:
   uploaded_files: Uploaded files
   about_section: About our division
   committees_assoiciations: Committees, associations and other instances
+  form_error:
+    one: "The form contains %{count} error"
+    other: "The form contains %{count} errors"
   activerecord:
     errors:
       models:
@@ -110,6 +113,12 @@ en:
         one: Banner
         other: Banners
     attributes:
+      page:
+        slug: "Title"
+        body_en: "English body"
+        body_sv: "Swedish body"
+        title_en: "English title"
+        title_sv: "Swedish title"
       course:
         year: Year
         code: Course code

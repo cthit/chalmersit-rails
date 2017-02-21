@@ -81,6 +81,7 @@ sv:
   uploaded_files: Uppladdade filer
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
+  form_error: "Formuläret innehåller %{count} fel"
   activerecord:
     errors:
       models:
@@ -110,6 +111,12 @@ sv:
       frontpage:
         one: "Framsida"
     attributes:
+      page:
+        slug: "Titel"
+        body_en: "Engelsk brödtext"
+        body_sv: "Svensk brödtext"
+        title_en: "Engelsk titel"
+        title_sv: "Svensk titel"
       event:
         event_date: Arrangemangsdatum
         full_day: Heldag
