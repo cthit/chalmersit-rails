@@ -194,3 +194,14 @@
 		margin: 2px;
 	}
 }
+
+.post-navigation {
+	display: flex;
+
+	.button {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		margin: 0;
+	}
+}
