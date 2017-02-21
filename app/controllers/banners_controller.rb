@@ -3,7 +3,7 @@ class BannersController < ApplicationController
   before_action :authorize_banner, except: [:index, :create, :new]
 
   def index
-    @banners = Banner.all
+    @banners = policy_scope(Banner)
   end
   def show
   end

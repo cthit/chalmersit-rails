@@ -1,7 +1,7 @@
 class BannerPolicy < ApplicationPolicy
 
   def show?
-    create?
+    update?
   end
 
   def create?
@@ -18,5 +18,22 @@ class BannerPolicy < ApplicationPolicy
 
   def destroy?
     update?
+  end
+
+  class Scope
+    attr_reader :user, :scope
+
+    def initialize(user, scope)
+      @user = user
+      @scope = scope
+    end
+
+    def resolve
+      if user.admin?
+        scope.all
+      else
+        scope.where(group_id: user.committees.map{|c| c.slug})
+      end
+    end
   end
 end

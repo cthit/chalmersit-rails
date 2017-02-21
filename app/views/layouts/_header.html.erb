@@ -87,7 +87,7 @@
                   <% if policy(Sponsor).edit? %>
                     <li><%= link_to t('.edit_sponsor'), sponsors_path %></li>
                   <% end %>
-                  <% if policy(Banner).edit? %>
+                  <% if policy(Banner).create? %>
                     <li><%= link_to Banner.model_name.human(:count => 2), banners_path %></li>
                   <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
