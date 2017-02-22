@@ -30,7 +30,7 @@ class Print
   end
 
   def options
-    [:collate, :sides, :page_ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt.to_s.dasherize}\='#{send opt}'" }.join " "
+    [:collate, :sides, :page_ranges, :ppi, :media].reject{ |o| (send o).blank? }.map{ |opt| "-o #{opt.to_s.dasherize}\='#{send opt}'" }.join " "
   end
 
   def sides
