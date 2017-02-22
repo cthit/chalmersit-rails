@@ -84,6 +84,11 @@ en:
   form_error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
+  attributes:
+    body_en: "English body"
+    body_sv: "Swedish body"
+    title_en: "English title"
+    title_sv: "Swedish title"
   activerecord:
     errors:
       models:
@@ -113,12 +118,6 @@ en:
         one: Banner
         other: Banners
     attributes:
-      page:
-        slug: "Title"
-        body_en: "English body"
-        body_sv: "Swedish body"
-        title_en: "English title"
-        title_sv: "Swedish title"
       course:
         year: Year
         code: Course code
@@ -138,9 +137,13 @@ en:
         body: Body
         show_public: Show public (for visitors)
         documents: Documents
+        slug_en: "English title"
+        slug_sv: "Swedish title"
       comment:
         user_id: User
         body: Comment
+      page:
+        slug: "Title"
   activemodel:
     models:
       print: Print
