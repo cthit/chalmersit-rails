@@ -8,23 +8,23 @@ def get_all_csv
   text = xml.css('pre').children.text.strip
   CSV.parse(text, {
     col_sep: "\t",
-    header_converters: :symbol,
-    headers: true,
-    return_headers: true
-  }).drop(1)
+    header_converters: [lambda {|f| f.strip}, :symbol],
+    converters: lambda {|f| f ? f.strip : nil },
+    headers: true
+  })
 end
 
 namespace :cthit do
   desc "Update glorious printers"
   task update_printers: :environment do
     csv = get_all_csv
-    Printer.where('name NOT IN (?)', csv.map{ |c| c[:printer].strip }).delete_all
+    Printer.where('name NOT IN (?)', csv.map{ |c| c[:printer] }).delete_all
 
     csv.each do |printer|
-      pp = Printer.find_or_initialize_by(name: printer[:printer].strip)
+      pp = Printer.find_or_initialize_by(name: printer[:printer])
       pp.update_attributes({
-        location: printer[:printer].strip,
-        media: printer[:size].strip
+        location: printer[:location],
+        media: printer[:size]
       })
       puts pp
     end
