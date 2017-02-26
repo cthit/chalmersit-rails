@@ -35,10 +35,6 @@
         background-image: url( <%= @banner.nil? ? (image_path "header_styrit_16.jpg") : (image_path @banner.image) %> );
       }
     </style>
-    
-    <!-- Cut/Copy with Javascript -->
-    <%= javascript_include_tag "https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.16/dist/clipboard.min.js", async: true %>
-
   </head>
 
   <body class="<%= body_classes %>">
