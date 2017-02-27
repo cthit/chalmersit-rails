@@ -12,6 +12,8 @@
   <tbody>
     <% @user_group_infos.each do |user_group_info| %>
       <tr>
+        <td><%= user_group_info.user.id %></td>
+        <td><%= user_group_info.group.slug %></td>
         <td><%= link_to 'Show', user_group_info %></td>
         <td><%= link_to 'Edit', edit_user_group_info_path(user_group_info) %></td>
         <td><%= link_to 'Destroy', user_group_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>

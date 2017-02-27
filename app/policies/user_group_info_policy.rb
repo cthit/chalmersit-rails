@@ -24,6 +24,7 @@ class UserGroupInfoPolicy < ApplicationPolicy
     update?
   end
 
+
   class Scope
     attr_reader :user, :scope
 
@@ -33,10 +34,10 @@ class UserGroupInfoPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.present?
+      if user.admin?
         scope.all
       else
-        scope.where(show_public: true)
+        scope.where(group_id: user.committees.map{|c| c.slug})
       end
     end
   end

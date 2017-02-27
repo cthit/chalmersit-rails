@@ -4,7 +4,7 @@ class UserGroupInfosController < ApplicationController
   # GET /user_group_infos
   # GET /user_group_infos.json
   def index
-    @user_group_infos = UserGroupInfo.all
+    @user_group_infos = policy_scope(UserGroupInfo)
   end
 
   # GET /user_group_infos/1
