@@ -14,7 +14,7 @@
   <div class="row committee-position">
     <%
       user = User.find(pos.first)
-      info = UserGroupInfo.find_by_user_id_and_group_id(pos.first, @committee)
+      info = UserGroupInfo.find_by_user_id_and_group_id(pos.first, @committee.slug)
     %>
     <%= render partial: 'shared/single_position', locals: {user: user, position: pos.second, info: info }%>
   </div>

@@ -4,9 +4,15 @@
     <% unless info.nil? %>
       <h3 class="fn"><%= user.display_name %></h3>
       <p>
-        <% info %>
+        <%= info.body %>
       </p>
+      <% if policy(info).edit? %>
+        <%= link_to t('edit'), edit_user_group_info_path(info), class: "button tiny" %>
+      <% end %>
     <% else %>
       <h2 class="fn"><%= user.display_name %></h2>
+      <% if policy(UserGroupInfo).create? %>
+        <%= link_to t('create'), new_user_group_info_path, class: "button tiny" %>
+      <% end %>
     <% end %>
   </div>
