@@ -14,9 +14,9 @@
       <tr>
         <td><%= user_group_info.user.id %></td>
         <td><%= user_group_info.group.slug %></td>
-        <td><%= link_to 'Show', user_group_info %></td>
-        <td><%= link_to 'Edit', edit_user_group_info_path(user_group_info) %></td>
-        <td><%= link_to 'Destroy', user_group_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('show'), user_group_info %></td>
+        <td><%= link_to t('edit'), edit_user_group_info_path(user_group_info) %></td>
+        <td><%= link_to t('delete'), user_group_info, method: :delete, data: { confirm: t('confirm') } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New User group info', new_user_group_info_path %>
+<%= link_to t('new', name: UserGroupInfo.model_name.human.downcase), new_user_group_info_path %>

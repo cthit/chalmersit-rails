@@ -106,6 +106,7 @@ en:
       committee:
         one: Committee
         other: Committees
+      user_group_info: User group information
     attributes:
       course:
         year: Year
