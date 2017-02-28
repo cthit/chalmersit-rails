@@ -49,6 +49,10 @@ sv:
   developed_by: Utvecklad av
   more_info: mer info
   follow: Följ
+  food:
+    veg: Vegetariskt
+    fish: Fisk
+    meat: Kött
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"
