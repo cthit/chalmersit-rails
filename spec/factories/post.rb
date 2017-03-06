@@ -5,7 +5,7 @@ FactoryGirl.define do
     body_en "# Header\n\n- list\n- list2\n- list3 - EN"
     body_sv "# Header\n\n- list\n- list2\n- list3 - SV"
     sticky false
-#    association :user
+    user_id 'smurf'
     group_id 'digit'
   end
 end
