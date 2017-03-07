@@ -24,6 +24,7 @@
 //= require moment/sv.js
 //= require_tree .
 //= require i18n/translations
+//= require clipboard.js
 
 $(function(){
 

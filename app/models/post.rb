@@ -18,8 +18,6 @@ class Post < ActiveRecord::Base
 
   before_validation :generate_slug
 
-  mount_uploader :image, ArticleImageUploader
-
   def previous
     Post.where('id < ?', id).order(id: :desc).first
   end
