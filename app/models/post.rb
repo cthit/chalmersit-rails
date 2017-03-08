@@ -20,12 +20,12 @@ class Post < ActiveRecord::Base
 
   mount_uploader :image, ArticleImageUploader
 
-  def previous
-    Post.where('id < ?', id).order(id: :desc).first
+  def previous(current_user)
+    Pundit.policy_scope(current_user, Post).where('id < ?', id).order(id: :desc).first
   end
 
-  def next
-    Post.where('id > ?', id).first
+  def next(current_user)
+    Pundit.policy_scope(current_user, Post).where('id > ?', id).first
   end
 
   def event?
