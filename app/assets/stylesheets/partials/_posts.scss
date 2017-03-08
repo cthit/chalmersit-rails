@@ -198,10 +198,21 @@
 .post-navigation {
 	display: flex;
 
-	.button {
+	a {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		margin: 0;
+	}
+
+	.next-item {
+		margin-left: auto;
+
+		&::after {
+			content: "\f105";
+		}
+	}
+	.prev-item::before {
+		content: "\f104";
 	}
 }
