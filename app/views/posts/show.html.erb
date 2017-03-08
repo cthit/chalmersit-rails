@@ -25,18 +25,18 @@
   <% end -%>
 </section>
 <div class="row post-navigation">
-  <% if @post.previous(current_user).nil? %>
+  <% if get_previous(@post).nil? %>
     <div class="large-4 columns"></div>
   <% else %>
-    <%= link_to post_path(@post.previous(current_user)), rel: 'prev', class: 'large-4 columns' do %>
+    <%= link_to (post_path get_previous(@post)), rel: 'prev', class: 'large-4 columns' do %>
       <i class="fa prev-item" aria-hidden="true"> <%= t('.prev_posts') %> </i>
     <% end %>
   <% end %>
   <%= link_to t('.all_posts'), posts_path, class: 'button large-4 columns' %>
-  <% if @post.next(current_user).nil? %>
+  <% if get_next(@post).nil? %>
     <div class="large-4 columns"></div>
   <% else %>
-    <%= link_to post_path(@post.next(current_user)), rel: 'next', class: 'large-4 columns' do %>
+    <%= link_to post_path(get_next(@post)), rel: 'next', class: 'large-4 columns' do %>
       <i class="fa next-item" aria-hidden="true"> <%= t('.next_posts') %> </i>
     <% end %>
   <% end %>
