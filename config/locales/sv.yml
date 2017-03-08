@@ -81,6 +81,12 @@ sv:
   uploaded_files: Uppladdade filer
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
+  form_error: "Formuläret innehåller %{count} fel"
+  attributes:
+    body_en: "Engelsk brödtext"
+    body_sv: "Svensk brödtext"
+    title_en: "Engelsk titel"
+    title_sv: "Svensk titel"
   activerecord:
     errors:
       models:
@@ -137,6 +143,8 @@ sv:
         body: Innehåll
         show_public: Visa publikt (för besökare)
         documents: Dokument
+        slug_en: "Engelsk titel"
+        slug_sv: "Svensk titel"
       comment:
         user_id: Användare
         body: Kommentar
@@ -146,6 +154,8 @@ sv:
         description: Beskrivning
         url: URL
         email: Epost
+      page:
+        slug: "Titel"
   activemodel:
     models:
       print: Utskrift

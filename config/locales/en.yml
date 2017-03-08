@@ -81,6 +81,14 @@ en:
   uploaded_files: Uploaded files
   about_section: About our division
   committees_assoiciations: Committees, associations and other instances
+  form_error:
+    one: "The form contains %{count} error"
+    other: "The form contains %{count} errors"
+  attributes:
+    body_en: "English body"
+    body_sv: "Swedish body"
+    title_en: "English title"
+    title_sv: "Swedish title"
   activerecord:
     errors:
       models:
@@ -129,9 +137,13 @@ en:
         body: Body
         show_public: Show public (for visitors)
         documents: Documents
+        slug_en: "English title"
+        slug_sv: "Swedish title"
       comment:
         user_id: User
         body: Comment
+      page:
+        slug: "Title"
   activemodel:
     models:
       print: Print
