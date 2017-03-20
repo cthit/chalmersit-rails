@@ -13,7 +13,7 @@
 
   <ul class="author-links list">
     <li>
-      <%= link_to t('.see_all_posts_by', user: user.given_name), posts_path(user: user), class: 'read-more' %>
+      <%= link_to t('.see_all_posts_by', user: user.display_name), posts_path(user: user), class: 'read-more' %>
     </li>
   </ul>
 </section>
