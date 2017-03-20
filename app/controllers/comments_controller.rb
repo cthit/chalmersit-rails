@@ -5,9 +5,10 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params.merge(user_id: current_user.uid))
-    @comments = @post.comments.where('created_at IS NOT NULL')
+    @comment = @post.comments.build(comment_params)
+    @comment.user = current_user
 
+    authorize @comment
     respond_to do |format|
       if @comment.save
         format.html { redirect_to post_path(@post, anchor: 'comments'), notice: I18n.translate('model_created', name:I18n.translate('comment_definite')) }
@@ -23,6 +24,7 @@ class CommentsController < ApplicationController
   # DELETE /comments/1.json
   def destroy
     @post = @comment.post
+    authorize @comment
     @comment.destroy
     respond_to do |format|
       format.html { redirect_to post_path(@post, anchor: 'comments'), notice: I18n.translate('model_destroyed', name:I18n.translate('comment_definite')) }
