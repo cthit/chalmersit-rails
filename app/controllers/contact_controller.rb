@@ -11,10 +11,10 @@ class ContactController < ApplicationController
       if params[:value].blank? && !contact_params[:to_whom].blank? && Contact.available_mails.include?(contact_params[:to_whom].first)
         mail_array = contact_params[:to_whom] << contact_params[:email]
 
-        GroupMailer.anonymous_mail(mail_array, contact_params[:body], contact_params[:title]).deliver_now
+        #GroupMailer.anonymous_mail(mail_array, contact_params[:body], contact_params[:title]).deliver_now
       end
 
-      redirect_to :contact_index, flash: {notice: "your mail has been sent to " + contact_params[:to_whom].first}
+      redirect_to :contact_index, flash: {notice: "your mail has been sent to " + build_contacts_string(contact_params[:to_whom])}
   end
 
   def new
@@ -23,5 +23,12 @@ class ContactController < ApplicationController
 
   def show
   end
-
+  private
+    def build_contacts_string(contacts_arr)
+        if(contacts_arr.size <= 3)
+            contacts_arr.first
+        else
+            contacts_arr.first(contacts_arr.size - 3).join(', ') + " and " + contacts_arr.reverse.drop(2).first 
+        end
+    end
 end
