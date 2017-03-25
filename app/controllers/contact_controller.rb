@@ -25,10 +25,11 @@ class ContactController < ApplicationController
   end
   private
     def build_contacts_string(contacts_arr)
-        if(contacts_arr.size <= 3)
+        contacts_arr.delete("")
+        if(contacts_arr.size <= 1)
             return_string = contacts_arr.first
         else
-            return_string = contacts_arr.first(contacts_arr.size - 3).join(', ') + " and " + contacts_arr.reverse.drop(2).first
+            return_string = contacts_arr.first(contacts_arr.size - 1).join(', ') + " and " + contacts_arr.last
         end
         return_string.gsub("@chalmers.it","")
     end
