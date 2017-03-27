@@ -14,7 +14,7 @@ class ContactController < ApplicationController
         GroupMailer.anonymous_mail(mail_array, contact_params[:body], contact_params[:title]).deliver_now
       end
 
-      redirect_to :contact_index, flash: {notice: "your mail has been sent to " + build_contacts_string(contact_params[:to_whom])}
+      redirect_to :contact_index, flash: {notice: I18n.translate('mail_sent', recipents: build_contacts_string(contact_params[:to_whom]))}
   end
 
   def new
@@ -29,7 +29,7 @@ class ContactController < ApplicationController
         if(contacts_arr.size <= 1)
             return_string = contacts_arr.first
         else
-            return_string = contacts_arr.first(contacts_arr.size - 1).join(', ') + " and " + contacts_arr.last
+            return_string = contacts_arr.first(contacts_arr.size - 1).join(', ') + I18n.translate('and') + contacts_arr.last
         end
         return_string.gsub("@chalmers.it","")
     end
