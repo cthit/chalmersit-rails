@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 sv:
+  and: och
+  mail_sent: "Ditt mail har skickats till %{recipents}"
   page_title: Informationsteknik på Chalmers
   techsec: Teknologsektionen
   section: Sektionen

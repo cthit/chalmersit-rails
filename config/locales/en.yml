@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  and: and
+  mail_sent: "Your mail has been sent to %{recipents}" 
   page_title: Information Technology on Chalmers
   techsec: Student Division
   section: The division
