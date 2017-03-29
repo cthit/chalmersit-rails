@@ -24,6 +24,8 @@ gem 'will_paginate', '~> 3.1.0'
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
 
+gem 'secure_headers', '~> 3.6.2'
+
 gem 'i18n', '~> 0.7.0'
 
 # For html parsing

@@ -14,15 +14,15 @@
 
     <title><%= yield(:title) + ' | ' if content_for?(:title) %><%= Configurable.site_title %></title>
 
-    <link href="//fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,400italic" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700,400italic" rel="stylesheet" type="text/css">
     <% I18n.available_locales.each do |locale| %>
       <%= auto_discovery_link_tag(:rss, feed_url(locale: locale), title: t('in_locale', {name: Post.model_name.human(count: 2), lang: t(locale)})) %>
     <% end %>
     <%= javascript_include_tag "i18n" %>
     <%= javascript_include_tag "translations" %>
-    <%= javascript_tag do %>
-      I18n.defaultLocale = "<%= I18n.default_locale %>";
-      I18n.locale = "<%= I18n.locale %>";
+    <%= javascript_tag nonce: content_security_policy_nonce(:script) do %>
+      I18n.defaultLocale = "<%= j I18n.default_locale.to_s %>";
+      I18n.locale = "<%= j I18n.locale.to_s %>";
     <% end %>
     <%= stylesheet_link_tag    "application" %>
     <%= javascript_include_tag "vendor/modernizr" %>
