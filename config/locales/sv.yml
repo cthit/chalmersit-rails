@@ -107,7 +107,7 @@ sv:
         other: Kommitteér
       frontpage:
         one: "Framsida"
-      user_group_info: Användar grupp information
+      user_group_info: Användargrupp information
     attributes:
       event:
         event_date: Arrangemangsdatum
