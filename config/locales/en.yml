@@ -214,7 +214,7 @@ en:
     event_fields:
       empty_if_group: Leave blank if same as post creator
     show:
-      prev_posts: Previous news
+      prev_posts: Previous news post
       all_posts: All news
       next_posts: Next news post
       sign_in_add_comment: Sign in to add comment
