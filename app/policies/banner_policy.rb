@@ -1,5 +1,9 @@
 class BannerPolicy < ApplicationPolicy
 
+  def index?
+    false
+  end
+
   def show?
     update?
   end
@@ -29,10 +33,12 @@ class BannerPolicy < ApplicationPolicy
     end
 
     def resolve
-      if user.admin?
+      if user && user.admin?
         scope.all
-      else
+      elsif user
         scope.where(group_id: user.committees.map{|c| c.slug})
+      else
+        scope.none
       end
     end
   end
