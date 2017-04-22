@@ -31,7 +31,11 @@ class Lunch
             tag_food(content) unless content.empty?
           end.compact
         end
-        [{ name: rest_name, meals: meals, location: "Johanneberg" }]
+        unless meals.empty?
+          [{ name: rest_name, meals: meals, location: "Johanneberg" }]
+        else
+          []
+        end
       rescue
         []
       end
@@ -44,7 +48,7 @@ class Lunch
         {name: "Linsen", url: "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         {name: "Kårrestaurangen", url: "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         {name: "L's kitchen", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true&locale=#{locale}", location: "Lindholmen"},
-        {name: "Express", url: "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{locale}"},
+        {name: "Express", url: "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         #{name: "J.A Pripps", url: "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         #{name: "Restaurang Hyllan", url: "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         {name: "L's Resto", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Lindholmen"},
@@ -95,6 +99,8 @@ class Lunch
           "food.fish"
         elsif food.downcase =~ /kött|fläsk|färs|karr[eé]|kyckling|rev|biff/
           "food.meat"
+        else
+          "food.default"
         end
 
         { title: I18n.t(title), summary: food, price: 85 }

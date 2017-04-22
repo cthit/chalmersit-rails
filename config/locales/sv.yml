@@ -53,6 +53,7 @@ sv:
     veg: Vegetariskt
     fish: Fisk
     meat: Kött
+    default: Mat
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"
