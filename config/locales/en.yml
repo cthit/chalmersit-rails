@@ -51,6 +51,11 @@ en:
   developed_by: Developed by
   more_info: more info
   follow: Follow
+  food:
+    veg: Vegetarian
+    fish: Fish
+    meat: Meat
+    default: Food
   name: Name
   new: "New %{name}"
   more: "More %{model}"
