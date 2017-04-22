@@ -1,7 +1,7 @@
 class BannerPolicy < ApplicationPolicy
 
   def index?
-    false
+    create?
   end
 
   def show?
