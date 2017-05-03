@@ -17,9 +17,9 @@ class Lunch
     end
 
     def today_cached
-      #Rails.cache.fetch self do
+      Rails.cache.fetch self do
         [Lunch.einstein, Lunch.chalmrest]
-      #end
+      end
     end
 
     def einstein
