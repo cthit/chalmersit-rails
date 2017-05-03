@@ -4,6 +4,10 @@ class Lunch
     include Nokogiri
     include OpenURI
 
+    EGG_IMG_FILE_NAME = "egg-white.png"
+    GLUTEN_IMG_FILE_NAME = "gluten-white.png"
+    LACTOSE_IMG_FILE_NAME = "lacose-white.png"
+
     def cache_key
       "lunch/#{I18n.locale}/#{Date.today}"
     end
@@ -13,9 +17,9 @@ class Lunch
     end
 
     def today_cached
-      Rails.cache.fetch self do
+      #Rails.cache.fetch self do
         [Lunch.einstein, Lunch.chalmrest]
-      end
+      #end
     end
 
     def einstein
@@ -28,7 +32,11 @@ class Lunch
         meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.flat_map do |day|
           day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
             content = meal.content.gsub(/[\s\u00A0]/, ' ').strip
-            tag_food(content) unless content.empty?
+            unless content.empty?
+              the_meal = tag_food(content)
+              the_meal[:allergens] = " - N/A"
+              the_meal
+            end
           end.compact
         end
         unless meals.empty?
@@ -60,9 +68,26 @@ class Lunch
           summary, price = entry.summary.split('@')
           summary = summary.strip
           price = price.strip
-
+          if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
+            allergens = ""
+            if entry[:summary].include? EGG_IMG_FILE_NAME
+              allergens += "Ägg "
+            end
+            if entry[:summary].include? GLUTEN_IMG_FILE_NAME
+              allergens += "Gluten "
+            end
+            if entry[:summary].include? LACTOSE_IMG_FILE_NAME
+              allergens += "Laktos "
+            end
+            unless allergens.empty?
+              allergens = " - " + allergens
+              allergens = allergens[0...-1]
+            end
+          else
+            allergens = " - N/A"
+          end
           unless summary.empty?
-            { title: entry.title, summary: summary, price: price.try(&:to_i) }
+            { title: entry.title, summary: summary, price: price.try(&:to_i), allergens: allergens }
           end
         end.compact
 
