@@ -5,9 +5,9 @@ class Lunch
     include OpenURI
 
     ALLERGENS_IMAGES = {
-      "egg-white.png" => "Ägg",
-      "gluten-white.png" => "Gluten",
-      "lactose-white.png" => "Laktos"
+      "egg-white.png" => "allergens.egg",
+      "gluten-white.png" => "allergens.gluten",
+      "lactose-white.png" => "allergens.lactose"
     }
 
     def cache_key
@@ -72,8 +72,8 @@ class Lunch
           price = price.strip
           if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
             allergensArray = Array.new
-            ALLERGENS_IMAGES.each do |image_name, text|
-              allergensArray.push(text) if entry[:summary].include? image_name
+            ALLERGENS_IMAGES.each do |image_name, allergen|
+              allergensArray.push(I18n.t(allergen)) if entry[:summary].include? image_name
             end
             allergens = " - " + allergensArray.join(", ") unless allergensArray.empty?
           else

@@ -56,6 +56,10 @@ sv:
     fish: Fisk
     meat: Kött
     default: Mat
+  allergens:
+    egg: Ägg
+    gluten: Gluten
+    lactose: Laktos
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"

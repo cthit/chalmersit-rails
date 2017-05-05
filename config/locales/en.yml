@@ -56,6 +56,10 @@ en:
     fish: Fish
     meat: Meat
     default: Food
+  allergens:
+    egg: Egg
+    gluten: Gluten
+    lactose: Lactose
   name: Name
   new: "New %{name}"
   more: "More %{model}"
