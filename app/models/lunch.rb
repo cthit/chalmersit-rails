@@ -4,9 +4,11 @@ class Lunch
     include Nokogiri
     include OpenURI
 
-    EGG_IMG_FILE_NAME = "egg-white.png"
-    GLUTEN_IMG_FILE_NAME = "gluten-white.png"
-    LACTOSE_IMG_FILE_NAME = "lacose-white.png"
+    ALLERGENS_IMAGES = {
+      "egg-white.png" => "Ägg",
+      "gluten-white.png" => "Gluten",
+      "lactose-white.png" => "Laktos"
+    }
 
     def cache_key
       "lunch/#{I18n.locale}/#{Date.today}"
