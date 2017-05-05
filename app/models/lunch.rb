@@ -71,20 +71,11 @@ class Lunch
           summary = summary.strip
           price = price.strip
           if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
-            allergens = ""
-            if entry[:summary].include? EGG_IMG_FILE_NAME
-              allergens += "Ägg "
+            allergensArray = Array.new
+            ALLERGENS_IMAGES.each do |image_name, text|
+              allergensArray.push(text) if entry[:summary].include? image_name
             end
-            if entry[:summary].include? GLUTEN_IMG_FILE_NAME
-              allergens += "Gluten "
-            end
-            if entry[:summary].include? LACTOSE_IMG_FILE_NAME
-              allergens += "Laktos "
-            end
-            unless allergens.empty?
-              allergens = " - " + allergens
-              allergens = allergens[0...-1]
-            end
+            allergens = " - " + allergensArray.join(", ") unless allergensArray.empty?
           else
             allergens = " - N/A"
           end
