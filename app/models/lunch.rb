@@ -71,11 +71,7 @@ class Lunch
           summary = summary.strip
           price = price.strip
           if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
-            allergensArray = Array.new
-            ALLERGENS_IMAGES.each do |image_name, allergen|
-              allergensArray.push(I18n.t(allergen)) if entry[:summary].include? image_name
-            end
-            allergens = " - " + allergensArray.join(", ") unless allergensArray.empty?
+            allergens = get_allergens(entry)
           else
             allergens = " - N/A"
           end
@@ -122,6 +118,14 @@ class Lunch
         end
 
         { title: I18n.t(title), summary: food, price: 85 }
+      end
+
+      def get_allergens(meal_entry)
+        allergensArray = Array.new
+        ALLERGENS_IMAGES.each do |image_name, allergen|
+          allergensArray.push(I18n.t(allergen)) if meal_entry[:summary].include? image_name
+        end
+        " - " + allergensArray.join(", ") unless allergensArray.empty?
       end
 
   end
