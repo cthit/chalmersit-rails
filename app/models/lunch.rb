@@ -36,7 +36,7 @@ class Lunch
             content = meal.content.gsub(/[\s\u00A0]/, ' ').strip
             unless content.empty?
               the_meal = tag_food(content)
-              the_meal[:allergens] = " - N/A"
+              the_meal[:allergens] = nil
               the_meal
             end
           end.compact
@@ -72,8 +72,6 @@ class Lunch
           price = price.strip
           if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
             allergens = get_allergens(entry)
-          else
-            allergens = " - N/A"
           end
           unless summary.empty?
             { title: entry.title, summary: summary, price: price.try(&:to_i), allergens: allergens }
@@ -121,11 +119,9 @@ class Lunch
       end
 
       def get_allergens(meal_entry)
-        allergensArray = Array.new
-        ALLERGENS_IMAGES.each do |image_name, allergen|
-          allergensArray.push(I18n.t(allergen)) if meal_entry[:summary].include? image_name
-        end
-        " - " + allergensArray.join(", ") unless allergensArray.empty?
+        ALLERGENS_IMAGES.select do |image_name, allergen|
+          meal_entry[:summary].include? image_name
+        end.map { |key, allergen| I18n.t(allergen) }
       end
 
   end
