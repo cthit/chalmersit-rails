@@ -24,35 +24,39 @@ class Lunch
       rest_name = 'Einstein 🍨' if Date.today.friday?
       begin
         menu = Nokogiri.HTML(open(url))
-        price = 80
         week = menu.css('h2.lunch-titel').first.content.scan(/\d/).join('').to_i
         meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.flat_map do |day|
           day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
             content = meal.content.gsub(/[\s\u00A0]/, ' ').strip
-            { title: '', summary: content, price: price } unless content.empty?
+            tag_food(content) unless content.empty?
           end.compact
         end
-        [{ name: rest_name, meals: meals }]
+        unless meals.empty?
+          [{ name: rest_name, meals: meals, location: "Johanneberg" }]
+        else
+          []
+        end
       rescue
-        [{ name: rest_name, meals: {}}]
-      end.sort_by { |r| r[:name] }
+        []
+      end
     end
 
     def chalmrest
       date = Time.new.strftime("%Y-%m-%d")
       locale = I18n.locale.to_s
-      restaurants = {
-        "Linsen"            => "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true&locale=#{locale}",
-        "Kårrestaurangen"   => "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true&locale=#{locale}",
-        "L's kitchen"       => "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true&locale=#{locale}",
-        "Express"           => "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{locale}",
-        #"J.A Pripps"        => "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{locale}",
-        #"Restaurang Hyllan" => "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{locale}",
-        "L's Resto"         => "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true&locale=#{locale}",
-        "Kokboken"          => "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true&locale=#{locale}"}
+      restaurants = [
+        {name: "Linsen", url: "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        {name: "Kårrestaurangen", url: "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        {name: "L's kitchen", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true&locale=#{locale}", location: "Lindholmen"},
+        {name: "Express", url: "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        #{name: "J.A Pripps", url: "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        #{name: "Restaurang Hyllan", url: "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        {name: "L's Resto", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Lindholmen"},
+        {name: "Kokboken", url: "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Lindholmen"}
+      ]
 
-      restaurants.map do |key, url|
-        meals = Feed.fetch_and_parse(url).entries.map do |entry|
+      restaurants.map do |restaurant|
+        meals = Feed.fetch_and_parse(restaurant[:url]).entries.map do |entry|
           summary, price = entry.summary.split('@')
           summary = summary.strip
           price = price.strip
@@ -63,7 +67,7 @@ class Lunch
         end.compact
 
         unless meals.empty?
-          { name: key, meals: meals }
+          { name: restaurant[:name], meals: meals, location: restaurant[:location] }
         end
       end.compact.sort_by { |r| r[:name] }
     end
@@ -72,7 +76,7 @@ class Lunch
 
       def invalid_meal?(meal)
         desc = meal.content.gsub(/\s+\Z/, '')
-        desc.length < 5 || desc.include?('dagens sallad')
+        desc.length < 5 || desc.downcase =~ /dagens sallad|glassbuff[eé]|dagens asiatiska buffé/
       end
 
       def wday_to_date(year, week, day)
@@ -85,6 +89,21 @@ class Lunch
         day = day_block.css('h3.field-label').first.content.downcase
         date = wday_to_date(today.year, week, day)
         date == today
+      end
+
+      def tag_food(food)
+        title = if food.downcase.start_with? 'veg:'
+          food.gsub! 'Veg: ', ''
+          "food.veg"
+        elsif food.downcase =~ /fisk|torsk|spätta|skaldjur|lubb|kolja|lax/
+          "food.fish"
+        elsif food.downcase =~ /kött|fläsk|färs|karr[eé]|kyckling|rev|biff/
+          "food.meat"
+        else
+          "food.default"
+        end
+
+        { title: I18n.t(title), summary: food, price: 85 }
       end
 
   end

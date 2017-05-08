@@ -4,6 +4,7 @@ class BannersController < ApplicationController
 
   def index
     @banners = policy_scope(Banner)
+    authorize @banners
   end
   def show
   end

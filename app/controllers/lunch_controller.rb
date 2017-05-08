@@ -5,14 +5,46 @@ class LunchController < ApplicationController
   def feed
     @restaurants, @chalmers_restaurants = Lunch.today_cached
 
+    @the_restaurants = if params[:filter]
+      all_rest = @restaurants + @chalmers_restaurants
+      filter = params[:filter].downcase
+      case analyse_filter(filter)
+      when :location
+        restaurants_in(filter, all_rest)
+      when :fuzzy
+        filter_restaurants(filter, all_rest)
+      end
+    else
+      @restaurants + @chalmers_restaurants
+    end
+
     respond_to do |format|
       format.html
-      format.html.terminal { render "feed.text.erb" }
+      format.html.terminal {
+        render "feed.text.erb"
+      }
       format.text
     end
   end
   private
     def detect_curl
-      request.variant = :terminal if request.user_agent =~ /curl|libcurl/
+      request.variant = :terminal if request.user_agent =~ /curl/
+    end
+    def analyse_filter(filter)
+      if filter =~ /lindholmen|johanneberg/
+        :location
+      else
+        :fuzzy
+      end
+    end
+    def restaurants_in(location, restaurants)
+      restaurants.select do |rest|
+        rest[:location].nil? || rest[:location].downcase == location
+      end
+    end
+    def filter_restaurants(filter, restaurants)
+      restaurants.select do |rest|
+        rest[:name].downcase.include? filter
+      end
     end
 end
