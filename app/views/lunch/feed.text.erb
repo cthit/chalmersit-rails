@@ -1,4 +1,4 @@
-<% cache ["lunch/#{I18n.locale}", Date.today] do %>
+<% cache cache_key_for_restaurants do %>
 <% @the_restaurants.each do |restaurant| %>
 <%= format_rest(restaurant) %>
 <% end %>
