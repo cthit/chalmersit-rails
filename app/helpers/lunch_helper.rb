@@ -20,6 +20,10 @@ module LunchHelper
     restaurant
   end
 
+  def cache_key_for_restaurants
+    [Lunch, @the_restaurants.map{ |r| r[:name] }.sort!]
+  end
+
   def format_meal(meal, last)
     prefix = " ┃  ".frame
     meal_s = " ┣━ ".frame
