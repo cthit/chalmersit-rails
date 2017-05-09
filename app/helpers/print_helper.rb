@@ -18,6 +18,7 @@ module PrintHelper
   def connect(print, domain)
     p print_string(print)
     Net::SSH.start(domain, print.username, password: print.password, number_of_password_prompts: 0, timeout: 10) do |ssh|
+      ssh.exec! "mkdir -p .print"
       ssh.scp.upload!(print.file.path, SSH_FILENAME)
       ssh.exec! print_string(print)
     end

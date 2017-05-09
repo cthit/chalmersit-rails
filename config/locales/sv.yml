@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 sv:
+  and: " och "
+  mail_sent: "Ditt mail har skickats till %{recipents}"
   page_title: Informationsteknik på Chalmers
   techsec: Teknologsektionen
   section: Sektionen
@@ -49,6 +51,11 @@ sv:
   developed_by: Utvecklad av
   more_info: mer info
   follow: Följ
+  food:
+    veg: Vegetariskt
+    fish: Fisk
+    meat: Kött
+    default: Mat
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"
@@ -81,7 +88,12 @@ sv:
   uploaded_files: Uppladdade filer
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
-
+  form_error: "Formuläret innehåller %{count} fel"
+  attributes:
+    body_en: "Engelsk brödtext"
+    body_sv: "Svensk brödtext"
+    title_en: "Engelsk titel"
+    title_sv: "Svensk titel"
   activerecord:
     errors:
       models:
@@ -105,6 +117,9 @@ sv:
       committee:
         one: Kommitté
         other: Kommitteér
+      banner:
+        one: Banderoll
+        other: Banderoller
       frontpage:
         one: "Framsida"
       user_group_info: Användargrupp information
@@ -136,6 +151,8 @@ sv:
         body: Innehåll
         show_public: Visa publikt (för besökare)
         documents: Dokument
+        slug_en: "Engelsk titel"
+        slug_sv: "Svensk titel"
       comment:
         user_id: Användare
         body: Kommentar
@@ -145,6 +162,8 @@ sv:
         description: Beskrivning
         url: URL
         email: Epost
+      page:
+        slug: "Titel"
   activemodel:
     models:
       print: Utskrift

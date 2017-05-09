@@ -1,0 +1,12 @@
+<%= simple_form_for(@banner) do |f| %>
+  <%= f.error_notification %>
+  <div class="row">
+    <div class="large-6 columns">
+      <%= f.input :group_id, label: t('.groupid_placeholder'),
+        collection: current_user.committees,
+        prompt: false, label_method: :name, value_method: :slug %>
+    </div>
+  </div>
+  <%= f.file_field :image %>
+  <%= f.button :submit %>
+<% end %>

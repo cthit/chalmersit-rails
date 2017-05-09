@@ -13,6 +13,7 @@ class User < ActiveResource::Base
   end
 
   def self.find(id)
+    return nil unless id.present?
     Rails.cache.fetch("users/#{id}.json") do
       user = super id
       user.positions = OpenStruct.new(user.positions.attributes).to_h

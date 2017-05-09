@@ -16,20 +16,25 @@ end
 
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
-  before_action :set_committees, :set_locale
+  before_action :set_committees, :set_locale, :set_background_banner
 
   private
-    def export_i18n_messages
-      SimplesIdeias::I18n.export! if Rails.env.development?
-    end
-    def user_not_authorized
-      flash[:alert] = t 'not_authorized'
-      redirect_to(request.referrer || root_path)
-    end
+  def export_i18n_messages
+    SimplesIdeias::I18n.export! if Rails.env.development?
+  end
+  def user_not_authorized
+    flash[:alert] = t 'not_authorized'
+    redirect_to(request.referrer || root_path)
+  end
 
-    def set_committees
-      @committees = Committee.all.with_translations(I18n.locale)
-    end
+  def set_committees
+    @committees = Committee.all.with_translations(I18n.locale)
+  end
+
+  def set_background_banner
+    id = Banner.all.pluck(:group_id).uniq.sample
+    @banner = Banner.where(:group_id => id).sample
+  end
 
   def set_locale
     if current_user

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- For more information about the tech and the developers, GET /humans.txt -->
-<html lang="en">
+<html lang="<%= I18n.locale %>">
   <head>
     <meta charset="utf-8" />
 
@@ -32,13 +32,9 @@
     <% end %>
     <style type="text/css">
       [role="banner"] {
-        background-image: url( <%= randomized_background_image %> );
+        background-image: url( <%= @banner.nil? ? (image_path "header_styrit_16.jpg") : (image_path @banner.image) %> );
       }
     </style>
-    
-    <!-- Cut/Copy with Javascript -->
-    <%= javascript_include_tag "https://cdn.rawgit.com/zenorocha/clipboard.js/v1.5.16/dist/clipboard.min.js", async: true %>
-
   </head>
 
   <body class="<%= body_classes %>">
@@ -92,6 +88,9 @@
                   <% end %>
                   <% if policy(Sponsor).edit? %>
                     <li><%= link_to t('.edit_sponsor'), sponsors_path %></li>
+                  <% end %>
+                  <% if policy(Banner).create? %>
+                    <li><%= link_to Banner.model_name.human(:count => 2), banners_path %></li>
                   <% end %>
                   <li><%= link_to t('.edit_profile'), edit_user_path %></li>
                   <li><%= link_to t('logout'), signout_path %></li>

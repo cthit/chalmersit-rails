@@ -1,12 +1,3 @@
-GIT
-  remote: git://github.com/carrierwaveuploader/carrierwave.git
-  revision: b893859067d6aea497809ace68293633e1d64672
-  specs:
-    carrierwave (0.11.0)
-      activemodel (>= 4.0.0)
-      activesupport (>= 4.0.0)
-      mime-types (>= 1.16)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,6 +54,15 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-crop (0.1.2)
+      carrierwave (>= 0.8.0, < 0.11.0)
+      jquery-rails
+      rails (>= 3.2)
     chosen-rails (1.4.2)
       coffee-rails (>= 3.2)
       compass-rails (>= 2.0.4)
@@ -389,7 +389,8 @@ DEPENDENCIES
   activeresource
   better_errors
   capybara
-  carrierwave!
+  carrierwave
+  carrierwave-crop
   chosen-rails
   coffee-rails (~> 4.1.0)
   compass-rails (~> 2.0.4)

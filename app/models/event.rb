@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   scope :today, -> { where(event_date: Date.today.beginning_of_day..Date.tomorrow.beginning_of_day) }
+  validates :event_date, :start_time, :end_time, presence: true, allow_blank: false
   belongs_to :post
 
   def start_date

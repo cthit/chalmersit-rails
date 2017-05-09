@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :menu_links
   resources :menus
   resources :sponsors
+  resources :banners
 
   # Redirects (necessary due to menu system only allowing inbound links)
   get 'redirect/findit' => 'redirect#findit'
@@ -38,7 +39,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :update, :destroy]
     end
     resources :business, only: [:index]
-    get 'lunch/feed/' => 'lunch#feed'
+    get 'lunch/feed/(*filter)' => 'lunch#feed'
     get 'feed' => 'posts#index', defaults: { format: :rss }, as: :feed
 
     get 'search' => 'search#index', as: :search
