@@ -1,0 +1,19 @@
+.committee-position{
+  align-items: center;
+  display: flex;
+  .user-position {
+    color: #555555;
+    font-weight: 300;
+  }
+  .delete-link {
+    position: absolute;
+    left: 3em;
+    a {
+      font-weight: 500;
+      color: red;
+      background: rgba(245,245,245,0.7);
+      padding: 0.3em 0.7em;
+      border-radius: 2px;
+    }
+  }
+}

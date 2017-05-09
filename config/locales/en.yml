@@ -121,6 +121,7 @@ en:
       committee:
         one: Committee
         other: Committees
+      user_group_info: Usergroup information
       banner:
         one: Banner
         other: Banners

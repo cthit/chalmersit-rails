@@ -122,6 +122,7 @@ sv:
         other: Banderoller
       frontpage:
         one: "Framsida"
+      user_group_info: Användargrupp information
     attributes:
       event:
         event_date: Arrangemangsdatum

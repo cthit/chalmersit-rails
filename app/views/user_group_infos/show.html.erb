@@ -1,0 +1,7 @@
+<p id="notice"><%= notice %></p>
+<div class="row committee-position">
+  <%= render partial: 'shared/single_position', locals: {user: @user_group_info.user, position: @user_group_info.user.positions[@user_group_info.group.slug], info: @user_group_info }%>
+</div>
+
+<%= link_to 'Edit', edit_user_group_info_path(@user_group_info) %> |
+<%= link_to 'Back', user_group_infos_path %>
