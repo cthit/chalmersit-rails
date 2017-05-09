@@ -20,6 +20,8 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  and: " and "
+  mail_sent: "Your mail has been sent to %{recipents}"
   page_title: Information Technology on Chalmers
   techsec: Student Division
   section: The division
@@ -49,6 +51,11 @@ en:
   developed_by: Developed by
   more_info: more info
   follow: Follow
+  food:
+    veg: Vegetarian
+    fish: Fish
+    meat: Meat
+    default: Food
   name: Name
   new: "New %{name}"
   more: "More %{model}"
@@ -81,6 +88,14 @@ en:
   uploaded_files: Uploaded files
   about_section: About our division
   committees_assoiciations: Committees, associations and other instances
+  form_error:
+    one: "The form contains %{count} error"
+    other: "The form contains %{count} errors"
+  attributes:
+    body_en: "English body"
+    body_sv: "Swedish body"
+    title_en: "English title"
+    title_sv: "Swedish title"
   activerecord:
     errors:
       models:
@@ -107,6 +122,9 @@ en:
         one: Committee
         other: Committees
       user_group_info: Usergroup information
+      banner:
+        one: Banner
+        other: Banners
     attributes:
       course:
         year: Year
@@ -127,9 +145,13 @@ en:
         body: Body
         show_public: Show public (for visitors)
         documents: Documents
+        slug_en: "English title"
+        slug_sv: "Swedish title"
       comment:
         user_id: User
         body: Comment
+      page:
+        slug: "Title"
   activemodel:
     models:
       print: Print
@@ -198,7 +220,7 @@ en:
     event_fields:
       empty_if_group: Leave blank if same as post creator
     show:
-      prev_posts: Previous news
+      prev_posts: Previous news post
       all_posts: All news
       next_posts: Next news post
       sign_in_add_comment: Sign in to add comment

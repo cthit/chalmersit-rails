@@ -8,7 +8,7 @@ end
 class StudentUnionCardBalance
   include Capybara::DSL
 
-  CARD_BALANCE_URL = "http://kortladdning3.chalmerskonferens.se/"
+  CARD_BALANCE_URL = "https://kortladdning3.chalmerskonferens.se/"
 
   def initialize
     Capybara.default_driver = :poltergeist_debug

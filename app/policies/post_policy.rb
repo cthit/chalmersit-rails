@@ -1,7 +1,7 @@
 class PostPolicy < ApplicationPolicy
 
   def show?
-    super # TODO: https://github.com/cthit/chalmersit-rails/issues/29
+    user || record.show_public
   end
 
   def create?

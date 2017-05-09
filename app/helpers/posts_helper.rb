@@ -22,10 +22,18 @@ module PostsHelper
     html_doc.text.gsub(/\n+/, " ")
   end
   def show_event_fields?
-    not @post.new_record? && @post.event?
+    @post.event.persisted?
   end
 
   def link_to_committee(post)
     link_to post.group.name, committee_path(post.group)
+  end
+
+  def get_previous post
+    post.previous current_user
+  end
+
+  def get_next post
+    post.next current_user
   end
 end

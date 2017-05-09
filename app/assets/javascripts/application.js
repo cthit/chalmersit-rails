@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.jcrop
 //= require jquery_ujs
 //= require foundation/foundation
 //= require foundation/foundation.tooltip
@@ -23,6 +24,7 @@
 //= require moment/sv.js
 //= require_tree .
 //= require i18n/translations
+//= require clipboard.js
 
 $(function(){
 

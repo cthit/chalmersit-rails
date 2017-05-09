@@ -14,7 +14,6 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @comments = @post.comments.latest_last
-    @comment = @post.comments.build
     if request.path != post_path(@post)
       redirect_to @post, status: :moved_permanently
     end
@@ -36,7 +35,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-    @post.image = post_params[:image_upload]
+    
     unless @post.event.nil?
       unless @post.event.facebook_link.include?("http://") || @post.event.facebook_link.include?("https://") || @post.event.facebook_link.empty?
         @post.event.facebook_link.insert(0, "https://")

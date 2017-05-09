@@ -1,7 +1,7 @@
 <article role="article" class="<%= 'event' if post.event? %>">
   <div class="article-inner">
     <header>
-      <h1><%= link_to post.title, post %></h1>
+      <h1 class="huge"><%= link_to post.title, post %></h1>
       <% unless has_translation? post %>
       <div data-alert class="alert-box warning">
         <h4><%= t 'translation_missing', model: Post.model_name.human.downcase %></h4>

@@ -30,9 +30,8 @@ class Print
   end
 
   def options
-    [:collate, :sides, :ranges, :ppi, :media].select{ |o| send o }.map { |opt| "-o #{opt}\='#{send opt}'" }.join " "
+    [:collate, :sides, :page_ranges, :ppi, :media].reject{ |o| (send o).blank? }.map{ |opt| "-o #{opt.to_s.dasherize}\='#{send opt}'" }.join " "
   end
-
 
   def sides
     @sides ? "two-sided-long-edge" : "one-sided"
@@ -52,6 +51,9 @@ class Print
     end
   end
 
+  def page_ranges
+    @ranges
+  end
 
   def persisted?
     false
@@ -75,7 +77,9 @@ class Print
       errors.add(:file, :invalid_type) unless Print.permitted_mime_types.include? mime_type(file)
       errors.add_on_blank(:file) if file.nil? || !File.file?(file)
 
-      errors.add(:file, :invalid) unless File.absolute_path(file).start_with? '/tmp'
+      unless File.absolute_path(file).start_with?('/tmp') || file.is_a?(Tempfile)
+        errors.add(:file, :invalid)
+      end
     end
 
     def mime_type(file)

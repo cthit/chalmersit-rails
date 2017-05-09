@@ -1,0 +1,26 @@
+// Place all the styles related to the banner controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.banner-image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+.banner-image h3, h3 .banner-head {
+   position: absolute;
+   bottom: 20px;
+   left: 0;
+   width: 100%;
+}
+.banner-image h3 span, .banner-span {
+   color: white;
+   display: block;
+   background: rgb(0, 0, 0); /* fallback color */
+   background: rgba(0, 0, 0, 0.5);
+   padding: 10px;
+   width: 100%;
+   text-align: center;
+}
+.banner-image h3 span.spacer {
+   padding:0 5px;
+}
