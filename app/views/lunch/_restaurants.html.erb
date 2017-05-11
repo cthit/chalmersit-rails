@@ -2,7 +2,7 @@
   <h3><%= restaurant[:name] %></h3>
   <dl>
     <% restaurant[:meals].each do |meal| %>
-    <dt><%= meal[:title] %><span class=allergens><%= meal[:allergens] %></span></dt>
+    <dt><%= meal[:title] %><span class="allergens"><%= format_allergens(meal[:allergens]) %></span></dt>
     <dd><%= meal[:summary] %></dd>
     <% end %>
   </dl>
