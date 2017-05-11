@@ -4,6 +4,13 @@ class Lunch
     include Nokogiri
     include OpenURI
 
+    ALLERGENS_IMAGES = {
+      "egg-white.png" => "allergens.egg",
+      "gluten-white.png" => "allergens.gluten",
+      "lactose-white.png" => "allergens.lactose",
+      "Rennet_white.png" => "allergens.rennet"
+    }
+
     def cache_key
       "lunch/#{I18n.locale}/#{Date.today}"
     end
@@ -28,7 +35,11 @@ class Lunch
         meals = menu.css('div.field-day').select{|day| valid_date?(week, day) }.flat_map do |day|
           day.css('p').to_a.reject{|m| invalid_meal?(m) }.map do |meal|
             content = meal.content.gsub(/[\s\u00A0]/, ' ').strip
-            tag_food(content) unless content.empty?
+            unless content.empty?
+              the_meal = tag_food(content)
+              the_meal[:allergens] = nil
+              the_meal
+            end
           end.compact
         end
         unless meals.empty?
@@ -60,9 +71,11 @@ class Lunch
           summary, price = entry.summary.split('@')
           summary = summary.strip
           price = price.strip
-
+          if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
+            allergens = get_allergens(entry)
+          end
           unless summary.empty?
-            { title: entry.title, summary: summary, price: price.try(&:to_i) }
+            { title: entry.title, summary: summary, price: price.try(&:to_i), allergens: allergens }
           end
         end.compact
 
@@ -104,6 +117,12 @@ class Lunch
         end
 
         { title: I18n.t(title), summary: food, price: 85 }
+      end
+
+      def get_allergens(meal_entry)
+        ALLERGENS_IMAGES.select do |image_name, allergen|
+          meal_entry[:summary].include? image_name
+        end.map { |key, allergen| I18n.t(allergen) }
       end
 
   end
