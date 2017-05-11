@@ -60,6 +60,7 @@ sv:
     egg: Ägg
     gluten: Gluten
     lactose: Laktos
+    rennet: Löpe
   name: Namn
   new: "Ny %{name}"
   more: "Fler %{model}"

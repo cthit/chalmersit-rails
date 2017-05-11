@@ -7,7 +7,8 @@ class Lunch
     ALLERGENS_IMAGES = {
       "egg-white.png" => "allergens.egg",
       "gluten-white.png" => "allergens.gluten",
-      "lactose-white.png" => "allergens.lactose"
+      "lactose-white.png" => "allergens.lactose",
+      "Rennet_white.png" => "allergens.rennet"
     }
 
     def cache_key
