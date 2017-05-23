@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161215125315) do
+ActiveRecord::Schema.define(version: 20170214162052) do
 
   create_table "banners", force: :cascade do |t|
     t.string   "image",      limit: 255
@@ -225,6 +225,25 @@ ActiveRecord::Schema.define(version: 20161215125315) do
     t.string   "user_id",    limit: 255
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "user_group_info_translations", force: :cascade do |t|
+    t.integer  "user_group_info_id", limit: 4,   null: false
+    t.string   "locale",             limit: 255, null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "body",               limit: 255
+  end
+
+  add_index "user_group_info_translations", ["locale"], name: "index_user_group_info_translations_on_locale", using: :btree
+  add_index "user_group_info_translations", ["user_group_info_id"], name: "index_user_group_info_translations_on_user_group_info_id", using: :btree
+
+  create_table "user_group_infos", force: :cascade do |t|
+    t.string   "user_id",    limit: 20
+    t.string   "group_id",   limit: 20
+    t.string   "body",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
 end

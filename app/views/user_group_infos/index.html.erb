@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing User Group Infos</h1>
+
+    <% @user_group_infos.each do |user_group_info| %>
+        <div class="row committee-position">
+          <%= render partial: 'shared/single_position', locals: {user: user_group_info.user, position: user_group_info.user.positions[user_group_info.group.slug], info: user_group_info }%>
+          <div class="delete-link"><%= link_to t('delete'), user_group_info, method: :delete, data: { confirm: t('confirm') } %></div>
+        </div>
+    <% end %>
+
+<br>
+
+<%= link_to t('new', name: UserGroupInfo.model_name.human.downcase), new_user_group_info_path %>

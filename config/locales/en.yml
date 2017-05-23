@@ -56,6 +56,11 @@ en:
     fish: Fish
     meat: Meat
     default: Food
+  allergens:
+    egg: Egg
+    gluten: Gluten
+    lactose: Lactose
+    rennet: Rennet
   name: Name
   new: "New %{name}"
   more: "More %{model}"
@@ -121,6 +126,7 @@ en:
       committee:
         one: Committee
         other: Committees
+      user_group_info: Usergroup information
       banner:
         one: Banner
         other: Banners

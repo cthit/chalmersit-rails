@@ -60,4 +60,12 @@ module LunchHelper
   def frame_w(left, right, width)
     (left + "━" * (width + 1) + right +"\n").frame
   end
+
+  def format_allergens(allergens)
+    if allergens.nil?
+      " - N/A"
+    else
+      " - " + allergens.join(", ") unless allergens.empty?
+    end
+  end
 end
