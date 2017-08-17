@@ -3,12 +3,23 @@ class Lunch
     include Feedjira
     include Nokogiri
     include OpenURI
+    include JSON
+
+=begin
+    Allergens:
+      0 no allergens
+      1 gluten
+      2 lactose
+      3 egg
+      4 rennet
+      6 fish
+=end
 
     ALLERGENS_IMAGES = {
-      "egg-white.png" => "allergens.egg",
-      "gluten-white.png" => "allergens.gluten",
-      "lactose-white.png" => "allergens.lactose",
-      "Rennet_white.png" => "allergens.rennet"
+      3 => "allergens.egg",
+      1 => "allergens.gluten",
+      2 => "allergens.lactose",
+      4 => "allergens.rennet"
     }
 
     def cache_key
@@ -56,31 +67,39 @@ class Lunch
       date = Time.new.strftime("%Y-%m-%d")
       locale = I18n.locale.to_s
       restaurants = [
-        {name: "Linsen", url: "http://intern.chalmerskonferens.se/view/restaurant/linsen/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
-        {name: "Kårrestaurangen", url: "http://intern.chalmerskonferens.se/view/restaurant/karrestaurangen/Veckomeny.rss?today=true&locale=#{locale}", location: "Johanneberg"},
-        {name: "L's kitchen", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-kitchen/Projektor.rss?today=true&locale=#{locale}", location: "Lindholmen"},
-        {name: "Express", url: "http://intern.chalmerskonferens.se/view/restaurant/express/V%C3%A4nster.rss?today=true&locale=#{locale}", location: "Johanneberg"},
+        {name: "Linsen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=33", location: "Johanneberg"},
+        {name: "Kårrestaurangen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=5", location: "Johanneberg"},
+        {name: "L's kitchen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=8", location: "Lindholmen"},
+        {name: "Express", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=9", location: "Johanneberg"},
         #{name: "J.A Pripps", url: "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
         #{name: "Restaurang Hyllan", url: "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
-        {name: "L's Resto", url: "http://intern.chalmerskonferens.se/view/restaurant/l-s-resto/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Lindholmen"},
-        {name: "Kokboken", url: "http://intern.chalmerskonferens.se/view/restaurant/kokboken/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Lindholmen"}
+        {name: "L's Resto", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=32", location: "Lindholmen"},
+        {name: "Kokboken", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=35", location: "Lindholmen"}
       ]
 
       restaurants.map do |restaurant|
-        meals = Feed.fetch_and_parse(restaurant[:url]).entries.map do |entry|
-          summary, price = entry.summary.split('@')
-          summary = summary.strip
-          price = price.strip
-          if restaurant[:name] == "Express" || restaurant[:name] == "Kårrestaurangen"
-            allergens = get_allergens(entry)
-          end
-          unless summary.empty?
-            { title: entry.title, summary: summary, price: price.try(&:to_i), allergens: allergens }
-          end
-        end.compact
+        puts restaurant
+        data = JSON.parse(open(restaurant[:url]).read)
 
-        unless meals.empty?
-          { name: restaurant[:name], meals: meals, location: restaurant[:location] }
+        if data.key?("recipeCategories") && data["recipeCategories"] != nil
+          meals = data["recipeCategories"].map do |category|
+
+            category["recipes"].map do |recipe|
+              allergens = recipe["allergens"]
+              summary = recipe["displayNames"].first["displayName"]
+              if recipe["allergens"].first["id"] != nil
+                allergens = get_allergens(recipe["allergens"])
+              end
+              unless summary.empty?
+                { title: category["name"], summary: summary, price: recipe["price"], allergens: allergens }
+              end
+            end
+
+          end.flatten.compact
+
+          unless meals.empty?
+            { name: restaurant[:name], meals: meals, location: restaurant[:location] }
+          end
         end
       end.compact.sort_by { |r| r[:name] }
     end
@@ -119,9 +138,14 @@ class Lunch
         { title: I18n.t(title), summary: food, price: 85 }
       end
 
-      def get_allergens(meal_entry)
+      def get_allergens(allergens_entry)
+        tmp = []
+        allergens_entry.map do |e|
+          tmp.push(e["id"])
+        end
+        allergens_entry = tmp
         ALLERGENS_IMAGES.select do |image_name, allergen|
-          meal_entry[:summary].include? image_name
+          allergens_entry.include? image_name
         end.map { |key, allergen| I18n.t(allergen) }
       end
 
