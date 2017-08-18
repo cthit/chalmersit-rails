@@ -62,7 +62,7 @@ module LunchHelper
   end
 
   def format_allergens(allergens)
-    if allergens.nil?
+    if allergens.nil? || allergens.empty?
       " - N/A"
     else
       " - " + allergens.join(", ") unless allergens.empty?
