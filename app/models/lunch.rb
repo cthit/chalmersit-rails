@@ -75,20 +75,28 @@ class Lunch
         {name: "Kokboken", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=35", location: "Lindholmen"}
       ]
 
+      items = "recipeCategories"
+      name = "name"
+      recipes = "recipes"
+      recipeNames = "displayNames"
+      recipeName = "displayName"
+      price = "price"
+      allergensKey = "allergens"
+      allergenId = "id"
+
       restaurants.map do |restaurant|
         data = JSON.parse(open(restaurant[:url]).read)
-        items = "recipeCategories"
         if data.key?(items) && data[items] != nil
           meals = data[items].map do |category|
 
-            category["recipes"].map do |recipe|
-              allergens = recipe["allergens"]
-              summary = recipe["displayNames"].first["displayName"]
-              if recipe["allergens"].first["id"] != nil
-                allergens = get_allergens(recipe["allergens"])
+            category[recipes].map do |recipe|
+              allergens = recipe[allergensKey]
+              summary = recipe[recipeNames].first[recipeName]
+              if recipe[allergensKey].first[allergenId] != nil
+                allergens = get_allergens(recipe[allergensKey])
               end
               unless summary.empty?
-                { title: category["name"], summary: summary, price: recipe["price"], allergens: allergens }
+                { title: category[name], summary: summary, price: recipe[price], allergens: allergens }
               end
             end
 
