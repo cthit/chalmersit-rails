@@ -5,21 +5,19 @@ class Lunch
     include OpenURI
     include JSON
 
-=begin
-    Allergens:
-      0 no allergens
-      1 gluten
-      2 lactose
-      3 egg
-      4 rennet
-      6 fish
-=end
+    # Allergies supported in API
+    noAllergens = 0
+    gluten = 1
+    lactose = 2
+    egg = 3
+    rennet = 4
+    fish = 6
 
     ALLERGENS_IMAGES = {
-      3 => "allergens.egg",
-      1 => "allergens.gluten",
-      2 => "allergens.lactose",
-      4 => "allergens.rennet"
+      egg => "allergens.egg",
+      gluten => "allergens.gluten",
+      lactose => "allergens.lactose",
+      rennet => "allergens.rennet"
     }
 
     def cache_key
@@ -78,11 +76,10 @@ class Lunch
       ]
 
       restaurants.map do |restaurant|
-        puts restaurant
         data = JSON.parse(open(restaurant[:url]).read)
-
-        if data.key?("recipeCategories") && data["recipeCategories"] != nil
-          meals = data["recipeCategories"].map do |category|
+        items = "recipeCategories"
+        if data.key?(items) && data[items] != nil
+          meals = data[items].map do |category|
 
             category["recipes"].map do |recipe|
               allergens = recipe["allergens"]
