@@ -64,6 +64,7 @@ class Lunch
     end
 
     def chalmrest
+      locale = I18n.locale.to_s
       url = "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid="
       restaurants = [
         {name: "Linsen", id: 33, location: "Johanneberg"},
@@ -76,6 +77,7 @@ class Lunch
 
       items = "recipeCategories"
       name = "name"
+      nameEnglish = "nameEnglish"
       recipes = "recipes"
       recipeNames = "displayNames"
       recipeName = "displayName"
@@ -90,12 +92,18 @@ class Lunch
 
             category[recipes].map do |recipe|
               allergens = recipe[allergensKey]
-              summary = recipe[recipeNames].first[recipeName]
+              if locale == "sv"
+                displayName = category[name]
+                summary = recipe[recipeNames].first[recipeName]
+              else
+                displayName = category[nameEnglish]
+                summary = recipe[recipeNames][1][recipeName]
+              end
               if recipe[allergensKey].first[allergenId] != nil
                 allergens = get_allergens(recipe[allergensKey])
               end
               unless summary.empty?
-                { title: category[name], summary: summary, price: recipe[price], allergens: allergens }
+                { title: displayName, summary: summary, price: recipe[price], allergens: allergens }
               end
             end
 
