@@ -97,7 +97,7 @@ class Lunch
                 summary = recipe[recipeNames].first[recipeName]
               else
                 displayName = category[nameEnglish]
-                summary = recipe[recipeNames][1][recipeName]
+                summary = recipe[recipeNames].second[recipeName]
               end
               if recipe[allergensKey].first[allergenId] != nil
                 allergens = get_allergens(recipe[allergensKey])
