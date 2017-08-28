@@ -79,7 +79,7 @@ gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
 gem 'globalize', github: 'globalize/globalize' # Change this upon official release on rubygems
-gem 'globalize-accessors','0.2.1'
+gem 'globalize-accessors','~> 0.2.1'
 
 gem 'rest-client'
 
