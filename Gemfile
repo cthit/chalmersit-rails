@@ -123,7 +123,7 @@ gem 'net-scp', '~> 1.2.1'
 # Used for searching of selector in print
 gem 'chosen-rails'
 
-gem 'i18n-js'
+gem 'i18n-js', ">= 3.0.0.rc11"
 
 gem 'paint'
 gem 'paint-shortcuts'

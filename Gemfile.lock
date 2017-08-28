@@ -421,11 +421,11 @@ DEPENDENCIES
   gemoji
   github-markdown
   globalize!
-  globalize-accessors (= 0.2.1)
+  globalize-accessors (~> 0.2.1)
   guard-rspec
   html-pipeline
   i18n (~> 0.7.0)
-  i18n-js
+  i18n-js (>= 3.0.0.rc11)
   icalendar
   icalendar-recurrence
   jbuilder (~> 2.0)
