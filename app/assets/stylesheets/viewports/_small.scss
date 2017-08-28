@@ -114,7 +114,7 @@
 		color: #ccc;
 		display: block;
 		padding: .5em .5em 0;
-		@include transition(background-color .15s ease-out);
+		@include transition(background-color, .15s, ease-out);
 
 		&:hover {
 			background-color: rgba(#000, .4);
@@ -150,7 +150,7 @@
 		top: 20px;
 		font-size: 40px;
 		cursor: pointer;
-		@include transition(all .15s ease-out);
+		@include transition(all, .15s, ease-out);
 		-webkit-tap-highlight-color: transparent;
 
 		&:hover {
