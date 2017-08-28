@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
-
+gem 'rails', '5.0.1'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
-gem 'compass-rails', '~> 2.0.4'
+gem 'compass-rails', '~> 3.0.2'
 # Foundation styles
 gem 'foundation-rails', '~> 5.5.0'
 # Font awesome!!!
@@ -79,8 +78,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
-gem 'globalize', '~> 5.0.1'
-gem 'globalize-accessors', '~> 0.2.1'
+gem 'globalize', github: 'globalize/globalize' # Change this upon official release on rubygems
+gem 'globalize-accessors','0.2.1'
 
 gem 'rest-client'
 
