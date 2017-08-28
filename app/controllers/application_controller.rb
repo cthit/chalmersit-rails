@@ -20,7 +20,7 @@ end
 
   private
   def export_i18n_messages
-    SimplesIdeias::I18n.export! if Rails.env.development?
+    I18n::JS.export if Rails.env.development?
   end
   def user_not_authorized
     flash[:alert] = t 'not_authorized'
