@@ -37,6 +37,7 @@ gem 'sanitize'
 gem 'gemoji'
 gem 'json'
 gem 'html-pipeline'
+gem 'commonmarker'
 
 # Slack notifier
 gem 'slack-notifier', '~> 2.0.0'
