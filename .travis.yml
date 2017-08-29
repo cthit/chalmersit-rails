@@ -3,7 +3,7 @@ cache: bundler
 bundler_args: "--without guard --deployment"
 sudo: false
 rvm:
-- 2.1.0
+- 2.4.0
 before_script:
 - mysql -e 'create database chalmersit_test;'
 - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
