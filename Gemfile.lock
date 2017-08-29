@@ -7,6 +7,14 @@ GIT
       activerecord (>= 4.2, < 5.2)
       request_store (~> 1.0)
 
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: edaf9cb926ee9c59c59729e7a4f8c206b44da8a1
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -355,8 +363,6 @@ GEM
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
     shellany (0.0.1)
-    shoulda-matchers (3.1.2)
-      activesupport (>= 4.0.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -451,7 +457,7 @@ DEPENDENCIES
   sanitize
   sass-rails (~> 5.0.1)
   sdoc (~> 0.4.0)
-  shoulda-matchers
+  shoulda-matchers!
   simple_form
   slack-notifier (~> 2.0.0)
   spring
