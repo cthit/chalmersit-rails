@@ -1,0 +1,70 @@
+// Variables
+
+$smurf:					#09cdda;
+$comp:					#f34924;
+$dark: 					#002224;
+$bg:					#f1f1f1;
+$grey:					#697273;
+$light:					#8b8b8b;
+$teal:					#486163;
+
+$bodycolor:				#323232;
+$btn-color: 			#44AEDB;
+$btn-disabled-color:	#eee;
+
+$link-color:			#2CA0D1;
+$link-hover-color:		saturate($link-color, 20%);
+
+$notice-color:			#FFEC80;
+$positive-color:		#47870B;
+$dangerous-color:		#ED2B41;
+
+// Typography
+
+$sans:					"Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
+$bodyfont:				"Helvetica Neue", Helvetica, Arial, sans-serif;
+$mono:					Monaco, Courier, "Courier New", monospace;
+
+$custom-base-size:		14;
+$leading:				21;
+
+$fontsize:				$custom-base-size/16 * 1em;
+$lineheight:			($leading/$custom-base-size) * 1em;
+
+$gutter-width:			$lineheight / 2;
+
+
+// ZURB Modular Scale Settings
+
+// http://www.modularscale.com by Tim Brown
+// https://github.com/scottkellum/modular-scale by scottkellum
+// Ratio: golden
+
+$baseFontSize: 			$custom-base-size * 1px;
+$importantModNum: 		44px;
+
+// Viewport
+
+$page-margin:			3%;
+$page-max-width:		100%;
+
+// Viewports
+
+$screenXSmall: 			500px;
+$screenSmall: 			767px;
+$screenMedium: 			959px;
+$screenXlarge:			1441px;
+
+// Modal widths
+
+$modal-width:			80%;
+
+// Settings file containing Foundation defaults
+
+// Grid Settings
+
+// $rowWidth: 			1000px;
+$columnGutter: 			1%;
+// $totalColumns: 		12;
+// $mobileTotalColumns: 4;
+// $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported

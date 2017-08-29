@@ -1,0 +1,27 @@
+// Place all the styles related to the Posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.article-content {
+  // font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+  h1 { font-size: rem-calc(37); }
+  h2 { font-size: rem-calc(28); margin-bottom: 5px; font-weight: 400; }
+  h3 { font-size: rem-calc(16); margin-bottom: 0; font-weight: 500; }
+  h4 { font-size: rem-calc(14); margin-bottom: 0; font-weight: 500; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.9rem; }
+
+  pre { overflow: auto; }
+}
+.article-single-attachment{
+  font-size: 18px;
+}
+
+.image-upload-button {
+    input {
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+    }
+}

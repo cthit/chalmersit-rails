@@ -1,0 +1,109 @@
+/*
+	BOOKINGS
+	--------------------------------
+ */
+
+.page-bokning {
+	.bookingtabs {
+		text-align: right;
+	}
+
+	.it-calendar {
+		width: 100%;
+	}
+
+	.booking-list {
+		list-style: none;
+
+		dl {
+			margin: 0;
+			display: table;
+		}
+
+		dt, dd {
+			display: table-cell;
+			padding-right: 10px;
+		}
+
+		li {
+			cursor: pointer;
+			padding: 5px;
+			border-bottom: 1px solid #ddd;
+
+			&:nth-child(odd) {
+				background-color: #f8f8f8;
+			}
+
+			&:hover {
+				background-color: lighten($link-color, 45%);
+			}
+
+			&.collapsed {
+				
+			}
+		}
+
+		.booking-details {
+			padding: .5em;
+			background-color: #dedede;
+			margin: 5px -5px -5px;
+			color: $bodycolor;
+			@include box-shadow(inset rgba(#000, .2) 0 2px 3px);
+		}
+	}
+
+	article {
+		p {
+			margin: $lineheight 0;
+		}
+	}
+
+	.title-container {
+		input {
+			font-size: 1.3em;
+			width: 100%;
+		}
+	}
+
+	.booking-dates {
+		font-size: 1.2em;
+	}
+
+	.booking-dates-container,
+	.phone-and-groups-container,
+	.party-info-container ul {
+		list-style: none;
+
+		li {
+			display: inline-block;
+			margin: 0 .5em;
+		}
+	}
+
+	#user-groups {
+		width: 140px;
+	}
+
+	.contact-details-container {
+		list-style: none;
+
+		input {
+			width: 100%;
+		}
+
+		li {
+			width: 48%;
+			display: inline-block;
+		}
+	}
+
+	.submit-container {
+		text-align: right;
+	}
+
+	.booking-listing {
+		li {
+			cursor: default;
+		}
+	}
+}

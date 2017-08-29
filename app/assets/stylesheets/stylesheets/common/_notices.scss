@@ -1,0 +1,54 @@
+/* NOTICES and MESSAGES 
+------------------------------------ */
+
+%message {
+	font-weight: bold;
+	padding: .5em .6em;
+	border: 1px solid;
+	text-align: center;
+	margin: $lineheight / 2 0;
+
+	text-shadow: rgba(#fff, .5) 0 1px 0;
+	@include box-shadow(
+		rgba(#000, 0.1) 0 2px 13px
+		);
+
+	&.small {
+		padding: .3em;
+		font-size: .9em;
+	}
+
+	p {
+		margin: 0 0 $lineheight !important;
+	}
+}
+
+.message-notice {
+	@extend %message;
+	background-color: $notice-color;
+	border-color: darken($notice-color, 30%);
+	color: darken($notice-color, 55%);
+}
+
+.message-positive {
+	text-align: center;
+	font-weight: bold;
+	color: $positive-color;
+	font-size: to_em(18);
+}
+
+.message-warning {
+	@extend %message;
+	@include background(linear-gradient(
+		$dangerous-color, 
+		darken($dangerous-color, 5%) ));	
+
+	border-color: darken($dangerous-color, 10%);
+	color: #fff;
+	text-shadow: rgba(#000, .3) 0 -1px 0;
+
+	ul, ol {
+		text-align: left;
+		margin: $lineheight / 2 5%;
+	}
+}

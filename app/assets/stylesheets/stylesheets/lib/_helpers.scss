@@ -1,0 +1,251 @@
+/*	=HELPERS
+----------------------------------------------------------------------*/
+
+.group {
+	@include clearfix;
+}
+
+.clear {
+	clear: both;
+	display: block;
+	height: 1px;
+	margin: -1px 0 0 0;
+}
+
+.block, .block img {
+	display: block;
+}
+
+a.block:hover {
+	text-decoration: none;
+	border: 0;
+}
+
+.box {
+	@include box;
+	box-shadow: 0 5px 15px rgba(0,0,0,.1);
+	border-radius: 2px;
+}
+
+.sep {
+	display: inline-block;
+	margin: 0 3px;
+	font-weight: 300;
+	color: #999;
+}
+
+.subtle-border {
+	@include inset-border;
+}
+a.subtle-border {
+	display: block;
+}
+
+
+.back::before {
+	content: "← ";
+}
+
+.read-more::after {
+	content: " →";
+}
+
+.read-more {
+	margin: 0;
+}
+
+%info {
+	color: $grey;
+}
+
+.meta {
+	@extend %info;
+}
+
+.description {
+	@extend %info;
+	font-size: to_em(13);
+	line-height: 1.5;
+}
+
+.no-content {
+	@extend %info;
+	font-weight: 500;
+}
+
+.logo {
+	small {
+		color: white;
+		font-size: to_em(7);
+	}
+	&:hover, &:focus {
+    text-decoration: none;
+    color: white;
+  }
+  line-height: .7;
+	display: table-cell;
+	vertical-align: middle;
+	background: asset-url('itlogo.svg') no-repeat;
+  background-size: 88px;
+  color: white;
+	height: 88px;
+	width: 100%;
+  padding-left: 95px;
+  font-weight: normal;
+
+	&:active {
+		opacity: .9;
+	}
+}
+
+.label {
+	@include label;
+}
+
+// .required {
+// 	color: darken($dangerous-color, 10%);
+// 	font-weight: bold;
+// 	font-size: 1.2em;
+// }
+
+.plain-link {
+	@include plain-links;
+}
+
+.ingress {
+	font-size: 1.2em;
+	color: $grey;
+}
+
+.rss-link {
+	@include icon("\f09e", $margin: 0 5px 0 0);
+
+	&::before {
+		color: $comp;
+	}
+}
+
+.post-tag {
+	display: inline-block;
+	@include border-radius(3px);
+	@include background($smurf linear-gradient(#b1e1f5, #7fc6e4));
+	padding: 0 6px;
+	font-size: .9em;
+	color: $teal;
+	font-weight: 500;
+	border: 1px solid $teal;
+	border-color: darken(rgba($teal, .3), 10%);
+
+	&:hover {
+		text-decoration: none;
+		border-color: darken(rgba($teal, .6), 10%);
+	}
+
+	&:active {
+		@include background($smurf linear-gradient(#7fc6e4, #96d0e7));
+		color: darken($teal, 10%);
+	}
+}
+
+.panel-header {
+	position: relative;
+	background-color: $dark;
+	padding: .5em;
+	color: #fff;
+	margin-bottom: $lineheight;
+
+	h1 {
+		color: #fff;
+		font-size: to_em(14);
+		font-weight: 500;
+		text-transform: uppercase;
+		letter-spacing: 1px;
+		margin-bottom: 0;
+	}
+
+	.header-more {
+		position: absolute;
+		right: 4%;
+		top: 4px;
+		color: #fff;
+		font-size: to_em(13);
+
+		&::after {
+			content: " →";
+		}
+	}
+}
+
+.notice {
+	color: #fff;
+	background-color: darken($bg, 30%);
+	margin: $lineheight 0;
+	padding: .5em 1%;
+
+	@include border-radius(3px);
+	@include box-shadow(rgba(#000, .8) 0 1px 2px);
+
+	h1 {
+		font-size: to_em(22);
+		font-weight: normal;
+	}
+
+	p {
+		font-size: to_em(12);
+		margin: $lineheight / 2 0;
+	}
+}
+
+/* Icons */
+
+.hidden {
+	display: none;
+}
+
+.positive {
+	color: green;
+}
+
+.negative {
+	color: #D60000;
+}
+
+/* Alignment (Wordpress classes) */
+
+.center {
+	text-align: center;
+}
+
+.right {
+	text-align: right;
+}
+.left {
+	text-align: left;
+}
+
+.alignright {
+	float: right;
+	margin-left: 3%;
+}
+
+.alignleft {
+	float: left;
+	margin-right: 3%;
+}
+
+.alignmiddle {
+	display: block;
+	margin: 0 auto;
+	float: none;
+}
+
+/* Gnäll-Anno */
+.sexit {
+	text-transform: uppercase;
+	font-size: .9em;
+
+	strong {
+		font-weight: 500;
+		font-size: 1.4em;
+	}
+}

@@ -1,0 +1,26 @@
+/*	= EXTRA SMALL SCREENS
+-------------------------------------------- */
+
+@media only screen and (max-width: $screenXSmall) {
+	
+	#your-profile {
+		.form-table {
+			width: 100%;
+
+			th {
+				padding: 0 !important;
+			}
+
+			th, td {
+				display: block;
+				width: 100%;
+				padding-left: 0 !important;
+				padding-right: 0 !important;
+			}
+
+			input, textarea {
+				width: 100%;
+			}
+		}
+	}
+}

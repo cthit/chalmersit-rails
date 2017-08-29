@@ -1,0 +1,17 @@
+#documents_container input[type="file"]{
+  width:80%;
+}
+.documents-input-container{
+  width: 100%;
+  display: flex;
+}
+.add-file-button {
+  width:20%;
+  display: none;
+}
+.documents-input-container:last-child .add-file-button{
+  display: inline-block;
+}
+.rem-file-button{
+  width: 20%;
+}

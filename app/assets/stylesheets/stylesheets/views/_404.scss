@@ -1,0 +1,63 @@
+/* =404 PAGE
+--------------------------------- */
+
+.error404 {
+	margin-top: $lineheight*2;
+
+	[role="banner"] {
+		text-align: center;
+		border: 0;
+		height: auto;
+		background: none;
+		@include box-shadow(none);
+
+		h1 {
+			position: static;
+
+			a {
+				background-image: image-url("logo-dark-txt.png");
+				margin: 0 auto;
+			}
+		}
+	}
+
+	[role="navigation"].main-nav {
+		float: none;
+		margin: $lineheight / 2 auto;
+
+		a {
+			color: $grey;
+
+			&:hover {
+				color: darken($grey, 10%);
+			}
+		}
+	}
+
+	.page-title {
+		text-align: center;
+
+		h2 {
+			font-size: to_em(24);
+		}
+	}
+
+	[role="main"] {
+		@include box;
+		padding: $lineheight*2 $gutter-width;
+		width: 95%;
+		max-width: 50em;
+		margin: 0 auto;
+	}
+
+	.article-content {
+		width: 100%;
+		margin: 0 auto;
+		max-width: 35em;
+	}
+
+	[role="search"] {
+		text-align: center;
+		font-size: 1.4em;
+	}
+}
