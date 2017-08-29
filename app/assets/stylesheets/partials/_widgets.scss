@@ -26,7 +26,7 @@ li.widget {
 
 .footer-widgets {
 	img {
-		@include transition(opacity .15s ease-out);
+		@include transition(opacity, .15s, ease-out);
 		max-width: 50%;
 		opacity: .7;
 

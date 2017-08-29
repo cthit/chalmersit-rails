@@ -46,7 +46,7 @@
 
 			a {
 				@include plain-links;
-				@include transition(color .15s ease-out);
+				@include transition(color, .15s, ease-out);
 			}
 
 			&:hover a {

@@ -16,7 +16,7 @@
 
 	#pass-strength-result {
 		float: none !important;
-		@include transition(all .2s ease-out);
+		@include transition(all, .2s, ease-out);
 		margin: $lineheight 0 0;
 
 		&::before {
@@ -77,7 +77,7 @@
 	#user-avatar-display {
 		overflow: hidden;
 		text-align: center;
-		
+
 		a {
 			display: block;
 			font-size: 1.3em;
