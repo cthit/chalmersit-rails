@@ -3,6 +3,7 @@ require 'active_resource'
 class User < ActiveResource::Base
   extend ActiveModel::Naming
   self.site = Rails.configuration.account_ip
+  attr_writer :committees
 
   def posts
     @posts ||= Post.where(user_id: id)

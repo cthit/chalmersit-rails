@@ -9,6 +9,7 @@ class Post < ActiveRecord::Base
 
   translates :title, :body, :slug
   globalize_accessors
+  attr_writer :group
 
   validates *globalize_attribute_names, :user_id, :group_id, presence: true, allow_blank: false
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 3..100 }
