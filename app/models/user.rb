@@ -33,7 +33,8 @@ class User < ActiveResource::Base
   end
 
   def committees_include_any?(committee)
-    !(committee & groups).empty?
+    memberlist = committees.map(&:slug)
+    !(committee & memberlist).empty?
   end
 
   def self.headers
