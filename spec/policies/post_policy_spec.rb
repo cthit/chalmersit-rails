@@ -6,10 +6,9 @@ describe PostPolicy, type: :policy do
   permissions :update? do
     it "should allow update if user in committee" do
       committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = committee
 
       expect(subject).to permit(user, post)
@@ -18,10 +17,9 @@ describe PostPolicy, type: :policy do
     it "should disallow update if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = other_committee
 
       expect(subject).not_to permit(user, post)
@@ -31,10 +29,9 @@ describe PostPolicy, type: :policy do
   permissions :edit? do
     it "should allow edit if user in committee" do
       committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = committee
 
       expect(subject).to permit(user, post)
@@ -43,10 +40,9 @@ describe PostPolicy, type: :policy do
     it "should disallow edit if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = other_committee
       expect(subject).not_to permit(user, post)
     end
@@ -55,10 +51,9 @@ describe PostPolicy, type: :policy do
   permissions :destroy? do
     it "should allow destroy if user in committee" do
       committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = committee
 
       expect(subject).to permit(user, post)
@@ -67,10 +62,9 @@ describe PostPolicy, type: :policy do
     it "should disallow destroy if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      user = build(:committee_user)
+      user = build(:user, committees: [committee])
       post = build(:post)
 
-      user.committees = [committee]
       post.group = other_committee
 
       expect(subject).not_to permit(user, post)
