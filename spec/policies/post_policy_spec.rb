@@ -18,7 +18,6 @@ describe PostPolicy, type: :policy do
     it "should disallow update if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      other_committee.slug = "another"
       user = build(:committee_user)
       post = build(:post)
 
@@ -44,7 +43,6 @@ describe PostPolicy, type: :policy do
     it "should disallow edit if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      other_committee.slug = "another"
       user = build(:committee_user)
       post = build(:post)
 
@@ -69,7 +67,6 @@ describe PostPolicy, type: :policy do
     it "should disallow destroy if user not in same committee" do
       committee = build(:committee)
       other_committee = build(:committee)
-      other_committee.slug = "another"
       user = build(:committee_user)
       post = build(:post)
 

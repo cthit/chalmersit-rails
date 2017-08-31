@@ -1,9 +1,9 @@
 FactoryGirl.define do
   factory :committee do
-    name "SmurfIT"
-    slug "smurfcommittee"
+    name { "#{Faker::Lovecraft.word}IT" }
+    slug { name.downcase }
     url "chalmers.it"
-    email "smurf@chalmers.it"
+    email { "#{slug}@chalmers.it" }
     title_sv "Smurfkommittén"
     title_en "Smurf committee"
     description_sv "Testkommittén"
