@@ -3,15 +3,14 @@ class Post < ActiveRecord::Base
 
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
-  belongs_to :group, class_name: 'Committee'
+  belongs_to :group, class_name: 'Committee', primary_key: :slug, foreign_key: :group_id
 
   accepts_nested_attributes_for :event, allow_destroy: true
 
   translates :title, :body, :slug
   globalize_accessors
-  attr_writer :group
 
-  validates *globalize_attribute_names, :user_id, :group_id, presence: true, allow_blank: false
+  validates *globalize_attribute_names, :user_id, :group, presence: true, allow_blank: false
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("title")}), length: { in: 3..100 }
   validates *(globalize_attribute_names.select{|a| a.to_s.include?("body")}), length: { in: 10..10000 }
   validates :sticky, inclusion: { in: [true, false] }
@@ -37,10 +36,6 @@ class Post < ActiveRecord::Base
     rescue
       @user = User.new(id: user_id, display_name: user_id)
     end
-  end
-
-  def group
-    @group ||= Committee.find_by(slug: group_id)
   end
 
   def to_param
