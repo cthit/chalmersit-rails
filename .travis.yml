@@ -6,6 +6,7 @@ rvm:
 - 2.4.0
 addons:
   apt:
+    packages:
     - cmake
 before_script:
 - mysql -e 'create database chalmersit_test;'
