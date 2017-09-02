@@ -1,13 +1,1 @@
-    <header>
-        <h2><%= t '.events' %></h2>
-    </header>
-    <% cache ['home_calendar', I18n.locale], expires_in: 1.hour do  %>
-        <div class="gce-widget-grid">
-            <%= calendar Configurable.calendar_url %>
-        </div>
-        <script>
-        	$(document).foundation();
-        </script>
-    <% end %>
-
-	<a class="button secondary smaller block" target="_blank" href="<%= Configurable.calendar_url %>"><i class="fa fa-calendar"></i> <%= t '.subscribe' %></a>
+<%= render 'fetch' %>

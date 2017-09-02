@@ -26,7 +26,8 @@ $ ->
   $.get $('.lunch-loader').attr('data-url'), (data) ->
     $('.lunch-loader').replaceWith(data)
 
-  $('.it-calendar').load($('.it-calendar').attr('data-url'))
+  $.get $('.calendar-loader').attr('data-url'), (data) ->
+    $('.calendar-loader').replaceWith(data)
 
   $('#student-union-card').on 'click', '#card-balance-submit', ->
     $('#student-union-error').removeClass("message alert-box")
