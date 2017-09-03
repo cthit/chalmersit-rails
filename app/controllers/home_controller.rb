@@ -7,6 +7,8 @@ class HomeController < ApplicationController
     if Lunch.cache_present?
       @restaurants, @chalmers_restaurants = Lunch.today_cached
     end
+
+    @calendar = Calendar.new
   end
 
   def card_balance

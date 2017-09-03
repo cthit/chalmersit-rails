@@ -47,3 +47,7 @@ calendar_url:
   name: Calendar URL
   type: string
   default: "https://calendar.google.com/calendar/ical/a55ipd3o49n05cd2eebqo854qs%40group.calendar.google.com/public/basic.ics"
+calendar_subscription_url:
+  name: Calendar Subscription URL
+  type: string
+  default: "https://calendar.google.com/calendar/embed?src=a55ipd3o49n05cd2eebqo854qs@group.calendar.google.com"

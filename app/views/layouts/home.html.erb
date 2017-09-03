@@ -62,15 +62,21 @@
     <% end %>
   </div>
   <div class="large-3 medium-6 columns">
-    <section class="box widget it-calendar" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
+    <section class="box widget">
       <header>
-          <h2><%= t '.events' %></h2>
+        <h2><%= t '.events' %></h2>
       </header>
 
-      <div class="loading-indicator">
-        <i class="fa fa-calendar loading-indicator-feature"></i>
-        <div class="loading-indicator-text"><%= t 'loading' %>...</div>
-      </div>
+        <% if @calendar.cache_present? %>
+          <%= render 'calendar/fetch' %>
+        <% else %>
+          <div class="calendar-loader" data-url="<%= url_for controller: 'calendar', action: 'fetch' %>">
+            <div class="loading-indicator">
+              <i class="fa fa-calendar loading-indicator-feature"></i>
+              <div class="loading-indicator-text"><%= t 'loading' %>...</div>
+            </div>
+          </div>
+        <% end -%>
     </section>
 
     <section class="box widget card-balance">
