@@ -9,7 +9,7 @@ class Calendar
   end
 
   def cache_key
-    "calendar/#{ @date }"
+    "calendar/#{I18n.locale}/#{@date}"
   end
 
   def cache_present?

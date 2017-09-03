@@ -2,7 +2,7 @@ module CalendarHelper
 
   def header
     content_tag :tr do
-      Date::DAYNAMES.rotate.map { |day| content_tag :th, day[0].upcase, title: day }.join.html_safe
+      I18n.t(:"date.day_names").rotate.map { |day| content_tag :th, day[0].upcase, title: day }.join.html_safe
     end
   end
 
