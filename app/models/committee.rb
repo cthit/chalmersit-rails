@@ -1,4 +1,5 @@
 class Committee < ActiveRecord::Base
+  has_many :posts, primary_key: :slug, foreign_key: :group_id
   translates :title, :description
   globalize_accessors
 

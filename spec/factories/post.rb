@@ -6,6 +6,6 @@ FactoryGirl.define do
     body_sv "# Header\n\n- list\n- list2\n- list3 - SV"
     sticky false
     user_id 'smurf'
-    group_id 'digit'
+    association :group, factory: :committee
   end
 end

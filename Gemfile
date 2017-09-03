@@ -1,12 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
-
+gem 'rails', '5.0.2'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
-gem 'compass-rails', '~> 2.0.4'
+gem 'compass-rails', '~> 3.0.2'
 # Foundation styles
 gem 'foundation-rails', '~> 5.5.0'
 # Font awesome!!!
@@ -38,6 +37,7 @@ gem 'sanitize'
 gem 'gemoji'
 gem 'json'
 gem 'html-pipeline'
+gem 'commonmarker'
 
 # Slack notifier
 gem 'slack-notifier', '~> 2.0.0'
@@ -79,8 +79,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
-gem 'globalize', '~> 5.0.1'
-gem 'globalize-accessors', '~> 0.2.1'
+gem 'globalize', github: 'globalize/globalize' # Change this upon official release on rubygems
+gem 'globalize-accessors','~> 0.2.1'
 
 gem 'rest-client'
 
@@ -100,7 +100,8 @@ gem 'rspec-rails', group: [:test, :development]
 group :test do
   gem 'factory_girl_rails'
   gem 'guard-rspec'
-  gem 'shoulda-matchers', require: false
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'faker'
 end
 
 # Multi-fragment caching
@@ -124,7 +125,7 @@ gem 'net-scp', '~> 1.2.1'
 # Used for searching of selector in print
 gem 'chosen-rails'
 
-gem 'i18n-js'
+gem 'i18n-js', '>= 3.0.0.rc11'
 
 gem 'paint'
 gem 'paint-shortcuts'

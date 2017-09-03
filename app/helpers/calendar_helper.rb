@@ -6,7 +6,7 @@ module CalendarHelper
 
   def calendar_data(url, date)
     cal_data = Net::HTTP.get(URI.parse(url))
-    cals = Icalendar.parse(cal_data)
+    cals = Icalendar::Calendar.parse cal_data
     calendar = cals.first;
     events = calendar.events
 

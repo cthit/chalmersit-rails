@@ -5,17 +5,17 @@ describe PagePolicy, type: :policy do
 
   permissions :update? do
     it "should allow update if user in page_admins" do
-      committee = "snit"
-      user = build(:committee_user)
-      user.groups = [committee]
+      committee = build(:committee, slug: Page.page_admins.first)
+      user = build(:user)
+      user.committees = [committee]
       page = build(:page)
       expect(subject).to permit(user, page)
     end
 
     it "should disallow update if user not in page_admins" do
-      committee = "nollkit"
-      user = build(:committee_user)
-      user.groups = [committee]
+      committee = build(:committee)
+      user = build(:user)
+      user.committees = [committee]
       page = build(:page)
       expect(subject).not_to permit(user, page)
     end

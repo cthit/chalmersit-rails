@@ -60,7 +60,7 @@ textarea {
 }
 
 [role="banner"] input[type="search"] {
-	@include transition(all .2s ease-out);
+	@include transition(all, .2s, ease-out);
 	width: 120px;
 	height: 38px;
 	margin: 0;

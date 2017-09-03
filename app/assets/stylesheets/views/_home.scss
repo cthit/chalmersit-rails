@@ -175,7 +175,7 @@
 			opacity: .8;
 			top: 0;
 			height: auto;
-			@include transition(all .2s ease-out);
+			@include transition(all, .2s, ease-out);
 
 			&:hover {
 				opacity: 1.0;
@@ -357,7 +357,7 @@
 		}
 
 		a, time {
-			@include transition(color .15s ease-out);
+			@include transition(color, .15s, ease-out);
 		}
 
 		.comment-author {
