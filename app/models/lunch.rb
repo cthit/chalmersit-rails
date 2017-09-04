@@ -70,7 +70,7 @@ class Lunch
         {name: "Linsen", id: 33, location: "Johanneberg"},
         {name: "Kårrestaurangen", id: 5, location: "Johanneberg"},
         {name: "L's kitchen", id: 8, location: "Lindholmen"},
-        {name: "Express", id: 9, location: "Johanneberg"},
+        {name: "Express", id: 7, location: "Johanneberg"},
         {name: "L's Resto", id: 32, location: "Lindholmen"},
         {name: "Kokboken", id: 35, location: "Lindholmen"}
       ]
