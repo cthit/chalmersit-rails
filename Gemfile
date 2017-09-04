@@ -55,7 +55,7 @@ gem 'carrierwave'
 gem 'carrierwave-crop'
 gem 'mini_magick'
 
-gem 'omniauth-oauth2', '1.3.1'
+gem 'omniauth-oauth2'
 
 # Authorization
 gem 'pundit'
