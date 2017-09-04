@@ -137,7 +137,7 @@ class Lunch
 
       def tag_food(food)
         title = if food.downcase.start_with? 'veg:'
-          food.gsub! 'Veg: ', ''
+          food.gsub! /[Vv]eg: ?/, ''
           "food.veg"
         elsif food.downcase =~ /fisk|torsk|spätta|skaldjur|lubb|kolja|lax/
           "food.fish"
