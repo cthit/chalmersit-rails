@@ -3,6 +3,7 @@ require 'active_resource'
 class User < ActiveResource::Base
   extend ActiveModel::Naming
   self.site = Rails.configuration.account_ip
+  attr_writer :committees
 
   def posts
     @posts ||= Post.where(user_id: id)
@@ -32,7 +33,8 @@ class User < ActiveResource::Base
   end
 
   def committees_include_any?(committee)
-    !(committee & groups).empty?
+    memberlist = committees.map(&:slug)
+    !(committee & memberlist).empty?
   end
 
   def self.headers

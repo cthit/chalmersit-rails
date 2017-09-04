@@ -13,9 +13,5 @@ FactoryGirl.define do
     factory :admin_user do
       admin true
     end
-
-    factory :committee_user do
-      groups ['nollkit', 'prit']
-    end
   end
 end

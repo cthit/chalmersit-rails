@@ -6,11 +6,13 @@ class Lunch
     include JSON
 
     # Allergies supported in API
+    # https://chalmerskonferens.se/en/api/
     noAllergens = 0
     gluten = 1
     lactose = 2
     egg = 3
     rennet = 4
+    nuts = 5
     fish = 6
 
     ALLERGENS_IMAGES = {
@@ -62,21 +64,20 @@ class Lunch
     end
 
     def chalmrest
-      date = Time.new.strftime("%Y-%m-%d")
       locale = I18n.locale.to_s
+      url = "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid="
       restaurants = [
-        {name: "Linsen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=33", location: "Johanneberg"},
-        {name: "Kårrestaurangen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=5", location: "Johanneberg"},
-        {name: "L's kitchen", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=8", location: "Lindholmen"},
-        {name: "Express", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=9", location: "Johanneberg"},
-        #{name: "J.A Pripps", url: "http://intern.chalmerskonferens.se/view/restaurant/j-a-pripps-pub-cafe/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
-        #{name: "Restaurang Hyllan", url: "http://intern.chalmerskonferens.se/view/restaurant/hyllan/RSS%20Feed.rss?today=true&locale=#{locale}", location: "Johanneberg"},
-        {name: "L's Resto", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=32", location: "Lindholmen"},
-        {name: "Kokboken", url: "http://carboncloudrestaurantapi.azurewebsites.net/api/menuscreen/getdataday?restaurantid=35", location: "Lindholmen"}
+        {name: "Linsen", id: 33, location: "Johanneberg"},
+        {name: "Kårrestaurangen", id: 5, location: "Johanneberg"},
+        {name: "L's kitchen", id: 8, location: "Lindholmen"},
+        {name: "Express", id: 9, location: "Johanneberg"},
+        {name: "L's Resto", id: 32, location: "Lindholmen"},
+        {name: "Kokboken", id: 35, location: "Lindholmen"}
       ]
 
       items = "recipeCategories"
       name = "name"
+      nameEnglish = "nameEnglish"
       recipes = "recipes"
       recipeNames = "displayNames"
       recipeName = "displayName"
@@ -85,18 +86,24 @@ class Lunch
       allergenId = "id"
 
       restaurants.map do |restaurant|
-        data = JSON.parse(open(restaurant[:url]).read)
+        data = JSON.parse(open(url + restaurant[:id].to_s).read)
         if data.key?(items) && data[items] != nil
           meals = data[items].map do |category|
 
             category[recipes].map do |recipe|
               allergens = recipe[allergensKey]
-              summary = recipe[recipeNames].first[recipeName]
+              if locale == "sv"
+                displayName = category[name]
+                summary = recipe[recipeNames].first[recipeName]
+              else
+                displayName = category[nameEnglish]
+                summary = recipe[recipeNames].second[recipeName]
+              end
               if recipe[allergensKey].first[allergenId] != nil
                 allergens = get_allergens(recipe[allergensKey])
               end
               unless summary.empty?
-                { title: category[name], summary: summary, price: recipe[price], allergens: allergens }
+                { title: displayName, summary: summary, price: recipe[price], allergens: allergens }
               end
             end
 

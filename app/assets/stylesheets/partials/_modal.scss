@@ -15,7 +15,7 @@
 	position: fixed;
 	@include box-shadow(rgba(#000, .2) 0 6px 20px);
 	@include transform(scale(0.5));
-	@include transition(all .2s ease-out);
+	@include transition(all, .2s, ease-out);
 
 	.close {
 		position: absolute;
@@ -56,10 +56,10 @@
 .modal-backdrop {
 	$out: 	rgba(#000, .1);
 	$in: 	rgba(#000, .7);
-	
+
 	position: fixed;
 	top: 0; left: 0; right: 0; bottom: 0;
-	
+
 	z-index: 98;
 	background-color: transparent;
 	@include background-image(radial-gradient(center center, $in, $out));
@@ -70,4 +70,3 @@
 	margin-left: -30%;
 	height: $lineheight*27;
 }
-
