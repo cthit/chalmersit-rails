@@ -1,15 +1,15 @@
 # Chalmers.it - Rails [![Build Status](https://travis-ci.org/cthit/chalmersit-rails.svg?branch=develop)](https://travis-ci.org/cthit/chalmersit-rails)
 
-Currently using Ruby `2.1.2p95`
+Currently using Ruby `2.4.0`
 
 # Setup instructions
 ```
 You may do the following in a vagrant/docker machine
 
 # Install dependencies
-Install the following: Ruby, mysql, nodejs, rbenv
+Install the following: Ruby, mysql, nodejs, rbenv(with ruby build), cmake
 (Also maybe: libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclient-dev mysql-server redis-server)
-
+Also, remember to install the right ruby version using rbenv.
 
 # Run:
 rbenv rehash
