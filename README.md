@@ -26,12 +26,8 @@ development:
 We will get the client_credentials later.
 
 # Add keys needed for auth
-You need to be connected to the digIT network for these steps (contact them if you need access).
-Go to https://beta-account.chalmers.it, login using your standard account and then go to
-https://beta-account.chalmers.it/oauth/applications
-Add a new application:
-http://0.0.0.0:3000/auth/account/callback
-Paste the generated tokens into the launch.sh file
+Talk to digIT to gain access to the keys needed for development, the keys available are listed in digIT's Wiki
+Paste the tokens into the launch.sh file
 Export variables to shell (export OAUTH_ID=XXX, export OAUTH_SECRET=YYY)
 rake cthit:generate_token
 Copy the generated token into client_credentials at secrets.yml
