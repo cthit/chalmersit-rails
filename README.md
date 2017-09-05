@@ -7,7 +7,7 @@ Currently using Ruby `2.4.0`
 You may do the following in a vagrant/docker machine
 
 # Install dependencies
-Install the following: Ruby, mysql, nodejs, rbenv(with ruby build), cmake
+Install the following: Ruby, mysql, nodejs, rbenv(with ruby-build package if needed), cmake
 (Also maybe: libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclient-dev mysql-server redis-server)
 Also, remember to install the right ruby version using rbenv.
 
