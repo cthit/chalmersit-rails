@@ -70,7 +70,7 @@ class Lunch
         {name: "Linsen", id: 33, location: "Johanneberg"},
         {name: "Kårrestaurangen", id: 5, location: "Johanneberg"},
         {name: "L's kitchen", id: 8, location: "Lindholmen"},
-        {name: "Express", id: 9, location: "Johanneberg"},
+        {name: "Express", id: 7, location: "Johanneberg"},
         {name: "L's Resto", id: 32, location: "Lindholmen"},
         {name: "Kokboken", id: 35, location: "Lindholmen"}
       ]
@@ -137,7 +137,7 @@ class Lunch
 
       def tag_food(food)
         title = if food.downcase.start_with? 'veg:'
-          food.gsub! 'Veg: ', ''
+          food.gsub! /[Vv]eg: ?/, ''
           "food.veg"
         elsif food.downcase =~ /fisk|torsk|spätta|skaldjur|lubb|kolja|lax/
           "food.fish"
