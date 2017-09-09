@@ -38,7 +38,7 @@ class User < ActiveResource::Base
   end
 
   def self.headers
-    { authorization: "Bearer #{Rails.application.secrets.client_credentials}" }
+    { authorization: "Bearer #{AccessToken}" }
   end
 
 end
