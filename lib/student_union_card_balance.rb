@@ -1,4 +1,5 @@
 require 'capybara'
+require 'capybara/dsl'
 require 'capybara/poltergeist'
 
 Capybara.register_driver :poltergeist_debug do |app|
