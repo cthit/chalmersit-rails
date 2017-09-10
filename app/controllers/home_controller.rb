@@ -17,8 +17,8 @@ class HomeController < ApplicationController
         StudentUnionCardBalance.new.student_union_card_balance(card_balance_params[:number])
       end
       render partial: "card_balance"
-    rescue
-      render json: {error: "Bad number"}, status: :bad_request
+    rescue => e
+      render json: {error: e}, status: :bad_request
     end
   end
 
