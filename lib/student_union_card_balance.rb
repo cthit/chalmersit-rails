@@ -16,19 +16,24 @@ class StudentUnionCardBalance
   end
 
   def student_union_card_balance(number)
-    visit CARD_BALANCE_URL
+    begin
+      visit CARD_BALANCE_URL
+    rescue Capybara::Poltergeist::StatusFailError
+      raise "Kortladdning service unreachable."
+    end
+
     begin
       fill_in 'txtCardNumber', with: "#{number}"
       click_button('btnNext')
     rescue Capybara::ElementNotFound
-      raise "Failed to submit number."
+      raise "Failed to submit number. Service might be down."
     end
 
     sleep 0.5
     begin
       [find(:id, 'txtPTMCardValue').text, find(:id, 'txtPTMCardName').text, find(:id, 'txtPTMCardNumber').text]
     rescue Capybara::ElementNotFound => e
-      raise "error, saved page to app root, #{e.message}"
+      raise "Invalid card number."
     end
   end
 
