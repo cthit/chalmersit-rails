@@ -7,7 +7,7 @@ Currently using Ruby `2.4.0`
 You may do the following in a vagrant/docker machine
 
 # Install dependencies
-Install the following: Ruby, mysql, nodejs, rbenv(with ruby-build package if needed), cmake
+Install the following: Ruby, mysql, nodejs, rbenv(with ruby-build package if needed), cmake, phantomjs(for the student union card balance)
 (Also maybe: libcurl3 libcurl3-gnutls libcurl4-openssl-dev libmysqlclient-dev mysql-server redis-server)
 Also, remember to install the right ruby version using rbenv.
 
@@ -91,10 +91,5 @@ Start the server by running the completed launch script.
 # To connect to the server simply connect to your ip address on port 3000
 ```
 
-#Test mail functionality with mailcatcher:
+# Test mail functionality with mailcatcher:
 (mailcatcher.me) Start with "mailcatcher --ip=0.0.0.0" if you want to run on your webbrowser. Check Vagrant file for portforwarding.
-
-
-#For student union card balance:
-`phantomjs` needs to be installed on the server/developer's machine
-
