@@ -29,7 +29,7 @@
  Committee.delete_all
  coms.each do |c|
   desc = "Lorem ipsum osv"
-  c.merge!(slug: c[:name].gsub('.', '').parameterize, description_en: desc, description_sv: desc )
+  c.merge!(slug: c[:name].tr('.-','').parameterize, description_en: desc, description_sv: desc )
   Committee.create!(c)
 end
 
