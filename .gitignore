@@ -37,7 +37,6 @@ bower.json
 /cookbooks
 
 # Bundler
-bin/*
 .bundle/*
 
 .kitchen/
