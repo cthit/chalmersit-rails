@@ -21,6 +21,7 @@ module ChalmersIT
     # config.i18n.default_locale = :de
 
     config.autoload_paths += Dir["#{config.root}/lib/**/"]
+    config.eager_load_paths << "#{Rails.root}/lib"
 
     config.i18n.default_locale = :sv
     config.i18n.available_locales = [:en, :sv]
