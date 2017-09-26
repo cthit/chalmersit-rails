@@ -25,7 +25,7 @@ class Committee < ActiveRecord::Base
       self.element_name = :group
 
       def self.headers
-        { authorization: "Bearer #{AccessToken}" }
+        { "authorization" => "Bearer #{AccessToken}" }
       end
     end
 end

@@ -38,7 +38,7 @@ class User < ActiveResource::Base
   end
 
   def self.headers
-    { authorization: "Bearer #{AccessToken}" }
+    { "authorization" => "Bearer #{AccessToken}" }
   end
 
 end
