@@ -10,9 +10,9 @@ module PrintHelper
     output = nil
     DOMAINS.shuffle.each do |d|
       output = connect(print, d)
-      break if output.nil?
+      break if output.empty?
     end
-    raise output unless output.nil?
+    raise output unless output.empty?
   end
 
   def connect(print, domain)
