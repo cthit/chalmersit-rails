@@ -2,7 +2,7 @@ require 'csv'
 require 'net/http'
 
 def get_all_csv
-  uri = URI 'http://print.chalmers.se/public/pls.cgi'
+  uri = URI 'https://print.chalmers.se/public/pls.cgi'
   res = Net::HTTP.post_form(uri, 'textver' => 'CSV export')
   xml = Nokogiri::XML(res.body)
   text = xml.css('pre').children.text.strip
