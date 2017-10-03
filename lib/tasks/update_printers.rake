@@ -6,12 +6,22 @@ def get_all_csv
   res = Net::HTTP.post_form(uri, 'textver' => 'CSV export')
   xml = Nokogiri::XML(res.body)
   text = xml.css('pre').children.text.strip
-  CSV.parse(text, {
+  csv = CSV.parse(text, {
     col_sep: "\t",
     header_converters: [lambda {|f| f.strip}, :symbol],
     converters: lambda {|f| f ? f.strip : nil },
     headers: true
   })
+  check_duplex csv
+end
+
+def check_duplex(csv)
+  csv.map do |p|
+    sizes = p[:size].split
+    p[:size] = (sizes - %w(Duplex Simplex)).join ' '
+    p[:duplex] = sizes.include? "Duplex"
+  end
+  csv
 end
 
 namespace :cthit do
@@ -24,7 +34,8 @@ namespace :cthit do
       pp = Printer.find_or_initialize_by(name: printer[:printer])
       pp.update_attributes({
         location: printer[:location],
-        media: printer[:size]
+        media: printer[:size],
+        duplex: printer[:duplex]
       })
       puts pp
     end
