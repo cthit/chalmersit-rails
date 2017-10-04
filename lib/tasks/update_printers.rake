@@ -16,12 +16,11 @@ def get_all_csv
 end
 
 def check_duplex(csv)
-  csv.map do |p|
+  csv.each do |p|
     sizes = p[:size].split
     p[:size] = (sizes - %w(Duplex Simplex)).join ' '
     p[:duplex] = sizes.include? "Duplex"
   end
-  csv
 end
 
 namespace :cthit do
