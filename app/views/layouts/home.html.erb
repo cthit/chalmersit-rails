@@ -9,7 +9,7 @@
       </h1>
     </div>
   </div>
-  <div class="quick-buttons large-5 columns">
+  <div class="quick-buttons large-8 columns">
     <ul class="box list text-center">
         <li><a data-tooltip data-options="disable_for_touch:true" title="TimeEdit" href="https://se.timeedit.net/web/chalmers/db1/public/ri1Q7.html" target="_blank" class="has-tip tip-top"><div class="quick-button-chalmers"><i class="fa fa-graduation-cap"></i></div> <%= fa_icon 'table', text: t('.schema') %></a></li>
         <li><a data-tooltip data-options="disable_for_touch:true" title="<%= t '.book_chalmers_desc' %>" href="https://se.timeedit.net/web/chalmers/db1/b1/" target="_blank" class="has-tip tip-top"><div class="quick-button-chalmers"><i class="fa fa-graduation-cap"></i></div> <%= fa_icon 'users', text: t('.group_room') %></a></li>
@@ -19,7 +19,7 @@
         <li><a data-tooltip data-options="disable_for_touch:true" title="<%= t '.slack_desc' %>" href="https://slack.chalmers.it/signup" target="_blank" class="has-tip tip-top"><%= fa_icon 'slack', text: t('.slack') %></a></li>
     </ul>
   </div>
-  <div class="user-area large-3 columns">
+  <div class="user-area large-3 columns small-today-events">
     <%= render 'home/today', events: @events %>
   </div>
 </header>
@@ -62,6 +62,11 @@
     <% end %>
   </div>
   <div class="large-3 medium-6 columns">
+
+    <div class="widget default-today-events">
+      <%= render 'home/today', events: @events %>
+    </div>
+
     <section class="box widget">
       <header>
         <h2><%= t '.events' %></h2>
