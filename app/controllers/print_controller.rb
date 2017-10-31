@@ -2,8 +2,9 @@ class PrintController < ApplicationController
   include PrintHelper
 
   def new
-      @print = Print.new(copies: 1)
-      @print.username = current_user.uid if signed_in?
+    @print = Print.new(copies: 1)
+    @print.username = current_user.uid if signed_in?
+    @printers = Printer.available.weighted
   end
 
   def print
