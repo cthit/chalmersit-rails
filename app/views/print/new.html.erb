@@ -26,14 +26,14 @@
       </span>
     </div>
     <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
-      <%= f.select :printer, Printer.weighted.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
+      <%= f.select :printer, @printers.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
     <% end %>
   </div>
 
   <div class="suggestions">
     <%= f.label t('.suggestions') %>
     <ol class="printer-list">
-      <% Printer.weighted.limit(10).each do |p| %>
+      <% @printers.limit(10).each do |p| %>
         <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
       <% end %>
     </ol>
