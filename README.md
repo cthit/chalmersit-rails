@@ -21,16 +21,12 @@ edit it so it looks like this:
 
 development:
   secret_key_base: (AUTO GENERATED)
-  client_credentials:
 
-We will get the client_credentials later.
 
 # Add keys needed for auth
 Talk to digIT to gain access to the keys needed for development, the keys available are listed in digIT's Wiki
 Paste the tokens into the launch.sh file
 Export variables to shell (export OAUTH_ID=XXX, export OAUTH_SECRET=YYY)
-rake cthit:generate_token
-Copy the generated token into client_credentials at secrets.yml
 
 # Prepare the db
 rake db:setup
