@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170927141951) do
+ActiveRecord::Schema.define(version: 20171031145914) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "image"
@@ -175,6 +175,7 @@ ActiveRecord::Schema.define(version: 20170927141951) do
     t.string  "media"
     t.integer "weight",   default: 10
     t.boolean "duplex",   default: true
+    t.boolean "deleted",  default: false
   end
 
   create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|

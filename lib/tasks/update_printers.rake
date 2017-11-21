@@ -27,14 +27,16 @@ namespace :cthit do
   desc "Update glorious printers"
   task update_printers: :environment do
     csv = get_all_csv
-    Printer.where('name NOT IN (?)', csv.map{ |c| c[:printer] }).delete_all
+    Printer.where('name NOT IN (?)', csv.map{ |c| c[:printer] })
+           .update_all deleted: true
 
     csv.each do |printer|
       pp = Printer.find_or_initialize_by(name: printer[:printer])
       pp.update_attributes({
         location: printer[:location],
         media: printer[:size],
-        duplex: printer[:duplex]
+        duplex: printer[:duplex],
+        deleted: false
       })
       puts pp
     end
