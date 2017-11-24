@@ -4,8 +4,7 @@ class SearchController < ApplicationController
   def index
     if @search
       posts_query = 'post_translations.title LIKE ? or post_translations.body LIKE ?'
-      @posts = Post.with_translations(I18n.locale).where(posts_query, "%#{@search}%", "%#{@search}%").ordered
-      @posts = @posts.only_public unless signed_in?
+      @posts = policy_scope(Post).with_translations(I18n.locale).where(posts_query, "%#{@search}%", "%#{@search}%").ordered
     else
       @posts = []
     end

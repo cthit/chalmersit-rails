@@ -1,6 +1,5 @@
 class Post < ActiveRecord::Base
   scope :ordered, -> { order(created_at: :desc) }
-  scope :only_public, -> { where(show_public: true) }
 
   has_many :comments, dependent: :destroy
   has_one :event, dependent: :destroy
