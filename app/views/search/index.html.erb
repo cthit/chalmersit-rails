@@ -10,7 +10,7 @@
         <%= link_to post.title, post %>
       </p>
       <%= content_tag :p, class: :date do %>
-        <%= post.created_at.to_s(:day_month) %>
+        <%= post.created_at.strftime("%b %d, %Y") %>
       <% end %>
      </div>
   <%end %>
