@@ -3,11 +3,16 @@
 <% else %>
   <% content_for :title, t(:search_title, search_term: @search) %>
   <% content_for :subtitle, t(:search_found, number: @posts.size) %>
-  <div id="posts">
-  <ul>
+  <div class="search-results" id="posts">
   <% @posts.each do |post| %>
-     <li><%= link_to post.title, post %></li>
+     <div class="item">
+      <p>
+        <%= link_to post.title, post %>
+      </p>
+      <%= content_tag :p, class: :date do %>
+        <%= post.created_at.strftime("%b %d, %Y") %>
+      <% end %>
+     </div>
   <%end %>
-  </ul>
   </div>
 <% end %>

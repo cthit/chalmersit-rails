@@ -35,3 +35,17 @@
 		margin-right: 5%;
 	}
 }
+
+.search-results .item {
+	margin: 5px;
+	padding: 1px;
+	border-bottom: 1px solid lightgrey;
+
+	p {
+		margin-bottom: 2px;
+	}
+	
+	.date {
+		font-size: 0.7rem;
+	}
+}
