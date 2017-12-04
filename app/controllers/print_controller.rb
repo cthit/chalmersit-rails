@@ -1,10 +1,10 @@
 class PrintController < ApplicationController
   include PrintHelper
+  before_action :set_printers
 
   def new
     @print = Print.new(copies: 1)
     @print.username = current_user.uid if signed_in?
-    @printers = Printer.available.weighted
   end
 
   def print
@@ -46,5 +46,9 @@ class PrintController < ApplicationController
   private
     def print_params
       params.require(:print).permit(:username, :password, :copies, :printer, :file, :file_cache, :file_name, :sides, :collate, :ranges, :media, :ppi)
+    end
+
+    def set_printers
+      @printers = Printer.available.weighted
     end
 end
