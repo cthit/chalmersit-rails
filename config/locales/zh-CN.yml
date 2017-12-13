@@ -1,0 +1,490 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# To learn more, please read the Rails Internationalization guide
+# available at http://guides.rubyonrails.org/i18n.html.
+
+zh-CN:
+  and: " 和 "
+  mail_sent: "你的邮件已被发送到 %{recipents}"
+  page_title: Chalmers信息技术
+  techsec: 学生部
+  section: 部门
+  it: 信息技术
+  chs: Chalmers学联
+  cth: Chalmers University of Technology
+  login: 登录
+  signed_out: 你已经被注销
+  loading: 装载
+  logout: 注销
+  signed_in: 你已经登录
+  sv: 瑞典语
+  en: 英语
+  pw_reset: 重置密码
+  search: 搜索 chalmers.it
+  search_title: " '%{search_term}' 的搜索结果"
+  search_found: "找到 %{number} 个结果"
+  search_failed: "请重新搜索"
+  contact: 联系
+  services: 服务
+  news: 新闻
+  courses: 课程
+  preview: 预览
+  business: 商业
+  mailing_address: 邮件地址
+  visiting_address: 访问地址
+  developed_by: 开发者
+  more_info: 更多信息
+  follow: 关注
+  food:
+    veg: 素食者
+    fish: 鱼
+    meat: 肉
+    default: 食物
+  allergens:
+    egg: 蛋
+    gluten: 谷类
+    lactose: 乳糖
+    rennet: 凝乳酶
+  name: 名字
+  new: "新 %{name}"
+  more: "更多 %{model}"
+  in_locale: "%{name} 的语言 %{lang}"
+  edit: 编辑
+  editing: 编辑
+  delete: 删除
+  back: 返回
+  show: 显示
+  confirm: 你确定？
+  "true": 是
+  "false": 否
+  model_destroyed: "已删除 %{name}"
+  model_updated: "已更新 %{name}"
+  model_created: "已创建 %{name}"
+  comment_definite: 备注
+  published: 已发布
+  permalink: 永久链接
+  translation_missing: "在你的语言中没有 %{model} 的翻译。"
+  no_posts_found: 未找到任何帖子
+  not_authorized: 你未必授权进行这个操作。
+  to_whom: 你想联系谁？
+  send_contact: 发送消息
+  contact_form: 联系表单
+  yes: 是
+  no: 否
+  partner: 合作伙伴
+  unsupported_file_format: 不支持的文件格式 (只支持 pdf/md/txt/jpg/jpeg/gif/png/webp)
+  copy_link: 复制链接
+  uploaded_files: 已上传得文件
+  about_section: 关于我们部门
+  committees_assoiciations: 委员会和联合会
+  form_error:
+    one: "表单有 %{count} 个错误"
+    other: "表单有 %{count} 个错误"
+  attributes:
+    body_en: "英语正文"
+    body_sv: "瑞典语正文"
+    title_en: "英语标题"
+    title_sv: "瑞典语标题"
+  activerecord:
+    errors:
+      models:
+        post:
+          attributes:
+            group_id:
+              user_not_in_group: "你不是 %{group}组的成员"
+    models:
+      event:
+        one: 事件
+        other: 事件
+      post:
+        one: 帖子
+        other: 帖子
+      course:
+        one: 课程
+        other: 课程
+      contact:
+        one: 联系
+      comment:
+        one: 评论
+        other: 评论
+      committee:
+        one: 委员会
+        other: 委员会
+      user_group_info: 用户组信息
+      banner:
+        one: 标题栏
+        other: 标题栏
+    attributes:
+      course:
+        year: 年
+        code: 课程代码
+        required: 必填
+        homepage: 课程主页
+        period:
+          one: 间隔
+          other: 间隔
+        programme: 课程
+        description: 描述
+        name: 名字
+      post:
+        title: 标题
+        user_id: 用户
+        group_id: 联合会 / 委员会
+        sticky: 固定
+        body: 正文
+        show_public: 显示公开 (给访客的)
+        documents: 文档
+        slug_en: "英文标题"
+        slug_sv: "瑞典语标题"
+      comment:
+        user_id: 用户
+        body: 评论
+      page:
+        slug: "标题"
+  activemodel:
+    models:
+      print: 打印
+      printer: 打印机
+    attributes:
+      print:
+        file: 文件
+        printer: 打印机
+        copies: 拷贝数
+        sides: 双面打印
+        collated: 核对
+        ranges: 范围
+        media: 纸张大小
+        ppi: 分辨率
+        username: 用户名
+        password: 密码
+    errors:
+      models:
+        print:
+          attributes:
+            file:
+              invalid_type: 文件类型不支持
+            media:
+              unsupported: 打印机不支持这个纸张大小
+  layouts:
+    header:
+      tools: 工具
+      new_news_post: 发布新帖子
+      new_page: 添加新页面
+      edit_profile: 编辑用户信息
+      admin: 管理员
+      edit_frontpage: 编辑部分主页
+      add_committee: 添加新委员会
+      edit_menu_links: 编辑菜单链接
+      edit_menu: 编辑菜单
+      edit_sponsor: 编辑赞助者
+      search_news: 搜索新闻
+    home:
+      booking: bookIT
+      group_room: 小组房间
+      print: 打印
+      schema: 计划
+      charge_card: S.U. 卡
+      slack: Slack
+      book_hubben_desc: 预订 Hubben 或小组房间
+      book_chalmers_desc: 预订Chalmers的小组房间
+      print_desc: 在Chalmers的打印机打印
+      charge_card_desc: 给你的学联卡充值的快捷键
+      slack_desc: 加入IT学生部
+      events: 事件
+      student_union_card: 学联卡账户余额
+
+  posts:
+    form:
+      title_placeholder: 新帖子标题
+      userid_placeholder: 你的用户名
+      groupid_placeholder: 以这个名义发布
+      body_placeholder: 新闻的内容在这里
+    post:
+      organizer_event: 这个事件的组织者
+      facebook_link_to_event: 链接到Facebook事件
+      posted_for: 为此人而写
+      by: 由
+      posts_by: 由此人所写的新闻
+    event_fields:
+      empty_if_group: 如果和帖子作者相同请留空
+    show:
+      prev_posts: 上一条新闻
+      all_posts: 所有新闻
+      next_posts: 下一条新闻
+      sign_in_add_comment: 登录以便添加评论
+  comments:
+    form:
+      write_comment: 添加评论
+  users:
+    sidebar:
+      see_all_posts_by: "显示%{user}的所有帖子"
+  lunch:
+    feed:
+      lunch: 午餐
+      no_lunch_today: 今日无午餐
+      show_lunch: 显示午餐
+      hide_lunch: 隐藏午餐
+  home:
+    today:
+      next_event: 即将发生的事件
+      no_events: 今日无事件
+    card_balance_form:
+      card_number: 卡号
+      get_balance: 获取余额
+    card_balance:
+      balance: 余额
+      card_number: 卡号
+      card_holder: 持卡人
+      remove_card: 删除卡
+  print:
+    new:
+      supported_file_types: 支持的文件类型
+      suggestions: 建议
+      user: 用户
+      uploaded: 已上传的文件
+      password_notice: "注意：这是你自己的Chalmers密码，而不是你用来使用我们服务的密码。"
+      forgot_pw_notice: "如果你忘记密码，请访问 "
+  calendar:
+    fetch:
+      events: "事件"
+      subscribe: "订阅 (Google Calendar)"
+  frontpage:
+    form:
+      update_form_title: "更改部分主页"
+      frontpage: "主页"
+      page: "页面"
+  date:
+    abbr_day_names:
+    - 周日
+    - 周一
+    - 周二
+    - 周三
+    - 周四
+    - 周五
+    - 周六
+    abbr_month_names:
+    -
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    day_names:
+    - 周日
+    - 周一
+    - 周二
+    - 周三
+    - 周四
+    - 周五
+    - 周六
+    formats:
+      default: ! '%Y-%m-%d'
+      long: ! '%B %d, %Y'
+      short: ! '%b %d'
+    month_names:
+    -
+    - 一月
+    - 二月
+    - 三月
+    - 四月
+    - 五月
+    - 六月
+    - 七月
+    - 八月
+    - 九月
+    - 十月
+    - 十一月
+    - 十二月
+    order:
+    - :year
+    - :month
+    - :day
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: 将近1小时
+        other: 将近 %{count} 个小时
+      about_x_months:
+        one: 将近1个月
+        other: 将近 %{count} 个月
+      about_x_years:
+        one: 将近1年
+        other: 将近 %{count} 年
+      almost_x_years:
+        one: 快要1年
+        other: 快要 %{count} 年
+      half_a_minute: 半分钟
+      less_than_x_minutes:
+        one: 小于1分钟
+        other: 小于 %{count} 分钟
+      less_than_x_seconds:
+        one: 小于1秒钟
+        other: 小于 %{count} 秒
+      over_x_years:
+        one: 超过1年
+        other: 超过 %{count} 年
+      x_days:
+        one: 1 天
+        other: ! '%{count} 天'
+      x_minutes:
+        one: 1 分钟
+        other: ! '%{count} 分钟'
+      x_months:
+        one: 1 月
+        other: ! '%{count} 月'
+      x_seconds:
+        one: 1 秒
+        other: ! '%{count} 秒'
+    prompts:
+      day: 日
+      hour: 小时
+      minute: 分钟
+      month: 月
+      second: 秒
+      year: 年
+  errors:
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: 必须被接受
+      blank: 不能为空
+      present: 必须为空
+      confirmation: ! "不匹配 %{attribute}"
+      empty: 不能为空
+      equal_to: 必须等于 %{count}
+      even: 必须为偶数
+      exclusion: 被保留
+      greater_than: 必须大于 %{count}
+      greater_than_or_equal_to: 必须大于或等于 %{count}
+      inclusion: 未被包含在列表中
+      invalid: 非法
+      less_than: 必须小于 %{count}
+      less_than_or_equal_to: 必须小于或等于 %{count}
+      not_a_number: 不是数字
+      not_an_integer: 不是整数
+      odd: 必须为奇数
+      record_invalid: ! '验证错误: %{errors}'
+      restrict_dependent_destroy:
+        one: "由于一个依赖它的记录 %{record} 存在，无法删除这个记录"
+        many: "由于依赖它的记录 %{record} 存在，无法删除记录"
+      taken: 已被使用
+      too_long:
+        one: 太长 (最多1个字符)
+        other: 太长 (最多 %{count} 个字符)
+      too_short:
+        one: 太短 (最少1个字符)
+        other: 太短 (最少 %{count} 个字符)
+      wrong_length:
+        one: 长度错误 (应该1个字符)
+        other: 长度错误 (应该 %{count} 个字符)
+      other_than: "必须不能为 %{count}"
+    template:
+      body: ! '一下字段出错:'
+      header:
+        one: 由于1个错误导致 %{model} 不能被保存
+        other: ! '由于%{count}个错误导致 %{model} 不能被保存'
+  helpers:
+    select:
+      prompt: 请选择
+    submit:
+      create: 创建 %{model}
+      submit: 保存 %{model}
+      update: 更新 %{model}
+  number:
+    currency:
+      format:
+        delimiter: ! ','
+        format: ! '%u%n'
+        precision: 2
+        separator: .
+        significant: false
+        strip_insignificant_zeros: false
+        unit: $
+    format:
+      delimiter: ! ','
+      precision: 3
+      separator: .
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion: 十亿
+          million: 百万
+          quadrillion: 万亿
+          thousand: 千
+          trillion: 兆
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: 字节
+            other: 字节
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: ! ', and '
+      two_words_connector: ! ' and '
+      words_connector: ! ', '
+  time:
+    am: am
+    formats:
+      default: ! '%a, %d %b %Y %H:%M:%S %z'
+      long: ! '%B %d, %Y %H:%M'
+      short: ! '%d %b %H:%M'
+    pm: pm
+  simple_form:
+    labels:
+      contact:
+        body: 正文
+        title: 标题
+        email: 电子邮件 (如果你想要匿名请留空)
+        contact_form: Kontaktformulär
+    placeholders:
+      contact:
+        body: 想要说点什么？
+        email: user@domain.com
+
+  will_paginate:
+    previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> 上一页</div>'
+    page_gap: ...
+    next_label: '<div class="button tiny">下一页 <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
