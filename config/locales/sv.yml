@@ -250,6 +250,7 @@ sv:
   lunch:
     feed:
       lunch: Lunch
+      lunch_error: Något gick fel
       no_lunch_today: Ingen lunch idag
       show_lunch: Visa lunchmeny
       hide_lunch: Dölj lunchmeny

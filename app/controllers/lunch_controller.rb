@@ -3,20 +3,7 @@ class LunchController < ApplicationController
   layout false
 
   def feed
-    @restaurants, @chalmers_restaurants = Lunch.today_cached
-
-    @the_restaurants = if params[:filter]
-      all_rest = @restaurants + @chalmers_restaurants
-      filter = params[:filter].downcase
-      case analyse_filter(filter)
-      when :location
-        restaurants_in(filter, all_rest)
-      when :fuzzy
-        filter_restaurants(filter, all_rest)
-      end
-    else
-      @restaurants + @chalmers_restaurants
-    end
+    @restaurants = Lunch.today_cached
 
     respond_to do |format|
       format.html

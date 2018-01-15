@@ -5,7 +5,7 @@ class HomeController < ApplicationController
     @events = Event.today
 
     if Lunch.cache_present?
-      @restaurants, @chalmers_restaurants = Lunch.today_cached
+      @restaurants = Lunch.today_cached
     end
 
     @calendar = Calendar.new
