@@ -1,9 +1,15 @@
-<% restaurants.each do |restaurant| %>
-  <h3><%= restaurant[:name] %></h3>
-  <dl>
-    <% restaurant[:meals].each do |meal| %>
-    <dt><%= meal[:title] %><span class="allergens"><%= format_allergens(meal[:allergens]) %></span></dt>
-    <dd><%= meal[:summary] %></dd>
-    <% end %>
-  </dl>
+<% if restaurants.nil? %>
+	<%= t 'lunch_error' %>
+<% elsif restaurants.empty? %>
+	<%= t 'no_lunch_today' %>
+<% else %>
+	<% restaurants.each do |restaurant| %>
+	  <h3><%= restaurant["name"] %></h3>
+	  <dl>
+	    <% restaurant["meals"][I18n.locale.to_s].each do |meal| %>
+	    <dt><%= translate_meal_title(meal["title"]) %><span class="allergens"><%= format_allergens(meal["allergens"]) %></span></dt>
+	    <dd><%= meal["summary"] %></dd>
+	    <% end %>
+	  </dl>
+	<% end %>
 <% end %>

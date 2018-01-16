@@ -238,6 +238,7 @@ en:
   lunch:
     feed:
       lunch: Lunch
+      lunch_error: Something went wrong
       no_lunch_today: No lunch today
       show_lunch: Show lunch
       hide_lunch: Hide lunch

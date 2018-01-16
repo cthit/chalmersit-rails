@@ -65,7 +65,15 @@ module LunchHelper
     if allergens.nil? || allergens.empty?
       " - N/A"
     else
-      " - " + allergens.join(", ") unless allergens.empty?
+      " - " + translate_allergens(allergens) unless allergens.empty?
     end
+  end
+
+  def translate_meal_title(meal_title)
+    I18n.t "food.#{meal_title}", default: meal_title
+  end
+
+  def translate_allergens(allergens)
+    allergens.map{ |text| I18n.t "allergens.#{text}", default: text }.join(", ")
   end
 end
