@@ -9,10 +9,28 @@ $ ->
     $('#print_printer').val printer_name
 
   if $('#print_printer').length
-    $('#print_printer').chosen
-      no_results_text: 'No matches'
-      search_contains: true
-      width: '91%'
+
+    $.getJSON($('.printer-list').data('url'))
+    .success (printers) ->
+      option_tags = printers.map (printer) ->
+        $('<option/>')
+        .val(printer.name)
+        .html(printer.name)
+        .data('media', printer.media)
+        .data('location', printer.location)
+        .data('duplex', printer.duplex)
+
+      printer_suggestions = printers.slice(0, 10).map (printer) ->
+        $('<li/>').html($('<a/>').addClass('set-printer').attr('href', 'javascript:;').html(printer.name))
+
+      $('.printer-list').html(printer_suggestions)
+
+      $('#print_printer')
+      .html(option_tags)
+      .chosen
+        no_results_text: 'No matches'
+        search_contains: true
+        width: '91%'
 
     $('.get-pq-button').on 'click', ->
       $that = $(this)
