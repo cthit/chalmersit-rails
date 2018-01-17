@@ -48,6 +48,22 @@ $ ->
       printer_name = this.value
       localStorage.setItem(printer_local_storage_key, printer_name)
 
+    $('#new_print').on 'submit', (e) ->
+      e.preventDefault()
+      form = new FormData(this)
+
+      $.ajax
+        url: this.action,
+        type: 'POST',
+        data: form,
+        processData: false
+        contentType: false
+      .success (data) ->
+        console.log data
+      .error (err) ->
+        console.error err.responseJSON.errors
+
+
     setMedia $('#print_printer option:selected').data('media').split(' ')
 
 

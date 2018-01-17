@@ -1,17 +1,10 @@
 <% content_for :title, t('layouts.home.print') %>
-<%= simple_form_for(@print) do |f| %>
+<%= simple_form_for @print, url: 'http://malm.chalmers.it:4000/print' do |f| %>
   <%= f.error_notification %>
 
   <div class="row">
     <div class="small-6 columns">
-      <% if @print.file_cache %>
-        <%= f.label :file %>
-        <%= @print.file_name %>
-        <%= f.input :file_name, as: :hidden %>
-        <%= f.input :file_cache, as: :hidden %>
-      <% else %>
-        <%= f.input :file, as: :file %>
-      <% end %>
+      <%= f.input :file, as: :file %>
     </div>
     <div class="small-6 columns">
       <em><%= t '.supported_file_types' %>:<br> <%= Print.permitted_mime_types.join ', ' %></em>
@@ -39,7 +32,7 @@
     </ol>
   </div>
 
-  <%= f.input :sides, as: :boolean, input_html: { checked: true } %>
+  <%= f.input :duplex, as: :boolean, input_html: { checked: true } %>
   <%= f.input :collate, as: :boolean, input_html: { checked: true } %>
 
   <div class="row">
