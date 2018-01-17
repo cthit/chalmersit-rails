@@ -1,7 +1,5 @@
 <% content_for :title, t('layouts.home.print') %>
-<%= simple_form_for @print, url: 'http://malm.chalmers.it:4000/print' do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for @print, url: "#{Rails.configuration.print_chalmers_it}/print" do |f| %>
   <div class="row">
     <div class="small-6 columns">
       <%= f.input :file, as: :file %>
@@ -25,7 +23,7 @@
 
   <div class="suggestions">
     <%= f.label t('.suggestions') %>
-    <ol class="printer-list">
+    <ol class="printer-list" data-url="<%= "#{Rails.configuration.print_chalmers_it}/list.json" %>">
       <% @printers.limit(10).each do |p| %>
         <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
       <% end %>
@@ -79,7 +77,7 @@
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>
 
-<div id="pq" class="row">
+<div id="pq" class="row" data-url="<%= "#{Rails.configuration.print_chalmers_it}/pq.json" %>">
   <div class="small-3 columns">
     <%= button_tag class: 'button secondary get-pq-button' do %>
       <span class="done">PQ</span><%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>
