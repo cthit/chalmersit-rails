@@ -63,6 +63,8 @@ $ ->
     $('#print_printer').on 'change', ->
       selected = $ 'option:selected', this
       setMedia selected.data('media').split(' ')
+      setDuplexEnabled selected.data('duplex')
+
       printer_name = this.value
       localStorage.setItem(printer_local_storage_key, printer_name)
 
@@ -83,6 +85,7 @@ $ ->
 
 
     setMedia $('#print_printer option:selected').data('media').split(' ')
+    setDuplexEnabled $('#print_printer option:selected').data('duplex')
 
 
 setMedia = (medias) ->
@@ -92,3 +95,8 @@ setMedia = (medias) ->
     $('<option>').val(m).html(m)
 
   $media.html(medias)
+
+setDuplexEnabled = (hasDuplexSupport) ->
+  $('#print_duplex')
+  .prop('checked', hasDuplexSupport)
+  .attr('disabled', !hasDuplexSupport)
