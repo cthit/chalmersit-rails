@@ -38,7 +38,7 @@ $ ->
       $('#pq .alert-box').hide()
       $('#pq .done').toggle()
       $.ajax
-        url: '/print/pq.json'
+        url: $('#pq').data('url')
         type: 'POST'
         data:
           username: $('#print_username').val()
