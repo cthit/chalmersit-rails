@@ -74,6 +74,13 @@
         <em><%= t('.forgot_pw_notice') %><%= link_to 'cdks', 'https://cdks.chalmers.se' %></em>
     </div>
   </fieldset>
+    <div data-alert class="printer-feedback-success alert-box hidden success">
+    <div class="msg">Your document has been sent to the printer!</div>
+  </div>
+  <div data-alert class="printer-feedback-alert alert-box hidden alert">
+    <div class="msg"></div>
+  </div>
+
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>
 

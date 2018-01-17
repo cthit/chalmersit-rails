@@ -79,9 +79,16 @@ $ ->
         processData: false
         contentType: false
       .success (data) ->
-        console.log data
+        $('.printer-feedback-alert').hide()
+        $('.printer-feedback-success').show()
       .error (err) ->
-        console.error err.responseJSON.errors
+        errors = err.responseJSON.errors
+        $('.printer-feedback-alert .msg').html($('<ul/>').html(errors.map (err) -> $('<li/>').text(err)))
+        $('.printer-feedback-alert').show()
+        $('.printer-feedback-success').hide()
+        console.error errors
+      .always ->
+        $.rails.enableFormElement($('[data-disable-with]'))
 
 
     setMedia $('#print_printer option:selected').data('media').split(' ')
