@@ -12,9 +12,12 @@ class HomeController < ApplicationController
   end
 
   def card_balance
+    url = Rails.configuration.card_balance_chalmers_it
     begin
       @balance, @name, @number = Rails.cache.fetch("card_balance/#{card_balance_params[:number]}", expires_in: 30.minutes) do
-        StudentUnionCardBalance.new.student_union_card_balance(card_balance_params[:number])
+        j = JSON.parse(open("#{url}/?number=#{card_balance_params[:number]}").read)
+        raise j["error"] if j.key?("error")
+        [j["balance"], j["name"], j["number"]]
       end
       render partial: "card_balance"
     rescue => e
