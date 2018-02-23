@@ -4,13 +4,17 @@
 card_number_local_storage_key = "student-union-card"
 $ ->
   getStudentUnionCardBalance = (card_number) ->
-    $.get getUrlForLocale(card_number), (data) ->
-      $('#student-union-card').html(data)
-      localStorage.setItem(card_number_local_storage_key, card_number)
-    .fail (data, error) ->
-      jsonParse = data.responseJSON
+    if card_number == ""
       $('#student-union-error').addClass("message alert-box")
-      $('#student-union-error').text(jsonParse.error)
+      $('#student-union-error').text("Empty card number")
+    else
+      $.get getUrlForLocale(card_number), (data) ->
+        $('#student-union-card').html(data)
+        localStorage.setItem(card_number_local_storage_key, card_number)
+      .fail (data, error) ->
+        jsonParse = data.responseJSON
+        $('#student-union-error').addClass("message alert-box")
+        $('#student-union-error').text(jsonParse.error)
 
   getUrlForLocale = (card_number) ->
     if (I18n.locale)
