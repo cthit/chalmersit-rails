@@ -11,6 +11,9 @@ Rails.application.configure do
   # Do not eager load code on boot.
   config.eager_load = false
 
+  # Show web console from docker
+  config.web_console.whitelisted_ips = '172.19.0.0/16'
+
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
   config.action_controller.perform_caching = false

@@ -91,6 +91,9 @@ group :development do
   # Nice error messages
   gem 'better_errors'
 
+  # web console
+  gem 'web-console'
+
   # Measure the request time, for profiling
   gem 'rack-mini-profiler'
 end
