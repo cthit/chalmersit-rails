@@ -15,7 +15,7 @@ class HomeController < ApplicationController
     url = Rails.configuration.card_balance_chalmers_it
     begin
       @balance, @name, @number = Rails.cache.fetch("card_balance/#{card_balance_params[:number]}", expires_in: 30.minutes) do
-        j = JSON.parse(open("#{url}/?number=#{card_balance_params[:number]}").read)
+        j = JSON.parse(Net::HTTP.get(URI("#{url}/?number=#{card_balance_params[:number]}")))
         raise j["error"] if j.key?("error")
         [j["balance"], j["name"], j["number"]]
       end
