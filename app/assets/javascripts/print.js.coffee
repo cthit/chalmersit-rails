@@ -5,8 +5,6 @@ printer_local_storage_key = "last-printer-used"
 
 $ ->
   printer_name = localStorage.getItem(printer_local_storage_key)
-  if (printer_name)
-    $('#print_printer').val printer_name
 
   if $('#print_printer').length
 
@@ -31,6 +29,11 @@ $ ->
         no_results_text: 'No matches'
         search_contains: true
         width: '91%'
+
+      if (printer_name)
+        $('#print_printer').val(printer_name).trigger('chosen:updated')
+
+      $('#print_printer').trigger 'change'
 
     $('.get-pq-button').on 'click', ->
       $that = $(this)
@@ -89,11 +92,6 @@ $ ->
         console.error errors
       .always ->
         $.rails.enableFormElement($('[data-disable-with]'))
-
-
-    setMedia $('#print_printer option:selected').data('media').split(' ')
-    setDuplexEnabled $('#print_printer option:selected').data('duplex')
-
 
 setMedia = (medias) ->
   $media = $('#print_media')
