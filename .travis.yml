@@ -1,20 +1,19 @@
-dist: trusty
-language: ruby
-cache: bundler
-bundler_args: "--without guard --deployment"
-sudo: false
-rvm:
-- 2.4.0
-addons:
-  apt:
-    packages:
-    - cmake
-before_script:
-- mysql -e 'create database chalmersit_test;'
+sudo: required
+env:
+  - DOCKER_COMPOSE_VERSION=1.18.0
+services:
+  - docker
+install:
+- sudo rm /usr/local/bin/docker-compose
+- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+- chmod +x docker-compose
+- sudo mv docker-compose /usr/local/bin
 - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
-- RAILS_ENV=test bundle exec rake db:migrate db:seed --trace
+- docker-compose up -d
+- docker-compose run web dockerize -wait tcp://db:3306
+- docker-compose run web rake db:setup
 script:
-- RAILS_ENV=test bundle exec rspec
+- docker-compose run web rspec
 notifications:
   email: false
   irc:
