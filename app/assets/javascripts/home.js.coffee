@@ -2,17 +2,27 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 card_number_local_storage_key = "student-union-card"
+
+loading_indicator = $("<div class='loading-indicator'>
+      <i class='fa fa-credit-card loading-indicator-feature'></i>
+      <div class='loading-indicator-text'>#{I18n.t('loading')}...</div>
+    </div>")
+
 $ ->
+  original_card_html = $('#student-union-card').html()
+
   getStudentUnionCardBalance = (card_number) ->
     if card_number == ""
       $('#student-union-error').addClass("message alert-box")
       $('#student-union-error').text("Empty card number")
     else
+      $('#student-union-card').html(loading_indicator)
       $.get getUrlForLocale(card_number), (data) ->
         $('#student-union-card').html(data)
         localStorage.setItem(card_number_local_storage_key, card_number)
       .fail (data, error) ->
         jsonParse = data.responseJSON
+        $('#student-union-card').html(original_card_html)
         $('#student-union-error').addClass("message alert-box")
         $('#student-union-error').text(jsonParse.error)
 
@@ -39,10 +49,9 @@ $ ->
     card_number = $('#student-union-card-number').val()
     getStudentUnionCardBalance(card_number)
 
-  oc = $('#student-union-card').html()
   $('#student-union-card').on 'click', '#student-union-exit', ->
     localStorage.removeItem(card_number_local_storage_key)
-    $('#student-union-card').html(oc)
+    $('#student-union-card').html(original_card_html)
 
   card_number = localStorage.getItem(card_number_local_storage_key)
   if (card_number)
