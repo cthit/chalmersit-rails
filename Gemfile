@@ -32,12 +32,11 @@ gem 'nokogiri'
 gem 'redis-rails'
 
 # Markdown for post body
-gem 'github-markdown'
 gem 'sanitize'
 gem 'gemoji'
 gem 'json'
 gem 'html-pipeline'
-gem 'commonmarker'
+gem 'commonmarker' # required by html-pipeline for markdown parsing
 
 # Slack notifier
 gem 'slack-notifier', '~> 2.0.0'

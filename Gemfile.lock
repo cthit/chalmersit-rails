@@ -155,7 +155,6 @@ GEM
       railties (>= 3.1.0)
       sass (>= 3.3.0, < 3.5)
     gemoji (3.0.0)
-    github-markdown (0.6.9)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     globalize-accessors (0.2.1)
@@ -433,7 +432,6 @@ DEPENDENCIES
   font-awesome-rails
   foundation-rails (~> 5.5.0)
   gemoji
-  github-markdown
   globalize!
   globalize-accessors (~> 0.2.1)
   guard-rspec
