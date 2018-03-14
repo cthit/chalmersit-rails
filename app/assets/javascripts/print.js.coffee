@@ -5,14 +5,35 @@ printer_local_storage_key = "last-printer-used"
 
 $ ->
   printer_name = localStorage.getItem(printer_local_storage_key)
-  if (printer_name)
-    $('#print_printer').val printer_name
 
   if $('#print_printer').length
-    $('#print_printer').chosen
-      no_results_text: 'No matches'
-      search_contains: true
-      width: '91%'
+
+    $.getJSON($('.printer-list').data('url'))
+    .success (printers) ->
+      option_tags = printers.map (printer) ->
+        $('<option/>')
+        .val(printer.name)
+        .html(printer.name)
+        .data('media', printer.media)
+        .data('location', printer.location)
+        .data('duplex', printer.duplex)
+
+      printer_suggestions = printers.slice(0, 10).map (printer) ->
+        $('<li/>').html($('<a/>').addClass('set-printer').attr('href', 'javascript:;').html(printer.name))
+
+      $('.printer-list').html(printer_suggestions)
+
+      $('#print_printer')
+      .html(option_tags)
+      .chosen
+        no_results_text: 'No matches'
+        search_contains: true
+        width: '91%'
+
+      if (printer_name)
+        $('#print_printer').val(printer_name).trigger('chosen:updated')
+
+      $('#print_printer').trigger 'change'
 
     $('.get-pq-button').on 'click', ->
       $that = $(this)
@@ -20,7 +41,7 @@ $ ->
       $('#pq .alert-box').hide()
       $('#pq .done').toggle()
       $.ajax
-        url: '/print/pq.json'
+        url: $('#pq').data('url')
         type: 'POST'
         data:
           username: $('#print_username').val()
@@ -45,11 +66,32 @@ $ ->
     $('#print_printer').on 'change', ->
       selected = $ 'option:selected', this
       setMedia selected.data('media').split(' ')
+      setDuplexEnabled selected.data('duplex')
+
       printer_name = this.value
       localStorage.setItem(printer_local_storage_key, printer_name)
 
-    setMedia $('#print_printer option:selected').data('media').split(' ')
+    $('#new_print').on 'submit', (e) ->
+      e.preventDefault()
+      form = new FormData(this)
 
+      $.ajax
+        url: this.action,
+        type: 'POST',
+        data: form,
+        processData: false
+        contentType: false
+      .success (data) ->
+        $('.printer-feedback-alert').hide()
+        $('.printer-feedback-success').show()
+      .error (err) ->
+        errors = err.responseJSON.errors
+        $('.printer-feedback-alert .msg').html($('<ul/>').html(errors.map (err) -> $('<li/>').text(err)))
+        $('.printer-feedback-alert').show()
+        $('.printer-feedback-success').hide()
+        console.error errors
+      .always ->
+        $.rails.enableFormElement($('[data-disable-with]'))
 
 setMedia = (medias) ->
   $media = $('#print_media')
@@ -58,3 +100,8 @@ setMedia = (medias) ->
     $('<option>').val(m).html(m)
 
   $media.html(medias)
+
+setDuplexEnabled = (hasDuplexSupport) ->
+  $('#print_duplex')
+  .prop('checked', hasDuplexSupport)
+  .attr('disabled', !hasDuplexSupport)
