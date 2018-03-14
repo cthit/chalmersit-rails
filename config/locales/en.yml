@@ -166,7 +166,7 @@ en:
         file: File
         printer: Printer
         copies: No. of copies
-        sides: Double-sided
+        duplex: Double-sided
         collated: Collated
         ranges: Ranges
         media: Paper size

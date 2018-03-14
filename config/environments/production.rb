@@ -87,4 +87,5 @@ Rails.application.configure do
   config.account_ip = 'https://beta-account.chalmers.it'
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.card_balance_chalmers_it = 'https://card-balance.chalmers.it'
+  config.print_chalmers_it = 'https://print.chalmers.it'
 end

@@ -46,6 +46,7 @@ Rails.application.configure do
   config.account_ip = 'https://beta-account.chalmers.it'
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.card_balance_chalmers_it = 'http://0.0.0.0:4567'
+  config.print_chalmers_it = 'http://localhost:4000'
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
   config.action_mailer.default_url_options = { host: "localhost:3000"}

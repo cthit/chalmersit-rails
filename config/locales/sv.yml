@@ -178,7 +178,7 @@ sv:
         file: Fil
         printer: Skrivare
         copies: Antal kopior
-        sides: Dubbelsidig utskrift
+        duplex: Dubbelsidig utskrift
         collate: Sortera
         ranges: Intervall
         media: Pappersstorlek
