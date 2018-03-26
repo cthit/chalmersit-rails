@@ -12,7 +12,7 @@ class Lunch
     end
 
     def today_cached
-      Rails.cache.fetch self do
+      Rails.cache.fetch self, expires_in: 1.hour do
         Lunch.fetch_from_api
       end
     rescue
