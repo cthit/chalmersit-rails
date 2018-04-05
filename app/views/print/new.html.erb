@@ -1,5 +1,5 @@
 <% content_for :title, t('layouts.home.print') %>
-<%= simple_form_for @print, url: "#{Rails.configuration.print_chalmers_it}/print" do |f| %>
+<%= simple_form_for :print, url: "#{Rails.configuration.print_chalmers_it}/print" do |f| %>
   <div class="row">
     <div class="small-6 columns">
       <%= f.input :file, as: :file %>
@@ -22,10 +22,10 @@
   </div>
 
   <div class="suggestions">
-    <%= f.label t('.suggestions') %>
+    <%= f.label t('.suggestions'), required: false %>
     <ol class="printer-list" data-url="<%= "#{Rails.configuration.print_chalmers_it}/list.json" %>">
       <% @printers.limit(10).each do |p| %>
-        <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
+        <li><%= link_to p.name, 'javascript:;', class: 'set-printer' %></li>
       <% end %>
     </ol>
   </div>
@@ -35,19 +35,19 @@
 
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.input :copies, as: :integer, input_html: { min: 1 } %>
+      <%= f.input :copies, as: :integer, input_html: { min: 1 }, required: false %>
     </div>
     <div class="small-12 medium-6 columns">
-      <%= f.input :ranges %>
+      <%= f.input :ranges, required: false %>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.input :media, collection: ['A4'] %>
+      <%= f.input :media, collection: ['A4'], required: false %>
     </div>
     <div class="small-12 medium-6 columns">
-      <%= f.input :ppi, collection: Print.available_ppi, prompt: false %>
+      <%= f.input :ppi, collection: Print.available_ppi, prompt: false, required: false %>
     </div>
   </div>
 
@@ -59,14 +59,14 @@
                 <%= fa_icon 'user' %>
             </span>
         </div>
-        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false, placeholder: t('activemodel.attributes.print.username') -%>
+        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false %>
 
         <div class="small-3 large-1 columns large-offset-1">
             <span class="prefix icon-align">
                 <%= fa_icon 'key' %>
             </span>
         </div>
-        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false, placeholder: t('activemodel.attributes.print.password') -%>
+        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false %>
     </div>
     <div class="row">
         <em><%= t('.password_notice') %></em>
