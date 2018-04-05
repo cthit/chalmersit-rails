@@ -237,9 +237,6 @@ GEM
     mysql2 (0.4.10)
     naught (1.1.0)
     nenv (0.3.0)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (4.2.0)
     netrc (0.11.0)
     nio4r (2.1.0)
     nokogiri (1.8.1)
@@ -450,7 +447,6 @@ DEPENDENCIES
   momentjs-rails
   multi_fetch_fragments
   mysql2
-  net-scp (~> 1.2.1)
   nokogiri
   omniauth-oauth2
   paint
@@ -475,4 +471,4 @@ DEPENDENCIES
   will_paginate (~> 3.1.0)
 
 BUNDLED WITH
-   1.16.0
+   1.16.1
