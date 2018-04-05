@@ -5,7 +5,7 @@
       <%= f.input :file, as: :file %>
     </div>
     <div class="small-6 columns">
-      <em><%= t '.supported_file_types' %>:<br> <%= Print.permitted_mime_types.join ', ' %></em>
+      <em><%= t '.supported_file_types' %>:<br> <%= @permitted_mime_types.join ', ' %></em>
     </div>
   </div>
 
@@ -17,16 +17,13 @@
       </span>
     </div>
     <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
-      <%= f.select :printer, @printers.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
+      <%= f.select :printer, [] %>
     <% end %>
   </div>
 
   <div class="suggestions">
     <%= f.label t('.suggestions'), required: false %>
     <ol class="printer-list" data-url="<%= "#{Rails.configuration.print_chalmers_it}/list.json" %>">
-      <% @printers.limit(10).each do |p| %>
-        <li><%= link_to p.name, 'javascript:;', class: 'set-printer' %></li>
-      <% end %>
     </ol>
   </div>
 
@@ -47,7 +44,7 @@
       <%= f.input :media, collection: ['A4'], required: false %>
     </div>
     <div class="small-12 medium-6 columns">
-      <%= f.input :ppi, collection: Print.available_ppi, prompt: false, required: false %>
+      <%= f.input :ppi, collection: @available_ppi, prompt: false, required: false %>
     </div>
   </div>
 

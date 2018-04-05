@@ -45,8 +45,6 @@ Rails.application.routes.draw do
     get 'search' => 'search#index', as: :search
 
     get 'print' => 'print#new', as: :new_print
-    post 'print' => 'print#print', as: :prints
-    post 'print/pq' => 'print#pq', as: :pq_print
 
     get 'frontpage/edit' => 'frontpage#edit', as: :edit_frontpage
     patch 'frontpage/update' => 'frontpage#update'
