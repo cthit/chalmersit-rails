@@ -1,5 +1,5 @@
 <% content_for :title, t('layouts.home.print') %>
-<%= simple_form_for :print, url: "#{Rails.configuration.print_chalmers_it}/print" do |f| %>
+<%= simple_form_for :print, url: "#{Rails.configuration.print_chalmers_it}/print", html: {id: 'new_print'}, remote: true do |f| %>
   <div class="row">
     <div class="small-6 columns">
       <%= f.input :file, as: :file %>
@@ -32,7 +32,7 @@
 
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.input :copies, as: :integer, input_html: { min: 1 }, required: false %>
+      <%= f.input :copies, as: :integer, input_html: { min: 1, value: 1 }, required: false %>
     </div>
     <div class="small-12 medium-6 columns">
       <%= f.input :ranges, required: false %>
