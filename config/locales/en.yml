@@ -161,18 +161,6 @@ en:
     models:
       print: Print
       printer: Printer
-    attributes:
-      print:
-        file: File
-        printer: Printer
-        copies: No. of copies
-        duplex: Double-sided
-        collated: Collated
-        ranges: Ranges
-        media: Paper size
-        ppi: Resolution
-        username: CID
-        password: Password
     errors:
       models:
         print:
@@ -476,12 +464,29 @@ en:
     pm: pm
   simple_form:
     labels:
+      print:
+        suggestions: Suggestions
+        uploaded: Uploaded file
+        file: File
+        printer: Printer
+        copies: No. of copies
+        duplex: Double-sided
+        collate: Collated
+        grayscale: Grayscale
+        ranges: Ranges
+        media: Paper size
+        ppi: Resolution
+        username: CID
+        password: Password
       contact:
         body: Body
         title: Title
         email: Email (Leave empty if you want to be anonymous)
         contact_form: Kontaktformulär
     placeholders:
+      print:
+        username: CID
+        password: Password
       contact:
         body: What do you want to say?
         email: user@domain.com

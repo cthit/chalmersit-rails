@@ -173,18 +173,6 @@ sv:
     models:
       print: Utskrift
       printer: Skrivare
-    attributes:
-      print:
-        file: Fil
-        printer: Skrivare
-        copies: Antal kopior
-        duplex: Dubbelsidig utskrift
-        collate: Sortera
-        ranges: Intervall
-        media: Pappersstorlek
-        ppi: Upplösning
-        username: CID
-        password: Lösenord
     errors:
       models:
         print:
@@ -266,10 +254,6 @@ sv:
       card_number: Kortnummer
       card_holder: Kortinnehavare
       remove_card: Ta bort kort
-  calendar:
-      fetch:
-        events: "Evenemang"
-        subscribe: "Prenumerera (Google Kalender)"
   print:
     new:
       supported_file_types: Filtyper som stöds
@@ -278,6 +262,10 @@ sv:
       uploaded: Uppladdad fil
       password_notice: "Notera: Det är ditt Chalmerslösenord du ska använda och inte det du använder för våra tjänster."
       forgot_pw_notice: "Om du har glömt ditt lösenord, besök "
+  calendar:
+    fetch:
+      events: "Evenemang"
+      subscribe: "Prenumerera (Google Kalender)"
   frontpage:
     form:
       update_form_title: "Ändra sektionssida"
@@ -478,11 +466,26 @@ sv:
     pm: ''
   simple_form:
     labels:
+      print:
+        suggestions: Förslag
+        uploaded: Uppladdad fil
+        file: Fil
+        printer: Skrivare
+        copies: Antal kopior
+        duplex: Dubbelsidig utskrift
+        collate: Sortera
+        grayscale: Svartvitt
+        ranges: Intervall
+        media: Pappersstorlek
+        ppi: Upplösning
       contact:
         body: Innehåll
         title: Ämne
         email: Epostadress (Fyll inte i om du vill vara anonym)
     placeholders:
+      print:
+        username: CID
+        password: Lösenord
       contact:
         body: Vad vill du säga?
         email: user@domain.com

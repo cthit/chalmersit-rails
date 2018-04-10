@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171031145914) do
+ActiveRecord::Schema.define(version: 20180405124602) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "image"
@@ -167,15 +167,6 @@ ActiveRecord::Schema.define(version: 20171031145914) do
     t.index ["slug"], name: "index_posts_on_slug", using: :btree
     t.index ["title"], name: "index_posts_on_title", using: :btree
     t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
-  end
-
-  create_table "printers", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
-    t.string  "name"
-    t.string  "location"
-    t.string  "media"
-    t.integer "weight",   default: 10
-    t.boolean "duplex",   default: true
-    t.boolean "deleted",  default: false
   end
 
   create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
