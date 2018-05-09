@@ -3,6 +3,7 @@
 Currently using Ruby `2.4.0`
 
 # Setup instructions
+
 ```
 You may do the following in a vagrant/docker machine
 
@@ -48,4 +49,17 @@ Start the server by running the completed launch script.
 ```
 
 # Test mail functionality with mailcatcher:
+
 (mailcatcher.me) Start with "mailcatcher --ip=0.0.0.0" if you want to run on your webbrowser. Check Vagrant file for portforwarding.
+
+# Docker development setup
+
+```bash
+cp config/secrets.example.yml config/secrets.yml
+docker-compose up
+
+# run in another terminal window:
+docker-compose run web rake db:setup
+
+# => Server is now live at localhost:3000
+```
