@@ -94,6 +94,8 @@ group :development do
 
   # Measure the request time, for profiling
   gem 'rack-mini-profiler'
+
+  gem 'mailcatcher'
 end
 
 gem 'rspec-rails', group: [:test, :development]
