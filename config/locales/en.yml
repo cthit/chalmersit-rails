@@ -22,6 +22,7 @@
 en:
   and: " and "
   mail_sent: "Your mail has been sent to %{recipents}"
+  mail_error: "Your mail could not be delivered (empty body or recipients)"
   page_title: Information Technology on Chalmers
   techsec: Student Division
   section: The division

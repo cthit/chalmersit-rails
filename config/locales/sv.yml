@@ -22,6 +22,7 @@
 sv:
   and: " och "
   mail_sent: "Ditt mail har skickats till %{recipents}"
+  mail_error: "Ditt mail kunde inte skickas (tomt meddelande eller mottagare)"
   page_title: Informationsteknik på Chalmers
   techsec: Teknologsektionen
   section: Sektionen
