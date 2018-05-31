@@ -482,7 +482,7 @@ en:
       contact:
         body: Body
         title: Title
-        email: Email (Leave empty if you want to be anonymous)
+        email: Your email (Leave empty if you want to be anonymous)
         contact_form: Kontaktformulär
     placeholders:
       print:

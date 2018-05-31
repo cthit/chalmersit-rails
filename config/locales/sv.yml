@@ -482,7 +482,7 @@ sv:
       contact:
         body: Innehåll
         title: Ämne
-        email: Epostadress (Fyll inte i om du vill vara anonym)
+        email: Din e-postadress (Fyll inte i om du vill vara anonym)
     placeholders:
       print:
         username: CID
