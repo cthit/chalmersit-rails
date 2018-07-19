@@ -22,6 +22,7 @@
 sv:
   and: " och "
   mail_sent: "Ditt mail har skickats till %{recipents}"
+  mail_error: "Ditt mail kunde inte skickas (tomt meddelande eller mottagare)"
   page_title: Informationsteknik på Chalmers
   techsec: Teknologsektionen
   section: Sektionen
@@ -481,7 +482,7 @@ sv:
       contact:
         body: Innehåll
         title: Ämne
-        email: Epostadress (Fyll inte i om du vill vara anonym)
+        email: Din e-postadress (Fyll inte i om du vill vara anonym)
     placeholders:
       print:
         username: CID
