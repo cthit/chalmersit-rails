@@ -1,5 +1,3 @@
-<% cache cache_key_for_restaurants do %>
-<% @the_restaurants.each do |restaurant| %>
-<%= format_rest(restaurant) %>
-<% end %>
+<% @restaurants.each do |restaurant| %>
+<%= format_rest(restaurant, I18n.locale.to_s) %>
 <% end %>
