@@ -24,12 +24,7 @@ class ArticleImageUploader < CarrierWave::Uploader::Base
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
   # end
-  process resize_to_limit: [1000, 1000], :if => :image?
-
-  # Create different versions of your uploaded files:
-  version :thumb, if: :too_large? do
-    process :resize_to_limit => [500, 500]
-  end
+  process resize_to_limit: [1500, 1500], :if => :image?
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

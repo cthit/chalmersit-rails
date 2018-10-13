@@ -36,7 +36,7 @@ $ ->
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
       if $.inArray(extension, image_exts) > -1
-        add_to_file_list(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
+        add_to_file_list(data.orig_name, src.url, image_markdown(remove_ext(data.orig_name), src.url))
       else
         add_to_file_list(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
 
@@ -76,12 +76,6 @@ image_markdown = (title, url) ->
 
 link_markdown = (text, url) ->
   "[#{text}](#{url})"
-
-image_thumbnail_markdown = (title, url, url_thumb) ->
-  if url_thumb
-    link_markdown(image_markdown(title, url_thumb), url)
-  else
-    image_markdown(title, url)
 
 remove_ext = (filename) ->
   filename.substr(0, filename.lastIndexOf('.'))
