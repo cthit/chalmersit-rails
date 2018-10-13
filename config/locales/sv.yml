@@ -95,6 +95,8 @@ sv:
   about_section: Om Sektionen
   committees_assoiciations: Kommittéer, föreningar och andra instanser
   form_error: "Formuläret innehåller %{count} fel"
+  upload_attach: Lägg till filer genom att drag & droppa eller
+  upload_select: välj från din dator.
   attributes:
     body_en: "Engelsk brödtext"
     body_sv: "Svensk brödtext"
