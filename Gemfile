@@ -84,9 +84,6 @@ gem 'globalize-accessors','~> 0.2.1'
 
 gem 'rest-client'
 
-gem 'poltergeist'
-gem 'capybara'
-
 gem 'unmarkdown'
 group :development do
   # Nice error messages
