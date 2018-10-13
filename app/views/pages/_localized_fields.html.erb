@@ -9,7 +9,11 @@
     <% I18n.with_locale(locale) do %>
       <div class="content <%= "active" if active == locale %>" id="lan-<%= locale %>">
         <%= f.input "title_#{locale}", label: Page.human_attribute_name(:title) %>
-        <%= f.input "body_#{locale}", as: :text, label: Page.human_attribute_name(:body), input_html: { rows: 20 } %>
+        <%= f.input "body_#{locale}", as: :text, label: Page.human_attribute_name(:body), input_html: { rows: 20, class: 'post-page-body' } %>
+        <div class="attach-files">
+          <%= f.file_field "image_uploader_#{locale}", multiple: true, class: 'file-uploader' %>
+          <div>Attach files by dragging & dropping or <div class="link">selecting them</div></div>
+        </div>
         <button class="preview large-12 columns" data-text="#page_body_<%= locale %>" data-title="#page_title_<%= locale %>"><%= t 'preview' %></button>
       </div>
     <% end %>

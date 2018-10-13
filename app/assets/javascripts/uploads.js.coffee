@@ -1,27 +1,33 @@
 image_exts = [".jpg", ".jpeg", ".gif", ".png", ".webp"]
 doc_exts = [".pdf", ".md", ".txt"]
 post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body_sv, #page_body_en'
-en_post_body = '.posts #post_body_en, #page_body_en'
-sv_post_body = '.posts #post_body_sv, #page_body_sv'
+file_uploaders = '#post_image_uploader_en, #post_image_uploader_sv, #page_image_uploader_sv, #page_image_uploader_en'
+
+#  Not proud of this solution. But without it we don't get to have two
+# uploaders on the same page (tries to upload the file once for each uploader)
+last_image_name = ""
 
 $ ->
   new Clipboard('.copy-file')
 
-  $(en_post_body + sv_post_body).fileupload
+  $(file_uploaders).fileupload
     url: '/uploads.json',
     paramName: 'upload[source]',
     add: (e, data) ->
-      data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($(post_body))
-      data.label = $('<label>').insertAfter(data.progress_bar)
-      try
-        unless valid_file(data.files[0].name)
-          handle_file_error(data)
-        if data.files[0].name
-          data.orig_name = data.files[0].name
-        else
-          data.orig_name = 'image'
-        data.submit().error (e) ->
-          handle_file_error(data)
+      this_image_name = data.files[0].name
+      unless last_image_name == this_image_name
+        last_image_name = this_image_name
+        data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($('.attach-files'))
+        data.label = $('<label>').insertAfter(data.progress_bar)
+        try
+          unless valid_file(data.files[0].name)
+            handle_file_error(data)
+          if data.files[0].name
+            data.orig_name = data.files[0].name
+          else
+            data.orig_name = 'image'
+          data.submit().error (e) ->
+            handle_file_error(data)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99

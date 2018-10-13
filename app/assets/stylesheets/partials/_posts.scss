@@ -216,3 +216,42 @@
 		content: "\f104";
 	}
 }
+
+.attach-files {
+	position: relative!important;
+    padding: 7px 10px;
+    margin: 0;
+    font-size: 13px;
+    line-height: 16px;
+    border: 1px solid #c3c8cf;
+    border-top: 0;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    margin-bottom: 2em;
+}
+
+.attach-files input {
+	width: 100%;
+    height: 100%;
+    margin-left: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0.0001;
+}
+
+.attach-files div {
+	display: inline-block;
+}
+
+.attach-files .link {
+	color: #2CA0D1;
+}
+
+.post-page-body {
+	margin-bottom: 0px;
+    border-bottom: 1px dashed #dfe2e5;
+}
