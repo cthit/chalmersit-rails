@@ -65,11 +65,22 @@ valid_file = (filename) ->
   $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
 
 add_to_file_list = (filename, url, markdown_url) ->
+  if $("#file-list").length == 0
+    add_file_list()
+
   content = "<div class='file-entry'>
               <a target='_blank' title='#{filename}' href='#{url}'> #{filename} </a>
               <button class='button tiny copy-file' data-clipboard-text='#{markdown_url}'> #{I18n.t('copy_link')} </button>
             </div>"
   $("#file-list").append(content)
+
+add_file_list = () ->
+  uploaded_files = I18n.t('uploaded_files')
+  empty_file_list = "<div class='columns large-12 box'>
+                        <h2>#{uploaded_files}</h2>
+                        <div id='file-list'></div>
+                      </div>"
+  $('.right-sidebar').append(empty_file_list)
 
 image_markdown = (title, url) ->
   "![#{title}](#{url})"
