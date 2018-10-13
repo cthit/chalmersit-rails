@@ -1,6 +1,7 @@
-<h1>Editing page</h1>
+<% content_for :title, t('helpers.submit.update', model: Page.model_name.human.downcase) %>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', path_to_page(@page) %> |
-<%= link_to 'Back', pages_path %>
+<%= link_to t('delete'), @page, method: :delete, data: { confirm: t('confirm') } %> |
+<%= link_to t('show'), path_to_page(@page) %> |
+<%= link_to t('back'), pages_path %>
