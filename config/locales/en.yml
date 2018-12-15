@@ -94,6 +94,8 @@ en:
   uploaded_files: Uploaded files
   about_section: About our division
   committees_assoiciations: Committees, associations and other instances
+  upload_attach: Attach files by dragging & dropping or
+  upload_select: selecting them.
   form_error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
