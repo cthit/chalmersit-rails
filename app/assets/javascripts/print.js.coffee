@@ -2,9 +2,15 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 printer_local_storage_key = "last-printer-used"
+cid_local_storage_key = "cid"
 
 $ ->
   printer_name = localStorage.getItem(printer_local_storage_key)
+  cid = localStorage.getItem(cid_local_storage_key)
+
+
+  if (cid)
+    $('#print_username').val(cid)
 
   if $('#print_printer').length
 
@@ -56,6 +62,7 @@ $ ->
           $('#pq .name').text(data.username)
           $('#pq .pq').text(data.value)
           $('#pq .success').show()
+          localStorage.setItem(cid_local_storage_key, data.username)
 
 
     $('.printer-list').on 'click', '.set-printer', ->
@@ -74,6 +81,7 @@ $ ->
     $('#new_print').on 'submit', (e) ->
       e.preventDefault()
       form = new FormData(this)
+      newCid = $('#print_username').val()
 
       $.ajax
         url: this.action,
@@ -84,6 +92,7 @@ $ ->
       .success (data) ->
         $('.printer-feedback-alert').hide()
         $('.printer-feedback-success').show()
+        localStorage.setItem(cid_local_storage_key, newCid)
       .error (err) ->
         errors = err.responseJSON.errors
         $('.printer-feedback-alert .msg').html($('<ul/>').html(errors.map (err) -> $('<li/>').text(err)))
