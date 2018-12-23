@@ -20,14 +20,15 @@ $ ->
         data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($('.attach-files'))
         data.label = $('<label>').insertAfter(data.progress_bar)
         try
-          unless valid_file(data.files[0].name)
+          unless valid_file(this_image_name)
             handle_file_error(data)
-          if data.files[0].name
-            data.orig_name = data.files[0].name
           else
-            data.orig_name = 'image'
-          data.submit().error (e) ->
-            handle_file_error(data)
+            if this_image_name
+              data.orig_name = this_image_name
+            else
+              data.orig_name = 'image'
+            data.submit().error (e) ->
+              handle_file_error(data)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99
@@ -41,7 +42,7 @@ $ ->
       data.label.remove()
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
-      if $.inArray(extension, image_exts) > -1
+      if image_exts.includes(extension)
         add_to_file_list(data.orig_name, src.url, image_markdown(remove_ext(data.orig_name), src.url))
       else
         add_to_file_list(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
@@ -68,7 +69,7 @@ handle_file_error = (data) ->
 
 valid_file = (filename) ->
   extension = filename.substr(filename.lastIndexOf('.'), filename.length)
-  $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
+  image_exts.includes(extension) || doc_exts.includes(extension)
 
 add_to_file_list = (filename, url, markdown_url) ->
   unhide_file_list()
