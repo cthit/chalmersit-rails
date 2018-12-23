@@ -5,7 +5,7 @@ file_uploaders = '#post_image_uploader_en, #post_image_uploader_sv, #page_image_
 
 #  Not proud of this solution. But without it we don't get to have two
 # uploaders on the same page (tries to upload the file once for each uploader)
-last_image_name = ""
+last_upload_name = ""
 
 $ ->
   new Clipboard('.copy-file')
@@ -14,17 +14,17 @@ $ ->
     url: '/uploads.json',
     paramName: 'upload[source]',
     add: (e, data) ->
-      this_image_name = data.files[0].name
-      unless last_image_name == this_image_name
-        last_image_name = this_image_name
+      this_upload_name = data.files[0].name
+      unless last_upload_name == this_upload_name &&
+        last_upload_name = this_upload_name
         data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($('.attach-files'))
         data.label = $('<label>').insertAfter(data.progress_bar)
         try
-          unless valid_file(this_image_name)
+          unless valid_file(this_upload_name)
             handle_file_error(data)
           else
-            if this_image_name
-              data.orig_name = this_image_name
+            if this_upload_name
+              data.orig_name = this_upload_name
             else
               data.orig_name = 'image'
             data.submit().error (e) ->
