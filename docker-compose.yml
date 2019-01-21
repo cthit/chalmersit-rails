@@ -1,14 +1,19 @@
-version: '3'
+version: '2'
 services:
   db:
     image: mariadb
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
+      MYSQL_DATABASE: it_dev
+      MYSQL_USER: it
+      MYSQL_PASSWORD: iamapassword
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   web:
-    build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    build: 
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c 'rm -f tmp/pids/server.pid && sh start.sh'
     volumes:
-      - .:/myapp
+      - .:/app
     ports:
       - "3000:3000"
     depends_on:

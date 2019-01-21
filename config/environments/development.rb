@@ -12,7 +12,7 @@ Rails.application.configure do
   config.eager_load = false
 
   # Show web console from docker
-  config.web_console.whitelisted_ips = '172.19.0.0/16'
+  config.web_console.whitelisted_ips = '172.16.0.0/12'
 
   # Show full error reports and disable caching.
   config.consider_all_requests_local       = true
