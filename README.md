@@ -7,7 +7,7 @@ Currently using Ruby `2.4.0`
 You may do the following in a vagrant/docker machine
 
 ### Install dependencies
-Install the following: `Ruby`, `gem` (may be installed with ruby automatically), `mysql`, `nodejs`, `rbenv` (with ruby-build package if needed in aur on arch, not sure about ubuntu/macos), `cmake`
+Install the following: `Ruby`, `gem` (may be installed with ruby automatically), `mysql` (google how to do this on your system, tends to vary a bit), `nodejs`, `rbenv` (on arch the `ruby-build` package from the aur is also required, not sure about ubuntu/macos), `cmake`
 (Also maybe: `libcurl3` `libcurl3-gnutls` `libcurl4-openssl-dev` `redis-server`)
 
 Install bundle with ruby `gem install bundle`.
@@ -46,11 +46,11 @@ May need to run `rbenv rehash` if you've been working on something using a diffe
 Open `0.0.0.0:3000` in a browser.
 
 ## Test mail functionality with mailcatcher:
-(mailcatcher.me) Start with "mailcatcher --ip=0.0.0.0" if you want to run on your webbrowser. Check Vagrant file for portforwarding.
+Start with `mailcatcher --ip=0.0.0.0` if you want to run on your webbrowser.
 
 ## For "logged in like behaviour":
 Download and set up [https://github.com/lindskogen/chalmersit-account-mock](https://github.com/lindskogen/chalmersit-account-mock).
 
-Start it in a docker container (or however you want to), change `config.account_ip` in `config/environments/development.rb` to `'http://localhost:6789'`.
+Start it in a docker container (or however you want to). In this project, change `config.account_ip` in `config/environments/development.rb` to `'http://localhost:6789'`.
 
 You should now be able to log in to test admin/fkit functionality.
