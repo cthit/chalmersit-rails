@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'redirect/courses' => 'redirect#courses'
 
   resources :uploads, only: [:create, :destroy]
+  patch '/uploads.json', to: 'uploads#create'
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
