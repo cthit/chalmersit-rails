@@ -90,6 +90,7 @@ sv:
   no: Nej
   partner: Samarbetspartner
   unsupported_file_format: Ogiltigt filformat (endast pdf/md/txt/jpg/jpeg/gif/png/webp)
+  upload_failed: "Filuppladningen misslyckades med %{error}"
   copy_link: Kopiera länk
   uploaded_files: Uppladdade filer
   about_section: Om Sektionen

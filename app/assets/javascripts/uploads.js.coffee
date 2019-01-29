@@ -15,20 +15,21 @@ $ ->
     paramName: 'upload[source]',
     add: (e, data) ->
       this_upload_name = data.files[0].name
-      unless last_upload_name == this_upload_name &&
+      unless last_upload_name == this_upload_name
         last_upload_name = this_upload_name
         data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($('.attach-files'))
         data.label = $('<label>').insertAfter(data.progress_bar)
         try
           unless valid_file(this_upload_name)
-            handle_file_error(data)
+            handle_file_error(data, 'unsupported_file_format', "")
           else
             if this_upload_name
               data.orig_name = this_upload_name
             else
               data.orig_name = 'image'
             data.submit().error (e) ->
-              handle_file_error(data)
+              console.log(e)
+              handle_file_error(data, 'upload_failed', e.status + " " + e.statusText)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99
@@ -60,8 +61,8 @@ $ ->
 
       ), 100
 
-handle_file_error = (data) ->
-  data.label.text I18n.t('unsupported_file_format')
+handle_file_error = (data, error_label, errortext) ->
+  data.label.text I18n.t(error_label, error: errortext)
   data.progress_bar.remove()
   setTimeout ->
     data.label.remove()
