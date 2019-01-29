@@ -10,7 +10,7 @@ You may do the following in a vagrant/docker machine
 Install the following: `Ruby`, `gem` (may be installed with ruby automatically), `mysql` (google how to do this on your system, tends to vary a bit), `nodejs`, `rbenv` (on arch the `ruby-build` package from the aur is also required, not sure about ubuntu/macos), `cmake`
 (Also maybe: `libcurl3` `libcurl3-gnutls` `libcurl4-openssl-dev` `redis-server`)
 
-Install bundle with ruby `gem install bundle`.
+Install bundle with ruby `gem install bundler`.
 
 ### Install correct ruby version
 ```
