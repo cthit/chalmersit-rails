@@ -28,7 +28,6 @@ $ ->
             else
               data.orig_name = 'image'
             data.submit().error (e) ->
-              console.log(e)
               handle_file_error(data, 'upload_failed', e.status + " " + e.statusText)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
