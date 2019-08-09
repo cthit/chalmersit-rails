@@ -43,7 +43,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.account_ip = 'https://beta-account.chalmers.it'
+  config.account_ip = 'http://localhost:8081'
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.print_chalmers_it = 'http://localhost:4000'
   config.action_mailer.delivery_method = :smtp

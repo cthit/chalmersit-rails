@@ -3,6 +3,7 @@ require 'active_resource'
 class User < ActiveResource::Base
   extend ActiveModel::Naming
   self.site = Rails.configuration.account_ip
+  self.prefix = "/api/"
   attr_writer :committees
 
   def posts
@@ -17,7 +18,7 @@ class User < ActiveResource::Base
     return nil unless id.present?
     Rails.cache.fetch("users/#{id}.json") do
       user = super id
-      user.positions = OpenStruct.new(user.positions.attributes).to_h
+      user.groups = OpenStruct.new(user.groups.attributes).to_h
       user
     end
   end
@@ -38,7 +39,7 @@ class User < ActiveResource::Base
   end
 
   def self.headers
-    { 'authorization' => "Bearer #{Rails.application.secrets.client_credentials}"}
+    { 'authorization' => "pre-shared #{Rails.application.secrets.client_credentials}"}
   end
 
 end
