@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180405124602) do
+ActiveRecord::Schema.define(version: 20190809133551) do
 
   create_table "banners", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "image"
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(version: 20180405124602) do
   create_table "sessions", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci" do |t|
     t.string   "uid"
     t.string   "provider"
-    t.string   "token"
+    t.text     "token",      limit: 65535
     t.datetime "created_at"
     t.datetime "updated_at"
     t.index ["provider"], name: "index_sessions_on_provider", using: :btree
