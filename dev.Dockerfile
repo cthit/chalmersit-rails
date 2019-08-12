@@ -6,11 +6,14 @@ net-tools netcat build-essential libpq-dev nodejs cmake
 
 RUN apt-get clean
 
-
 RUN mkdir /app
 WORKDIR /app
 COPY Gemfile* /app/
-#This is done to avoid installing at rebuild
+
+RUN useradd -m ruby
+RUN chown -R ruby /app
+USER ruby
+
 RUN bundle install
 
 ENV DATABASE_NAME it_dev
@@ -28,11 +31,6 @@ ENV OAUTH_SECRET k5qdAKqCYmXW4K1ZWIXRMiNgsYdlkzioruSMTiqHtq6d5AFB7MOxtmgBquJ3kxM
 ENV OAUTH_ID r6lNmdj8dI8KzXNedStWl12BkITHuyW8OOAYiZ31lozyPULYuryy2rsa4ImjiFdELAbg6FBpXNO
 EXPOSE 3000
 
-RUN useradd -m ruby
-
 COPY . /app
-RUN chown -R ruby /app
-USER ruby
-
 
 CMD ["sh", "start.sh"]
