@@ -10,8 +10,6 @@ install:
 - sudo mv docker-compose /usr/local/bin
 - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
 - docker-compose up -d
-- docker-compose run web dockerize -wait tcp://db:3306
-- docker-compose run web rake db:setup
 script:
 - docker-compose run web rspec
 notifications:
