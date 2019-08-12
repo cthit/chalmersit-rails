@@ -9,9 +9,8 @@ install:
 - chmod +x docker-compose
 - sudo mv docker-compose /usr/local/bin
 - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
-- docker-compose up -d
 script:
-- docker-compose up
+- docker-compose up --build -d 
 notifications:
   email: false
   irc:
