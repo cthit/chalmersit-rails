@@ -1,17 +1,20 @@
 #!/bin/bash
-# Wait for the database to start up
+  service="chalmers database"
+  host=$DATABASE_HOST
+  port=3306
 
-host="$1"
-password="$2"
+  echo "waiting for $service to be up on $host:$port..."
 
-until mysql -h "$host" --user="root" --password="$password" --execute="\q"; do
-    >&2 echo "MySQL is unavailable - sleeping"
-    sleep 2
-done
+  if [ -n "$host" -a -n "$port" ]; then
+    # nc command is the key for the TCP probe
+    while ! nc -w 1 -c echo $host $port
+    do
+      echo -n .
+      sleep 1
+    done
 
->&2 echo "MySQL is up - executing order 66"
-
-bundle exec rake db:create db:migrate
-bundle exec rake rails:update:bin
-rm tmp/pids/server.pid
-rails s -p 3000 -b '0.0.0.0'
+    echo 'ok'
+  else
+    echo "[ERROR] invalid host=$host or port=$port for $service"
+    exit 1
+  fi

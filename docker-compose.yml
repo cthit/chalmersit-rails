@@ -11,7 +11,7 @@ services:
     build: 
       context: .
       dockerfile: dev.Dockerfile
-    command: bash -c 'rm -f tmp/pids/server.pid && sh start.sh'
+    command: bash -c 'rm -f tmp/pids/server.pid && sh wait-for-db.sh && sh start.sh'
     volumes:
       - .:/app
     ports:
