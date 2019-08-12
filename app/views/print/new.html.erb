@@ -1,20 +1,11 @@
 <% content_for :title, t('layouts.home.print') %>
-<%= simple_form_for(@print) do |f| %>
-  <%= f.error_notification %>
-
+<%= simple_form_for :print, url: "#{Rails.configuration.print_chalmers_it}/print", html: {id: 'new_print'}, remote: true do |f| %>
   <div class="row">
     <div class="small-6 columns">
-      <% if @print.file_cache %>
-        <%= f.label :file %>
-        <%= @print.file_name %>
-        <%= f.input :file_name, as: :hidden %>
-        <%= f.input :file_cache, as: :hidden %>
-      <% else %>
-        <%= f.input :file, as: :file %>
-      <% end %>
+      <%= f.input :file, as: :file %>
     </div>
     <div class="small-6 columns">
-      <em><%= t '.supported_file_types' %>:<br> <%= Print.permitted_mime_types.join ', ' %></em>
+      <em><%= t '.supported_file_types' %>:<br> <%= @permitted_mime_types.join ', ' %></em>
     </div>
   </div>
 
@@ -26,37 +17,35 @@
       </span>
     </div>
     <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
-      <%= f.select :printer, @printers.map { |p| [p.name, p.name, { data: { media: p.media, location: p.location } }] } %>
+      <%= f.select :printer, [] %>
     <% end %>
   </div>
 
   <div class="suggestions">
-    <%= f.label t('.suggestions') %>
-    <ol class="printer-list">
-      <% @printers.limit(10).each do |p| %>
-        <li><%= link_to p.name, 'javascript:;', class: 'set-printer'  %></li>
-      <% end %>
+    <%= f.label t('.suggestions'), required: false %>
+    <ol class="printer-list" data-url="<%= "#{Rails.configuration.print_chalmers_it}/list.json" %>">
     </ol>
   </div>
 
-  <%= f.input :sides, as: :boolean, input_html: { checked: true } %>
+  <%= f.input :duplex, as: :boolean, input_html: { checked: true } %>
   <%= f.input :collate, as: :boolean, input_html: { checked: true } %>
+  <%= f.input :grayscale, as: :boolean, input_html: { checked: false } %>
 
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.input :copies, as: :integer, input_html: { min: 1 } %>
+      <%= f.input :copies, as: :integer, input_html: { min: 1, value: 1 }, required: false %>
     </div>
     <div class="small-12 medium-6 columns">
-      <%= f.input :ranges %>
+      <%= f.input :ranges, required: false %>
     </div>
   </div>
 
   <div class="row">
     <div class="small-12 medium-6 columns">
-      <%= f.input :media, collection: ['A4'] %>
+      <%= f.input :media, collection: ['A4'], required: false %>
     </div>
     <div class="small-12 medium-6 columns">
-      <%= f.input :ppi, collection: Print.available_ppi, prompt: false %>
+      <%= f.input :ppi, collection: @available_ppi, prompt: false, required: false %>
     </div>
   </div>
 
@@ -68,14 +57,14 @@
                 <%= fa_icon 'user' %>
             </span>
         </div>
-        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false, placeholder: t('activemodel.attributes.print.username') -%>
+        <%= f.input :username, wrapper_html: {class: "small-3 large-2 columns"}, label: false %>
 
         <div class="small-3 large-1 columns large-offset-1">
             <span class="prefix icon-align">
                 <%= fa_icon 'key' %>
             </span>
         </div>
-        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false, placeholder: t('activemodel.attributes.print.password') -%>
+        <%= f.input :password, wrapper_html: {class: "small-3 large-7 columns"}, label: false %>
     </div>
     <div class="row">
         <em><%= t('.password_notice') %></em>
@@ -83,10 +72,19 @@
         <em><%= t('.forgot_pw_notice') %><%= link_to 'cdks', 'https://cdks.chalmers.se' %></em>
     </div>
   </fieldset>
+    <div data-alert class="printer-feedback-success alert-box hidden success">
+    <div class="msg">Your document has been sent to the printer!</div>
+  </div>
+  <div data-alert class="printer-feedback-alert alert-box hidden alert">
+    <div class="msg"></div>
+  </div>
+  <div>
+    By pressing 'print', you're accepting that chalmers.it processes your chalmers.se cid and password  
+  </div>
   <%= f.button :submit, t('layouts.home.print') %>
 <% end %>
 
-<div id="pq" class="row">
+<div id="pq" class="row" data-url="<%= "#{Rails.configuration.print_chalmers_it}/pq.json" %>">
   <div class="small-3 columns">
     <%= button_tag class: 'button secondary get-pq-button' do %>
       <span class="done">PQ</span><%= fa_icon 'circle-o-notch spin', class: 'done hidden' %>

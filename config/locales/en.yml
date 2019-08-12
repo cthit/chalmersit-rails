@@ -22,6 +22,7 @@
 en:
   and: " and "
   mail_sent: "Your mail has been sent to %{recipents}"
+  mail_error: "Your mail could not be delivered (empty body or recipients)"
   page_title: Information Technology on Chalmers
   techsec: Student Division
   section: The division
@@ -89,10 +90,13 @@ en:
   no: No
   partner: Partner
   unsupported_file_format: Unsupported file format (only pdf/md/txt/jpg/jpeg/gif/png/webp)
+  upload_failed: "The upload failed with %{error}"
   copy_link: Copy link
   uploaded_files: Uploaded files
   about_section: About our division
   committees_assoiciations: Committees, associations and other instances
+  upload_attach: Attach files by dragging & dropping or
+  upload_select: selecting them.
   form_error:
     one: "The form contains %{count} error"
     other: "The form contains %{count} errors"
@@ -161,18 +165,6 @@ en:
     models:
       print: Print
       printer: Printer
-    attributes:
-      print:
-        file: File
-        printer: Printer
-        copies: No. of copies
-        sides: Double-sided
-        collated: Collated
-        ranges: Ranges
-        media: Paper size
-        ppi: Resolution
-        username: CID
-        password: Password
     errors:
       models:
         print:
@@ -208,7 +200,6 @@ en:
       charge_card_desc: Shortcut for charging your student union card
       slack_desc: Join the IT student division chat
       events: Events
-      student_union_card: Student union card balance
 
   posts:
     form:
@@ -246,14 +237,6 @@ en:
     today:
       next_event: Upcoming events
       no_events: There are no events today
-    card_balance_form:
-      card_number: Card number
-      get_balance: Get balance
-    card_balance:
-      balance: Balance
-      card_number: Card number
-      card_holder: Card holder
-      remove_card: Remove card
   print:
     new:
       supported_file_types: Supported file types
@@ -476,12 +459,29 @@ en:
     pm: pm
   simple_form:
     labels:
+      print:
+        suggestions: Suggestions
+        uploaded: Uploaded file
+        file: File
+        printer: Printer
+        copies: No. of copies
+        duplex: Double-sided
+        collate: Collated
+        grayscale: Grayscale
+        ranges: Ranges
+        media: Paper size
+        ppi: Resolution
+        username: CID
+        password: Password
       contact:
         body: Body
         title: Title
-        email: Email (Leave empty if you want to be anonymous)
+        email: Your email (Leave empty if you want to be anonymous)
         contact_form: Kontaktformulär
     placeholders:
+      print:
+        username: CID
+        password: Password
       contact:
         body: What do you want to say?
         email: user@domain.com

@@ -6,22 +6,18 @@ Paint::SHORTCUTS[:terminal] = {
 }
 include Paint::Terminal::String
 module LunchHelper
-  def format_rest(rest)
-    title = rest[:name].rest_title
-    top = frame_w("┏━", "┓", rest[:name].length)
+  def format_rest(rest, lang)
+    title = rest["name"].rest_title
+    top = frame_w("┏━", "┓", rest["name"].length)
     side =        "┃".frame
-    bot = frame_w("┗┳", "┛", rest[:name].length)
+    bot = frame_w("┗┳", "┛", rest["name"].length)
 
     restaurant = "#{top}#{side} #{title} #{side}\n#{bot}"
-    @meals = rest[:meals]
+    @meals = rest["meals"][lang]
     @meals.each do |meal|
       restaurant << format_meal(meal, meal == @meals.last) + "\n"
     end
     restaurant
-  end
-
-  def cache_key_for_restaurants
-    [Lunch, @the_restaurants.map{ |r| r[:name] }.sort!]
   end
 
   def format_meal(meal, last)
@@ -32,17 +28,17 @@ module LunchHelper
       meal_s = " ┗━ ".frame
     end
     meal_len = 0
-    if meal[:title].present?
-      meal_s << meal[:title].meal_title + ":".frame
+    if meal["title"].present?
+      meal_s << meal["title"].meal_title + ":".frame
       meal_len += 2
     end
     summary = ""
 
     desired_chunk_length = 76 - meal_len
 
-    @chunks = meal[:summary].scan(/\S.{1,#{desired_chunk_length}}(?!\S)/)
+    @chunks = meal["summary"].scan(/\S.{1,#{desired_chunk_length}}(?!\S)/)
     @chunks.each do |chunk|
-      if meal[:title].present?
+      if meal["title"].present?
         summary << "\n" if chunk == @chunks.first
         summary << prefix
       else

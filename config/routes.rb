@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'redirect/courses' => 'redirect#courses'
 
   resources :uploads, only: [:create, :destroy]
+  patch '/uploads.json', to: 'uploads#create'
 
   get 'twitter/feed/:twitter_handle' => 'twitter#feed'
 
@@ -28,12 +29,6 @@ Rails.application.routes.draw do
   scope "(:locale)", locale: /#{I18n.available_locales.join("|")}/ do
     resources :committees, :contact
 
-    resources :home, only: [] do
-      collection do
-        get 'card_balance/:number', action: :card_balance
-      end
-    end
-
     resources :pages
     resources :posts do
       resources :comments, only: [:create, :update, :destroy]
@@ -45,8 +40,6 @@ Rails.application.routes.draw do
     get 'search' => 'search#index', as: :search
 
     get 'print' => 'print#new', as: :new_print
-    post 'print' => 'print#print', as: :prints
-    post 'print/pq' => 'print#pq', as: :pq_print
 
     get 'frontpage/edit' => 'frontpage#edit', as: :edit_frontpage
     patch 'frontpage/update' => 'frontpage#update'

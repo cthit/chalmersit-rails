@@ -83,7 +83,6 @@ gem 'globalize-accessors','~> 0.2.1'
 
 gem 'rest-client'
 
-gem 'poltergeist'
 gem 'capybara'
 
 gem 'unmarkdown'
@@ -96,6 +95,8 @@ group :development do
 
   # Measure the request time, for profiling
   gem 'rack-mini-profiler'
+
+  gem 'mailcatcher'
 end
 
 gem 'rspec-rails', group: [:test, :development]
@@ -120,9 +121,6 @@ gem 'multi_fetch_fragments'
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
-
-# Used for SCP and SSH by print script to connect to chalmers servers
-gem 'net-scp', '~> 1.2.1'
 
 # Used for searching of selector in print
 gem 'chosen-rails'

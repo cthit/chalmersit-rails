@@ -1,27 +1,34 @@
 image_exts = [".jpg", ".jpeg", ".gif", ".png", ".webp"]
 doc_exts = [".pdf", ".md", ".txt"]
 post_body = '.posts #post_body_en, .posts #post_body_sv, #page_body_sv, #page_body_en'
-en_post_body = '.posts #post_body_en, #page_body_en'
-sv_post_body = '.posts #post_body_sv, #page_body_sv'
+file_uploaders = '#post_image_uploader_en, #post_image_uploader_sv, #page_image_uploader_sv, #page_image_uploader_en'
+
+#  Not proud of this solution. But without it we don't get to have two
+# uploaders on the same page (tries to upload the file once for each uploader)
+last_upload_name = ""
 
 $ ->
   new Clipboard('.copy-file')
 
-  $(en_post_body + sv_post_body).fileupload
+  $(file_uploaders).fileupload
     url: '/uploads.json',
     paramName: 'upload[source]',
     add: (e, data) ->
-      data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($(post_body))
-      data.label = $('<label>').insertAfter(data.progress_bar)
-      try
-        unless valid_file(data.files[0].name)
-          handle_file_error(data)
-        if data.files[0].name
-          data.orig_name = data.files[0].name
-        else
-          data.orig_name = 'image'
-        data.submit().error (e) ->
-          handle_file_error(data)
+      this_upload_name = data.files[0].name
+      unless last_upload_name == this_upload_name
+        last_upload_name = this_upload_name
+        data.progress_bar = $('<progress max="100" value="0" class="image-upload">').insertAfter($('.attach-files'))
+        data.label = $('<label>').insertAfter(data.progress_bar)
+        try
+          unless valid_file(this_upload_name)
+            handle_file_error(data, 'unsupported_file_format', "")
+          else
+            if this_upload_name
+              data.orig_name = this_upload_name
+            else
+              data.orig_name = 'image'
+            data.submit().error (e) ->
+              handle_file_error(data, 'upload_failed', e.status + " " + e.statusText)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99
@@ -35,8 +42,8 @@ $ ->
       data.label.remove()
       src = data.result.source
       extension = src.url.substr(src.url.lastIndexOf('.'), src.url.length)
-      if $.inArray(extension, image_exts) > -1
-        add_to_file_list(data.orig_name, src.url, image_thumbnail_markdown(remove_ext(data.orig_name), src.url, src.thumb.url))
+      if image_exts.includes(extension)
+        add_to_file_list(data.orig_name, src.url, image_markdown(remove_ext(data.orig_name), src.url))
       else
         add_to_file_list(data.orig_name, src.url, link_markdown(remove_ext(data.orig_name), src.url))
 
@@ -53,8 +60,8 @@ $ ->
 
       ), 100
 
-handle_file_error = (data) ->
-  data.label.text I18n.t('unsupported_file_format')
+handle_file_error = (data, error_label, errortext) ->
+  data.label.text I18n.t(error_label, error: errortext)
   data.progress_bar.remove()
   setTimeout ->
     data.label.remove()
@@ -62,26 +69,25 @@ handle_file_error = (data) ->
 
 valid_file = (filename) ->
   extension = filename.substr(filename.lastIndexOf('.'), filename.length)
-  $.inArray(extension, image_exts) || $.inArray(extension, doc_exts)
+  image_exts.includes(extension) || doc_exts.includes(extension)
 
 add_to_file_list = (filename, url, markdown_url) ->
+  unhide_file_list()
+
   content = "<div class='file-entry'>
               <a target='_blank' title='#{filename}' href='#{url}'> #{filename} </a>
               <button class='button tiny copy-file' data-clipboard-text='#{markdown_url}'> #{I18n.t('copy_link')} </button>
             </div>"
   $("#file-list").append(content)
 
+unhide_file_list = () ->
+  $('.file-list-container').removeClass('hidden')
+
 image_markdown = (title, url) ->
   "![#{title}](#{url})"
 
 link_markdown = (text, url) ->
   "[#{text}](#{url})"
-
-image_thumbnail_markdown = (title, url, url_thumb) ->
-  if url_thumb
-    link_markdown(image_markdown(title, url_thumb), url)
-  else
-    image_markdown(title, url)
 
 remove_ext = (filename) ->
   filename.substr(0, filename.lastIndexOf('.'))
