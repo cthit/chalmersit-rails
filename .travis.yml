@@ -10,7 +10,7 @@ install:
 - sudo mv docker-compose /usr/local/bin
 - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
 script:
-- docker-compose up --build -d 
+- docker-compose up --build --exit-code-from web
 notifications:
   email: false
   irc:
