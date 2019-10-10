@@ -12,7 +12,6 @@ COPY Gemfile* /app/
 
 RUN useradd -m ruby
 RUN chown -R ruby /app
-USER ruby
 
 RUN bundle install
 
