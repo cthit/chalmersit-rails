@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-    
+
     unless @post.event.nil?
       unless @post.event.facebook_link.include?("http://") || @post.event.facebook_link.include?("https://") || @post.event.facebook_link.empty?
         @post.event.facebook_link.insert(0, "https://")
@@ -144,6 +144,6 @@ class PostsController < ApplicationController
 
     def send_slack
       notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.display_name}"
+      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.nick}"
     end
 end

@@ -16,9 +16,11 @@ class User < ActiveResource::Base
 
   def self.find(id)
     return nil unless id.present?
-    Rails.cache.fetch("users/#{id}.json") do
+    Rails.cache.fetch("/api/users/#{id}.json") do
       user = super id
-      user.groups = OpenStruct.new(user.groups.attributes).to_h
+      user.groups.each do |group|
+        user.groups = OpenStruct.new(group.attributes).to_h
+      end
       user
     end
   end

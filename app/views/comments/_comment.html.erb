@@ -3,7 +3,7 @@
     <header class="row">
       <figure class="large-2 columns"><%= image_tag comment.user.avatar %></figure>
       <div class="large-10 columns">
-        <h3 class="fn"><%= comment.user.display_name %></h3>
+        <h3 class="fn"><%= comment.user.nick %></h3>
         <p class="comment-meta">
           <time title="<%= comment.created_at.to_s(:iso_date_time) %>" datetime="<%= comment.created_at.to_s(:rfc822) %>" pubdate><%= comment.created_at.to_s(:iso_date_time) %></time>
           <% if policy(comment).destroy? %>

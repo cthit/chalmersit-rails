@@ -7,7 +7,7 @@ FactoryGirl.define do
     acceptedUserAgreement true
     preferredLanguage "sv"
     admissionYear "2001"
-    display_name "Smurf 'Smurfen' Smursson"
+    nick "Smurf 'Smurfen' Smursson"
     admin false
 
     factory :admin_user do

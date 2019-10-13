@@ -2,12 +2,12 @@
 <div class="large-8 columns">
   <h3 class="fn user-position"><%= position %></h3>
   <% unless info.nil? %>
-    <h3 class="fn"><%= user.display_name %></h3>
+    <h3 class="fn"><%= user.nick %></h3>
     <p>
       <%= info.body %>
     </p>
   <% else %>
-    <h3 class="fn"><%= user.display_name %></h3>
+    <h3 class="fn"><%= user.nick %></h3>
   <% end %>
 </div>
 <div class="large-2 columns">
