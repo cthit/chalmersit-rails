@@ -1,21 +1,25 @@
-sudo: required
-env:
-  - DOCKER_COMPOSE_VERSION=1.18.0
-services:
-  - docker
-install:
-- sudo rm /usr/local/bin/docker-compose
-- curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-- chmod +x docker-compose
-- sudo mv docker-compose /usr/local/bin
-- "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
+dist: trusty
+language: ruby
+cache: bundler
+bundler_args: "--without guard --deployment"
+sudo: false
+rvm:
+  - 2.4.0
+addons:
+  apt:
+    packages:
+      - cmake
+before_script:
+  - mysql -e 'create database chalmersit_test;'
+  - "/bin/cp $TRAVIS_BUILD_DIR/config/secrets.example.yml $TRAVIS_BUILD_DIR/config/secrets.yml"
+  - RAILS_ENV=test bundle exec rake db:migrate db:seed --trace
 script:
-- docker-compose up --build --exit-code-from web
+  - RAILS_ENV=test bundle exec rspec
 notifications:
   email: false
   irc:
     channels:
-    - irc.chalmers.it#digIT-CI
+      - irc.chalmers.it#digIT-CI
     skip_join: true
   slack:
     secure: TzKKBuirNnxuPI8mtMbtFd4yW3Y4rpe34KJcsfKrNAQwYhYPN4cv5Xel4+6fj50I49RSJKpdUige1lhPMP3V1VocIy5zunPUoPMR5LPSgmbqRHNEbLMr9LiUplIk7v3xSY6DDMSKd3+K9tGUWge+34/8o9bmgtitQrEowSW4hnk=
