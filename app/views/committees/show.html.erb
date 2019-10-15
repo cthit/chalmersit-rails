@@ -10,14 +10,16 @@
 <p>
   <%= markdown @committee.description unless @committee.description.nil? %>
 </p>
-<% @committee.positions.each do |pos| %>
-  <div class="row committee-position">
-    <%
-      user = User.find(pos.first)
-      info = UserGroupInfo.find_by_user_id_and_group_id(pos.first, @committee.slug)
-    %>
-    <%= render partial: 'shared/single_position', locals: {user: user, position: pos.second, info: info }%>
-  </div>
+<% @committee.positions.each do |committee| %>
+  <% committee.each do |pos| %>
+    <div class="row committee-position">
+      <%
+        user = User.find(pos.first)
+        info = UserGroupInfo.find_by_user_id_and_group_id(pos.first, @committee.slug)
+      %>
+      <%= render partial: 'shared/single_position', locals: {user: user, position: pos.second, info: info} %>
+    </div>
+  <% end %>
 <% end %>
 <% if policy(@committee).update? %>
   <% content_for :buttons, (link_to t('edit'), edit_committee_path(@committee), class: "button tiny") %>

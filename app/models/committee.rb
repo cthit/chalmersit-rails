@@ -10,10 +10,10 @@ class Committee < ActiveRecord::Base
     slug
   end
   def positions
-    Rails.cache.fetch("positions/#{self.slug}", expires_in: 30.minutes) do
-      group = open(Rails.configuration.account_ip+"/groups/#{slug}.json",
-      'Authorization' => "Bearer #{Rails.application.secrets.client_credentials}")
-      JSON.parse(group.read)["positions"].map { |i| i.split(';').reverse }.to_h
+    Rails.cache.fetch("groupMembers/#{self.slug}", expires_in: 30.minutes) do
+      group = open(Rails.configuration.account_ip+"/api/superGroups/#{slug}/active.json",
+      'Authorization' => "pre-shared #{Rails.application.secrets.client_credentials}")
+      j = JSON.parse(group.read).map { |g| g["groupMembers"].map {|i| [i["userCid"],i["unofficialPostName"]]}.to_h}
+      end
     end
   end
-end

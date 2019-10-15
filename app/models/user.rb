@@ -13,9 +13,9 @@ class User < ActiveResource::Base
   def id
     uid
   end
-
   def self.find(id)
     return nil unless id.present?
+    puts(id)
     Rails.cache.fetch("/api/users/#{id}.json") do
       user = super id
       user.groups.each do |group|
@@ -41,7 +41,7 @@ class User < ActiveResource::Base
   end
 
   def self.headers
-    { 'authorization' => "pre-shared #{Rails.application.secrets.client_credentials}"}
+    { 'Authorization' => "pre-shared #{Rails.application.secrets.client_credentials}"}
   end
 
 end
