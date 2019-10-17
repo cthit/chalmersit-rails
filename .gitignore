@@ -44,3 +44,4 @@ bower.json
 
 launch.sh
 /public/javascripts/translations.js 
+/public/javascripts/i18n.js
