@@ -3,6 +3,8 @@ language: ruby
 cache: bundler
 bundler_args: "--without guard --deployment"
 sudo: false
+services:
+  - mysql
 rvm:
   - 2.4.0
 addons:
