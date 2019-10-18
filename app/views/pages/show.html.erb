@@ -6,9 +6,6 @@
 <%= markdown @page.body %>
 <p id="notice"><%= notice %></p>
 
-<% unless @page.parent.nil? %>
-    <%= link_to 'Parent', path_to_page(@page.parent) %>
-<% end %>
 <% if policy(Page).update? %>
 	<%= content_for :buttons, (link_to 'Edit', edit_page_path(@page), class: "button tiny") %>
 <% end %>

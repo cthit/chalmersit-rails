@@ -243,6 +243,7 @@ sv:
   users:
     sidebar:
       see_all_posts_by: "Se alla nyheter av %{user}"
+      in: "i"
   lunch:
     feed:
       lunch: Lunch
