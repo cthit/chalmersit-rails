@@ -37,7 +37,7 @@ class SponsorsController < ApplicationController
 
 private
   def sponsor_params
-    permitted = [:name, :image, :order] + Sponsor.globalize_attribute_names
+    permitted = [:name, :image, :order, :imagelink] + Sponsor.globalize_attribute_names
     params.require(:sponsor).permit(permitted)
   end
   def set_sponsor

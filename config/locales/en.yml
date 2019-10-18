@@ -112,6 +112,10 @@ en:
           attributes:
             group_id:
               user_not_in_group: "You're not a member of %{group}"
+        sponsor:
+          attributes:
+            imagelink:
+              link_not_valid_url: "The link provided is not a valid url" 
     models:
       event:
         one: Event
