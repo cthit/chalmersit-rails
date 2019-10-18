@@ -24,8 +24,8 @@ test:
   <<: *default
   host: localhost
   database: chalmersit_test
-  username: root
-  password: travis
+  username: travis
+  password: null
 
 production:
   <<: *default
