@@ -22,7 +22,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  host: localhost
   database: chalmersit_test
+  username: root
+  password: travis
 
 production:
   <<: *default
