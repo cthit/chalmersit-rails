@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :committee do
     name { "#{Faker::Lovecraft.word}IT" }
     slug { name.downcase }

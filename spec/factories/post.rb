@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :post do
     title_en 'Post title - EN'
     title_sv 'Post title - SV'

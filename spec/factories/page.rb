@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :page do |f|
     title_en 'Such title'
     title_sv 'Vilken titel'

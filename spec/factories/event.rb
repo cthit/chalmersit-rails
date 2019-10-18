@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :event do |f|
     event_date Date.today.tomorrow
     full_day false
