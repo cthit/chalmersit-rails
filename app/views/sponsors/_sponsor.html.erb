@@ -1,2 +1,13 @@
 <h2><%= sponsor.title %></h2>
-<div><%= image_tag sponsor.image, :class => "sponsor-image" %></div>
+
+<div><a class="atag"><%= image_tag sponsor.image,  :class => "sponsor-image" %></a></div>
+
+<script>
+var atags = document.getElementsByClassName("atag");
+
+atags[0].href = "http://ericsson.se";
+atags[1].href = "https://cygni.se";
+atags[2].href = "https://www.academicwork.se";
+atags[3].href = "https://cybercom.se";
+
+</script>
