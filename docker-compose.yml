@@ -1,0 +1,29 @@
+version: '2'
+services:
+  db:
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: it_dev
+      MYSQL_USER: it
+      MYSQL_PASSWORD: iamapassword
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  web:
+    build: 
+      context: .
+      dockerfile: dev.Dockerfile
+    command: bash -c 'rm -f tmp/pids/server.pid && sh wait-for-db.sh && sh start.sh'
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  
+  gotify:
+    image: cthit/gotify:latest
+    environment:
+      GOTIFY_PRE-SHARED-KEY: 123abc
+      GOTIFY_MOCK-MODE: "true"
+      GOTIFY_DEBUG-MODE: "true"
+    ports:
+      - 1337:8080

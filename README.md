@@ -54,3 +54,15 @@ Download and set up [https://github.com/lindskogen/chalmersit-account-mock](http
 Start it in a docker container (or however you want to). In this project, change `config.account_ip` in `config/environments/development.rb` to `'http://localhost:6789'`.
 
 You should now be able to log in to test admin/fkit functionality.
+
+# Docker development setup
+
+```bash
+cp config/secrets.example.yml config/secrets.yml
+docker-compose up
+
+# run in another terminal window:
+docker-compose up --build
+
+# => Server is now live at localhost:3000
+```
