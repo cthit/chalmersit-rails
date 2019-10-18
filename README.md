@@ -62,7 +62,7 @@ cp config/secrets.example.yml config/secrets.yml
 docker-compose up
 
 # run in another terminal window:
-docker-compose run web rake db:setup
+docker-compose up --build
 
 # => Server is now live at localhost:3000
 ```
