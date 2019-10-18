@@ -18,3 +18,12 @@ services:
       - "3000:3000"
     depends_on:
       - db
+  
+  gotify:
+    image: cthit/gotify:latest
+    environment:
+      GOTIFY_PRE-SHARED-KEY: 123abc
+      GOTIFY_MOCK-MODE: "true"
+      GOTIFY_DEBUG-MODE: "true"
+    ports:
+      - 1337:8080
