@@ -11,7 +11,7 @@ FactoryBot.define do
     admin { false }
 
     factory :admin_user do
-      admin true
+      admin { true }
     end
   end
 end
