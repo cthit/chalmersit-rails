@@ -23,18 +23,14 @@
 //= require moment
 //= require moment/sv.js
 //= require_tree .
-//= require i18n/translations
 //= require clipboard.js
 
-$(function(){
+$(function() {
+  $(document).foundation();
 
-$(document).foundation();
+  var $menu = $("#site-menu");
 
-var $menu = $('#site-menu');
-
-$('#main-nav-toggle').on('click', function() {
-	$menu.toggle();
-});
-
-
+  $("#main-nav-toggle").on("click", function() {
+    $menu.toggle();
+  });
 });
