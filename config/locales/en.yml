@@ -226,6 +226,7 @@ en:
   users:
     sidebar:
       see_all_posts_by: "Show all news post by %{user}"
+      in: "in"
   lunch:
     feed:
       lunch: Lunch
