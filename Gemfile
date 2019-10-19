@@ -23,8 +23,6 @@ gem 'will_paginate', '~> 3.1.0'
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
 
-gem 'i18n', '~> 1.7.0'
-
 # For html parsing
 gem 'nokogiri'
 
@@ -121,8 +119,6 @@ end
 
 # Used for searching of selector in print
 gem 'chosen-rails'
-
-gem 'i18n-js', '>= 3.4.0'
 
 gem 'paint'
 gem 'paint-shortcuts'
