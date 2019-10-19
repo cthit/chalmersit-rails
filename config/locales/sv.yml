@@ -213,6 +213,8 @@ sv:
       slack_desc: Gå med i IT-sektionens chatt
       events: Evenemang
       student_union_card: Kårkortssaldo
+      study_social_support: Studiesocial hjälp
+      study_social_support_desc: Information om hjälp du kan få angående din studiesociala hälsa
 
   posts:
     form:
