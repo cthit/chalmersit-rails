@@ -1,4 +1,4 @@
-class AddTranslationsToUserGroupInfo < ActiveRecord::Migration
+class AddTranslationsToUserGroupInfo < ActiveRecord::Migration[5.0]
   def up
     UserGroupInfo.create_translation_table! :body => :string
   end

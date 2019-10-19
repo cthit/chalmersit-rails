@@ -1,4 +1,4 @@
-class ChangeParamsColumnTypeMenuLinks < ActiveRecord::Migration
+class ChangeParamsColumnTypeMenuLinks < ActiveRecord::Migration[5.0]
   def up
     change_column :menu_links, :params, :text
   end

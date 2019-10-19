@@ -1,4 +1,4 @@
-class PeriodsCourses < ActiveRecord::Migration
+class PeriodsCourses < ActiveRecord::Migration[5.0]
   def change
     create_table :courses_periods, id: false do |t|
       t.integer :period_id

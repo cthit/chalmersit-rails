@@ -1,4 +1,4 @@
-class AddTranslationTableToPages < ActiveRecord::Migration
+class AddTranslationTableToPages < ActiveRecord::Migration[5.0]
   def up
     Page.create_translation_table! :title => :string, :body => :text
   end
