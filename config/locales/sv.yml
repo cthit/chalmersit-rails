@@ -110,6 +110,10 @@ sv:
           attributes:
             group_id:
               user_not_in_group: "Du är inte medlem i %{group}"
+        sponsor:
+          attributes:
+            imagelink:
+              link_not_valid_url: "Länken är inte en giltig URL" 
     models:
       event: Arrangemang
       post:

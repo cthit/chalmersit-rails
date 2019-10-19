@@ -1,2 +1,6 @@
 <h2><%= sponsor.title %></h2>
-<div><%= image_tag sponsor.image, :class => "sponsor-image" %></div>
+<% unless sponsor.imagelink.nil? %>
+<div><%= link_to generate_sponsor_image(sponsor.image), sponsor.imagelink %></div>
+<% else %>
+<div><%= generate_sponsor_image(sponsor.image) %></div>
+<% end %>

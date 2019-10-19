@@ -3,6 +3,7 @@ FactoryBot.define do
     name { 'very name' }
     image { 'such jpeg' }
     title { 'title       wow' }
+    imagelink { '' }
     order { 1 }
   end
 end
