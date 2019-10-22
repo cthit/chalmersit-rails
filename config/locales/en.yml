@@ -204,6 +204,8 @@ en:
       charge_card_desc: Shortcut for charging your student union card
       slack_desc: Join the IT student division chat
       events: Events
+      study_social_support: Support
+      study_social_support_desc: Information about help you can get regarding your social well being      
 
   posts:
     form:
