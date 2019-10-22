@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   include ApplicationHelper
   include Pundit
-  before_action :export_i18n_messages
 
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -19,9 +18,7 @@ end
   before_action :set_committees, :set_locale, :set_background_banner
 
   private
-  def export_i18n_messages
-    I18n::JS.export if Rails.env.development?
-  end
+  
   def user_not_authorized
     flash[:alert] = t 'not_authorized'
     redirect_to(request.referrer || root_path)

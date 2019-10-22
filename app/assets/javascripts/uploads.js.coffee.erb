@@ -21,14 +21,14 @@ $ ->
         data.label = $('<label>').insertAfter(data.progress_bar)
         try
           unless valid_file(this_upload_name)
-            handle_file_error(data, 'unsupported_file_format', "")
+            handle_file_error(data, "<%= I18n.t('unsupported_file_format') %>", "")
           else
             if this_upload_name
               data.orig_name = this_upload_name
             else
               data.orig_name = 'image'
             data.submit().error (e) ->
-              handle_file_error(data, 'upload_failed', e.status + " " + e.statusText)
+              handle_file_error(data, "<%= I18n.t('upload_failed') %>", e.status + " " + e.statusText)
     progress: (e, data) ->
       percent = parseInt(data.loaded / data.total * 100, 10)
       if percent < 99
@@ -61,7 +61,7 @@ $ ->
       ), 100
 
 handle_file_error = (data, error_label, errortext) ->
-  data.label.text I18n.t(error_label, error: errortext)
+  data.label.text error_label.replace('%{error}', errortext)
   data.progress_bar.remove()
   setTimeout ->
     data.label.remove()
@@ -76,7 +76,7 @@ add_to_file_list = (filename, url, markdown_url) ->
 
   content = "<div class='file-entry'>
               <a target='_blank' title='#{filename}' href='#{url}'> #{filename} </a>
-              <button class='button tiny copy-file' data-clipboard-text='#{markdown_url}'> #{I18n.t('copy_link')} </button>
+              <button class='button tiny copy-file' data-clipboard-text='#{markdown_url}'><%= I18n.t 'copy_link' %></button>
             </div>"
   $("#file-list").append(content)
 

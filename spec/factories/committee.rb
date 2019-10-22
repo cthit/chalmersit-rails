@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :committee do
-    name { "#{Faker::Lovecraft.word}IT" }
+    name { "#{Faker::Books::Lovecraft.word}IT" }
     slug { name.downcase }
     url { "chalmers.it" }
     email { "#{slug}@chalmers.it" }

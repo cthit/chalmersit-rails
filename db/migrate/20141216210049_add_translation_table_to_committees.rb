@@ -1,4 +1,4 @@
-class AddTranslationTableToCommittees < ActiveRecord::Migration
+class AddTranslationTableToCommittees < ActiveRecord::Migration[5.0]
   def up
     Committee.create_translation_table! :title => :string, :description => :text
   end

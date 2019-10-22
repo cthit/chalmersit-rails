@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '5.0.2'
+gem 'rails', '5.2.3'
 gem 'mysql2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0.1'
-gem 'compass-rails', '~> 3.0.2'
+gem 'compass-rails', '~> 3.1.0'
 # Foundation styles
 gem 'foundation-rails', '~> 5.5.0'
 # Font awesome!!!
@@ -13,7 +13,7 @@ gem 'font-awesome-rails'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .js.coffee assets and views
-gem 'coffee-rails', '~> 4.1.0'
+gem 'coffee-rails', '~> 5.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
@@ -22,8 +22,6 @@ gem 'will_paginate', '~> 3.1.0'
 
 # ActiveResource - fetching users and groups from account
 gem 'activeresource'
-
-gem 'i18n', '~> 0.7.0'
 
 # For html parsing
 gem 'nokogiri'
@@ -78,7 +76,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 
 # Internationalisation support (i.e. Swedish and English)
-gem 'globalize', github: 'globalize/globalize' # Change this upon official release on rubygems
+gem 'globalize', '~> 5.3.0'
 gem 'globalize-accessors','~> 0.2.1'
 
 gem 'rest-client'
@@ -103,12 +101,9 @@ gem 'rspec-rails', group: [:test, :development]
 group :test do
   gem 'factory_bot_rails'
   gem 'guard-rspec'
-  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+  gem 'shoulda-matchers', '~> 4.1.2'
   gem 'faker'
 end
-
-# Multi-fragment caching
-gem 'multi_fetch_fragments'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
@@ -124,8 +119,6 @@ gem 'multi_fetch_fragments'
 
 # Used for searching of selector in print
 gem 'chosen-rails'
-
-gem 'i18n-js', '>= 3.0.0.rc11'
 
 gem 'paint'
 gem 'paint-shortcuts'
