@@ -16,7 +16,7 @@
         <%= fa_icon 'print' %>
       </span>
     </div>
-    <%= f.input :printer, label: false, class: 'small-9 large-11 columns' do %>
+    <%= f.input :printer, label: false, wrapper_html: {class: 'small-9 large-11 columns'} do %>
       <%= f.select :printer, [] %>
     <% end %>
   </div>
