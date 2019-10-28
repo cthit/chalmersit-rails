@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   protect_from_forgery
 
   def create
-    s = Session.from_omniauth(env["omniauth.auth"])
+    s = Session.from_omniauth(request.env["omniauth.auth"])
     session[:user_id] = s.uid
     redirect_to root_url, :notice => t('signed_in')
   end
