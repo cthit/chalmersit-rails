@@ -4,7 +4,7 @@
   <% @sponsors.each do |sponsor| %>
     <tr>
       <td><h3><%= sponsor.name %></h3></td>
-      <td><%= image_tag sponsor.image %></td>
+      <td><%= image_tag sponsor.image.url %></td>
       <td>
         <%= link_to edit_sponsor_path(sponsor) do %>
           <button type="button" class="ui-button tiny"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
