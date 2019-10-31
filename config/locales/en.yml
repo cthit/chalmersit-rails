@@ -123,6 +123,9 @@ en:
       post:
         one: News post
         other: News posts
+      page:
+        one: Page
+        other: Pages
       course:
         one: Course
         other: Courses
@@ -164,7 +167,9 @@ en:
         user_id: User
         body: Comment
       page:
-        slug: "Title"
+        title: "Title"
+        body: "Body"
+        parent: "Parent"
   activemodel:
     models:
       print: Print
