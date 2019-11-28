@@ -119,6 +119,9 @@ sv:
       post:
         one: Nyhet
         other: Nyheter
+      page:
+        one: Sida
+        other: Sidor
       course:
         one: Kurs
         other: Kurser
@@ -176,7 +179,9 @@ sv:
         url: URL
         email: Epost
       page:
-        slug: "Titel"
+        title: "Titel"
+        body: "Innehåll"
+        parent: "Förälder"
   activemodel:
     models:
       print: Utskrift
