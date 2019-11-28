@@ -21,13 +21,13 @@
         <section class="large-4 columns">
           <div class="footer-contact">
             <div class="row">
-              <div class="column small-6 large-8 text-right"><dt><%= t 'contact' %></dt></div>
-              <div class="column small-6 large-4"><dd><%= mail_to Configurable.main_contact %></dd></div>
+              <div class="column small-6 large-6 text-right"><dt><%= t 'contact' %></dt></div>
+              <div class="column small-6 large-6"><dd><%= mail_to Configurable.main_contact %></dd></div>
             </div>
 
             <div class="row">
-              <div class="column small-6 large-8 text-right"><dt><%= t 'mailing_address' %></dt></div>
-              <div class="column small-6 large-4">
+              <div class="column small-6 large-6 text-right"><dt><%= t 'mailing_address' %></dt></div>
+              <div class="column small-6 large-6">
                 <dd itemprop="address" itemscope itemtype="http://schema.org/PostalAddress">
                   <span itemprop="name"><%= Configurable.contact_official_name %></span><br />
                   <span itemprop="streetAddress"><%= Configurable.contact_address %></span><br />
@@ -38,8 +38,8 @@
             </div>
 
             <div class="row">
-              <div class="column small-6 large-8 text-right"><dt><%= t 'visiting_address' %></dt></div>
-              <div class="column small-6 large-4">
+              <div class="column small-6 large-6 text-right"><dt><%= t 'visiting_address' %></dt></div>
+              <div class="column small-6 large-6">
                 <dd><a href="https://maps.google.se/maps?f=q&source=s_q&hl=sv&geocode=&q=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg,+V%C3%A4stra+G%C3%B6talands+l%C3%A4n&aq=&sll=57.688606,11.979255&sspn=0.001761,0.005059&vpsrc=0&ie=UTF8&hq=&hnear=H%C3%B6rsalsv%C3%A4gen+9,+412+58+G%C3%B6teborg&ll=57.688288,11.979454&spn=0.007042,0.020235&t=m&z=16&iwloc=A">
                   Hubben 2.1<br />
                   Hörsalsvägen 9<br />
@@ -55,10 +55,10 @@
             <% @committees.each do |com| %>
               <% cache ['footer_committee', I18n.locale, com] do %>
                 <div class="row">
-                  <div class="column small-6 large-8 text-right">
+                  <div class="column small-6 large-6 text-right">
                     <dt><%= com.title %></dt>
                   </div>
-                  <div class="column small-6 large-4">
+                  <div class="column small-6 large-6">
                     <dd><%= link_to com.name, com %></dd>
                   </div>
                 </div>
