@@ -502,3 +502,8 @@ sv:
     previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> Föregående</div>'
     page_gap: ...
     next_label: '<div class="button tiny">Nästa <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
+  samo_text: Det kan som student vara svårt att veta vem man ska vända sig till i olika frågor. Oavsett vad du undrar eller vill ha hjälp med kan du alltid vända dig till mig. Som SAMO har jag tystnadsplikt, vilket innebär att jag inte får sprida vidare något som du berättar för mig i förtroende.
+  samo_at: Kontakta SAMO via 
+  suggestit_description: Har du några förslag på hur Hubben 2.1 kan förändras? Skicka in dina förslag på
+  here: här
+  useful_emails: Användbara mailadresser
