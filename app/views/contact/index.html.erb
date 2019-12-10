@@ -7,13 +7,11 @@
 <br>
 <h1><%= t("useful_emails")%></h1>
 <table>
-    <% ["styrIT","NollKIT","DPO","snIT","Valberedningen","digIT"].each do |c| %>
-        <% @committees.select{|e| e.name == c}.each do |com|%>
-            <tr>
-                <td><%= com.name + " - " + com.title%> </td>
-                <td><%= mail_to com.email %></td>
-            </tr>
-        <%end%>
+    <% @contact_committees.each do |com| %>
+        <tr>
+            <td><%= com.name + " - " + com.title%> </td>
+            <td><%= mail_to com.email %></td>
+        </tr>
     <%end%>
     <tr>
         <td>Programledningen</td>
