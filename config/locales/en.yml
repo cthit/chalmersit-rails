@@ -502,3 +502,8 @@ en:
     previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> Previous</div>'
     page_gap: ...
     next_label: '<div class="button tiny">Next <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
+  samo_text: As a student, it might be hard to know who to turn too for different questions. Whatever you wonder or want help with, you can always turn to me. As SAMO, I have a duty of secrecy which means I am not allowed to spread what you have shared with me.
+  samo_at: Contact SAMO via 
+  suggestit_description: Do you have any suggestions for Hubben 2.1 or the IT student division? Submit your suggestions 
+  here: here
+  useful_emails: Useful email addresses
