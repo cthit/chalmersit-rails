@@ -15,18 +15,16 @@ class User < ActiveResource::Base
   end
   def self.find(id)
     return nil unless id.present?
-    Rails.cache.fetch("/api/users/#{id}.json") do
       user = super id
-      user.groups.each do |group|
+      user.relationships.each do |group|
         user.groups = OpenStruct.new(group.attributes).to_h
       end
       user
-    end
   end
 
   def committees
     @committees ||= Committee.all.select do |c|
-      groups.include?(c.slug)
+      relationships.each { | relationship | relationship.superGroup.include?(c.slug) }
     end
   end
 
