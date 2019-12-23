@@ -28,3 +28,12 @@ services:
     depends_on:
       - db
     network_mode: host
+  
+  gotify:
+    image: cthit/gotify:latest
+    environment:
+      GOTIFY_PRE-SHARED-KEY: 123abc
+      GOTIFY_MOCK-MODE: "true"
+      GOTIFY_DEBUG-MODE: "true"
+    ports:
+      - 1337:8080

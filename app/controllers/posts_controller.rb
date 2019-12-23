@@ -105,45 +105,18 @@ class PostsController < ApplicationController
     def post_event
       if @post.valid?
         if Rails.env.production?
-          send_mail
           begin
-            send_irkk
-          rescue
+            send_slack
+          rescue Exception => e
+            logger.error e.message
+            e.backtrace.each { |line| logger.error line }
           end
-          send_slack
         end
       end
     end
 
-    #Pushes the token and the post message to account server.
-    def send_mail
-  		pathPushMail = '/applications/push-to-subscribers/1'
-  		link = Rails.application.config.account_ip + pathPushMail
-  		url = URI.parse(link)
-  		http = Net::HTTP.new(url.host, url.port)
-  		http.use_ssl = true
-  		req = Net::HTTP::Get.new(url.path)
-  		req.add_field('Authorization', 'Token token=' + Rails.application.secrets.push_mail_token)
-  		req.add_field('push_message', @post.body)
-  		req.add_field('push_title', @post.title)
-  		req.add_field('push_url',post_url(@post))
-  		req.add_field('push_url_title', @post.title)
-  		response = http.request(req)
-   	end
-
-    def send_irkk
-      link = Rails.application.config.irkk_push_ip + "/commit"
-      url = URI.parse(link)
-      http = Net::HTTP.new(url.host, url.port)
-      http.use_ssl = false
-      req = Net::HTTP::Post.new(url.path)
-      req.add_field('Content-Type', 'application/json')
-      req.body = {'message' => @post.title + " : " + post_url(@post)}.to_json
-      response = http.request(req)
-    end
-
     def send_slack
       notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title}](#{post_url(@post)})* by #{@post.user.nick}"
+      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* by #{@post.user.nick}"
     end
 end

@@ -1,4 +1,4 @@
-class CreateUserGroupInfos < ActiveRecord::Migration
+class CreateUserGroupInfos < ActiveRecord::Migration[5.0]
   def change
     create_table :user_group_infos do |t|
       t.string :user_id, limit: 20

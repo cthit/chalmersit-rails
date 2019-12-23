@@ -43,7 +43,7 @@ Rebuilt in Ruby On Rails by digIT 14/15
 
 Doctype: HTML5
 Tech: Ruby, Rails, SCSS, Compass, JavaScript, jQuery, MySQL, Rake
-Tools: vim, Sublime Text 3, Terminal, Vagrant, Chrome, Spotify, git flow
+Tools: vim, Sublime Text 3, Terminal, Docker, Chrome, Spotify, git flow
 
 [✓] Responsive
 

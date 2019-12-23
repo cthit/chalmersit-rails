@@ -11,7 +11,7 @@
 
   <%= render "localized_fields", f: f %>
 
-  <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title_sv, include_blank: true %>
+  <%= f.input :parent_id, as: :select, collection: @other_pages , value_method: :id, label_method: :title_sv, include_blank: true, label: Page.human_attribute_name(:parent) %>
   <%= f.button :submit %>
 <% end %>
 

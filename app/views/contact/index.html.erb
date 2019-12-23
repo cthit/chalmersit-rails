@@ -1,1 +1,24 @@
-<%= render 'form' %>
+<h1><%=  "SAMO"%></h1>
+<p><%= t('samo_text')%></p>
+<br>
+<%= t("samo_at")%>
+<%= mail_to "samo@chalmers.it"%>
+<br>
+<br>
+<h1><%= t("useful_emails")%></h1>
+<table>
+  <% @contact_committees.each do |com| %>
+    <tr>
+      <td><%= com.name + " - " + com.title%> </td>
+      <td><%= mail_to com.email %></td>
+    </tr>
+  <%end%>
+  <tr>
+    <td>Programledningen</td>
+    <td><%= mail_to "pl@chalmers.it" %></td>
+  </tr>
+</table>
+
+<h1><%= "SuggestIT"%> </h1>
+<%= t('suggestit_description')%>
+<a href="https://suggestit.chalmers.it" ><%= t('here')%></a>

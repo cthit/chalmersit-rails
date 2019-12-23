@@ -4,7 +4,7 @@ Currently using Ruby `2.4.0`
 
 ## Setup instructions
 
-You may do the following in a vagrant/docker machine
+You may do the following in a docker machine
 
 ### Install dependencies
 Install the following: `Ruby`, `gem` (may be installed with ruby automatically), `mysql` (google how to do this on your system, tends to vary a bit), `nodejs`, `rbenv` (on arch the `ruby-build` package from the aur is also required, not sure about ubuntu/macos), `cmake`
@@ -62,7 +62,7 @@ cp config/secrets.example.yml config/secrets.yml
 docker-compose up
 
 # run in another terminal window:
-docker-compose run web rake db:setup
+docker-compose up --build
 
 # => Server is now live at localhost:3000
 ```

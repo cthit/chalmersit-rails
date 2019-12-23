@@ -1,8 +1,8 @@
-FROM ruby:2.4
+FROM ruby:2.5.1
 
 RUN apt-get update && apt-get install -y \
-#Packages
-net-tools netcat build-essential libpq-dev nodejs cmake
+  #Packages
+  net-tools netcat build-essential libpq-dev nodejs cmake
 
 RUN apt-get clean
 

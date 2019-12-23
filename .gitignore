@@ -32,15 +32,9 @@ config/secrets.yml
 *.bowerrc
 bower.json
 
-# From https://github.com/github/gitignore/blob/master/ChefCookbook.gitignore
-.vagrant
-/cookbooks
-
 # Bundler
 .bundle/*
 
-.kitchen/
-.kitchen.local.yml
-
 launch.sh
 /public/javascripts/translations.js 
+/public/javascripts/i18n.js

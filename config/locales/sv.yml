@@ -110,11 +110,18 @@ sv:
           attributes:
             group_id:
               user_not_in_group: "Du är inte medlem i %{group}"
+        sponsor:
+          attributes:
+            imagelink:
+              link_not_valid_url: "Länken är inte en giltig URL" 
     models:
       event: Arrangemang
       post:
         one: Nyhet
         other: Nyheter
+      page:
+        one: Sida
+        other: Sidor
       course:
         one: Kurs
         other: Kurser
@@ -172,7 +179,9 @@ sv:
         url: URL
         email: Epost
       page:
-        slug: "Titel"
+        title: "Titel"
+        body: "Innehåll"
+        parent: "Förälder"
   activemodel:
     models:
       print: Utskrift
@@ -213,6 +222,8 @@ sv:
       slack_desc: Gå med i IT-sektionens chatt
       events: Evenemang
       student_union_card: Kårkortssaldo
+      study_social_support: Studiehälsa
+      study_social_support_desc: Information om hjälp du kan få angående din studiesociala hälsa
 
   posts:
     form:
@@ -239,6 +250,7 @@ sv:
   users:
     sidebar:
       see_all_posts_by: "Se alla nyheter av %{user}"
+      in: "i"
   lunch:
     feed:
       lunch: Lunch
@@ -490,3 +502,8 @@ sv:
     previous_label: '<div class="button tiny"><i class="fa fa-angle-left" aria-hidden="true"></i> Föregående</div>'
     page_gap: ...
     next_label: '<div class="button tiny">Nästa <i class="fa fa-angle-right" aria-hidden="true"></i></div>'
+  samo_text: Det kan som student vara svårt att veta vem man ska vända sig till i olika frågor. Oavsett vad du undrar eller vill ha hjälp med kan du alltid vända dig till mig. Som SAMO har jag tystnadsplikt, vilket innebär att jag inte får sprida vidare något som du berättar för mig i förtroende.
+  samo_at: Kontakta SAMO via 
+  suggestit_description: Har du några förslag på hur Hubben 2.1 kan förändras? Skicka in dina förslag på
+  here: här
+  useful_emails: Användbara mailadresser

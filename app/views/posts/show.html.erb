@@ -11,7 +11,7 @@
     <% if @comments.any? %>
       <ol class="commentlist">
 
-        <%= render partial: 'comments/comment', collection: @comments, cache: true %>
+        <%= render partial: 'comments/comment', collection: @comments %>
       </ol>
     <% end %>
   <% if policy(Comment).create? %>

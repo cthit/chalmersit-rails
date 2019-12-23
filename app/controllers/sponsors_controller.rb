@@ -6,12 +6,15 @@ class SponsorsController < ApplicationController
     @sponsors = Sponsor.all
     authorize @sponsors
   end
+  
   def show
   end
+  
   def new
     @sponsor = Sponsor.new
     authorize_sponsor
   end
+  
   def create
     @sponsor = Sponsor.new(sponsor_params)
     authorize_sponsor
@@ -21,8 +24,10 @@ class SponsorsController < ApplicationController
       render :new
     end
   end
+  
   def edit
   end
+  
   def update
     if @sponsor.update(sponsor_params)
       redirect_to sponsor_path(@sponsor)
@@ -30,6 +35,7 @@ class SponsorsController < ApplicationController
       render :new
     end
   end
+  
   def destroy
     @sponsor.destroy
     redirect_to sponsors_path
@@ -37,12 +43,14 @@ class SponsorsController < ApplicationController
 
 private
   def sponsor_params
-    permitted = [:name, :image, :order] + Sponsor.globalize_attribute_names
+    permitted = [:name, :image, :order, :imagelink] + Sponsor.globalize_attribute_names
     params.require(:sponsor).permit(permitted)
   end
+  
   def set_sponsor
     @sponsor = Sponsor.find(params[:id])
   end
+  
   def authorize_sponsor
     authorize @sponsor
   end

@@ -1,4 +1,4 @@
-class AddOptionsToSponsors < ActiveRecord::Migration
+class AddOptionsToSponsors < ActiveRecord::Migration[5.0]
   def change
     add_column :sponsors, :title, :string
     add_column :sponsors, :order, :integer
