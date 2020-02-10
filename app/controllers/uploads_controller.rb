@@ -1,5 +1,5 @@
 class UploadsController < ApplicationController
-  before_filter :set_upload, only: :destroy
+  before_action :set_upload, only: :destroy
 
   def create
     @upload = Upload.new(upload_params)
