@@ -13,7 +13,8 @@ class Committee < ActiveRecord::Base
     Rails.cache.fetch("groupMembers/#{self.slug}", expires_in: 30.minutes) do
       group = open(Rails.configuration.account_ip+"/api/superGroups/#{slug}/active.json",
       'Authorization' => "pre-shared #{Rails.application.secrets.client_credentials}")
-      j = JSON.parse(group.read).map { |g| g["groupMembers"].map {|i| [i["userCid"],i["unofficialPostName"]]}.to_h}
+      JSON.parse(group.read)["getFKITGroupResponse"][0]["groupMembers"].map { | i |
+        [i["cid"], i["unofficialPostName"]]}.to_h
       end
     end
   end
