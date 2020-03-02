@@ -13,22 +13,30 @@ class User < ActiveResource::Base
   def id
     uid
   end
+
   def self.find(id)
     return nil unless id.present?
       user = super id
-      user.relationships.each do |group|
-        user.groups = OpenStruct.new(group.attributes).to_h
-      end
+      user.groups = user.relationships.map { | group |
+        group.attributes.to_h
+      }
       user
   end
 
   def committees
-    @committees ||= Committee.all.select do |c|
-      relationships.each { | relationship | relationship.superGroup.include?(c.slug) }
+    group_names = groups.map { |group| group["superGroup"].name }
+    @committies ||= Committee.all.select do |c|
+      group_names.include?(c.slug)
     end
   end
 
+  def is_admin?
+    puts self.authorities
+    self.authorities.map { |authority| authority.authority }.include?("admin")
+  end
+
   def in_committee?
+    committees
     committees.any?
   end
 
