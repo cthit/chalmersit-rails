@@ -13,7 +13,7 @@ services:
     build:
       context: .
       dockerfile: dev.Dockerfile
-    command: bash -c 'rm -f tmp/pids/server.pid && sh wait-for-db.sh && sh start.sh'
+    command: bash -c 'rm -f tmp/pids/server.pid && sleep 10 && sh start.sh'
     volumes:
       - .:/app
     ports:
@@ -28,7 +28,10 @@ services:
     depends_on:
       - db
     network_mode: host
-  
+  adminer:
+    image: adminer
+    ports:
+    - 8079:8080
   gotify:
     image: cthit/gotify:latest
     environment:
