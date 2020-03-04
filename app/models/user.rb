@@ -31,7 +31,6 @@ class User < ActiveResource::Base
   end
 
   def is_admin?
-    puts self.authorities
     self.authorities.map { |authority| authority.authority }.include?("admin")
   end
 
