@@ -22,10 +22,8 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  host: localhost
-  database: chalmersit_test
-  username: travis
-  password: null
+  database: <%= ENV.fetch("DATABASE_NAME") { "it_test" }%>
+
 
 production:
   <<: *default
