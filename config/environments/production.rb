@@ -86,7 +86,7 @@ Rails.application.configure do
   config.active_record.time_zone_aware_types = [:datetime, :time]
 
 
-  config.account_ip = 'https://beta-account.chalmers.it'
+  config.account_ip = ENV["ACCOUNT_ADDRESS"] == nil ? "http://localhost:8081" : ENV["ACCOUNT_ADDRESS"]
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.print_chalmers_it = 'https://print.chalmers.it'
 end
