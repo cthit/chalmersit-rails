@@ -24,7 +24,9 @@ class User < ActiveResource::Base
   end
 
   def committees
-    group_names = groups.select { |group| group.name }.map { |group| group["superGroup"].name }
+    group_names = groups.select { |group| group["name"] }.map {
+        |group| group["superGroup"].name
+    }
     @committies ||= Committee.all.select do |c|
       group_names.include?(c.slug)
     end
