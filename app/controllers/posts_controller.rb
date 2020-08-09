@@ -116,7 +116,9 @@ class PostsController < ApplicationController
     end
 
     def send_slack
-      notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* by #{@post.user.display_name}"
+      cthit_notifier = Slack::Notifier.new Rails.application.secrets.slack_url
+      cthit_notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* by #{@post.user.display_name}"
+      mrcit_notifier = cthit_notifier = Slack::Notifier.new Rails.application.secrets.mrcit_slack_url
+      mrcit_notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'en')})* by #{@post.user.display_name}"
     end
 end
