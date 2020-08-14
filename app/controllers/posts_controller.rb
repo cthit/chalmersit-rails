@@ -122,6 +122,10 @@ class PostsController < ApplicationController
 
     def send_slack(url, language)
       notifier = Slack::Notifier.new url
-      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_#{language}](#{post_url(@post, locale: '#{language}')})* by #{@post.user.display_name}"
+      if language == "sv"
+        notifier.post unfurl_links: true, unfurl_media: true, text: "Nyhet publicerad: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* av #{@post.user.nick}"
+      elsif language == "en"
+        notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_en}](#{post_url(@post, locale: 'en')})* by #{@post.user.nick}"
+      end
     end
 end
