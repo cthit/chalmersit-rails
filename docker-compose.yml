@@ -8,30 +8,35 @@ services:
       MYSQL_PASSWORD: iamapassword
       MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
     ports:
-      - "3306:3306"
+      - 3306:3306
+
   web:
     build:
       context: .
       dockerfile: dev.Dockerfile
     command: bash -c 'rm -f tmp/pids/server.pid && sleep 10 && sh start.sh'
+    networks:
+      - default
+      - gamma
     volumes:
       - .:/app
     ports:
-      - "3001:3001"
+      - 3001:3001
     environment:
       OAUTH_ID: id
       OAUTH_SECRET: secret
       CLIENT_CREDENTIALS: key
-      ACCOUNT_ADDRESS: http://localhost:8081
+      ACCOUNT_ADDRESS: http://gamma-backend:8081
       API_KEY: key
-      DATABASE_HOST: 0.0.0.0
+      DATABASE_HOST: db
     depends_on:
       - db
-    network_mode: host
+
   adminer:
     image: adminer
     ports:
       - 8079:8080
+
   gotify:
     image: cthit/gotify:latest
     environment:
