@@ -106,7 +106,7 @@ class PostsController < ApplicationController
       if @post.valid?
         if Rails.env.production?
           begin
-            send_slack
+            send_slacks
           rescue Exception => e
             logger.error e.message
             e.backtrace.each { |line| logger.error line }
@@ -115,10 +115,14 @@ class PostsController < ApplicationController
       end
     end
 
-    def send_slack
-      cthit_notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      cthit_notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* by #{@post.user.display_name}"
-      mrcit_notifier = cthit_notifier = Slack::Notifier.new Rails.application.secrets.mrcit_slack_url
-      mrcit_notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_en}](#{post_url(@post, locale: 'en')})* by #{@post.user.display_name}"
+
+    def send_slacks
+      send_slack Rails.application.secrets.cthit_slack_url, "sv"
+      send_slack Rails.application.secrets.mrcit_slack_url, "en"
+    end
+
+    def send_slack(url, language)
+    notifier = Slack::Notifier.new url
+    notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_#{language}](#{post_url(@post, locale: '#{language}')})* by #{@post.user.display_name}"
     end
 end
