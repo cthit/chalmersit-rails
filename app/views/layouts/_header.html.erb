@@ -62,7 +62,7 @@
           <ul class="header-controls horizontal-list icon-align">
             <% if signed_in? %>
               <li class="user-details">
-                <strong><%= current_user.display_name %></strong>
+                <strong><%= current_user.nick %></strong>
               </li>
               <li class="dropdown">
                 <span id="tools-menu-trigger" class="dropdown-trigger"><%= fa_icon 'cog', text: t('.tools') %></span>
@@ -120,3 +120,4 @@
     </header>
     <section role="main" class="wrapper">
       <%= render 'layouts/messages' %>
+    </section>

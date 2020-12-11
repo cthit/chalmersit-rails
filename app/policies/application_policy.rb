@@ -36,6 +36,6 @@ class ApplicationPolicy
 
   private
     def user_is_admin?
-      user && user.admin?
+      user && user.is_admin?
     end
 end

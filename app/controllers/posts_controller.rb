@@ -36,7 +36,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = current_user.posts.build(post_params)
-    
+
     unless @post.event.nil?
       unless @post.event.facebook_link.include?("http://") || @post.event.facebook_link.include?("https://") || @post.event.facebook_link.empty?
         @post.event.facebook_link.insert(0, "https://")
@@ -106,7 +106,7 @@ class PostsController < ApplicationController
       if @post.valid?
         if Rails.env.production?
           begin
-            send_slack
+            send_slacks
           rescue Exception => e
             logger.error e.message
             e.backtrace.each { |line| logger.error line }
@@ -114,9 +114,18 @@ class PostsController < ApplicationController
         end
       end
     end
+  
+    def send_slacks
+      send_slack Rails.application.secrets.cthit_slack_url, "sv"
+      send_slack Rails.application.secrets.mrcit_slack_url, "en"
+    end
 
-    def send_slack
-      notifier = Slack::Notifier.new Rails.application.secrets.slack_url
-      notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* by #{@post.user.display_name}"
+    def send_slack(url, language)
+      notifier = Slack::Notifier.new url
+      if language == "sv"
+        notifier.post unfurl_links: true, unfurl_media: true, text: "Nyhet publicerad: *[#{@post.title_sv}](#{post_url(@post, locale: 'sv')})* av #{@post.user.nick}"
+      elsif language == "en"
+        notifier.post unfurl_links: true, unfurl_media: true, text: "New post published: *[#{@post.title_en}](#{post_url(@post, locale: 'en')})* by #{@post.user.nick}"
+      end
     end
 end

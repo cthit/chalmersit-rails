@@ -34,7 +34,7 @@ class Post < ActiveRecord::Base
     begin
       @user ||= User.find(user_id)
     rescue
-      @user = User.new(id: user_id, display_name: user_id)
+      @user = User.new(id: user_id, nick: user_id)
     end
   end
 
