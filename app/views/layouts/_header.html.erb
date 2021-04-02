@@ -96,7 +96,7 @@
                 </ul>
               </li>
             <% else %>
-              <li><%= link_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
+              <li><%= button_to t('login'), "/auth/account", class: 'button tiny', id: 'login-btn' %></li>
             <% end %>
             <li id="header-search">
               <%= form_tag(search_path, :method => :get) do %>

@@ -2,7 +2,7 @@ require 'active_resource'
 
 class User < ActiveResource::Base
   extend ActiveModel::Naming
-  self.site = Rails.configuration.account_ip
+  self.site = Rails.configuration.account_address
   self.prefix = "/api/"
   attr_writer :committees
 
@@ -24,7 +24,7 @@ class User < ActiveResource::Base
   end
 
   def committees
-    group_names = groups.select { |group| group["name"] }.map {
+    group_names = groups.select { | group | group["name"] }.map {
         |group| group["superGroup"].name
     }
     @committies ||= Committee.all.select do |c|
@@ -33,7 +33,7 @@ class User < ActiveResource::Base
   end
 
   def is_admin?
-    self.authorities.map { |authority| authority.authority }.include?("admin")
+    self.authorities.map { | authority | authority.authority }.include?("admin")
   end
 
   def in_committee?

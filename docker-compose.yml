@@ -27,6 +27,8 @@ services:
       OAUTH_SECRET: secret
       CLIENT_CREDENTIALS: key
       ACCOUNT_ADDRESS: http://gamma-backend:8081
+      ACCOUNT_REDIRECT_ADDRESS: http://localhost:8081
+
       API_KEY: key
       DATABASE_HOST: db
     depends_on:

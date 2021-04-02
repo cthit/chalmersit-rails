@@ -125,3 +125,5 @@ gem 'chosen-rails'
 
 gem 'paint'
 gem 'paint-shortcuts'
+
+gem "omniauth-rails_csrf_protection"

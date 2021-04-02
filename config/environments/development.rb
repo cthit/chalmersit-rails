@@ -46,7 +46,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
-  config.account_ip = ENV["ACCOUNT_ADDRESS"] == nil ? "http://localhost:8081" : ENV["ACCOUNT_ADDRESS"]
+  config.account_redirect = ENV["ACCOUNT_REDIRECT_ADDRESS"] == nil ? "http://localhost:8081" : ENV["ACCOUNT_REDIRECT_ADDRESS"]
+  config.account_address = ENV["ACCOUNT_ADDRESS"] == nil ? config.account_redirect : ENV["ACCOUNT_ADDRESS"]
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.print_chalmers_it = 'http://localhost:4000'
   config.action_mailer.delivery_method = :smtp
