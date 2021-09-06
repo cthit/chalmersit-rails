@@ -7,23 +7,23 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
  coms = [
-  {title_en: 'Student Division Board', title_sv: 'Styrelse', name: 'styrIT', url: 'http://styrit.chalmers.it', email: 'styrit@chalmers.it' },
-  {title_en: 'Student Educational Committee', title_sv: 'Studienämnd', name: 'snIT', url: 'http://snit.chalmers.it', email: 'snit@chalmers.it' },
-  {title_en: 'Sexmästeri', title_sv: 'Sexmästeri', name: 'sexIT', url: 'http://sexit.chalmers.it', email: 'sexit@chalmers.it' },
-  {title_en: 'PR & Rustmästeri', title_sv: 'PR & Rustmästeri', name: 'P.R.I.T.', url: 'http://prit.chalmers.it', email: 'prit@chalmers.it' },
-  {title_en: 'Student Reception Committee', title_sv: 'Mottagningskommitté', name: 'NollKIT', url: 'http://nollk.it', email: 'nollkit@chalmers.it' },
-  {title_en: 'Business Relations Committee', title_sv: 'Arbetsmarknad', name: 'ArmIT', url: 'http://armit.se', email: 'armit@chalmers.it' },
-  {title_en: 'Digital systems', title_sv: 'Digitala system', name: 'digIT', url: 'http://digit.chalmers.it', email: 'digit@chalmers.it' },
-  {title_en: 'Standard Bearers', title_sv: 'Fanbärare', name: 'FanbärerIT', url: 'http://fanbärerit.chalmers.it', email: 'fanbärerit@chalmers.it' },
-  {title_en: 'Physical Activities', title_sv: 'Fysiska aktiviteter', name: 'frITid', url: 'http://fritid.chalmers.it', email: 'fritid@chalmers.it' },
-  {title_en: 'Digital games', title_sv: 'Digitala spel', name: '8-bIT', url: 'http://8bit.chalmers.it', email: '8bit@chalmers.it' },
-  {title_en: 'Analog games', title_sv: 'Analoga spel', name: 'DrawIT', url: 'http://drawit.chalmers.it', email: 'drawit@chalmers.it' },
-  {title_en: 'Photo Committee', title_sv: 'Foto', name: 'FlashIT', url: 'http://flashit.chalmers.it', email: 'flashit@chalmers.it' },
-  {title_en: 'Chugging Committee', title_sv: 'Häfv och odygd', name: 'HookIT', url: 'http://hookit.chalmers.it', email: 'hookit@chalmers.it' },
-  {title_en: 'Auditors', title_sv: 'Sektionens revisorer', name: 'Revisorer', url: 'http://revisorer.chalmers.it', email: 'revisorer@chalmers.it' },
-  {title_en: 'Nomination Committee', title_sv: 'Valberedning', name: 'Valberedningen', url: 'http://valberedningen.chalmers.it', email: 'valberedningen@chalmers.it'  },
-  {title_en: 'Master Reception Committee', title_sv: 'Mastermottagningskommitté', name: 'MRCIT', url: 'http://mrcit.chalmers.it', email: 'mrcit@chalmers.it'  },
-  {title_en: 'Legacy', title_sv: 'Legacy', name: 'Legacy', url: 'http://chalmers.it', email: 'digit@chalmers.it'  }
+  {title_en: 'Student Division Board', title_sv: 'Styrelse', name: 'styrIT', url: 'https://styrit.chalmers.it', email: 'styrit@chalmers.it' },
+  {title_en: 'Student Educational Committee', title_sv: 'Studienämnd', name: 'snIT', url: 'https://snit.chalmers.it', email: 'snit@chalmers.it' },
+  {title_en: 'Sexmästeri', title_sv: 'Sexmästeri', name: 'sexIT', url: 'https://sexit.chalmers.it', email: 'sexit@chalmers.it' },
+  {title_en: 'PR & Rustmästeri', title_sv: 'PR & Rustmästeri', name: 'P.R.I.T.', url: 'https://prit.chalmers.it', email: 'prit@chalmers.it' },
+  {title_en: 'Student Reception Committee', title_sv: 'Mottagningskommitté', name: 'NollKIT', url: 'https://nollk.it', email: 'nollkit@chalmers.it' },
+  {title_en: 'Business Relations Committee', title_sv: 'Arbetsmarknad', name: 'ArmIT', url: 'https://armit.se', email: 'armit@chalmers.it' },
+  {title_en: 'Digital systems', title_sv: 'Digitala system', name: 'digIT', url: 'https://digit.chalmers.it', email: 'digit@chalmers.it' },
+  {title_en: 'Standard Bearers', title_sv: 'Fanbärare', name: 'FanbärerIT', url: 'https://fanbärerit.chalmers.it', email: 'fanbärerit@chalmers.it' },
+  {title_en: 'Physical Activities', title_sv: 'Fysiska aktiviteter', name: 'frITid', url: 'https://fritid.chalmers.it', email: 'fritid@chalmers.it' },
+  {title_en: 'Digital games', title_sv: 'Digitala spel', name: '8-bIT', url: 'https://8bit.chalmers.it', email: '8bit@chalmers.it' },
+  {title_en: 'Analog games', title_sv: 'Analoga spel', name: 'DrawIT', url: 'https://drawit.chalmers.it', email: 'drawit@chalmers.it' },
+  {title_en: 'Photo Committee', title_sv: 'Foto', name: 'FlashIT', url: 'https://flashit.chalmers.it', email: 'flashit@chalmers.it' },
+  {title_en: 'Chugging Committee', title_sv: 'Häfv och odygd', name: 'HookIT', url: 'https://hookit.chalmers.it', email: 'hookit@chalmers.it' },
+  {title_en: 'Auditors', title_sv: 'Sektionens revisorer', name: 'Revisorer', url: 'https://revisorer.chalmers.it', email: 'revisorer@chalmers.it' },
+  {title_en: 'Nomination Committee', title_sv: 'Valberedning', name: 'Valberedningen', url: 'https://valberedningen.chalmers.it', email: 'valberedningen@chalmers.it'  },
+  {title_en: 'Master Reception Committee', title_sv: 'Mastermottagningskommitté', name: 'MRCIT', url: 'https://mrcit.chalmers.it', email: 'mrcit@chalmers.it'  },
+  {title_en: 'Legacy', title_sv: 'Legacy', name: 'Legacy', url: 'https://chalmers.it', email: 'digit@chalmers.it'  }
 ]
 
  Committee.delete_all

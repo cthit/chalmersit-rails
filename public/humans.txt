@@ -17,7 +17,7 @@
                                  |___/
 
 
-Information Technology at Chalmers University of Technology
+Software Engineering (IT) at Chalmers University of Technology
 
 # Questions, bug reports or suggestions:
 #
