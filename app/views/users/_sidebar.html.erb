@@ -1,9 +1,9 @@
 <section class="author-info row media-block">
   <figure class="media-image">
-    <%= image_tag user.avatar, class: 'avatar avatar-64 photo', size: '64' %>
+    <%= image_tag user.avatarUrl, class: 'avatarUrl avatarUrl-64 photo', size: '64' %>
   </figure>
   <hgroup>
-    <h3><%= user.display_name %></h3>
+    <h3><%= user.nick %></h3>
     <h4><%= begin
               user.positions[group.slug]
             rescue
@@ -13,7 +13,7 @@
 
   <ul class="author-links list">
     <li>
-      <%= link_to t('.see_all_posts_by', user: user.display_name), posts_path(user: user), class: 'read-more' %>
+      <%= link_to t('.see_all_posts_by', user: user.nick), posts_path(user: user), class: 'read-more' %>
     </li>
   </ul>
 </section>

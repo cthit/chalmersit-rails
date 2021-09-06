@@ -2,7 +2,8 @@ require 'active_resource'
 
 class User < ActiveResource::Base
   extend ActiveModel::Naming
-  self.site = Rails.configuration.account_ip
+  self.site = Rails.configuration.account_address
+  self.prefix = "/api/"
   attr_writer :committees
 
   def posts
@@ -10,25 +11,33 @@ class User < ActiveResource::Base
   end
 
   def id
-    uid
+    cid
   end
 
   def self.find(id)
     return nil unless id.present?
-    Rails.cache.fetch("users/#{id}.json") do
       user = super id
-      user.positions = OpenStruct.new(user.positions.attributes).to_h
+      user.groups = user.groups.map { | group |
+        group.attributes.to_h
+      }
       user
-    end
   end
 
   def committees
-    @committees ||= Committee.all.select do |c|
-      groups.include?(c.slug)
+    group_names = groups.select { | group | group["name"] }.map {
+        |group| group["superGroup"].name
+    }
+    @committies ||= Committee.all.select do |c|
+      group_names.include?(c.slug)
     end
   end
 
+  def is_admin?
+    self.authorities.map { | authority | authority.authority }.include?("admin")
+  end
+
   def in_committee?
+    committees
     committees.any?
   end
 
@@ -38,7 +47,7 @@ class User < ActiveResource::Base
   end
 
   def self.headers
-    { 'authorization' => "Bearer #{Rails.application.secrets.client_credentials}"}
+    { 'Authorization' => "pre-shared #{Rails.application.secrets.client_credentials}"}
   end
 
 end

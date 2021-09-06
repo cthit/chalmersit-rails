@@ -56,7 +56,7 @@ Rails.application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use a different cache store in production.
-  config.cache_store = :redis_store, 'redis://0.0.0.0:6379/0/cache', { expires_in: 90.minutes }
+  config.cache_store = :redis_store, 'redis://redis:6379/0/', { expires_in: 90.minutes }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
@@ -86,7 +86,8 @@ Rails.application.configure do
   config.active_record.time_zone_aware_types = [:datetime, :time]
 
 
-  config.account_ip = 'https://beta-account.chalmers.it'
+  config.account_redirect = ENV["ACCOUNT_REDIRECT_ADDRESS"] == nil ? "http://localhost:8081" : ENV["ACCOUNT_REDIRECT_ADDRESS"]
+  config.account_address = ENV["ACCOUNT_ADDRESS"] == nil ? config.account_redirect : ENV["ACCOUNT_ADDRESS"]
   config.irkk_push_ip = 'http://deathstar.chalmers.it:4567'
   config.print_chalmers_it = 'https://print.chalmers.it'
 end
