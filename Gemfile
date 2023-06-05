@@ -28,6 +28,7 @@ gem 'nokogiri'
 
 # Caching with Redis
 gem 'redis-rails'
+gem 'redis-store', '~> 1.4.1'
 
 # Markdown for post body
 gem 'sanitize'

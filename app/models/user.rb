@@ -3,6 +3,7 @@ require 'active_resource'
 class User < ActiveResource::Base
   extend ActiveModel::Naming
   self.site = Rails.configuration.account_address
+  self.include_format_in_path = false
   self.prefix = "/api/"
   attr_writer :committees
 

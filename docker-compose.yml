@@ -10,6 +10,10 @@ services:
     ports:
       - 3306:3306
 
+  redis:
+    image: redis
+    restart: unless-stopped
+
   web:
     build:
       context: .
@@ -28,6 +32,10 @@ services:
       CLIENT_CREDENTIALS: key
       ACCOUNT_ADDRESS: http://gamma-backend:8081
       ACCOUNT_REDIRECT_ADDRESS: http://localhost:8081
+      DATABASE_NAME: it_dev
+      DATABASE_USER: it
+      DATABASE_PASSWORD: iamapassword
+      REDIS_URL: redis://redis:6379/0
 
       API_KEY: key
       DATABASE_HOST: db
@@ -60,7 +68,7 @@ services:
       - 3000:3000
 
   gamma-backend:
-    image: cthit/gamma-backend
+    image: cthit/gamma-backend:latest
     environment:
       # Default admin user name = admin
       # Default admin password  = password
@@ -86,10 +94,10 @@ services:
       SERVER_PORT: 8081
       SUCCESSFUL_LOGIN: http://localhost:3000
       CORS_ALLOWED_ORIGIN: http://localhost:3000
-      BACKEND_URI: http://localhost:8081
+      BACKEND_URI: http://localhost:8081/
       PRODUCTION: "false"
       COOKIE_DOMAIN: localhost
-      IS_MOCKING_CLIENT: "true"
+      IS_MOCKING: "true"
     depends_on:
       - gamma-redis
       - gamma-db

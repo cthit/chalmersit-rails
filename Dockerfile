@@ -1,16 +1,16 @@
-FROM ruby:2.5.1
+FROM ruby:2.5.9
 
 #installs basic needed utils
 
 RUN apt-get update && apt-get install -y \
-net-tools apt-transport-https cmake
+    net-tools apt-transport-https cmake
 
 # installs yarn which is needed to precompile
 ENV PATH=/root/.yarn/bin:$PATH
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update && apt-get install -y \
-yarn
+    yarn
 #Packages
 
 RUN apt-get clean
