@@ -26,7 +26,12 @@ module PostsHelper
   end
 
   def link_to_committee(post)
-    link_to post.group.name, committee_path(post.group)
+    begin
+        link_to post.group.name, committee_path(post.group)
+    rescue NoMethodError
+        p "Could not find committee for post #{post.to_param}"
+        link_to "(Null)", "/"
+    end
   end
 
   def get_previous post
